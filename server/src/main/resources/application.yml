@@ -1,0 +1,24 @@
+spring:
+    jackson:
+        date-format: "yyyy-MM-dd HH:mm:ss"
+        time-zone: "GMT+8"
+    # ???
+    datasource:
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        url: jdbc:mysql://localhost:3306/play_platform_db
+        username: platform
+        password: '#Admin#Platform_520'
+        type: com.alibaba.druid.pool.DruidDataSource
+    mvc:
+        path match:
+            matching-strategy: ant_path_matcher
+        static-path-pattern: /static/**
+    web:
+        resources:
+            static-locations: classpath:/static
+mybatis:
+    mapper-locations: classpath:mapper/*.xml
+    configuration:
+        map-underscore-to-camel-case: true
+server:
+    port: 8888
