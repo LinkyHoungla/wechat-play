@@ -10,7 +10,8 @@ const getDefaultState = () => {
   return {
     id: null,
     rid: null,
-    menu: ''
+    menu: '',
+    permission: []
   }
 }
 
@@ -30,6 +31,9 @@ const mutations = {
   },
   SET_MENU: (state, menu) => {
     state.menu = menu
+  },
+  SET_PERMISSION: (state, permission) => {
+    state.permission = permission
   }
 }
 
@@ -43,6 +47,7 @@ const actions = {
         commit('SET_ID', data.id)
         commit('SET_RID', data.rid)
         commit('SET_MENU', data.menu)
+        commit('SET_PERMISSION', data.permission)
       })
     })
   },

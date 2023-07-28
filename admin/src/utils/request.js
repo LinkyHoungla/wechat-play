@@ -19,6 +19,16 @@ const service = axios.create({
 // 请求拦截器
 service.interceptors.request.use(
   config => {
+    // 获取当前用户的权限ID列表（这里假设存储在vuex中）
+    const userPermissions = store.state.log.permission
+    // 获取请求所需的权限ID（这里假设存储在meta字段中）
+    const requiredPermission = config.meta.rid
+
+    // 判断用户是否有权限进行该请求
+    if (requiredPermission && !userPermissions.includes(requiredPermission)) {
+      // 没有权限，拒绝请求或者返回错误信息
+      return Promise.reject(new Error('权限不足'))
+    }
     config.headers.Authorization = getToken
     return config
   },

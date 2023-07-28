@@ -9,7 +9,7 @@ import store from '@/store'
 // 路由守卫
 router.beforeEach((to, from, next) => {
   // 检查目标路由是否存在 或 是否在权限内
-  if (to.matched.length === 0 || !store.getters.menu.indexOf(to.path)) {
+  if (to.matched.length === 0 || !store.getters.permission.indexOf(to.meta.rid)) {
     // 跳转到 404 页面
     next('/404')
   }
