@@ -33,7 +33,7 @@ service.interceptors.request.use(
     return config
   },
   error => {
-    // 在请求放生错误是如何处理
+    // 请求错误
     console.log('request:' + error)
     // 信息提示框
     Message.error('请求失败')
@@ -42,10 +42,7 @@ service.interceptors.request.use(
 
 // 响应拦截器
 service.interceptors.response.use(
-  response => {
-    Message.success('请求成功')
-    return response
-  },
+  response => response,
   error => {
     // 451：未登录，452：令牌过期，453：令牌无效
     if (!errorShown && (error.code === 451 || error.code === 452 || error.code === 453)) {
