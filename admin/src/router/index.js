@@ -5,21 +5,25 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
-import HomeView from '../views/HomeView.vue'
-
 Vue.use(Router)
 
 const routes = [
   {
     path: '/',
     name: 'home',
-    component: HomeView
+    component: () => import('@/views/LoginView.vue')
   },
   {
-    path: '/about',
-    name: 'about',
-    component: () => import('../views/AboutView.vue')
-  }
+    path: '/404',
+    name: '404',
+    component: () => import('@/views/error/404.vue')
+  },
+  {
+    path: '/login',
+    name: 'login',
+    component: () => import('@/views/LoginView.vue')
+  },
+  { path: '*', redirect: '/404' }
 ]
 
 const createRouter = () => new Router({

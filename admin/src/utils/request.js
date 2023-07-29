@@ -27,7 +27,7 @@ service.interceptors.request.use(
     // 判断用户是否有权限进行该请求
     if (requiredPermission && !userPermissions.includes(requiredPermission)) {
       // 没有权限，拒绝请求或者返回错误信息
-      return Promise.reject(new Error('权限不足'))
+      // return Promise.reject(new Error('权限不足'))
     }
     config.headers.Authorization = getToken
     return config
@@ -61,7 +61,7 @@ service.interceptors.response.use(
       errorShown = true
     } else {
       console.log('response:' + error)
-      Message.error(error)
+      Message.error('response:' + error)
     }
   }
 )
