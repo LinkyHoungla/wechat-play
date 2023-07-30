@@ -39,7 +39,7 @@ const mutations = {
 
 // 数据 获取
 const actions = {
-  // 用户登录
+  // 获取用户信息
   getLoginfo ({ commit }) {
     import('@/api/admin').then(getLoginfo => {
       getLoginfo().then(res => {

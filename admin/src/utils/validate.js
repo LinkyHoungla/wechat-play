@@ -23,3 +23,25 @@ export function isValidPhoneNumber (value) {
   const phoneRegex = /^[1][3-9]\d{9}$/
   return phoneRegex.test(value)
 }
+
+// 长度校验
+export function validateLength (value, minLength, maxLength) {
+  const trimmedValue = value.trim() // 去除首尾空格后的值
+
+  if (minLength && trimmedValue.length < minLength) {
+    return false
+  }
+
+  if (maxLength && trimmedValue.length > maxLength) {
+    return false
+  }
+
+  return true
+}
+
+// 特殊字符校验
+export function containsSpecialCharacters (value) {
+  // 定义特殊字符的正则表达式，这里仅列举一些常见特殊字符，你可以根据需要添加或修改
+  const specialCharactersRegex = /[!@#$%^&*()_+={}|[\]\\:;"'<>,.?/~`]/
+  return specialCharactersRegex.test(value)
+}

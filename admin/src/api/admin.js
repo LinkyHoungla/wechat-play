@@ -1,13 +1,10 @@
 import service from '@/utils/request'
 
-export function login (username, password) {
+export function login (data) {
   return service({
     url: '/admin/login',
     method: 'post',
-    data: {
-      username,
-      password
-    }
+    data
   })
 }
 

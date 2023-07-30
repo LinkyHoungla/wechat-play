@@ -21,7 +21,8 @@ const routes = [
   {
     path: '/login',
     name: 'login',
-    component: () => import('@/views/LoginView.vue')
+    component: () => import('@/views/LoginView.vue'),
+    meta: { ignoreAuth: true } // 添加元信息 ignoreAuth 来标识登录请求
   },
   { path: '*', redirect: '/404' }
 ]

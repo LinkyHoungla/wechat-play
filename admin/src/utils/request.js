@@ -12,15 +12,19 @@ import store from '@/store'
 let errorShown = false
 
 const service = axios.create({
-  baseURL: process.env.BASE_API,
+  baseURL: process.env.VUE_APP_BASE_API,
   timeout: 5000
 })
 
 // 请求拦截器
 service.interceptors.request.use(
   config => {
+    if (config.url === '/admin/login') {
+      return config
+    }
+
     // 获取当前用户的权限ID列表（这里假设存储在vuex中）
-    const userPermissions = store.state.log.permission
+    const userPermissions = store.getters.permission
     // 获取请求所需的权限ID（这里假设存储在meta字段中）
     const requiredPermission = config.meta.rid
 
@@ -55,7 +59,7 @@ service.interceptors.response.use(
           // 为了重新实例化vue-router对象 避免bug
           location.reload()
         })
-      }).finally(() => { errorShown = false })
+      }).catch(() => {}).finally(() => { errorShown = false })
 
       // 设置标志变量为true，表示已经弹出了错误提示
       errorShown = true

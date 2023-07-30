@@ -2,13 +2,28 @@
   <div class="body">
     <div class="login">
       <h2>后台管理登录</h2>
-      <div class="login_box">
-        <input type="text" required="required" /><label for="">用户名</label>
+      <div class="login-box">
+        <input
+          type="text"
+          required="required"
+          @blur="validateUsername"
+          v-model="loginForm.username"
+        />
+        <label>用户名</label>
+        <span v-if="error.username !== ''">{{ error.username }}</span>
       </div>
-      <div class="login_box">
-        <input type="password" required="required" /><label for="">密码</label>
+      <div class="login-box">
+        <input
+          type="password"
+          required="required"
+          @blur="validatePassword"
+          v-model="loginForm.password"
+        />
+        <label>密码</label>
+        <span v-if="error.password !== ''">{{ error.password }}</span>
       </div>
-      <a href="javascript:void(0)">
+      <!-- 提交 -->
+      <a @click="login">
         登录
         <span></span>
         <span></span>
@@ -20,7 +35,93 @@
 </template>
 
 <script>
-export default {}
+import {
+  isNotEmpty,
+  validateLength,
+  containsSpecialCharacters
+} from '@/utils/validate'
+import { setToken } from '@/utils/token'
+
+export default {
+  data () {
+    return {
+      // 登录表单数据
+      loginForm: {
+        username: '',
+        password: ''
+      },
+      // 表单错误
+      error: {
+        username: '',
+        password: ''
+      }
+    }
+  },
+  methods: {
+    // 用户名校验
+    validateUsername () {
+      if (!isNotEmpty(this.loginForm.username)) {
+        this.error.username = '不能为空'
+        return false
+      }
+
+      if (!validateLength(this.loginForm.username, 3, 10)) {
+        this.error.username = '长度为3-10'
+        return false
+      }
+
+      if (containsSpecialCharacters(this.loginForm.username)) {
+        this.error.username = '只能字母数字'
+        return false
+      }
+
+      this.error.username = ''
+      return true
+    },
+    // 密码校验
+    validatePassword () {
+      if (!isNotEmpty(this.loginForm.password)) {
+        this.error.password = '不能为空'
+        return false
+      }
+
+      if (!validateLength(this.loginForm.password, 6, 16)) {
+        this.error.password = '长度为6-16'
+        return false
+      }
+
+      if (containsSpecialCharacters(this.loginForm.password)) {
+        this.error.password = '只能字母数字'
+        return false
+      }
+
+      this.error.password = ''
+      return true
+    },
+    // 表单校验
+    validateForm () {
+      let valid = true
+      valid = this.validateUsername() && this.validatePassword()
+      // 其他表单字段的验证逻辑
+
+      // 返回表单验证结果
+      return valid
+    },
+    // 登录
+    login () {
+      if (!this.validateForm()) {
+        this.$message.error('输入非法')
+        return
+      }
+      import('@/api/admin').then(({ login }) => {
+        login(this.loginForm).then(({ data }) => {
+          setToken(data.data.token)
+          this.$router.push('/')
+        }).catch(() => {})
+      })
+    }
+  }
+}
 </script>
 
 <style lang="less">
@@ -39,7 +140,7 @@ export default {}
 
     width: 400px;
     padding: 40px;
-    background: rbga(0,0,0,0.2);
+    background: rbga(0, 0, 0, 0.2);
     box-shadow: 0 15px 25px rgba(0, 0, 0, 0.4);
 
     h2 {
@@ -47,7 +148,7 @@ export default {}
       margin-bottom: 30px;
     }
 
-    .login_box {
+    .login-box {
       position: relative;
       width: 100%;
 
@@ -78,6 +179,17 @@ export default {}
         pointer-events: none;
 
         transition: all 0.25s;
+      }
+
+      span {
+        position: absolute;
+        bottom: 50%;
+        right: 0;
+
+        padding: 5px 0;
+
+        font-size: 10px;
+        color: red;
       }
 
       input:focus + label,
@@ -191,7 +303,8 @@ export default {}
       color: #fff;
       border-radius: 5px;
       background-color: #03e9f4;
-      box-shadow: 0 0 5px #03e9f4, 0 0 25px #03e9f4, 0 0 50px #03e9f4, 0 0 100px #03e9f4;
+      box-shadow: 0 0 5px #03e9f4, 0 0 25px #03e9f4, 0 0 50px #03e9f4,
+        0 0 100px #03e9f4;
     }
   }
 }
