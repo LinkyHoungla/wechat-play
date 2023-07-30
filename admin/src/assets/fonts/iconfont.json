@@ -1,0 +1,128 @@
+{
+  "id": "",
+  "name": "",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "741950",
+      "name": "退出 (6)",
+      "font_class": "tuichu6",
+      "unicode": "e651",
+      "unicode_decimal": 58961
+    },
+    {
+      "icon_id": "36385009",
+      "name": "交易管理",
+      "font_class": "a-bianzu11beifen3x",
+      "unicode": "e60a",
+      "unicode_decimal": 58890
+    },
+    {
+      "icon_id": "36385010",
+      "name": "成员管理",
+      "font_class": "a-chengyuanguanli3x",
+      "unicode": "e60b",
+      "unicode_decimal": 58891
+    },
+    {
+      "icon_id": "36385011",
+      "name": "对账服务",
+      "font_class": "a-bianzu14beifen3x",
+      "unicode": "e60c",
+      "unicode_decimal": 58892
+    },
+    {
+      "icon_id": "36385012",
+      "name": "平台消息",
+      "font_class": "a-pingtaixiaoxiiconbeifen3x",
+      "unicode": "e60d",
+      "unicode_decimal": 58893
+    },
+    {
+      "icon_id": "36385014",
+      "name": "优惠券管理",
+      "font_class": "a-youhuiquanguanliiconbeifen33x",
+      "unicode": "e60e",
+      "unicode_decimal": 58894
+    },
+    {
+      "icon_id": "36385015",
+      "name": "优惠券列表",
+      "font_class": "a-youhuiquanliebiaoiconbeifen3x",
+      "unicode": "e60f",
+      "unicode_decimal": 58895
+    },
+    {
+      "icon_id": "36385016",
+      "name": "全部消息",
+      "font_class": "a-quanbuxiaoxiiconbeifen3x",
+      "unicode": "e610",
+      "unicode_decimal": 58896
+    },
+    {
+      "icon_id": "36385017",
+      "name": "业务消息",
+      "font_class": "a-yewuxiaoxiiconbeifen3x",
+      "unicode": "e611",
+      "unicode_decimal": 58897
+    },
+    {
+      "icon_id": "36385019",
+      "name": "安全设置",
+      "font_class": "a-anquanshezhiiconbeifen3x",
+      "unicode": "e612",
+      "unicode_decimal": 58898
+    },
+    {
+      "icon_id": "36397290",
+      "name": "角色权限 ",
+      "font_class": "a-jiaosequanxian3x",
+      "unicode": "e613",
+      "unicode_decimal": 58899
+    },
+    {
+      "icon_id": "36398121",
+      "name": "关闭",
+      "font_class": "guanbi",
+      "unicode": "e614",
+      "unicode_decimal": 58900
+    },
+    {
+      "icon_id": "36399921",
+      "name": "统计数据",
+      "font_class": "a-piechart",
+      "unicode": "e615",
+      "unicode_decimal": 58901
+    },
+    {
+      "icon_id": "36430864",
+      "name": "操作日志",
+      "font_class": "a-caozuorizhi3x",
+      "unicode": "e616",
+      "unicode_decimal": 58902
+    },
+    {
+      "icon_id": "36430865",
+      "name": "门店管理",
+      "font_class": "a-bianzu73x",
+      "unicode": "e617",
+      "unicode_decimal": 58903
+    },
+    {
+      "icon_id": "36434861",
+      "name": "账户管理",
+      "font_class": "a-1",
+      "unicode": "e618",
+      "unicode_decimal": 58904
+    },
+    {
+      "icon_id": "36509805",
+      "name": "代付管理",
+      "font_class": "a-daifuguanli3x",
+      "unicode": "e619",
+      "unicode_decimal": 58905
+    }
+  ]
+}
