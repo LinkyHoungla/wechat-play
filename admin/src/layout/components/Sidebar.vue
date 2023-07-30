@@ -180,7 +180,8 @@ export default {
       isOpen: false
     }
   },
-  methods: {}
+  methods: {
+  }
 }
 </script>
 

@@ -7,6 +7,9 @@ import store from './store'
 
 import './plugins/element.js'
 
+// 路由守卫，权限控制
+import '@/router/permission.js'
+
 import '@/assets/css/global.css'
 
 Vue.config.productionTip = false
