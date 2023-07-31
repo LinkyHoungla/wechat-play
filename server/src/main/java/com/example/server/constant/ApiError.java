@@ -8,9 +8,11 @@ import lombok.RequiredArgsConstructor;
 public enum ApiError {
     E401(401, "Unauthorized"),
     E403(403, "Forbidden"),
-    E451(451, "Login Required"),
-    E452(452, "Token Expired"),
+    E450(450, "Required Login"),
+    E451(451, "Invalid Login"),
+    E452(452, "Expired Token"),
     E453(453, "Illegal Token"),
+    E460(460, "Invalid Database Condition"),
     E404(404, "Other");
 
     private final Integer code;

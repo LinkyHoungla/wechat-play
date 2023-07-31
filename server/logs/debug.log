@@ -1,0 +1,125 @@
+2023-07-31 16:18:29.539 [main] INFO  com.example.server.ServerApplication - Starting ServerApplication using Java 1.8.0_271 on ROG-Linky with PID 87772 (E:\Project\development\web\fullstack\wechat-play\server\target\classes started by baiss in E:\Project\development\web\fullstack\wechat-play\server)
+2023-07-31 16:18:29.541 [main] DEBUG com.example.server.ServerApplication - Running with Spring Boot v2.7.14, Spring v5.3.29
+2023-07-31 16:18:29.542 [main] INFO  com.example.server.ServerApplication - No active profile set, falling back to 1 default profile: "default"
+2023-07-31 16:18:30.687 [main] INFO  com.example.server.ServerApplication - Started ServerApplication in 1.426 seconds (JVM running for 2.173)
+2023-07-31 16:26:50.207 [http-nio-8888-exec-5] DEBUG c.example.server.dao.AdminDao.login - ==>  Preparing: SELECT a.id, a.rid FROM admin a JOIN admin_login al ON a.id = al.id WHERE al.username = ? AND al.password = ?
+2023-07-31 16:26:50.221 [http-nio-8888-exec-5] DEBUG c.example.server.dao.AdminDao.login - ==> Parameters: 1(String), 1(String)
+2023-07-31 16:26:50.232 [http-nio-8888-exec-5] DEBUG c.example.server.dao.AdminDao.login - <==      Total: 0
+2023-07-31 16:33:58.652 [main] INFO  com.example.server.ServerApplication - Starting ServerApplication using Java 1.8.0_271 on ROG-Linky with PID 80456 (E:\Project\development\web\fullstack\wechat-play\server\target\classes started by baiss in E:\Project\development\web\fullstack\wechat-play\server)
+2023-07-31 16:33:58.654 [main] DEBUG com.example.server.ServerApplication - Running with Spring Boot v2.7.14, Spring v5.3.29
+2023-07-31 16:33:58.654 [main] INFO  com.example.server.ServerApplication - No active profile set, falling back to 1 default profile: "default"
+2023-07-31 16:33:59.723 [main] INFO  com.example.server.ServerApplication - Started ServerApplication in 1.352 seconds (JVM running for 2.061)
+2023-07-31 16:34:03.551 [http-nio-8888-exec-1] DEBUG c.example.server.dao.AdminDao.login - ==>  Preparing: SELECT a.id, a.rid FROM admin a JOIN admin_login al ON a.id = al.id WHERE al.username = ? AND al.password = ?
+2023-07-31 16:34:03.563 [http-nio-8888-exec-1] DEBUG c.example.server.dao.AdminDao.login - ==> Parameters: 1(String), 1(String)
+2023-07-31 16:34:03.574 [http-nio-8888-exec-1] DEBUG c.example.server.dao.AdminDao.login - <==      Total: 0
+2023-07-31 16:36:37.784 [main] INFO  com.example.server.ServerApplication - Starting ServerApplication using Java 1.8.0_271 on ROG-Linky with PID 76784 (E:\Project\development\web\fullstack\wechat-play\server\target\classes started by baiss in E:\Project\development\web\fullstack\wechat-play\server)
+2023-07-31 16:36:37.786 [main] DEBUG com.example.server.ServerApplication - Running with Spring Boot v2.7.14, Spring v5.3.29
+2023-07-31 16:36:37.787 [main] INFO  com.example.server.ServerApplication - No active profile set, falling back to 1 default profile: "default"
+2023-07-31 16:36:38.853 [main] INFO  com.example.server.ServerApplication - Started ServerApplication in 1.36 seconds (JVM running for 2.057)
+2023-07-31 16:36:48.980 [http-nio-8888-exec-1] DEBUG c.example.server.dao.AdminDao.login - ==>  Preparing: SELECT a.id, a.rid FROM admin a JOIN admin_login al ON a.id = al.id WHERE al.username = ? AND al.password = ?
+2023-07-31 16:36:48.994 [http-nio-8888-exec-1] DEBUG c.example.server.dao.AdminDao.login - ==> Parameters: 1(String), 1(String)
+2023-07-31 16:36:49.006 [http-nio-8888-exec-1] DEBUG c.example.server.dao.AdminDao.login - <==      Total: 0
+2023-07-31 16:41:16.557 [main] INFO  com.example.server.ServerApplication - Starting ServerApplication using Java 1.8.0_271 on ROG-Linky with PID 36224 (E:\Project\development\web\fullstack\wechat-play\server\target\classes started by baiss in E:\Project\development\web\fullstack\wechat-play\server)
+2023-07-31 16:41:16.559 [main] DEBUG com.example.server.ServerApplication - Running with Spring Boot v2.7.14, Spring v5.3.29
+2023-07-31 16:41:16.559 [main] INFO  com.example.server.ServerApplication - No active profile set, falling back to 1 default profile: "default"
+2023-07-31 16:41:17.647 [main] INFO  com.example.server.ServerApplication - Started ServerApplication in 1.365 seconds (JVM running for 2.059)
+2023-07-31 16:41:22.166 [http-nio-8888-exec-3] DEBUG c.example.server.dao.AdminDao.login - ==>  Preparing: SELECT a.id, a.rid FROM admin a JOIN admin_login al ON a.id = al.id WHERE al.username = ? AND al.password = ?
+2023-07-31 16:41:22.178 [http-nio-8888-exec-3] DEBUG c.example.server.dao.AdminDao.login - ==> Parameters: 1(String), 1(String)
+2023-07-31 16:41:22.193 [http-nio-8888-exec-3] DEBUG c.example.server.dao.AdminDao.login - <==      Total: 0
+2023-07-31 16:48:14.465 [main] INFO  com.example.server.ServerApplication - Starting ServerApplication using Java 1.8.0_271 on ROG-Linky with PID 14372 (E:\Project\development\web\fullstack\wechat-play\server\target\classes started by baiss in E:\Project\development\web\fullstack\wechat-play\server)
+2023-07-31 16:48:14.467 [main] DEBUG com.example.server.ServerApplication - Running with Spring Boot v2.7.14, Spring v5.3.29
+2023-07-31 16:48:14.468 [main] INFO  com.example.server.ServerApplication - No active profile set, falling back to 1 default profile: "default"
+2023-07-31 16:48:15.569 [main] INFO  com.example.server.ServerApplication - Started ServerApplication in 1.386 seconds (JVM running for 2.075)
+2023-07-31 16:48:20.237 [http-nio-8888-exec-1] DEBUG c.example.server.dao.AdminDao.login - ==>  Preparing: SELECT a.id, a.rid FROM admin a JOIN admin_login al ON a.id = al.id WHERE al.username = ? AND al.password = ?
+2023-07-31 16:48:20.250 [http-nio-8888-exec-1] DEBUG c.example.server.dao.AdminDao.login - ==> Parameters: 1(String), 1(String)
+2023-07-31 16:48:20.264 [http-nio-8888-exec-1] DEBUG c.example.server.dao.AdminDao.login - <==      Total: 0
+2023-07-31 16:55:51.526 [main] INFO  com.example.server.ServerApplication - Starting ServerApplication using Java 1.8.0_271 on ROG-Linky with PID 82248 (E:\Project\development\web\fullstack\wechat-play\server\target\classes started by baiss in E:\Project\development\web\fullstack\wechat-play\server)
+2023-07-31 16:55:51.528 [main] DEBUG com.example.server.ServerApplication - Running with Spring Boot v2.7.14, Spring v5.3.29
+2023-07-31 16:55:51.528 [main] INFO  com.example.server.ServerApplication - No active profile set, falling back to 1 default profile: "default"
+2023-07-31 16:55:52.590 [main] INFO  com.example.server.ServerApplication - Started ServerApplication in 1.352 seconds (JVM running for 2.071)
+2023-07-31 16:56:01.823 [http-nio-8888-exec-1] DEBUG c.example.server.dao.AdminDao.login - ==>  Preparing: SELECT a.id, a.rid FROM admin a JOIN admin_login al ON a.id = al.id WHERE al.username = ? AND al.password = ?
+2023-07-31 16:56:01.836 [http-nio-8888-exec-1] DEBUG c.example.server.dao.AdminDao.login - ==> Parameters: 1(String), 1(String)
+2023-07-31 16:56:01.846 [http-nio-8888-exec-1] DEBUG c.example.server.dao.AdminDao.login - <==      Total: 0
+2023-07-31 16:56:01.852 [http-nio-8888-exec-1] ERROR c.e.s.e.GlobalExceptionHandler - Exception occurred:
+java.lang.NullPointerException: null
+	at com.example.server.service.impl.AdminServiceImpl.login(AdminServiceImpl.java:24)
+	at com.example.server.service.impl.AdminServiceImpl$$FastClassBySpringCGLIB$$faae8341.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:793)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:763)
+	at org.springframework.transaction.interceptor.TransactionInterceptor$1.proceedWithInvocation(TransactionInterceptor.java:123)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:388)
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:119)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:763)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:708)
+	at com.example.server.service.impl.AdminServiceImpl$$EnhancerBySpringCGLIB$$a6f632e1.login(<generated>)
+	at com.example.server.controller.AdminController.login(AdminController.java:23)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:150)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1072)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:965)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:909)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:555)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:623)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:209)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:178)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:178)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:178)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:178)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:481)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:130)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:390)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:926)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1791)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:748)
+2023-07-31 17:06:42.988 [main] INFO  com.example.server.ServerApplication - Starting ServerApplication using Java 1.8.0_271 on ROG-Linky with PID 80420 (E:\Project\development\web\fullstack\wechat-play\server\target\classes started by baiss in E:\Project\development\web\fullstack\wechat-play\server)
+2023-07-31 17:06:42.990 [main] DEBUG com.example.server.ServerApplication - Running with Spring Boot v2.7.14, Spring v5.3.29
+2023-07-31 17:06:42.991 [main] INFO  com.example.server.ServerApplication - No active profile set, falling back to 1 default profile: "default"
+2023-07-31 17:06:44.099 [main] INFO  com.example.server.ServerApplication - Started ServerApplication in 1.398 seconds (JVM running for 2.158)
+2023-07-31 17:06:46.508 [http-nio-8888-exec-1] DEBUG c.example.server.dao.AdminDao.login - ==>  Preparing: SELECT a.id, a.rid FROM admin a JOIN admin_login al ON a.id = al.id WHERE al.username = ? AND al.password = ?
+2023-07-31 17:06:46.521 [http-nio-8888-exec-1] DEBUG c.example.server.dao.AdminDao.login - ==> Parameters: 1(String), 1(String)
+2023-07-31 17:06:46.533 [http-nio-8888-exec-1] DEBUG c.example.server.dao.AdminDao.login - <==      Total: 0
+2023-07-31 17:08:56.756 [main] INFO  com.example.server.ServerApplication - Starting ServerApplication using Java 1.8.0_271 on ROG-Linky with PID 89600 (E:\Project\development\web\fullstack\wechat-play\server\target\classes started by baiss in E:\Project\development\web\fullstack\wechat-play\server)
+2023-07-31 17:08:56.757 [main] DEBUG com.example.server.ServerApplication - Running with Spring Boot v2.7.14, Spring v5.3.29
+2023-07-31 17:08:56.758 [main] INFO  com.example.server.ServerApplication - No active profile set, falling back to 1 default profile: "default"
+2023-07-31 17:08:57.873 [main] INFO  com.example.server.ServerApplication - Started ServerApplication in 1.412 seconds (JVM running for 2.131)
+2023-07-31 17:09:33.556 [http-nio-8888-exec-1] DEBUG c.example.server.dao.AdminDao.login - ==>  Preparing: SELECT a.id, a.rid FROM admin a JOIN admin_login al ON a.id = al.id WHERE al.username = ? AND al.password = ?
+2023-07-31 17:09:33.569 [http-nio-8888-exec-1] DEBUG c.example.server.dao.AdminDao.login - ==> Parameters: user_e8f4efaf2f(String), 0e437bd400e7b49a(String)
+2023-07-31 17:09:33.587 [http-nio-8888-exec-1] DEBUG c.example.server.dao.AdminDao.login - <==      Total: 1
+2023-07-31 17:09:33.588 [http-nio-8888-exec-1] DEBUG c.example.server.dao.AdminDao.setIp - ==>  Preparing: UPDATE admin_login SET ip = ? WHERE id = ?
+2023-07-31 17:09:33.589 [http-nio-8888-exec-1] DEBUG c.example.server.dao.AdminDao.setIp - ==> Parameters: 127.0.0.1(String), 0(Integer)
+2023-07-31 17:09:33.590 [http-nio-8888-exec-1] DEBUG c.example.server.dao.AdminDao.setIp - <==    Updates: 1

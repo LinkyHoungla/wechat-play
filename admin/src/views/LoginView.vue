@@ -67,8 +67,8 @@ export default {
         return false
       }
 
-      if (!validateLength(this.loginForm.username, 3, 10)) {
-        this.error.username = '长度为3-10'
+      if (!validateLength(this.loginForm.username, 3, 20)) {
+        this.error.username = '长度为3-20'
         return false
       }
 
@@ -118,7 +118,7 @@ export default {
       this.$loading({ fullscreen: true })
       import('@/api/admin').then(({ login }) => {
         login(this.loginForm).then(({ data }) => {
-          setToken(data.data.token)
+          setToken(data.data)
           this.$router.push('/')
         }).catch(() => {}).finally(() => {
           this.$loading().close()

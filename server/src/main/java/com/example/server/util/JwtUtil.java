@@ -60,8 +60,8 @@ public class JwtUtil {
     }
 
     // FUNCTION 将令牌添加至失效名单
-    public static void revokedToken(String token) {
-        revokedTokens.add(token);
+    public static Boolean revokedToken(String token) {
+        return revokedTokens.add(token);
     }
 
     // FUNCTION 检查令牌是否在撤销令牌列表中

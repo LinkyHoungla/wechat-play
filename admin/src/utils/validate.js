@@ -42,6 +42,6 @@ export function validateLength (value, minLength, maxLength) {
 // 特殊字符校验
 export function containsSpecialCharacters (value) {
   // 定义特殊字符的正则表达式，这里仅列举一些常见特殊字符，你可以根据需要添加或修改
-  const specialCharactersRegex = /[!@#$%^&*()_+={}|[\]\\:;"'<>,.?/~`]/
+  const specialCharactersRegex = /[!@#$%^&*()+={}|[\]\\:;"'<>,.?/~`]/
   return specialCharactersRegex.test(value)
 }

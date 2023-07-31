@@ -59,8 +59,8 @@
           <i class="iconfont icon-settings" />
           <span>个人设置</span>
         </div>
-        <div class="item">
-          <i class="iconfont icon-exit" />
+        <div class="item" @click="logout">
+          <i class="iconfont icon-close" />
           <span>退出</span>
         </div>
       </div>
@@ -181,7 +181,10 @@ export default {
     }
   },
   methods: {
-    getMenuList() {
+    logout () {
+      this.$store.dispatch('login/logout').then(() => {
+        this.$router.push('/login')
+      })
     }
   }
 }

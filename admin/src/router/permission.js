@@ -14,25 +14,20 @@ router.beforeEach((to, from, next) => {
   //   next('/404')
   // }
 
-  // 获取登录状态的标识（例如 token）
+  // 获取登录状态的标识（token）
   const token = getToken()
 
-  // 如果目标页面是登录页面
-  if (to.path === '/login') {
-    // 如果已经登录过，则跳转到主页
-    if (token) {
-      if (from.path !== '/') {
-        next('/')
-      } else {
-        next(false) // 中断导航
-      }
+  if (!token) {
+    // 未登录（没有token），跳转到登录页面
+    if (to.path !== '/login') {
+      next('login')
     } else {
-      next() // 继续导航到登录页面
+      next()
     }
   } else {
-    // 如果未登录，则跳转到登录页面
-    if (!token) {
-      next('/login')
+    // 已登录（有token），目标页面是登录页面时，跳转到主页
+    if (to.path === '/login') {
+      next('/')
     } else {
       next() // 继续导航到目标页面
     }

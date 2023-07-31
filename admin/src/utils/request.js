@@ -33,7 +33,7 @@ service.interceptors.request.use(
       // 没有权限，拒绝请求或者返回错误信息
       // return Promise.reject(new Error('权限不足'))
     }
-    config.headers.Authorization = getToken
+    config.headers.Authorization = getToken()
     return config
   },
   error => {

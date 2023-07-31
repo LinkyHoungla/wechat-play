@@ -13,7 +13,10 @@ export function login (data) {
 export function logout () {
   return service({
     url: '/admin/logout',
-    method: 'get'
+    method: 'get',
+    meta: {
+      rid: -1
+    }
   })
 }
 
@@ -21,7 +24,10 @@ export function logout () {
 export function getInfo () {
   return service({
     url: '/admin/info',
-    method: 'get'
+    method: 'get',
+    meta: {
+      rid: -1
+    }
   })
 }
 
@@ -29,6 +35,9 @@ export function getInfo () {
 export function getMenuList () {
   return service({
     url: '/menu',
-    method: 'get'
+    method: 'get',
+    meta: {
+      rid: -1
+    }
   })
 }

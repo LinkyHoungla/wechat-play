@@ -19,7 +19,7 @@ public class LoginInterceptor implements HandlerInterceptor {
         try {
             // 从请求头获取 jwt
             String jwt = JwtUtil.extractTokenFromRequest(request);
-            if (jwt == null || JwtUtil.isTokenRevoked(jwt)) throw new ApiException(ApiError.E451);
+            if (jwt == null || JwtUtil.isTokenRevoked(jwt)) throw new ApiException(ApiError.E450);
 
             // 解析和验证 JWT
             Claims claims = JwtUtil.getClaimsByToken(jwt);

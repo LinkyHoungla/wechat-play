@@ -53,14 +53,17 @@ const actions = {
   },
 
   // 用户登出
-  logout ({ commit }) {
-    import('@/api/admin').then(({ logout }) => {
-      logout().then(() => {
-        removeToken()
-        resetRouter()
-        commit('RESET_STATE')
-      })
-    })
+  async logout ({ commit }) {
+    try {
+      const { logout } = await import('@/api/admin')
+      await logout()
+      removeToken()
+      resetRouter()
+      commit('RESET_STATE')
+    } catch (error) {
+      console.error(error)
+    // 处理错误，如显示错误提示
+    }
   }
 }
 
