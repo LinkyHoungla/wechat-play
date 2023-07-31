@@ -123,3 +123,169 @@ java.lang.NullPointerException: null
 2023-07-31 17:09:33.588 [http-nio-8888-exec-1] DEBUG c.example.server.dao.AdminDao.setIp - ==>  Preparing: UPDATE admin_login SET ip = ? WHERE id = ?
 2023-07-31 17:09:33.589 [http-nio-8888-exec-1] DEBUG c.example.server.dao.AdminDao.setIp - ==> Parameters: 127.0.0.1(String), 0(Integer)
 2023-07-31 17:09:33.590 [http-nio-8888-exec-1] DEBUG c.example.server.dao.AdminDao.setIp - <==    Updates: 1
+2023-07-31 17:23:24.743 [main] INFO  com.example.server.ServerApplication - Starting ServerApplication using Java 1.8.0_271 on ROG-Linky with PID 70372 (E:\Project\development\web\fullstack\wechat-play\server\target\classes started by baiss in E:\Project\development\web\fullstack\wechat-play\server)
+2023-07-31 17:23:24.744 [main] DEBUG com.example.server.ServerApplication - Running with Spring Boot v2.7.14, Spring v5.3.29
+2023-07-31 17:23:24.745 [main] INFO  com.example.server.ServerApplication - No active profile set, falling back to 1 default profile: "default"
+2023-07-31 17:23:25.837 [main] INFO  com.example.server.ServerApplication - Started ServerApplication in 1.377 seconds (JVM running for 2.052)
+2023-07-31 17:28:56.976 [http-nio-8888-exec-1] DEBUG c.example.server.dao.AdminDao.login - ==>  Preparing: SELECT a.id, a.rid FROM admin a JOIN admin_login al ON a.id = al.id WHERE al.username = ? AND al.password = ?
+2023-07-31 17:28:56.989 [http-nio-8888-exec-1] DEBUG c.example.server.dao.AdminDao.login - ==> Parameters: user_e8f4efaf2f(String), 0e437bd400e7b49a(String)
+2023-07-31 17:28:57.007 [http-nio-8888-exec-1] DEBUG c.example.server.dao.AdminDao.login - <==      Total: 1
+2023-07-31 17:28:57.008 [http-nio-8888-exec-1] DEBUG c.example.server.dao.AdminDao.setIp - ==>  Preparing: UPDATE admin_login SET ip = ? WHERE id = ?
+2023-07-31 17:28:57.008 [http-nio-8888-exec-1] DEBUG c.example.server.dao.AdminDao.setIp - ==> Parameters: 0:0:0:0:0:0:0:1(String), 0(Integer)
+2023-07-31 17:28:57.009 [http-nio-8888-exec-1] DEBUG c.example.server.dao.AdminDao.setIp - <==    Updates: 1
+2023-07-31 17:42:19.462 [http-nio-8888-exec-2] DEBUG c.example.server.dao.AdminDao.login - ==>  Preparing: SELECT a.id, a.rid FROM admin a JOIN admin_login al ON a.id = al.id WHERE al.username = ? AND al.password = ?
+2023-07-31 17:42:19.463 [http-nio-8888-exec-2] DEBUG c.example.server.dao.AdminDao.login - ==> Parameters: user_e8f4efaf2f(String), 0e437bd400e7b49a(String)
+2023-07-31 17:42:19.465 [http-nio-8888-exec-2] DEBUG c.example.server.dao.AdminDao.login - <==      Total: 1
+2023-07-31 17:42:19.465 [http-nio-8888-exec-2] DEBUG c.example.server.dao.AdminDao.setIp - ==>  Preparing: UPDATE admin_login SET ip = ? WHERE id = ?
+2023-07-31 17:42:19.466 [http-nio-8888-exec-2] DEBUG c.example.server.dao.AdminDao.setIp - ==> Parameters: 127.0.0.1(String), 0(Integer)
+2023-07-31 17:42:19.467 [http-nio-8888-exec-2] DEBUG c.example.server.dao.AdminDao.setIp - <==    Updates: 1
+2023-07-31 18:04:18.085 [http-nio-8888-exec-3] DEBUG c.example.server.dao.AdminDao.login - ==>  Preparing: SELECT a.id, a.rid FROM admin a JOIN admin_login al ON a.id = al.id WHERE al.username = ? AND al.password = ?
+2023-07-31 18:04:18.085 [http-nio-8888-exec-3] DEBUG c.example.server.dao.AdminDao.login - ==> Parameters: user_e8f4efaf2f(String), 0e437bd400e7b49a(String)
+2023-07-31 18:04:18.086 [http-nio-8888-exec-3] DEBUG c.example.server.dao.AdminDao.login - <==      Total: 1
+2023-07-31 18:04:18.086 [http-nio-8888-exec-3] DEBUG c.example.server.dao.AdminDao.setIp - ==>  Preparing: UPDATE admin_login SET ip = ? WHERE id = ?
+2023-07-31 18:04:18.087 [http-nio-8888-exec-3] DEBUG c.example.server.dao.AdminDao.setIp - ==> Parameters: 0:0:0:0:0:0:0:1(String), 0(Integer)
+2023-07-31 18:04:18.087 [http-nio-8888-exec-3] DEBUG c.example.server.dao.AdminDao.setIp - <==    Updates: 1
+2023-07-31 18:09:58.099 [http-nio-8888-exec-5] DEBUG c.example.server.dao.AdminDao.login - ==>  Preparing: SELECT a.id, a.rid FROM admin a JOIN admin_login al ON a.id = al.id WHERE al.username = ? AND al.password = ?
+2023-07-31 18:09:58.099 [http-nio-8888-exec-5] DEBUG c.example.server.dao.AdminDao.login - ==> Parameters: user_e8f4efaf2f(String), 0e437bd400e7b49a(String)
+2023-07-31 18:09:58.101 [http-nio-8888-exec-5] DEBUG c.example.server.dao.AdminDao.login - <==      Total: 1
+2023-07-31 18:09:58.101 [http-nio-8888-exec-5] DEBUG c.example.server.dao.AdminDao.setIp - ==>  Preparing: UPDATE admin_login SET ip = ? WHERE id = ?
+2023-07-31 18:09:58.101 [http-nio-8888-exec-5] DEBUG c.example.server.dao.AdminDao.setIp - ==> Parameters: 127.0.0.1(String), 0(Integer)
+2023-07-31 18:09:58.102 [http-nio-8888-exec-5] DEBUG c.example.server.dao.AdminDao.setIp - <==    Updates: 1
+2023-07-31 18:11:04.352 [http-nio-8888-exec-4] DEBUG c.example.server.dao.AdminDao.login - ==>  Preparing: SELECT a.id, a.rid FROM admin a JOIN admin_login al ON a.id = al.id WHERE al.username = ? AND al.password = ?
+2023-07-31 18:11:04.353 [http-nio-8888-exec-4] DEBUG c.example.server.dao.AdminDao.login - ==> Parameters: user_e8f4efaf2f(String), 0e437bd400e7b49a(String)
+2023-07-31 18:11:04.354 [http-nio-8888-exec-4] DEBUG c.example.server.dao.AdminDao.login - <==      Total: 1
+2023-07-31 18:11:04.354 [http-nio-8888-exec-4] DEBUG c.example.server.dao.AdminDao.setIp - ==>  Preparing: UPDATE admin_login SET ip = ? WHERE id = ?
+2023-07-31 18:11:04.355 [http-nio-8888-exec-4] DEBUG c.example.server.dao.AdminDao.setIp - ==> Parameters: 0:0:0:0:0:0:0:1(String), 0(Integer)
+2023-07-31 18:11:04.355 [http-nio-8888-exec-4] DEBUG c.example.server.dao.AdminDao.setIp - <==    Updates: 1
+2023-07-31 18:11:49.671 [http-nio-8888-exec-6] DEBUG c.example.server.dao.AdminDao.login - ==>  Preparing: SELECT a.id, a.rid FROM admin a JOIN admin_login al ON a.id = al.id WHERE al.username = ? AND al.password = ?
+2023-07-31 18:11:49.672 [http-nio-8888-exec-6] DEBUG c.example.server.dao.AdminDao.login - ==> Parameters: user_e8f4efaf2f(String), 0e437bd400e7b49a(String)
+2023-07-31 18:11:49.672 [http-nio-8888-exec-6] DEBUG c.example.server.dao.AdminDao.login - <==      Total: 1
+2023-07-31 18:11:49.673 [http-nio-8888-exec-6] DEBUG c.example.server.dao.AdminDao.setIp - ==>  Preparing: UPDATE admin_login SET ip = ? WHERE id = ?
+2023-07-31 18:11:49.673 [http-nio-8888-exec-6] DEBUG c.example.server.dao.AdminDao.setIp - ==> Parameters: 127.0.0.1(String), 0(Integer)
+2023-07-31 18:11:49.674 [http-nio-8888-exec-6] DEBUG c.example.server.dao.AdminDao.setIp - <==    Updates: 1
+2023-07-31 18:13:38.257 [http-nio-8888-exec-7] DEBUG c.example.server.dao.AdminDao.login - ==>  Preparing: SELECT a.id, a.rid FROM admin a JOIN admin_login al ON a.id = al.id WHERE al.username = ? AND al.password = ?
+2023-07-31 18:13:38.258 [http-nio-8888-exec-7] DEBUG c.example.server.dao.AdminDao.login - ==> Parameters: user_e8f4efaf2f(String), 0e437bd400e7b49a(String)
+2023-07-31 18:13:38.259 [http-nio-8888-exec-7] DEBUG c.example.server.dao.AdminDao.login - <==      Total: 1
+2023-07-31 18:13:38.260 [http-nio-8888-exec-7] DEBUG c.example.server.dao.AdminDao.setIp - ==>  Preparing: UPDATE admin_login SET ip = ? WHERE id = ?
+2023-07-31 18:13:38.260 [http-nio-8888-exec-7] DEBUG c.example.server.dao.AdminDao.setIp - ==> Parameters: 0:0:0:0:0:0:0:1(String), 0(Integer)
+2023-07-31 18:13:38.261 [http-nio-8888-exec-7] DEBUG c.example.server.dao.AdminDao.setIp - <==    Updates: 1
+2023-07-31 18:14:15.799 [http-nio-8888-exec-8] DEBUG c.example.server.dao.AdminDao.login - ==>  Preparing: SELECT a.id, a.rid FROM admin a JOIN admin_login al ON a.id = al.id WHERE al.username = ? AND al.password = ?
+2023-07-31 18:14:15.799 [http-nio-8888-exec-8] DEBUG c.example.server.dao.AdminDao.login - ==> Parameters: user_e8f4efaf2f(String), 0e437bd400e7b49a(String)
+2023-07-31 18:14:15.801 [http-nio-8888-exec-8] DEBUG c.example.server.dao.AdminDao.login - <==      Total: 1
+2023-07-31 18:14:15.801 [http-nio-8888-exec-8] DEBUG c.example.server.dao.AdminDao.setIp - ==>  Preparing: UPDATE admin_login SET ip = ? WHERE id = ?
+2023-07-31 18:14:15.802 [http-nio-8888-exec-8] DEBUG c.example.server.dao.AdminDao.setIp - ==> Parameters: 127.0.0.1(String), 0(Integer)
+2023-07-31 18:14:15.803 [http-nio-8888-exec-8] DEBUG c.example.server.dao.AdminDao.setIp - <==    Updates: 1
+2023-07-31 18:16:03.385 [http-nio-8888-exec-9] DEBUG c.example.server.dao.AdminDao.login - ==>  Preparing: SELECT a.id, a.rid FROM admin a JOIN admin_login al ON a.id = al.id WHERE al.username = ? AND al.password = ?
+2023-07-31 18:16:03.385 [http-nio-8888-exec-9] DEBUG c.example.server.dao.AdminDao.login - ==> Parameters: user_e8f4efaf2f(String), 0e437bd400e7b49a(String)
+2023-07-31 18:16:03.386 [http-nio-8888-exec-9] DEBUG c.example.server.dao.AdminDao.login - <==      Total: 1
+2023-07-31 18:16:03.386 [http-nio-8888-exec-9] DEBUG c.example.server.dao.AdminDao.setIp - ==>  Preparing: UPDATE admin_login SET ip = ? WHERE id = ?
+2023-07-31 18:16:03.386 [http-nio-8888-exec-9] DEBUG c.example.server.dao.AdminDao.setIp - ==> Parameters: 0:0:0:0:0:0:0:1(String), 0(Integer)
+2023-07-31 18:16:03.387 [http-nio-8888-exec-9] DEBUG c.example.server.dao.AdminDao.setIp - <==    Updates: 1
+2023-07-31 18:16:10.472 [http-nio-8888-exec-10] DEBUG c.example.server.dao.AdminDao.login - ==>  Preparing: SELECT a.id, a.rid FROM admin a JOIN admin_login al ON a.id = al.id WHERE al.username = ? AND al.password = ?
+2023-07-31 18:16:10.472 [http-nio-8888-exec-10] DEBUG c.example.server.dao.AdminDao.login - ==> Parameters: user_e8f4efaf2f(String), 0e437bd400e7b49a(String)
+2023-07-31 18:16:10.473 [http-nio-8888-exec-10] DEBUG c.example.server.dao.AdminDao.login - <==      Total: 1
+2023-07-31 18:16:10.473 [http-nio-8888-exec-10] DEBUG c.example.server.dao.AdminDao.setIp - ==>  Preparing: UPDATE admin_login SET ip = ? WHERE id = ?
+2023-07-31 18:16:10.473 [http-nio-8888-exec-10] DEBUG c.example.server.dao.AdminDao.setIp - ==> Parameters: 127.0.0.1(String), 0(Integer)
+2023-07-31 18:16:10.474 [http-nio-8888-exec-10] DEBUG c.example.server.dao.AdminDao.setIp - <==    Updates: 1
+2023-07-31 18:17:43.039 [http-nio-8888-exec-1] DEBUG c.example.server.dao.AdminDao.login - ==>  Preparing: SELECT a.id, a.rid FROM admin a JOIN admin_login al ON a.id = al.id WHERE al.username = ? AND al.password = ?
+2023-07-31 18:17:43.040 [http-nio-8888-exec-1] DEBUG c.example.server.dao.AdminDao.login - ==> Parameters: user_e8f4efaf2f(String), 0e437bd400e7b49a(String)
+2023-07-31 18:17:43.041 [http-nio-8888-exec-1] DEBUG c.example.server.dao.AdminDao.login - <==      Total: 1
+2023-07-31 18:17:43.041 [http-nio-8888-exec-1] DEBUG c.example.server.dao.AdminDao.setIp - ==>  Preparing: UPDATE admin_login SET ip = ? WHERE id = ?
+2023-07-31 18:17:43.041 [http-nio-8888-exec-1] DEBUG c.example.server.dao.AdminDao.setIp - ==> Parameters: 0:0:0:0:0:0:0:1(String), 0(Integer)
+2023-07-31 18:17:43.042 [http-nio-8888-exec-1] DEBUG c.example.server.dao.AdminDao.setIp - <==    Updates: 1
+2023-07-31 18:21:03.530 [http-nio-8888-exec-2] DEBUG c.example.server.dao.AdminDao.login - ==>  Preparing: SELECT a.id, a.rid FROM admin a JOIN admin_login al ON a.id = al.id WHERE al.username = ? AND al.password = ?
+2023-07-31 18:21:03.530 [http-nio-8888-exec-2] DEBUG c.example.server.dao.AdminDao.login - ==> Parameters: user_e8f4efaf2f(String), 0e437bd400e7b49a(String)
+2023-07-31 18:21:03.531 [http-nio-8888-exec-2] DEBUG c.example.server.dao.AdminDao.login - <==      Total: 1
+2023-07-31 18:21:03.531 [http-nio-8888-exec-2] DEBUG c.example.server.dao.AdminDao.setIp - ==>  Preparing: UPDATE admin_login SET ip = ? WHERE id = ?
+2023-07-31 18:21:03.532 [http-nio-8888-exec-2] DEBUG c.example.server.dao.AdminDao.setIp - ==> Parameters: 127.0.0.1(String), 0(Integer)
+2023-07-31 18:21:03.532 [http-nio-8888-exec-2] DEBUG c.example.server.dao.AdminDao.setIp - <==    Updates: 1
+2023-07-31 18:23:51.915 [http-nio-8888-exec-3] DEBUG c.example.server.dao.AdminDao.login - ==>  Preparing: SELECT a.id, a.rid FROM admin a JOIN admin_login al ON a.id = al.id WHERE al.username = ? AND al.password = ?
+2023-07-31 18:23:51.916 [http-nio-8888-exec-3] DEBUG c.example.server.dao.AdminDao.login - ==> Parameters: user_e8f4efaf2f(String), 0e437bd400e7b49a(String)
+2023-07-31 18:23:51.916 [http-nio-8888-exec-3] DEBUG c.example.server.dao.AdminDao.login - <==      Total: 1
+2023-07-31 18:23:51.917 [http-nio-8888-exec-3] DEBUG c.example.server.dao.AdminDao.setIp - ==>  Preparing: UPDATE admin_login SET ip = ? WHERE id = ?
+2023-07-31 18:23:51.917 [http-nio-8888-exec-3] DEBUG c.example.server.dao.AdminDao.setIp - ==> Parameters: 0:0:0:0:0:0:0:1(String), 0(Integer)
+2023-07-31 18:23:51.918 [http-nio-8888-exec-3] DEBUG c.example.server.dao.AdminDao.setIp - <==    Updates: 1
+2023-07-31 18:26:00.132 [http-nio-8888-exec-4] DEBUG c.example.server.dao.AdminDao.login - ==>  Preparing: SELECT a.id, a.rid FROM admin a JOIN admin_login al ON a.id = al.id WHERE al.username = ? AND al.password = ?
+2023-07-31 18:26:00.133 [http-nio-8888-exec-4] DEBUG c.example.server.dao.AdminDao.login - ==> Parameters: user_e8f4efaf2f(String), 0e437bd400e7b49a(String)
+2023-07-31 18:26:00.134 [http-nio-8888-exec-4] DEBUG c.example.server.dao.AdminDao.login - <==      Total: 1
+2023-07-31 18:26:00.134 [http-nio-8888-exec-4] DEBUG c.example.server.dao.AdminDao.setIp - ==>  Preparing: UPDATE admin_login SET ip = ? WHERE id = ?
+2023-07-31 18:26:00.135 [http-nio-8888-exec-4] DEBUG c.example.server.dao.AdminDao.setIp - ==> Parameters: 0:0:0:0:0:0:0:1(String), 0(Integer)
+2023-07-31 18:26:00.135 [http-nio-8888-exec-4] DEBUG c.example.server.dao.AdminDao.setIp - <==    Updates: 1
+2023-07-31 18:27:04.694 [http-nio-8888-exec-6] DEBUG c.example.server.dao.AdminDao.login - ==>  Preparing: SELECT a.id, a.rid FROM admin a JOIN admin_login al ON a.id = al.id WHERE al.username = ? AND al.password = ?
+2023-07-31 18:27:04.695 [http-nio-8888-exec-6] DEBUG c.example.server.dao.AdminDao.login - ==> Parameters: user_e8f4efaf2f(String), 0e437bd400e7b49a(String)
+2023-07-31 18:27:04.695 [http-nio-8888-exec-6] DEBUG c.example.server.dao.AdminDao.login - <==      Total: 1
+2023-07-31 18:27:04.696 [http-nio-8888-exec-6] DEBUG c.example.server.dao.AdminDao.setIp - ==>  Preparing: UPDATE admin_login SET ip = ? WHERE id = ?
+2023-07-31 18:27:04.696 [http-nio-8888-exec-6] DEBUG c.example.server.dao.AdminDao.setIp - ==> Parameters: 127.0.0.1(String), 0(Integer)
+2023-07-31 18:27:04.696 [http-nio-8888-exec-6] DEBUG c.example.server.dao.AdminDao.setIp - <==    Updates: 1
+2023-07-31 18:27:53.151 [http-nio-8888-exec-7] DEBUG c.example.server.dao.AdminDao.login - ==>  Preparing: SELECT a.id, a.rid FROM admin a JOIN admin_login al ON a.id = al.id WHERE al.username = ? AND al.password = ?
+2023-07-31 18:27:53.151 [http-nio-8888-exec-7] DEBUG c.example.server.dao.AdminDao.login - ==> Parameters: user_e8f4efaf2f(String), 0e437bd400e7b49a(String)
+2023-07-31 18:27:53.153 [http-nio-8888-exec-7] DEBUG c.example.server.dao.AdminDao.login - <==      Total: 1
+2023-07-31 18:27:53.155 [http-nio-8888-exec-7] DEBUG c.example.server.dao.AdminDao.setIp - ==>  Preparing: UPDATE admin_login SET ip = ? WHERE id = ?
+2023-07-31 18:27:53.155 [http-nio-8888-exec-7] DEBUG c.example.server.dao.AdminDao.setIp - ==> Parameters: 0:0:0:0:0:0:0:1(String), 0(Integer)
+2023-07-31 18:27:53.156 [http-nio-8888-exec-7] DEBUG c.example.server.dao.AdminDao.setIp - <==    Updates: 1
+2023-07-31 18:29:56.200 [http-nio-8888-exec-8] DEBUG c.example.server.dao.AdminDao.login - ==>  Preparing: SELECT a.id, a.rid FROM admin a JOIN admin_login al ON a.id = al.id WHERE al.username = ? AND al.password = ?
+2023-07-31 18:29:56.200 [http-nio-8888-exec-8] DEBUG c.example.server.dao.AdminDao.login - ==> Parameters: user_e8f4efaf2f(String), 0e437bd400e7b49a(String)
+2023-07-31 18:29:56.201 [http-nio-8888-exec-8] DEBUG c.example.server.dao.AdminDao.login - <==      Total: 1
+2023-07-31 18:29:56.201 [http-nio-8888-exec-8] DEBUG c.example.server.dao.AdminDao.setIp - ==>  Preparing: UPDATE admin_login SET ip = ? WHERE id = ?
+2023-07-31 18:29:56.201 [http-nio-8888-exec-8] DEBUG c.example.server.dao.AdminDao.setIp - ==> Parameters: 127.0.0.1(String), 0(Integer)
+2023-07-31 18:29:56.202 [http-nio-8888-exec-8] DEBUG c.example.server.dao.AdminDao.setIp - <==    Updates: 1
+2023-07-31 18:30:13.106 [http-nio-8888-exec-1] DEBUG c.example.server.dao.AdminDao.login - ==>  Preparing: SELECT a.id, a.rid FROM admin a JOIN admin_login al ON a.id = al.id WHERE al.username = ? AND al.password = ?
+2023-07-31 18:30:13.106 [http-nio-8888-exec-1] DEBUG c.example.server.dao.AdminDao.login - ==> Parameters: user_e8f4efaf2f(String), 0e437bd400e7b49a(String)
+2023-07-31 18:30:13.107 [http-nio-8888-exec-1] DEBUG c.example.server.dao.AdminDao.login - <==      Total: 1
+2023-07-31 18:30:13.107 [http-nio-8888-exec-1] DEBUG c.example.server.dao.AdminDao.setIp - ==>  Preparing: UPDATE admin_login SET ip = ? WHERE id = ?
+2023-07-31 18:30:13.107 [http-nio-8888-exec-1] DEBUG c.example.server.dao.AdminDao.setIp - ==> Parameters: 0:0:0:0:0:0:0:1(String), 0(Integer)
+2023-07-31 18:30:13.107 [http-nio-8888-exec-1] DEBUG c.example.server.dao.AdminDao.setIp - <==    Updates: 1
+2023-07-31 18:36:12.849 [http-nio-8888-exec-5] DEBUG c.example.server.dao.AdminDao.login - ==>  Preparing: SELECT a.id, a.rid FROM admin a JOIN admin_login al ON a.id = al.id WHERE al.username = ? AND al.password = ?
+2023-07-31 18:36:12.853 [http-nio-8888-exec-5] DEBUG c.example.server.dao.AdminDao.login - ==> Parameters: user_e8f4efaf2f(String), 0e437bd400e7b49a(String)
+2023-07-31 18:36:12.854 [http-nio-8888-exec-5] DEBUG c.example.server.dao.AdminDao.login - <==      Total: 1
+2023-07-31 18:36:12.854 [http-nio-8888-exec-5] DEBUG c.example.server.dao.AdminDao.setIp - ==>  Preparing: UPDATE admin_login SET ip = ? WHERE id = ?
+2023-07-31 18:36:12.854 [http-nio-8888-exec-5] DEBUG c.example.server.dao.AdminDao.setIp - ==> Parameters: 127.0.0.1(String), 0(Integer)
+2023-07-31 18:36:12.855 [http-nio-8888-exec-5] DEBUG c.example.server.dao.AdminDao.setIp - <==    Updates: 1
+2023-07-31 18:36:36.022 [http-nio-8888-exec-7] DEBUG c.example.server.dao.AdminDao.login - ==>  Preparing: SELECT a.id, a.rid FROM admin a JOIN admin_login al ON a.id = al.id WHERE al.username = ? AND al.password = ?
+2023-07-31 18:36:36.022 [http-nio-8888-exec-7] DEBUG c.example.server.dao.AdminDao.login - ==> Parameters: user_e8f4efaf2f(String), 0e437bd400e7b49a(String)
+2023-07-31 18:36:36.023 [http-nio-8888-exec-7] DEBUG c.example.server.dao.AdminDao.login - <==      Total: 1
+2023-07-31 18:36:36.023 [http-nio-8888-exec-7] DEBUG c.example.server.dao.AdminDao.setIp - ==>  Preparing: UPDATE admin_login SET ip = ? WHERE id = ?
+2023-07-31 18:36:36.023 [http-nio-8888-exec-7] DEBUG c.example.server.dao.AdminDao.setIp - ==> Parameters: 0:0:0:0:0:0:0:1(String), 0(Integer)
+2023-07-31 18:36:36.024 [http-nio-8888-exec-7] DEBUG c.example.server.dao.AdminDao.setIp - <==    Updates: 1
+2023-07-31 18:41:40.947 [http-nio-8888-exec-10] DEBUG c.example.server.dao.AdminDao.login - ==>  Preparing: SELECT a.id, a.rid FROM admin a JOIN admin_login al ON a.id = al.id WHERE al.username = ? AND al.password = ?
+2023-07-31 18:41:40.947 [http-nio-8888-exec-10] DEBUG c.example.server.dao.AdminDao.login - ==> Parameters: user_e8f4efaf2f(String), 0e437bd400e7b49a(String)
+2023-07-31 18:41:40.948 [http-nio-8888-exec-10] DEBUG c.example.server.dao.AdminDao.login - <==      Total: 1
+2023-07-31 18:41:40.948 [http-nio-8888-exec-10] DEBUG c.example.server.dao.AdminDao.setIp - ==>  Preparing: UPDATE admin_login SET ip = ? WHERE id = ?
+2023-07-31 18:41:40.948 [http-nio-8888-exec-10] DEBUG c.example.server.dao.AdminDao.setIp - ==> Parameters: 127.0.0.1(String), 0(Integer)
+2023-07-31 18:41:40.949 [http-nio-8888-exec-10] DEBUG c.example.server.dao.AdminDao.setIp - <==    Updates: 1
+2023-07-31 18:41:45.036 [http-nio-8888-exec-2] DEBUG c.example.server.dao.AdminDao.login - ==>  Preparing: SELECT a.id, a.rid FROM admin a JOIN admin_login al ON a.id = al.id WHERE al.username = ? AND al.password = ?
+2023-07-31 18:41:45.036 [http-nio-8888-exec-2] DEBUG c.example.server.dao.AdminDao.login - ==> Parameters: user_e8f4efaf2f(String), 0e437bd400e7b49a(String)
+2023-07-31 18:41:45.036 [http-nio-8888-exec-2] DEBUG c.example.server.dao.AdminDao.login - <==      Total: 1
+2023-07-31 18:41:45.037 [http-nio-8888-exec-2] DEBUG c.example.server.dao.AdminDao.setIp - ==>  Preparing: UPDATE admin_login SET ip = ? WHERE id = ?
+2023-07-31 18:41:45.037 [http-nio-8888-exec-2] DEBUG c.example.server.dao.AdminDao.setIp - ==> Parameters: 127.0.0.1(String), 0(Integer)
+2023-07-31 18:41:45.037 [http-nio-8888-exec-2] DEBUG c.example.server.dao.AdminDao.setIp - <==    Updates: 1
+2023-07-31 18:42:04.418 [http-nio-8888-exec-5] DEBUG c.example.server.dao.AdminDao.login - ==>  Preparing: SELECT a.id, a.rid FROM admin a JOIN admin_login al ON a.id = al.id WHERE al.username = ? AND al.password = ?
+2023-07-31 18:42:04.418 [http-nio-8888-exec-5] DEBUG c.example.server.dao.AdminDao.login - ==> Parameters: user_e8f4efaf2f(String), 0e437bd400e7b49a(String)
+2023-07-31 18:42:04.419 [http-nio-8888-exec-5] DEBUG c.example.server.dao.AdminDao.login - <==      Total: 1
+2023-07-31 18:42:04.419 [http-nio-8888-exec-5] DEBUG c.example.server.dao.AdminDao.setIp - ==>  Preparing: UPDATE admin_login SET ip = ? WHERE id = ?
+2023-07-31 18:42:04.419 [http-nio-8888-exec-5] DEBUG c.example.server.dao.AdminDao.setIp - ==> Parameters: 127.0.0.1(String), 0(Integer)
+2023-07-31 18:42:04.419 [http-nio-8888-exec-5] DEBUG c.example.server.dao.AdminDao.setIp - <==    Updates: 1
+2023-07-31 18:52:50.613 [http-nio-8888-exec-6] DEBUG c.example.server.dao.AdminDao.login - ==>  Preparing: SELECT a.id, a.rid FROM admin a JOIN admin_login al ON a.id = al.id WHERE al.username = ? AND al.password = ?
+2023-07-31 18:52:50.613 [http-nio-8888-exec-6] DEBUG c.example.server.dao.AdminDao.login - ==> Parameters: user_e8f4efaf2f(String), 0e437bd400e7b49a(String)
+2023-07-31 18:52:50.614 [http-nio-8888-exec-6] DEBUG c.example.server.dao.AdminDao.login - <==      Total: 1
+2023-07-31 18:52:50.614 [http-nio-8888-exec-6] DEBUG c.example.server.dao.AdminDao.setIp - ==>  Preparing: UPDATE admin_login SET ip = ? WHERE id = ?
+2023-07-31 18:52:50.615 [http-nio-8888-exec-6] DEBUG c.example.server.dao.AdminDao.setIp - ==> Parameters: 127.0.0.1(String), 0(Integer)
+2023-07-31 18:52:50.615 [http-nio-8888-exec-6] DEBUG c.example.server.dao.AdminDao.setIp - <==    Updates: 1
+2023-07-31 19:06:27.016 [http-nio-8888-exec-8] DEBUG c.example.server.dao.AdminDao.login - ==>  Preparing: SELECT a.id, a.rid FROM admin a JOIN admin_login al ON a.id = al.id WHERE al.username = ? AND al.password = ?
+2023-07-31 19:06:27.016 [http-nio-8888-exec-8] DEBUG c.example.server.dao.AdminDao.login - ==> Parameters: user_e8f4efaf2f(String), 0e437bd400e7b49a(String)
+2023-07-31 19:06:27.017 [http-nio-8888-exec-8] DEBUG c.example.server.dao.AdminDao.login - <==      Total: 1
+2023-07-31 19:06:27.017 [http-nio-8888-exec-8] DEBUG c.example.server.dao.AdminDao.setIp - ==>  Preparing: UPDATE admin_login SET ip = ? WHERE id = ?
+2023-07-31 19:06:27.017 [http-nio-8888-exec-8] DEBUG c.example.server.dao.AdminDao.setIp - ==> Parameters: 127.0.0.1(String), 0(Integer)
+2023-07-31 19:06:27.017 [http-nio-8888-exec-8] DEBUG c.example.server.dao.AdminDao.setIp - <==    Updates: 1
+2023-07-31 19:19:39.772 [http-nio-8888-exec-10] DEBUG c.example.server.dao.AdminDao.login - ==>  Preparing: SELECT a.id, a.rid FROM admin a JOIN admin_login al ON a.id = al.id WHERE al.username = ? AND al.password = ?
+2023-07-31 19:19:39.772 [http-nio-8888-exec-10] DEBUG c.example.server.dao.AdminDao.login - ==> Parameters: user_e8f4efaf2f(String), 0e437bd400e7b49a(String)
+2023-07-31 19:19:39.773 [http-nio-8888-exec-10] DEBUG c.example.server.dao.AdminDao.login - <==      Total: 1
+2023-07-31 19:19:39.773 [http-nio-8888-exec-10] DEBUG c.example.server.dao.AdminDao.setIp - ==>  Preparing: UPDATE admin_login SET ip = ? WHERE id = ?
+2023-07-31 19:19:39.773 [http-nio-8888-exec-10] DEBUG c.example.server.dao.AdminDao.setIp - ==> Parameters: 127.0.0.1(String), 0(Integer)
+2023-07-31 19:19:39.774 [http-nio-8888-exec-10] DEBUG c.example.server.dao.AdminDao.setIp - <==    Updates: 1
+2023-07-31 19:19:42.516 [http-nio-8888-exec-2] DEBUG c.example.server.dao.AdminDao.login - ==>  Preparing: SELECT a.id, a.rid FROM admin a JOIN admin_login al ON a.id = al.id WHERE al.username = ? AND al.password = ?
+2023-07-31 19:19:42.516 [http-nio-8888-exec-2] DEBUG c.example.server.dao.AdminDao.login - ==> Parameters: user_e8f4efaf2f(String), 0e437bd400e7b49a(String)
+2023-07-31 19:19:42.517 [http-nio-8888-exec-2] DEBUG c.example.server.dao.AdminDao.login - <==      Total: 1
+2023-07-31 19:19:42.517 [http-nio-8888-exec-2] DEBUG c.example.server.dao.AdminDao.setIp - ==>  Preparing: UPDATE admin_login SET ip = ? WHERE id = ?
+2023-07-31 19:19:42.517 [http-nio-8888-exec-2] DEBUG c.example.server.dao.AdminDao.setIp - ==> Parameters: 127.0.0.1(String), 0(Integer)
+2023-07-31 19:19:42.518 [http-nio-8888-exec-2] DEBUG c.example.server.dao.AdminDao.setIp - <==    Updates: 1
