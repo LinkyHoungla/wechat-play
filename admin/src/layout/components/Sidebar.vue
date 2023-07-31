@@ -181,6 +181,8 @@ export default {
     }
   },
   methods: {
+    getMenuList() {
+    }
   }
 }
 </script>

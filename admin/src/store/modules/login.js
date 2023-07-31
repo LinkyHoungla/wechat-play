@@ -8,8 +8,8 @@ import { resetRouter } from '@/router'
 // 在需要重置状态时使用 getDefaultState() 函数来恢复初始值
 const getDefaultState = () => {
   return {
-    id: null,
-    rid: null,
+    name: null,
+    role: null,
     menu: '',
     permission: []
   }
@@ -23,11 +23,11 @@ const mutations = {
   RESET_STATE: (state) => {
     Object.assign(state, getDefaultState())
   },
-  SET_ID: (state, id) => {
-    state.id = id
+  SET_NAME: (state, name) => {
+    state.name = name
   },
-  SET_RID: (state, rid) => {
-    state.rid = rid
+  SET_ROLE: (state, role) => {
+    state.role = role
   },
   SET_MENU: (state, menu) => {
     state.menu = menu
@@ -41,11 +41,11 @@ const mutations = {
 const actions = {
   // 获取用户信息
   getLoginfo ({ commit }) {
-    import('@/api/admin').then(getLoginfo => {
-      getLoginfo().then(res => {
+    import('@/api/admin').then(({ getInfo }) => {
+      getInfo().then(res => {
         const { data } = res.data
-        commit('SET_ID', data.id)
-        commit('SET_RID', data.rid)
+        commit('SET_NAME', data.name)
+        commit('SET_ROLE', data.role)
         commit('SET_MENU', data.menu)
         commit('SET_PERMISSION', data.permission)
       })
@@ -53,9 +53,9 @@ const actions = {
   },
 
   // 用户登出
-  logout ({ commit }, id) {
-    import('@/api/admin').then(logout => {
-      logout(id).then(() => {
+  logout ({ commit }) {
+    import('@/api/admin').then(({ logout }) => {
+      logout().then(() => {
         removeToken()
         resetRouter()
         commit('RESET_STATE')

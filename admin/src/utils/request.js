@@ -40,7 +40,7 @@ service.interceptors.request.use(
     // 请求错误
     console.log('request:' + error)
     // 信息提示框
-    Message.error('请求失败')
+    Message.error('请求错误')
   }
 )
 
@@ -64,8 +64,8 @@ service.interceptors.response.use(
       // 设置标志变量为true，表示已经弹出了错误提示
       errorShown = true
     } else {
-      console.log('response:' + error)
-      Message.error('response:' + error)
+      console.log('[Response] ' + error)
+      Message.error('[Response] ' + error)
     }
   }
 )

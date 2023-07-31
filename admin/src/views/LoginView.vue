@@ -7,6 +7,7 @@
           type="text"
           required="required"
           @blur="validateUsername"
+          @keyup.enter="login"
           v-model="loginForm.username"
         />
         <label>用户名</label>
@@ -17,13 +18,14 @@
           type="password"
           required="required"
           @blur="validatePassword"
+          @keyup.enter="login"
           v-model="loginForm.password"
         />
         <label>密码</label>
         <span v-if="error.password !== ''">{{ error.password }}</span>
       </div>
       <!-- 提交 -->
-      <a @click="login">
+      <a @click="login" >
         登录
         <span></span>
         <span></span>
@@ -113,11 +115,14 @@ export default {
         this.$message.error('输入非法')
         return
       }
+      this.$loading({ fullscreen: true })
       import('@/api/admin').then(({ login }) => {
         login(this.loginForm).then(({ data }) => {
           setToken(data.data.token)
           this.$router.push('/')
-        }).catch(() => {})
+        }).catch(() => {}).finally(() => {
+          this.$loading().close()
+        })
       })
     }
   }
