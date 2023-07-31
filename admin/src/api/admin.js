@@ -21,20 +21,9 @@ export function logout () {
 }
 
 // 获取 登录用户信息
-export function getInfo () {
+export function getCurrent () {
   return service({
-    url: '/admin/info',
-    method: 'get',
-    meta: {
-      rid: -1
-    }
-  })
-}
-
-// 获取 侧边栏菜单
-export function getMenuList () {
-  return service({
-    url: '/menu',
+    url: '/admin/current',
     method: 'get',
     meta: {
       rid: -1

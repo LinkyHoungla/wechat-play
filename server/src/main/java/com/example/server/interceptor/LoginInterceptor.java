@@ -25,13 +25,13 @@ public class LoginInterceptor implements HandlerInterceptor {
             Claims claims = JwtUtil.getClaimsByToken(jwt);
 
             // 在解析后的 Claims 中获取用户信息
-            String id = claims.getSubject();
-            String ip = claims.get("ip", String.class);
-            Integer roleId = claims.get("roleId", Integer.class);
+            String ip = claims.getSubject();
+            String id = claims.get("id", String.class);
+            Integer rid = claims.get("rid", Integer.class);
 
-            request.setAttribute("id", id);
             request.setAttribute("ip", ip);
-            request.setAttribute("roleId", roleId);
+            request.setAttribute("id", id);
+            request.setAttribute("rid", rid);
 
         } catch (ExpiredJwtException e) {
             throw new ApiException(ApiError.E452);

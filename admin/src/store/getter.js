@@ -1,9 +1,9 @@
 const getters = {
-  menu: state => state.login.menu,
-  avatar: state => state.login.avatar,
   name: state => state.login.name,
-  permission: state => state.login.permission,
-  isCollapse: state => state.app.isCollapse
+  role: state => state.login.role,
+  avatar: state => state.login.avatar,
+  menu: state => state.login.menu,
+  permission: state => state.login.permission
 }
 
 export default getters

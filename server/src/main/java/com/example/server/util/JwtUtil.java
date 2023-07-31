@@ -28,8 +28,8 @@ public class JwtUtil {
         Date now = new Date();
         Date expiration = new Date(now.getTime() + 1000 * EXPIRE);
 
-        Claims claims = Jwts.claims().setSubject(id);
-        claims.put("ip", ip);
+        Claims claims = Jwts.claims().setSubject(ip);
+        claims.put("id", id);
         claims.put("rid", rid);
 
         return TOKEN_PREFIX + Jwts.builder()

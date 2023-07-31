@@ -1,17 +1,35 @@
 package com.example.server.dao;
 
+import com.example.server.entity.vo.Menu;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
+import java.util.List;
 import java.util.Map;
 
 @Mapper
 public interface AdminDao {
     // SECTION 管理员 登录
-
     // FUNCTION 登录
     Map<String, Object> login(String username, String password);
     @Update("UPDATE admin_login SET ip = #{ip} WHERE id = #{id}")
     Integer setIp(Integer id, String ip);
+
+    // SECTION 管理员信息
+    // FUNCTION 基本信息
+    Map<String, String> getBasic(Integer id);
+    @Select("SELECT p.id, p.name, p.path, p.icon " +
+            "FROM permission p " +
+            "JOIN role_permission rp ON p.id = rp.pid " +
+            "WHERE rp.rid = #{id} AND p.pid = -1")
+    List<Menu> getMenuParent(Integer rid);
+    @Select("SELECT p.id, p.name, p.path " +
+            "FROM permission p " +
+            "JOIN role_permission rp ON p.id = rp.pid " +
+            "WHERE rp.rid = #{rid} AND p.pid = #{pid}")
+    List<Menu> getMenuChild(Integer rid, Integer pid);
+    @Select("SELECT pid FROM role_permission WHERE rid = #{rid}")
+    List<Integer> getPermissions(Integer rid);
+
 }

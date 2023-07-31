@@ -3,11 +3,11 @@
     <!-- 头像 -->
     <div class="avatar">
       <div class="img">
-        <img src="" alt="" />
+        <img :src="avatar" />
       </div>
       <div class="con">
-        <h3>用户名</h3>
-        <p>身份</p>
+        <h3>{{ name }}</h3>
+        <p>{{ role }}</p>
       </div>
     </div>
 
@@ -22,9 +22,9 @@
         unique-opened
       >
         <el-submenu
-          :index="item.pageId + ''"
+          :index="item.id + ''"
           v-for="item in menusList"
-          :key="item.pageId"
+          :key="item.id"
         >
           <!-- 1级菜单模板区域 -->
           <template slot="title">
@@ -36,9 +36,9 @@
 
           <!-- 2级菜单 -->
           <el-menu-item
-            :index="'/' + subItem.path"
+            :index="subItem.path"
             v-for="subItem in item.children"
-            :key="subItem.pageId"
+            :key="subItem.id"
           >
             <template slot="title">
               <!-- 图标 -->
@@ -70,120 +70,34 @@
 
 <script>
 import '@/assets/fonts/iconfont.css'
+import store from '@/store'
 
 export default {
   name: 'SideBar',
   data () {
     return {
-      menusList: [
-        {
-          pageId: 101,
-          name: '用户管理',
-          path: 'users',
-          icon: 'icon-user',
-          parentId: -1,
-          children: [
-            {
-              pageId: 1001,
-              name: '管理员列表',
-              path: 'admins',
-              icon: null,
-              parentId: 101,
-              children: null
-            },
-            {
-              pageId: 1002,
-              name: '用户列表',
-              path: 'users',
-              icon: null,
-              parentId: 101,
-              children: null
-            }
-          ]
-        },
-        {
-          pageId: 102,
-          name: '权限管理',
-          path: 'rights',
-          icon: 'icon-permission',
-          parentId: -1,
-          children: [
-            {
-              pageId: 2001,
-              name: '角色列表',
-              path: 'roles',
-              icon: null,
-              parentId: 102,
-              children: null
-            },
-            {
-              pageId: 2002,
-              name: '权限列表',
-              path: 'rights',
-              icon: null,
-              parentId: 102,
-              children: null
-            }
-          ]
-        },
-        {
-          pageId: 103,
-          name: '店铺管理',
-          path: 'shops',
-          icon: 'icon-shop',
-          parentId: -1,
-          children: [
-            {
-              pageId: 3001,
-              name: '店铺列表',
-              path: 'stores',
-              icon: null,
-              parentId: 103,
-              children: null
-            },
-            {
-              pageId: 3002,
-              name: '员工列表',
-              path: 'companions',
-              icon: null,
-              parentId: 103,
-              children: null
-            },
-            {
-              pageId: 10005,
-              name: '服务类型',
-              path: 'service',
-              icon: null,
-              parentId: 103,
-              children: null
-            }
-          ]
-        },
-        {
-          pageId: 104,
-          name: '订单管理',
-          path: 'orders',
-          icon: 'icon-order',
-          parentId: -1,
-          children: [
-            {
-              pageId: 10006,
-              name: '订单列表',
-              path: 'orders',
-              icon: null,
-              parentId: 104,
-              children: null
-            }
-          ]
-        }
-      ],
+      name: '名称',
+      role: '身份',
+      avatar: '',
+      menusList: [],
       isOpen: false
     }
+  },
+  mounted () {
+    this.getCurrent()
   },
   methods: {
     logout () {
       this.$store.dispatch('login/logout').then(() => {
         this.$router.push('/login')
+      })
+    },
+    getCurrent () {
+      this.$store.dispatch('login/getLoginfo').then(() => {
+        this.name = store.getters.name
+        this.role = store.getters.role
+        this.avatar = store.getters.avatar
+        this.menusList = store.getters.menu
       })
     }
   }
@@ -319,6 +233,7 @@ export default {
 
         width: 100%;
         height: 36px;
+        cursor: pointer;
         overflow: hidden;
 
         span {
@@ -327,6 +242,7 @@ export default {
           font-size: 14px;
           white-space: nowrap;
           color: #fff;
+          pointer-events: none;
 
           width: 0px;
           opacity: 0;

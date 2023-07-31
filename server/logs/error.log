@@ -289,3 +289,522 @@ java.lang.NullPointerException: null
 2023-07-31 19:19:42.517 [http-nio-8888-exec-2] DEBUG c.example.server.dao.AdminDao.setIp - ==>  Preparing: UPDATE admin_login SET ip = ? WHERE id = ?
 2023-07-31 19:19:42.517 [http-nio-8888-exec-2] DEBUG c.example.server.dao.AdminDao.setIp - ==> Parameters: 127.0.0.1(String), 0(Integer)
 2023-07-31 19:19:42.518 [http-nio-8888-exec-2] DEBUG c.example.server.dao.AdminDao.setIp - <==    Updates: 1
+2023-07-31 21:38:46.942 [main] INFO  c.e.server.ServerApplicationTests - Starting ServerApplicationTests using Java 1.8.0_271 on ROG-Linky with PID 92952 (started by baiss in E:\Project\development\web\fullstack\wechat-play\server)
+2023-07-31 21:38:46.943 [main] DEBUG c.e.server.ServerApplicationTests - Running with Spring Boot v2.7.14, Spring v5.3.29
+2023-07-31 21:38:46.944 [main] INFO  c.e.server.ServerApplicationTests - No active profile set, falling back to 1 default profile: "default"
+2023-07-31 21:38:48.547 [main] INFO  c.e.server.ServerApplicationTests - Started ServerApplicationTests in 1.927 seconds (JVM running for 2.755)
+2023-07-31 21:38:49.055 [main] DEBUG c.e.server.dao.AdminDao.getBasic - ==>  Preparing: SELECT r.name AS r_name, a.name AS a_name FROM admin a JOIN role r ON a.rid = r.id WHERE a.id = ?
+2023-07-31 21:38:49.079 [main] DEBUG c.e.server.dao.AdminDao.getBasic - ==> Parameters: 0(Integer)
+2023-07-31 21:38:49.097 [main] DEBUG c.e.server.dao.AdminDao.getBasic - <==      Total: 1
+2023-07-31 21:38:49.099 [main] DEBUG c.e.s.dao.AdminDao.getMenuParent - ==>  Preparing: SELECT p.id, p.name, p.path, p.icon FROM permission p JOIN role_permission rp ON p.id = rp.pid WHERE rp.rid = ? AND p.pid = -1
+2023-07-31 21:38:49.099 [main] DEBUG c.e.s.dao.AdminDao.getMenuParent - ==> Parameters: 0(Integer)
+2023-07-31 21:38:49.107 [main] DEBUG c.e.s.dao.AdminDao.getMenuParent - <==      Total: 6
+2023-07-31 21:44:42.115 [main] INFO  c.e.server.ServerApplicationTests - Starting ServerApplicationTests using Java 1.8.0_271 on ROG-Linky with PID 87116 (started by baiss in E:\Project\development\web\fullstack\wechat-play\server)
+2023-07-31 21:44:42.115 [main] DEBUG c.e.server.ServerApplicationTests - Running with Spring Boot v2.7.14, Spring v5.3.29
+2023-07-31 21:44:42.116 [main] INFO  c.e.server.ServerApplicationTests - No active profile set, falling back to 1 default profile: "default"
+2023-07-31 21:44:43.735 [main] INFO  c.e.server.ServerApplicationTests - Started ServerApplicationTests in 1.926 seconds (JVM running for 2.709)
+2023-07-31 21:44:44.202 [main] DEBUG c.e.server.dao.AdminDao.getBasic - ==>  Preparing: SELECT r.name AS r_name, a.name AS a_name FROM admin a JOIN role r ON a.rid = r.id WHERE a.id = ?
+2023-07-31 21:44:44.224 [main] DEBUG c.e.server.dao.AdminDao.getBasic - ==> Parameters: 0(Integer)
+2023-07-31 21:44:44.243 [main] DEBUG c.e.server.dao.AdminDao.getBasic - <==      Total: 1
+2023-07-31 21:44:44.244 [main] DEBUG c.e.s.dao.AdminDao.getMenuParent - ==>  Preparing: SELECT p.id, p.name, p.path, p.icon FROM permission p JOIN role_permission rp ON p.id = rp.pid WHERE rp.rid = ? AND p.pid = -1
+2023-07-31 21:44:44.245 [main] DEBUG c.e.s.dao.AdminDao.getMenuParent - ==> Parameters: 0(Integer)
+2023-07-31 21:44:44.254 [main] DEBUG c.e.s.dao.AdminDao.getMenuParent - <==      Total: 6
+2023-07-31 21:45:21.103 [main] INFO  c.e.server.ServerApplicationTests - Starting ServerApplicationTests using Java 1.8.0_271 on ROG-Linky with PID 42504 (started by baiss in E:\Project\development\web\fullstack\wechat-play\server)
+2023-07-31 21:45:21.103 [main] DEBUG c.e.server.ServerApplicationTests - Running with Spring Boot v2.7.14, Spring v5.3.29
+2023-07-31 21:45:21.104 [main] INFO  c.e.server.ServerApplicationTests - No active profile set, falling back to 1 default profile: "default"
+2023-07-31 21:45:22.741 [main] INFO  c.e.server.ServerApplicationTests - Started ServerApplicationTests in 1.944 seconds (JVM running for 2.706)
+2023-07-31 21:45:23.188 [main] DEBUG c.e.server.dao.AdminDao.getBasic - ==>  Preparing: SELECT r.name AS r_name, a.name AS a_name FROM admin a JOIN role r ON a.rid = r.id WHERE a.id = ?
+2023-07-31 21:45:23.212 [main] DEBUG c.e.server.dao.AdminDao.getBasic - ==> Parameters: 0(Integer)
+2023-07-31 21:45:23.230 [main] DEBUG c.e.server.dao.AdminDao.getBasic - <==      Total: 1
+2023-07-31 21:45:23.232 [main] DEBUG c.e.s.dao.AdminDao.getMenuParent - ==>  Preparing: SELECT p.id, p.name, p.path, p.icon FROM permission p JOIN role_permission rp ON p.id = rp.pid WHERE rp.rid = ? AND p.pid = -1
+2023-07-31 21:45:23.232 [main] DEBUG c.e.s.dao.AdminDao.getMenuParent - ==> Parameters: 0(Integer)
+2023-07-31 21:45:23.241 [main] DEBUG c.e.s.dao.AdminDao.getMenuParent - <==      Total: 6
+2023-07-31 21:45:23.242 [main] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==>  Preparing: SELECT p.id, p.name, p.path FROM permission p JOIN role_permission rp ON p.id = rp.pid WHERE rp.rid = ? AND p.pid = ?
+2023-07-31 21:45:23.242 [main] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==> Parameters: 0(Integer), 1(Integer)
+2023-07-31 21:45:23.244 [main] DEBUG c.e.server.dao.AdminDao.getMenuChild - <==      Total: 3
+2023-07-31 21:45:23.244 [main] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==>  Preparing: SELECT p.id, p.name, p.path FROM permission p JOIN role_permission rp ON p.id = rp.pid WHERE rp.rid = ? AND p.pid = ?
+2023-07-31 21:45:23.244 [main] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==> Parameters: 0(Integer), 2(Integer)
+2023-07-31 21:45:23.246 [main] DEBUG c.e.server.dao.AdminDao.getMenuChild - <==      Total: 2
+2023-07-31 21:45:23.247 [main] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==>  Preparing: SELECT p.id, p.name, p.path FROM permission p JOIN role_permission rp ON p.id = rp.pid WHERE rp.rid = ? AND p.pid = ?
+2023-07-31 21:45:23.247 [main] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==> Parameters: 0(Integer), 3(Integer)
+2023-07-31 21:45:23.249 [main] DEBUG c.e.server.dao.AdminDao.getMenuChild - <==      Total: 2
+2023-07-31 21:45:23.249 [main] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==>  Preparing: SELECT p.id, p.name, p.path FROM permission p JOIN role_permission rp ON p.id = rp.pid WHERE rp.rid = ? AND p.pid = ?
+2023-07-31 21:45:23.249 [main] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==> Parameters: 0(Integer), 4(Integer)
+2023-07-31 21:45:23.251 [main] DEBUG c.e.server.dao.AdminDao.getMenuChild - <==      Total: 5
+2023-07-31 21:45:23.252 [main] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==>  Preparing: SELECT p.id, p.name, p.path FROM permission p JOIN role_permission rp ON p.id = rp.pid WHERE rp.rid = ? AND p.pid = ?
+2023-07-31 21:45:23.252 [main] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==> Parameters: 0(Integer), 5(Integer)
+2023-07-31 21:45:23.253 [main] DEBUG c.e.server.dao.AdminDao.getMenuChild - <==      Total: 4
+2023-07-31 21:45:23.253 [main] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==>  Preparing: SELECT p.id, p.name, p.path FROM permission p JOIN role_permission rp ON p.id = rp.pid WHERE rp.rid = ? AND p.pid = ?
+2023-07-31 21:45:23.254 [main] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==> Parameters: 0(Integer), 6(Integer)
+2023-07-31 21:45:23.255 [main] DEBUG c.e.server.dao.AdminDao.getMenuChild - <==      Total: 2
+2023-07-31 21:45:23.255 [main] DEBUG c.e.s.dao.AdminDao.getPermissions - ==>  Preparing: SELECT pid FROM role_permission WHERE rid = ?
+2023-07-31 21:45:23.255 [main] DEBUG c.e.s.dao.AdminDao.getPermissions - ==> Parameters: 0(Integer)
+2023-07-31 21:45:23.258 [main] DEBUG c.e.s.dao.AdminDao.getPermissions - <==      Total: 24
+2023-07-31 21:51:02.818 [main] INFO  c.e.server.ServerApplicationTests - Starting ServerApplicationTests using Java 1.8.0_271 on ROG-Linky with PID 94856 (started by baiss in E:\Project\development\web\fullstack\wechat-play\server)
+2023-07-31 21:51:02.819 [main] DEBUG c.e.server.ServerApplicationTests - Running with Spring Boot v2.7.14, Spring v5.3.29
+2023-07-31 21:51:02.819 [main] INFO  c.e.server.ServerApplicationTests - No active profile set, falling back to 1 default profile: "default"
+2023-07-31 21:51:04.532 [main] INFO  c.e.server.ServerApplicationTests - Started ServerApplicationTests in 2.017 seconds (JVM running for 2.775)
+2023-07-31 21:51:04.973 [main] DEBUG c.e.server.dao.AdminDao.getBasic - ==>  Preparing: SELECT r.name AS r_name, a.name AS a_name, a.avatar AS avatar FROM admin a JOIN role r ON a.rid = r.id WHERE a.id = ?
+2023-07-31 21:51:04.995 [main] DEBUG c.e.server.dao.AdminDao.getBasic - ==> Parameters: 0(Integer)
+2023-07-31 21:51:05.015 [main] DEBUG c.e.server.dao.AdminDao.getBasic - <==      Total: 1
+2023-07-31 21:51:05.017 [main] DEBUG c.e.s.dao.AdminDao.getMenuParent - ==>  Preparing: SELECT p.id, p.name, p.path, p.icon FROM permission p JOIN role_permission rp ON p.id = rp.pid WHERE rp.rid = ? AND p.pid = -1
+2023-07-31 21:51:05.018 [main] DEBUG c.e.s.dao.AdminDao.getMenuParent - ==> Parameters: 0(Integer)
+2023-07-31 21:51:05.027 [main] DEBUG c.e.s.dao.AdminDao.getMenuParent - <==      Total: 6
+2023-07-31 21:51:05.027 [main] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==>  Preparing: SELECT p.id, p.name, p.path FROM permission p JOIN role_permission rp ON p.id = rp.pid WHERE rp.rid = ? AND p.pid = ?
+2023-07-31 21:51:05.028 [main] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==> Parameters: 0(Integer), 1(Integer)
+2023-07-31 21:51:05.029 [main] DEBUG c.e.server.dao.AdminDao.getMenuChild - <==      Total: 3
+2023-07-31 21:51:05.030 [main] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==>  Preparing: SELECT p.id, p.name, p.path FROM permission p JOIN role_permission rp ON p.id = rp.pid WHERE rp.rid = ? AND p.pid = ?
+2023-07-31 21:51:05.031 [main] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==> Parameters: 0(Integer), 2(Integer)
+2023-07-31 21:51:05.033 [main] DEBUG c.e.server.dao.AdminDao.getMenuChild - <==      Total: 2
+2023-07-31 21:51:05.033 [main] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==>  Preparing: SELECT p.id, p.name, p.path FROM permission p JOIN role_permission rp ON p.id = rp.pid WHERE rp.rid = ? AND p.pid = ?
+2023-07-31 21:51:05.034 [main] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==> Parameters: 0(Integer), 3(Integer)
+2023-07-31 21:51:05.035 [main] DEBUG c.e.server.dao.AdminDao.getMenuChild - <==      Total: 2
+2023-07-31 21:51:05.036 [main] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==>  Preparing: SELECT p.id, p.name, p.path FROM permission p JOIN role_permission rp ON p.id = rp.pid WHERE rp.rid = ? AND p.pid = ?
+2023-07-31 21:51:05.036 [main] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==> Parameters: 0(Integer), 4(Integer)
+2023-07-31 21:51:05.038 [main] DEBUG c.e.server.dao.AdminDao.getMenuChild - <==      Total: 5
+2023-07-31 21:51:05.038 [main] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==>  Preparing: SELECT p.id, p.name, p.path FROM permission p JOIN role_permission rp ON p.id = rp.pid WHERE rp.rid = ? AND p.pid = ?
+2023-07-31 21:51:05.039 [main] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==> Parameters: 0(Integer), 5(Integer)
+2023-07-31 21:51:05.040 [main] DEBUG c.e.server.dao.AdminDao.getMenuChild - <==      Total: 4
+2023-07-31 21:51:05.040 [main] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==>  Preparing: SELECT p.id, p.name, p.path FROM permission p JOIN role_permission rp ON p.id = rp.pid WHERE rp.rid = ? AND p.pid = ?
+2023-07-31 21:51:05.041 [main] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==> Parameters: 0(Integer), 6(Integer)
+2023-07-31 21:51:05.041 [main] DEBUG c.e.server.dao.AdminDao.getMenuChild - <==      Total: 2
+2023-07-31 21:51:05.042 [main] DEBUG c.e.s.dao.AdminDao.getPermissions - ==>  Preparing: SELECT pid FROM role_permission WHERE rid = ?
+2023-07-31 21:51:05.042 [main] DEBUG c.e.s.dao.AdminDao.getPermissions - ==> Parameters: 0(Integer)
+2023-07-31 21:51:05.044 [main] DEBUG c.e.s.dao.AdminDao.getPermissions - <==      Total: 24
+2023-07-31 21:51:24.471 [main] INFO  c.e.server.ServerApplicationTests - Starting ServerApplicationTests using Java 1.8.0_271 on ROG-Linky with PID 88176 (started by baiss in E:\Project\development\web\fullstack\wechat-play\server)
+2023-07-31 21:51:24.472 [main] DEBUG c.e.server.ServerApplicationTests - Running with Spring Boot v2.7.14, Spring v5.3.29
+2023-07-31 21:51:24.472 [main] INFO  c.e.server.ServerApplicationTests - No active profile set, falling back to 1 default profile: "default"
+2023-07-31 21:51:26.135 [main] INFO  c.e.server.ServerApplicationTests - Started ServerApplicationTests in 1.964 seconds (JVM running for 2.72)
+2023-07-31 21:51:26.600 [main] DEBUG c.e.server.dao.AdminDao.getBasic - ==>  Preparing: SELECT r.name AS r_name, a.name AS a_name, a.avatar AS avatar FROM admin a JOIN role r ON a.rid = r.id WHERE a.id = ?
+2023-07-31 21:51:26.627 [main] DEBUG c.e.server.dao.AdminDao.getBasic - ==> Parameters: 0(Integer)
+2023-07-31 21:51:26.649 [main] DEBUG c.e.server.dao.AdminDao.getBasic - <==      Total: 1
+2023-07-31 21:51:26.651 [main] DEBUG c.e.s.dao.AdminDao.getMenuParent - ==>  Preparing: SELECT p.id, p.name, p.path, p.icon FROM permission p JOIN role_permission rp ON p.id = rp.pid WHERE rp.rid = ? AND p.pid = -1
+2023-07-31 21:51:26.651 [main] DEBUG c.e.s.dao.AdminDao.getMenuParent - ==> Parameters: 0(Integer)
+2023-07-31 21:51:26.660 [main] DEBUG c.e.s.dao.AdminDao.getMenuParent - <==      Total: 6
+2023-07-31 21:51:26.661 [main] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==>  Preparing: SELECT p.id, p.name, p.path FROM permission p JOIN role_permission rp ON p.id = rp.pid WHERE rp.rid = ? AND p.pid = ?
+2023-07-31 21:51:26.661 [main] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==> Parameters: 0(Integer), 1(Integer)
+2023-07-31 21:51:26.662 [main] DEBUG c.e.server.dao.AdminDao.getMenuChild - <==      Total: 3
+2023-07-31 21:51:26.663 [main] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==>  Preparing: SELECT p.id, p.name, p.path FROM permission p JOIN role_permission rp ON p.id = rp.pid WHERE rp.rid = ? AND p.pid = ?
+2023-07-31 21:51:26.663 [main] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==> Parameters: 0(Integer), 2(Integer)
+2023-07-31 21:51:26.665 [main] DEBUG c.e.server.dao.AdminDao.getMenuChild - <==      Total: 2
+2023-07-31 21:51:26.665 [main] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==>  Preparing: SELECT p.id, p.name, p.path FROM permission p JOIN role_permission rp ON p.id = rp.pid WHERE rp.rid = ? AND p.pid = ?
+2023-07-31 21:51:26.666 [main] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==> Parameters: 0(Integer), 3(Integer)
+2023-07-31 21:51:26.667 [main] DEBUG c.e.server.dao.AdminDao.getMenuChild - <==      Total: 2
+2023-07-31 21:51:26.667 [main] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==>  Preparing: SELECT p.id, p.name, p.path FROM permission p JOIN role_permission rp ON p.id = rp.pid WHERE rp.rid = ? AND p.pid = ?
+2023-07-31 21:51:26.667 [main] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==> Parameters: 0(Integer), 4(Integer)
+2023-07-31 21:51:26.670 [main] DEBUG c.e.server.dao.AdminDao.getMenuChild - <==      Total: 5
+2023-07-31 21:51:26.670 [main] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==>  Preparing: SELECT p.id, p.name, p.path FROM permission p JOIN role_permission rp ON p.id = rp.pid WHERE rp.rid = ? AND p.pid = ?
+2023-07-31 21:51:26.671 [main] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==> Parameters: 0(Integer), 5(Integer)
+2023-07-31 21:51:26.672 [main] DEBUG c.e.server.dao.AdminDao.getMenuChild - <==      Total: 4
+2023-07-31 21:51:26.673 [main] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==>  Preparing: SELECT p.id, p.name, p.path FROM permission p JOIN role_permission rp ON p.id = rp.pid WHERE rp.rid = ? AND p.pid = ?
+2023-07-31 21:51:26.673 [main] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==> Parameters: 0(Integer), 6(Integer)
+2023-07-31 21:51:26.674 [main] DEBUG c.e.server.dao.AdminDao.getMenuChild - <==      Total: 2
+2023-07-31 21:51:26.675 [main] DEBUG c.e.s.dao.AdminDao.getPermissions - ==>  Preparing: SELECT pid FROM role_permission WHERE rid = ?
+2023-07-31 21:51:26.675 [main] DEBUG c.e.s.dao.AdminDao.getPermissions - ==> Parameters: 0(Integer)
+2023-07-31 21:51:26.678 [main] DEBUG c.e.s.dao.AdminDao.getPermissions - <==      Total: 24
+2023-07-31 21:51:31.706 [main] INFO  com.example.server.ServerApplication - Starting ServerApplication using Java 1.8.0_271 on ROG-Linky with PID 27204 (E:\Project\development\web\fullstack\wechat-play\server\target\classes started by baiss in E:\Project\development\web\fullstack\wechat-play\server)
+2023-07-31 21:51:31.708 [main] DEBUG com.example.server.ServerApplication - Running with Spring Boot v2.7.14, Spring v5.3.29
+2023-07-31 21:51:31.708 [main] INFO  com.example.server.ServerApplication - No active profile set, falling back to 1 default profile: "default"
+2023-07-31 21:51:32.884 [main] INFO  com.example.server.ServerApplication - Started ServerApplication in 1.476 seconds (JVM running for 2.173)
+2023-07-31 21:59:51.732 [http-nio-8888-exec-7] DEBUG c.example.server.dao.AdminDao.login - ==>  Preparing: SELECT a.id, a.rid FROM admin a JOIN admin_login al ON a.id = al.id WHERE al.username = ? AND al.password = ?
+2023-07-31 21:59:51.745 [http-nio-8888-exec-7] DEBUG c.example.server.dao.AdminDao.login - ==> Parameters: user_e8f4efaf2f(String), 0e437bd400e7b49a(String)
+2023-07-31 21:59:51.757 [http-nio-8888-exec-7] DEBUG c.example.server.dao.AdminDao.login - <==      Total: 1
+2023-07-31 21:59:51.758 [http-nio-8888-exec-7] DEBUG c.example.server.dao.AdminDao.setIp - ==>  Preparing: UPDATE admin_login SET ip = ? WHERE id = ?
+2023-07-31 21:59:51.759 [http-nio-8888-exec-7] DEBUG c.example.server.dao.AdminDao.setIp - ==> Parameters: 0:0:0:0:0:0:0:1(String), 0(Integer)
+2023-07-31 21:59:51.760 [http-nio-8888-exec-7] DEBUG c.example.server.dao.AdminDao.setIp - <==    Updates: 1
+2023-07-31 22:02:43.643 [main] INFO  com.example.server.ServerApplication - Starting ServerApplication using Java 1.8.0_271 on ROG-Linky with PID 91752 (E:\Project\development\web\fullstack\wechat-play\server\target\classes started by baiss in E:\Project\development\web\fullstack\wechat-play\server)
+2023-07-31 22:02:43.645 [main] DEBUG com.example.server.ServerApplication - Running with Spring Boot v2.7.14, Spring v5.3.29
+2023-07-31 22:02:43.645 [main] INFO  com.example.server.ServerApplication - No active profile set, falling back to 1 default profile: "default"
+2023-07-31 22:02:44.768 [main] INFO  com.example.server.ServerApplication - Started ServerApplication in 1.411 seconds (JVM running for 2.157)
+2023-07-31 22:02:58.147 [http-nio-8888-exec-1] DEBUG c.e.server.dao.AdminDao.getBasic - ==>  Preparing: SELECT r.name AS r_name, a.name AS a_name, a.avatar AS avatar FROM admin a JOIN role r ON a.rid = r.id WHERE a.id = ?
+2023-07-31 22:02:58.159 [http-nio-8888-exec-1] DEBUG c.e.server.dao.AdminDao.getBasic - ==> Parameters: 0(Integer)
+2023-07-31 22:02:58.170 [http-nio-8888-exec-1] DEBUG c.e.server.dao.AdminDao.getBasic - <==      Total: 1
+2023-07-31 22:02:58.171 [http-nio-8888-exec-1] DEBUG c.e.s.dao.AdminDao.getMenuParent - ==>  Preparing: SELECT p.id, p.name, p.path, p.icon FROM permission p JOIN role_permission rp ON p.id = rp.pid WHERE rp.rid = ? AND p.pid = -1
+2023-07-31 22:02:58.172 [http-nio-8888-exec-1] DEBUG c.e.s.dao.AdminDao.getMenuParent - ==> Parameters: null
+2023-07-31 22:02:58.176 [http-nio-8888-exec-1] DEBUG c.e.s.dao.AdminDao.getMenuParent - <==      Total: 0
+2023-07-31 22:02:58.177 [http-nio-8888-exec-1] DEBUG c.e.s.dao.AdminDao.getPermissions - ==>  Preparing: SELECT pid FROM role_permission WHERE rid = ?
+2023-07-31 22:02:58.177 [http-nio-8888-exec-1] DEBUG c.e.s.dao.AdminDao.getPermissions - ==> Parameters: null
+2023-07-31 22:02:58.177 [http-nio-8888-exec-1] DEBUG c.e.s.dao.AdminDao.getPermissions - <==      Total: 0
+2023-07-31 22:03:39.282 [http-nio-8888-exec-2] DEBUG c.e.server.dao.AdminDao.getBasic - ==>  Preparing: SELECT r.name AS r_name, a.name AS a_name, a.avatar AS avatar FROM admin a JOIN role r ON a.rid = r.id WHERE a.id = ?
+2023-07-31 22:03:39.282 [http-nio-8888-exec-2] DEBUG c.e.server.dao.AdminDao.getBasic - ==> Parameters: 0(Integer)
+2023-07-31 22:03:39.283 [http-nio-8888-exec-2] DEBUG c.e.server.dao.AdminDao.getBasic - <==      Total: 1
+2023-07-31 22:03:39.284 [http-nio-8888-exec-2] DEBUG c.e.s.dao.AdminDao.getMenuParent - ==>  Preparing: SELECT p.id, p.name, p.path, p.icon FROM permission p JOIN role_permission rp ON p.id = rp.pid WHERE rp.rid = ? AND p.pid = -1
+2023-07-31 22:03:39.284 [http-nio-8888-exec-2] DEBUG c.e.s.dao.AdminDao.getMenuParent - ==> Parameters: null
+2023-07-31 22:03:39.285 [http-nio-8888-exec-2] DEBUG c.e.s.dao.AdminDao.getMenuParent - <==      Total: 0
+2023-07-31 22:03:39.285 [http-nio-8888-exec-2] DEBUG c.e.s.dao.AdminDao.getPermissions - ==>  Preparing: SELECT pid FROM role_permission WHERE rid = ?
+2023-07-31 22:03:39.285 [http-nio-8888-exec-2] DEBUG c.e.s.dao.AdminDao.getPermissions - ==> Parameters: null
+2023-07-31 22:03:39.286 [http-nio-8888-exec-2] DEBUG c.e.s.dao.AdminDao.getPermissions - <==      Total: 0
+2023-07-31 22:04:31.068 [main] INFO  com.example.server.ServerApplication - Starting ServerApplication using Java 1.8.0_271 on ROG-Linky with PID 93736 (E:\Project\development\web\fullstack\wechat-play\server\target\classes started by baiss in E:\Project\development\web\fullstack\wechat-play\server)
+2023-07-31 22:04:31.070 [main] DEBUG com.example.server.ServerApplication - Running with Spring Boot v2.7.14, Spring v5.3.29
+2023-07-31 22:04:31.070 [main] INFO  com.example.server.ServerApplication - No active profile set, falling back to 1 default profile: "default"
+2023-07-31 22:04:32.185 [main] INFO  com.example.server.ServerApplication - Started ServerApplication in 1.395 seconds (JVM running for 2.076)
+2023-07-31 22:04:41.897 [http-nio-8888-exec-1] DEBUG c.e.server.dao.AdminDao.getBasic - ==>  Preparing: SELECT r.name AS r_name, a.name AS a_name, a.avatar AS avatar FROM admin a JOIN role r ON a.rid = r.id WHERE a.id = ?
+2023-07-31 22:04:41.908 [http-nio-8888-exec-1] DEBUG c.e.server.dao.AdminDao.getBasic - ==> Parameters: 0(Integer)
+2023-07-31 22:04:41.919 [http-nio-8888-exec-1] DEBUG c.e.server.dao.AdminDao.getBasic - <==      Total: 1
+2023-07-31 22:04:41.920 [http-nio-8888-exec-1] DEBUG c.e.s.dao.AdminDao.getMenuParent - ==>  Preparing: SELECT p.id, p.name, p.path, p.icon FROM permission p JOIN role_permission rp ON p.id = rp.pid WHERE rp.rid = ? AND p.pid = -1
+2023-07-31 22:04:41.921 [http-nio-8888-exec-1] DEBUG c.e.s.dao.AdminDao.getMenuParent - ==> Parameters: null
+2023-07-31 22:04:41.922 [http-nio-8888-exec-1] DEBUG c.e.s.dao.AdminDao.getMenuParent - <==      Total: 0
+2023-07-31 22:04:41.923 [http-nio-8888-exec-1] DEBUG c.e.s.dao.AdminDao.getPermissions - ==>  Preparing: SELECT pid FROM role_permission WHERE rid = ?
+2023-07-31 22:04:41.923 [http-nio-8888-exec-1] DEBUG c.e.s.dao.AdminDao.getPermissions - ==> Parameters: null
+2023-07-31 22:04:41.923 [http-nio-8888-exec-1] DEBUG c.e.s.dao.AdminDao.getPermissions - <==      Total: 0
+2023-07-31 22:11:46.561 [main] INFO  com.example.server.ServerApplication - Starting ServerApplication using Java 1.8.0_271 on ROG-Linky with PID 34660 (E:\Project\development\web\fullstack\wechat-play\server\target\classes started by baiss in E:\Project\development\web\fullstack\wechat-play\server)
+2023-07-31 22:11:46.563 [main] DEBUG com.example.server.ServerApplication - Running with Spring Boot v2.7.14, Spring v5.3.29
+2023-07-31 22:11:46.563 [main] INFO  com.example.server.ServerApplication - No active profile set, falling back to 1 default profile: "default"
+2023-07-31 22:11:47.659 [main] INFO  com.example.server.ServerApplication - Started ServerApplication in 1.39 seconds (JVM running for 2.071)
+2023-07-31 22:11:54.085 [http-nio-8888-exec-1] DEBUG c.example.server.dao.AdminDao.login - ==>  Preparing: SELECT a.id, a.rid FROM admin a JOIN admin_login al ON a.id = al.id WHERE al.username = ? AND al.password = ?
+2023-07-31 22:11:54.097 [http-nio-8888-exec-1] DEBUG c.example.server.dao.AdminDao.login - ==> Parameters: user_e8f4efaf2f(String), 0e437bd400e7b49a(String)
+2023-07-31 22:11:54.109 [http-nio-8888-exec-1] DEBUG c.example.server.dao.AdminDao.login - <==      Total: 1
+2023-07-31 22:11:54.110 [http-nio-8888-exec-1] DEBUG c.example.server.dao.AdminDao.setIp - ==>  Preparing: UPDATE admin_login SET ip = ? WHERE id = ?
+2023-07-31 22:11:54.110 [http-nio-8888-exec-1] DEBUG c.example.server.dao.AdminDao.setIp - ==> Parameters: 0:0:0:0:0:0:0:1(String), 0(Integer)
+2023-07-31 22:11:54.111 [http-nio-8888-exec-1] DEBUG c.example.server.dao.AdminDao.setIp - <==    Updates: 1
+2023-07-31 22:11:54.657 [http-nio-8888-exec-2] DEBUG c.e.server.dao.AdminDao.getBasic - ==>  Preparing: SELECT r.name AS r_name, a.name AS a_name, a.avatar AS avatar FROM admin a JOIN role r ON a.rid = r.id WHERE a.id = ?
+2023-07-31 22:11:54.657 [http-nio-8888-exec-2] DEBUG c.e.server.dao.AdminDao.getBasic - ==> Parameters: 0(Integer)
+2023-07-31 22:11:54.658 [http-nio-8888-exec-2] DEBUG c.e.server.dao.AdminDao.getBasic - <==      Total: 1
+2023-07-31 22:11:54.659 [http-nio-8888-exec-2] DEBUG c.e.s.dao.AdminDao.getMenuParent - ==>  Preparing: SELECT p.id, p.name, p.path, p.icon FROM permission p JOIN role_permission rp ON p.id = rp.pid WHERE rp.rid = ? AND p.pid = -1
+2023-07-31 22:11:54.659 [http-nio-8888-exec-2] DEBUG c.e.s.dao.AdminDao.getMenuParent - ==> Parameters: 0(Integer)
+2023-07-31 22:11:54.662 [http-nio-8888-exec-2] DEBUG c.e.s.dao.AdminDao.getMenuParent - <==      Total: 6
+2023-07-31 22:11:54.662 [http-nio-8888-exec-2] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==>  Preparing: SELECT p.id, p.name, p.path FROM permission p JOIN role_permission rp ON p.id = rp.pid WHERE rp.rid = ? AND p.pid = ?
+2023-07-31 22:11:54.662 [http-nio-8888-exec-2] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==> Parameters: 0(Integer), 1(Integer)
+2023-07-31 22:11:54.663 [http-nio-8888-exec-2] DEBUG c.e.server.dao.AdminDao.getMenuChild - <==      Total: 3
+2023-07-31 22:11:54.663 [http-nio-8888-exec-2] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==>  Preparing: SELECT p.id, p.name, p.path FROM permission p JOIN role_permission rp ON p.id = rp.pid WHERE rp.rid = ? AND p.pid = ?
+2023-07-31 22:11:54.663 [http-nio-8888-exec-2] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==> Parameters: 0(Integer), 2(Integer)
+2023-07-31 22:11:54.664 [http-nio-8888-exec-2] DEBUG c.e.server.dao.AdminDao.getMenuChild - <==      Total: 2
+2023-07-31 22:11:54.665 [http-nio-8888-exec-2] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==>  Preparing: SELECT p.id, p.name, p.path FROM permission p JOIN role_permission rp ON p.id = rp.pid WHERE rp.rid = ? AND p.pid = ?
+2023-07-31 22:11:54.665 [http-nio-8888-exec-2] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==> Parameters: 0(Integer), 3(Integer)
+2023-07-31 22:11:54.665 [http-nio-8888-exec-2] DEBUG c.e.server.dao.AdminDao.getMenuChild - <==      Total: 2
+2023-07-31 22:11:54.666 [http-nio-8888-exec-2] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==>  Preparing: SELECT p.id, p.name, p.path FROM permission p JOIN role_permission rp ON p.id = rp.pid WHERE rp.rid = ? AND p.pid = ?
+2023-07-31 22:11:54.666 [http-nio-8888-exec-2] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==> Parameters: 0(Integer), 4(Integer)
+2023-07-31 22:11:54.667 [http-nio-8888-exec-2] DEBUG c.e.server.dao.AdminDao.getMenuChild - <==      Total: 5
+2023-07-31 22:11:54.667 [http-nio-8888-exec-2] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==>  Preparing: SELECT p.id, p.name, p.path FROM permission p JOIN role_permission rp ON p.id = rp.pid WHERE rp.rid = ? AND p.pid = ?
+2023-07-31 22:11:54.668 [http-nio-8888-exec-2] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==> Parameters: 0(Integer), 5(Integer)
+2023-07-31 22:11:54.668 [http-nio-8888-exec-2] DEBUG c.e.server.dao.AdminDao.getMenuChild - <==      Total: 4
+2023-07-31 22:11:54.668 [http-nio-8888-exec-2] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==>  Preparing: SELECT p.id, p.name, p.path FROM permission p JOIN role_permission rp ON p.id = rp.pid WHERE rp.rid = ? AND p.pid = ?
+2023-07-31 22:11:54.669 [http-nio-8888-exec-2] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==> Parameters: 0(Integer), 6(Integer)
+2023-07-31 22:11:54.669 [http-nio-8888-exec-2] DEBUG c.e.server.dao.AdminDao.getMenuChild - <==      Total: 2
+2023-07-31 22:11:54.670 [http-nio-8888-exec-2] DEBUG c.e.s.dao.AdminDao.getPermissions - ==>  Preparing: SELECT pid FROM role_permission WHERE rid = ?
+2023-07-31 22:11:54.670 [http-nio-8888-exec-2] DEBUG c.e.s.dao.AdminDao.getPermissions - ==> Parameters: 0(Integer)
+2023-07-31 22:11:54.672 [http-nio-8888-exec-2] DEBUG c.e.s.dao.AdminDao.getPermissions - <==      Total: 24
+2023-07-31 22:12:23.208 [http-nio-8888-exec-3] DEBUG c.e.server.dao.AdminDao.getBasic - ==>  Preparing: SELECT r.name AS r_name, a.name AS a_name, a.avatar AS avatar FROM admin a JOIN role r ON a.rid = r.id WHERE a.id = ?
+2023-07-31 22:12:23.208 [http-nio-8888-exec-3] DEBUG c.e.server.dao.AdminDao.getBasic - ==> Parameters: 0(Integer)
+2023-07-31 22:12:23.209 [http-nio-8888-exec-3] DEBUG c.e.server.dao.AdminDao.getBasic - <==      Total: 1
+2023-07-31 22:12:23.210 [http-nio-8888-exec-3] DEBUG c.e.s.dao.AdminDao.getMenuParent - ==>  Preparing: SELECT p.id, p.name, p.path, p.icon FROM permission p JOIN role_permission rp ON p.id = rp.pid WHERE rp.rid = ? AND p.pid = -1
+2023-07-31 22:12:23.210 [http-nio-8888-exec-3] DEBUG c.e.s.dao.AdminDao.getMenuParent - ==> Parameters: 0(Integer)
+2023-07-31 22:12:23.214 [http-nio-8888-exec-3] DEBUG c.e.s.dao.AdminDao.getMenuParent - <==      Total: 6
+2023-07-31 22:12:23.215 [http-nio-8888-exec-3] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==>  Preparing: SELECT p.id, p.name, p.path FROM permission p JOIN role_permission rp ON p.id = rp.pid WHERE rp.rid = ? AND p.pid = ?
+2023-07-31 22:12:23.215 [http-nio-8888-exec-3] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==> Parameters: 0(Integer), 1(Integer)
+2023-07-31 22:12:23.216 [http-nio-8888-exec-3] DEBUG c.e.server.dao.AdminDao.getMenuChild - <==      Total: 3
+2023-07-31 22:12:23.217 [http-nio-8888-exec-3] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==>  Preparing: SELECT p.id, p.name, p.path FROM permission p JOIN role_permission rp ON p.id = rp.pid WHERE rp.rid = ? AND p.pid = ?
+2023-07-31 22:12:23.217 [http-nio-8888-exec-3] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==> Parameters: 0(Integer), 2(Integer)
+2023-07-31 22:12:23.218 [http-nio-8888-exec-3] DEBUG c.e.server.dao.AdminDao.getMenuChild - <==      Total: 2
+2023-07-31 22:12:23.218 [http-nio-8888-exec-3] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==>  Preparing: SELECT p.id, p.name, p.path FROM permission p JOIN role_permission rp ON p.id = rp.pid WHERE rp.rid = ? AND p.pid = ?
+2023-07-31 22:12:23.219 [http-nio-8888-exec-3] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==> Parameters: 0(Integer), 3(Integer)
+2023-07-31 22:12:23.220 [http-nio-8888-exec-3] DEBUG c.e.server.dao.AdminDao.getMenuChild - <==      Total: 2
+2023-07-31 22:12:23.221 [http-nio-8888-exec-3] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==>  Preparing: SELECT p.id, p.name, p.path FROM permission p JOIN role_permission rp ON p.id = rp.pid WHERE rp.rid = ? AND p.pid = ?
+2023-07-31 22:12:23.221 [http-nio-8888-exec-3] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==> Parameters: 0(Integer), 4(Integer)
+2023-07-31 22:12:23.222 [http-nio-8888-exec-3] DEBUG c.e.server.dao.AdminDao.getMenuChild - <==      Total: 5
+2023-07-31 22:12:23.223 [http-nio-8888-exec-3] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==>  Preparing: SELECT p.id, p.name, p.path FROM permission p JOIN role_permission rp ON p.id = rp.pid WHERE rp.rid = ? AND p.pid = ?
+2023-07-31 22:12:23.223 [http-nio-8888-exec-3] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==> Parameters: 0(Integer), 5(Integer)
+2023-07-31 22:12:23.224 [http-nio-8888-exec-3] DEBUG c.e.server.dao.AdminDao.getMenuChild - <==      Total: 4
+2023-07-31 22:12:23.224 [http-nio-8888-exec-3] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==>  Preparing: SELECT p.id, p.name, p.path FROM permission p JOIN role_permission rp ON p.id = rp.pid WHERE rp.rid = ? AND p.pid = ?
+2023-07-31 22:12:23.225 [http-nio-8888-exec-3] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==> Parameters: 0(Integer), 6(Integer)
+2023-07-31 22:12:23.225 [http-nio-8888-exec-3] DEBUG c.e.server.dao.AdminDao.getMenuChild - <==      Total: 2
+2023-07-31 22:12:23.226 [http-nio-8888-exec-3] DEBUG c.e.s.dao.AdminDao.getPermissions - ==>  Preparing: SELECT pid FROM role_permission WHERE rid = ?
+2023-07-31 22:12:23.226 [http-nio-8888-exec-3] DEBUG c.e.s.dao.AdminDao.getPermissions - ==> Parameters: 0(Integer)
+2023-07-31 22:12:23.227 [http-nio-8888-exec-3] DEBUG c.e.s.dao.AdminDao.getPermissions - <==      Total: 24
+2023-07-31 22:15:33.181 [http-nio-8888-exec-5] DEBUG c.e.server.dao.AdminDao.getBasic - ==>  Preparing: SELECT r.name AS r_name, a.name AS a_name, a.avatar AS avatar FROM admin a JOIN role r ON a.rid = r.id WHERE a.id = ?
+2023-07-31 22:15:33.182 [http-nio-8888-exec-5] DEBUG c.e.server.dao.AdminDao.getBasic - ==> Parameters: 0(Integer)
+2023-07-31 22:15:33.183 [http-nio-8888-exec-5] DEBUG c.e.server.dao.AdminDao.getBasic - <==      Total: 1
+2023-07-31 22:15:33.183 [http-nio-8888-exec-5] DEBUG c.e.s.dao.AdminDao.getMenuParent - ==>  Preparing: SELECT p.id, p.name, p.path, p.icon FROM permission p JOIN role_permission rp ON p.id = rp.pid WHERE rp.rid = ? AND p.pid = -1
+2023-07-31 22:15:33.184 [http-nio-8888-exec-5] DEBUG c.e.s.dao.AdminDao.getMenuParent - ==> Parameters: 0(Integer)
+2023-07-31 22:15:33.185 [http-nio-8888-exec-5] DEBUG c.e.s.dao.AdminDao.getMenuParent - <==      Total: 6
+2023-07-31 22:15:33.185 [http-nio-8888-exec-5] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==>  Preparing: SELECT p.id, p.name, p.path FROM permission p JOIN role_permission rp ON p.id = rp.pid WHERE rp.rid = ? AND p.pid = ?
+2023-07-31 22:15:33.186 [http-nio-8888-exec-5] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==> Parameters: 0(Integer), 1(Integer)
+2023-07-31 22:15:33.187 [http-nio-8888-exec-5] DEBUG c.e.server.dao.AdminDao.getMenuChild - <==      Total: 3
+2023-07-31 22:15:33.187 [http-nio-8888-exec-5] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==>  Preparing: SELECT p.id, p.name, p.path FROM permission p JOIN role_permission rp ON p.id = rp.pid WHERE rp.rid = ? AND p.pid = ?
+2023-07-31 22:15:33.188 [http-nio-8888-exec-5] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==> Parameters: 0(Integer), 2(Integer)
+2023-07-31 22:15:33.189 [http-nio-8888-exec-5] DEBUG c.e.server.dao.AdminDao.getMenuChild - <==      Total: 2
+2023-07-31 22:15:33.189 [http-nio-8888-exec-5] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==>  Preparing: SELECT p.id, p.name, p.path FROM permission p JOIN role_permission rp ON p.id = rp.pid WHERE rp.rid = ? AND p.pid = ?
+2023-07-31 22:15:33.190 [http-nio-8888-exec-5] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==> Parameters: 0(Integer), 3(Integer)
+2023-07-31 22:15:33.191 [http-nio-8888-exec-5] DEBUG c.e.server.dao.AdminDao.getMenuChild - <==      Total: 2
+2023-07-31 22:15:33.191 [http-nio-8888-exec-5] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==>  Preparing: SELECT p.id, p.name, p.path FROM permission p JOIN role_permission rp ON p.id = rp.pid WHERE rp.rid = ? AND p.pid = ?
+2023-07-31 22:15:33.191 [http-nio-8888-exec-5] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==> Parameters: 0(Integer), 4(Integer)
+2023-07-31 22:15:33.192 [http-nio-8888-exec-5] DEBUG c.e.server.dao.AdminDao.getMenuChild - <==      Total: 5
+2023-07-31 22:15:33.192 [http-nio-8888-exec-5] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==>  Preparing: SELECT p.id, p.name, p.path FROM permission p JOIN role_permission rp ON p.id = rp.pid WHERE rp.rid = ? AND p.pid = ?
+2023-07-31 22:15:33.193 [http-nio-8888-exec-5] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==> Parameters: 0(Integer), 5(Integer)
+2023-07-31 22:15:33.194 [http-nio-8888-exec-5] DEBUG c.e.server.dao.AdminDao.getMenuChild - <==      Total: 4
+2023-07-31 22:15:33.194 [http-nio-8888-exec-5] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==>  Preparing: SELECT p.id, p.name, p.path FROM permission p JOIN role_permission rp ON p.id = rp.pid WHERE rp.rid = ? AND p.pid = ?
+2023-07-31 22:15:33.194 [http-nio-8888-exec-5] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==> Parameters: 0(Integer), 6(Integer)
+2023-07-31 22:15:33.195 [http-nio-8888-exec-5] DEBUG c.e.server.dao.AdminDao.getMenuChild - <==      Total: 2
+2023-07-31 22:15:33.195 [http-nio-8888-exec-5] DEBUG c.e.s.dao.AdminDao.getPermissions - ==>  Preparing: SELECT pid FROM role_permission WHERE rid = ?
+2023-07-31 22:15:33.195 [http-nio-8888-exec-5] DEBUG c.e.s.dao.AdminDao.getPermissions - ==> Parameters: 0(Integer)
+2023-07-31 22:15:33.196 [http-nio-8888-exec-5] DEBUG c.e.s.dao.AdminDao.getPermissions - <==      Total: 24
+2023-07-31 22:15:49.798 [http-nio-8888-exec-7] DEBUG c.e.server.dao.AdminDao.getBasic - ==>  Preparing: SELECT r.name AS r_name, a.name AS a_name, a.avatar AS avatar FROM admin a JOIN role r ON a.rid = r.id WHERE a.id = ?
+2023-07-31 22:15:49.798 [http-nio-8888-exec-7] DEBUG c.e.server.dao.AdminDao.getBasic - ==> Parameters: 0(Integer)
+2023-07-31 22:15:49.799 [http-nio-8888-exec-7] DEBUG c.e.server.dao.AdminDao.getBasic - <==      Total: 1
+2023-07-31 22:15:49.799 [http-nio-8888-exec-7] DEBUG c.e.s.dao.AdminDao.getMenuParent - ==>  Preparing: SELECT p.id, p.name, p.path, p.icon FROM permission p JOIN role_permission rp ON p.id = rp.pid WHERE rp.rid = ? AND p.pid = -1
+2023-07-31 22:15:49.799 [http-nio-8888-exec-7] DEBUG c.e.s.dao.AdminDao.getMenuParent - ==> Parameters: 0(Integer)
+2023-07-31 22:15:49.800 [http-nio-8888-exec-7] DEBUG c.e.s.dao.AdminDao.getMenuParent - <==      Total: 6
+2023-07-31 22:15:49.801 [http-nio-8888-exec-7] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==>  Preparing: SELECT p.id, p.name, p.path FROM permission p JOIN role_permission rp ON p.id = rp.pid WHERE rp.rid = ? AND p.pid = ?
+2023-07-31 22:15:49.801 [http-nio-8888-exec-7] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==> Parameters: 0(Integer), 1(Integer)
+2023-07-31 22:15:49.802 [http-nio-8888-exec-7] DEBUG c.e.server.dao.AdminDao.getMenuChild - <==      Total: 3
+2023-07-31 22:15:49.802 [http-nio-8888-exec-7] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==>  Preparing: SELECT p.id, p.name, p.path FROM permission p JOIN role_permission rp ON p.id = rp.pid WHERE rp.rid = ? AND p.pid = ?
+2023-07-31 22:15:49.802 [http-nio-8888-exec-7] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==> Parameters: 0(Integer), 2(Integer)
+2023-07-31 22:15:49.803 [http-nio-8888-exec-7] DEBUG c.e.server.dao.AdminDao.getMenuChild - <==      Total: 2
+2023-07-31 22:15:49.804 [http-nio-8888-exec-7] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==>  Preparing: SELECT p.id, p.name, p.path FROM permission p JOIN role_permission rp ON p.id = rp.pid WHERE rp.rid = ? AND p.pid = ?
+2023-07-31 22:15:49.804 [http-nio-8888-exec-7] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==> Parameters: 0(Integer), 3(Integer)
+2023-07-31 22:15:49.805 [http-nio-8888-exec-7] DEBUG c.e.server.dao.AdminDao.getMenuChild - <==      Total: 2
+2023-07-31 22:15:49.805 [http-nio-8888-exec-7] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==>  Preparing: SELECT p.id, p.name, p.path FROM permission p JOIN role_permission rp ON p.id = rp.pid WHERE rp.rid = ? AND p.pid = ?
+2023-07-31 22:15:49.806 [http-nio-8888-exec-7] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==> Parameters: 0(Integer), 4(Integer)
+2023-07-31 22:15:49.806 [http-nio-8888-exec-7] DEBUG c.e.server.dao.AdminDao.getMenuChild - <==      Total: 5
+2023-07-31 22:15:49.807 [http-nio-8888-exec-7] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==>  Preparing: SELECT p.id, p.name, p.path FROM permission p JOIN role_permission rp ON p.id = rp.pid WHERE rp.rid = ? AND p.pid = ?
+2023-07-31 22:15:49.807 [http-nio-8888-exec-7] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==> Parameters: 0(Integer), 5(Integer)
+2023-07-31 22:15:49.808 [http-nio-8888-exec-7] DEBUG c.e.server.dao.AdminDao.getMenuChild - <==      Total: 4
+2023-07-31 22:15:49.808 [http-nio-8888-exec-7] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==>  Preparing: SELECT p.id, p.name, p.path FROM permission p JOIN role_permission rp ON p.id = rp.pid WHERE rp.rid = ? AND p.pid = ?
+2023-07-31 22:15:49.808 [http-nio-8888-exec-7] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==> Parameters: 0(Integer), 6(Integer)
+2023-07-31 22:15:49.809 [http-nio-8888-exec-7] DEBUG c.e.server.dao.AdminDao.getMenuChild - <==      Total: 2
+2023-07-31 22:15:49.809 [http-nio-8888-exec-7] DEBUG c.e.s.dao.AdminDao.getPermissions - ==>  Preparing: SELECT pid FROM role_permission WHERE rid = ?
+2023-07-31 22:15:49.809 [http-nio-8888-exec-7] DEBUG c.e.s.dao.AdminDao.getPermissions - ==> Parameters: 0(Integer)
+2023-07-31 22:15:49.809 [http-nio-8888-exec-7] DEBUG c.e.s.dao.AdminDao.getPermissions - <==      Total: 24
+2023-07-31 22:17:17.869 [http-nio-8888-exec-9] DEBUG c.e.server.dao.AdminDao.getBasic - ==>  Preparing: SELECT r.name AS r_name, a.name AS a_name, a.avatar AS avatar FROM admin a JOIN role r ON a.rid = r.id WHERE a.id = ?
+2023-07-31 22:17:17.869 [http-nio-8888-exec-9] DEBUG c.e.server.dao.AdminDao.getBasic - ==> Parameters: 0(Integer)
+2023-07-31 22:17:17.869 [http-nio-8888-exec-9] DEBUG c.e.server.dao.AdminDao.getBasic - <==      Total: 1
+2023-07-31 22:17:17.870 [http-nio-8888-exec-9] DEBUG c.e.s.dao.AdminDao.getMenuParent - ==>  Preparing: SELECT p.id, p.name, p.path, p.icon FROM permission p JOIN role_permission rp ON p.id = rp.pid WHERE rp.rid = ? AND p.pid = -1
+2023-07-31 22:17:17.870 [http-nio-8888-exec-9] DEBUG c.e.s.dao.AdminDao.getMenuParent - ==> Parameters: 0(Integer)
+2023-07-31 22:17:17.871 [http-nio-8888-exec-9] DEBUG c.e.s.dao.AdminDao.getMenuParent - <==      Total: 6
+2023-07-31 22:17:17.871 [http-nio-8888-exec-9] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==>  Preparing: SELECT p.id, p.name, p.path FROM permission p JOIN role_permission rp ON p.id = rp.pid WHERE rp.rid = ? AND p.pid = ?
+2023-07-31 22:17:17.871 [http-nio-8888-exec-9] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==> Parameters: 0(Integer), 1(Integer)
+2023-07-31 22:17:17.872 [http-nio-8888-exec-9] DEBUG c.e.server.dao.AdminDao.getMenuChild - <==      Total: 3
+2023-07-31 22:17:17.872 [http-nio-8888-exec-9] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==>  Preparing: SELECT p.id, p.name, p.path FROM permission p JOIN role_permission rp ON p.id = rp.pid WHERE rp.rid = ? AND p.pid = ?
+2023-07-31 22:17:17.872 [http-nio-8888-exec-9] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==> Parameters: 0(Integer), 2(Integer)
+2023-07-31 22:17:17.872 [http-nio-8888-exec-9] DEBUG c.e.server.dao.AdminDao.getMenuChild - <==      Total: 2
+2023-07-31 22:17:17.872 [http-nio-8888-exec-9] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==>  Preparing: SELECT p.id, p.name, p.path FROM permission p JOIN role_permission rp ON p.id = rp.pid WHERE rp.rid = ? AND p.pid = ?
+2023-07-31 22:17:17.873 [http-nio-8888-exec-9] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==> Parameters: 0(Integer), 3(Integer)
+2023-07-31 22:17:17.873 [http-nio-8888-exec-9] DEBUG c.e.server.dao.AdminDao.getMenuChild - <==      Total: 2
+2023-07-31 22:17:17.873 [http-nio-8888-exec-9] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==>  Preparing: SELECT p.id, p.name, p.path FROM permission p JOIN role_permission rp ON p.id = rp.pid WHERE rp.rid = ? AND p.pid = ?
+2023-07-31 22:17:17.873 [http-nio-8888-exec-9] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==> Parameters: 0(Integer), 4(Integer)
+2023-07-31 22:17:17.874 [http-nio-8888-exec-9] DEBUG c.e.server.dao.AdminDao.getMenuChild - <==      Total: 5
+2023-07-31 22:17:17.874 [http-nio-8888-exec-9] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==>  Preparing: SELECT p.id, p.name, p.path FROM permission p JOIN role_permission rp ON p.id = rp.pid WHERE rp.rid = ? AND p.pid = ?
+2023-07-31 22:17:17.874 [http-nio-8888-exec-9] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==> Parameters: 0(Integer), 5(Integer)
+2023-07-31 22:17:17.875 [http-nio-8888-exec-9] DEBUG c.e.server.dao.AdminDao.getMenuChild - <==      Total: 4
+2023-07-31 22:17:17.875 [http-nio-8888-exec-9] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==>  Preparing: SELECT p.id, p.name, p.path FROM permission p JOIN role_permission rp ON p.id = rp.pid WHERE rp.rid = ? AND p.pid = ?
+2023-07-31 22:17:17.875 [http-nio-8888-exec-9] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==> Parameters: 0(Integer), 6(Integer)
+2023-07-31 22:17:17.875 [http-nio-8888-exec-9] DEBUG c.e.server.dao.AdminDao.getMenuChild - <==      Total: 2
+2023-07-31 22:17:17.875 [http-nio-8888-exec-9] DEBUG c.e.s.dao.AdminDao.getPermissions - ==>  Preparing: SELECT pid FROM role_permission WHERE rid = ?
+2023-07-31 22:17:17.875 [http-nio-8888-exec-9] DEBUG c.e.s.dao.AdminDao.getPermissions - ==> Parameters: 0(Integer)
+2023-07-31 22:17:17.876 [http-nio-8888-exec-9] DEBUG c.e.s.dao.AdminDao.getPermissions - <==      Total: 24
+2023-07-31 22:18:23.567 [http-nio-8888-exec-1] DEBUG c.e.server.dao.AdminDao.getBasic - ==>  Preparing: SELECT r.name AS r_name, a.name AS a_name, a.avatar AS avatar FROM admin a JOIN role r ON a.rid = r.id WHERE a.id = ?
+2023-07-31 22:18:23.567 [http-nio-8888-exec-1] DEBUG c.e.server.dao.AdminDao.getBasic - ==> Parameters: 0(Integer)
+2023-07-31 22:18:23.568 [http-nio-8888-exec-1] DEBUG c.e.server.dao.AdminDao.getBasic - <==      Total: 1
+2023-07-31 22:18:23.568 [http-nio-8888-exec-1] DEBUG c.e.s.dao.AdminDao.getMenuParent - ==>  Preparing: SELECT p.id, p.name, p.path, p.icon FROM permission p JOIN role_permission rp ON p.id = rp.pid WHERE rp.rid = ? AND p.pid = -1
+2023-07-31 22:18:23.568 [http-nio-8888-exec-1] DEBUG c.e.s.dao.AdminDao.getMenuParent - ==> Parameters: 0(Integer)
+2023-07-31 22:18:23.569 [http-nio-8888-exec-1] DEBUG c.e.s.dao.AdminDao.getMenuParent - <==      Total: 6
+2023-07-31 22:18:23.569 [http-nio-8888-exec-1] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==>  Preparing: SELECT p.id, p.name, p.path FROM permission p JOIN role_permission rp ON p.id = rp.pid WHERE rp.rid = ? AND p.pid = ?
+2023-07-31 22:18:23.569 [http-nio-8888-exec-1] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==> Parameters: 0(Integer), 1(Integer)
+2023-07-31 22:18:23.570 [http-nio-8888-exec-1] DEBUG c.e.server.dao.AdminDao.getMenuChild - <==      Total: 3
+2023-07-31 22:18:23.570 [http-nio-8888-exec-1] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==>  Preparing: SELECT p.id, p.name, p.path FROM permission p JOIN role_permission rp ON p.id = rp.pid WHERE rp.rid = ? AND p.pid = ?
+2023-07-31 22:18:23.570 [http-nio-8888-exec-1] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==> Parameters: 0(Integer), 2(Integer)
+2023-07-31 22:18:23.570 [http-nio-8888-exec-1] DEBUG c.e.server.dao.AdminDao.getMenuChild - <==      Total: 2
+2023-07-31 22:18:23.571 [http-nio-8888-exec-1] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==>  Preparing: SELECT p.id, p.name, p.path FROM permission p JOIN role_permission rp ON p.id = rp.pid WHERE rp.rid = ? AND p.pid = ?
+2023-07-31 22:18:23.571 [http-nio-8888-exec-1] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==> Parameters: 0(Integer), 3(Integer)
+2023-07-31 22:18:23.571 [http-nio-8888-exec-1] DEBUG c.e.server.dao.AdminDao.getMenuChild - <==      Total: 2
+2023-07-31 22:18:23.571 [http-nio-8888-exec-1] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==>  Preparing: SELECT p.id, p.name, p.path FROM permission p JOIN role_permission rp ON p.id = rp.pid WHERE rp.rid = ? AND p.pid = ?
+2023-07-31 22:18:23.571 [http-nio-8888-exec-1] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==> Parameters: 0(Integer), 4(Integer)
+2023-07-31 22:18:23.572 [http-nio-8888-exec-1] DEBUG c.e.server.dao.AdminDao.getMenuChild - <==      Total: 5
+2023-07-31 22:18:23.572 [http-nio-8888-exec-1] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==>  Preparing: SELECT p.id, p.name, p.path FROM permission p JOIN role_permission rp ON p.id = rp.pid WHERE rp.rid = ? AND p.pid = ?
+2023-07-31 22:18:23.572 [http-nio-8888-exec-1] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==> Parameters: 0(Integer), 5(Integer)
+2023-07-31 22:18:23.573 [http-nio-8888-exec-1] DEBUG c.e.server.dao.AdminDao.getMenuChild - <==      Total: 4
+2023-07-31 22:18:23.573 [http-nio-8888-exec-1] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==>  Preparing: SELECT p.id, p.name, p.path FROM permission p JOIN role_permission rp ON p.id = rp.pid WHERE rp.rid = ? AND p.pid = ?
+2023-07-31 22:18:23.573 [http-nio-8888-exec-1] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==> Parameters: 0(Integer), 6(Integer)
+2023-07-31 22:18:23.575 [http-nio-8888-exec-1] DEBUG c.e.server.dao.AdminDao.getMenuChild - <==      Total: 2
+2023-07-31 22:18:23.575 [http-nio-8888-exec-1] DEBUG c.e.s.dao.AdminDao.getPermissions - ==>  Preparing: SELECT pid FROM role_permission WHERE rid = ?
+2023-07-31 22:18:23.576 [http-nio-8888-exec-1] DEBUG c.e.s.dao.AdminDao.getPermissions - ==> Parameters: 0(Integer)
+2023-07-31 22:18:23.576 [http-nio-8888-exec-1] DEBUG c.e.s.dao.AdminDao.getPermissions - <==      Total: 24
+2023-07-31 22:18:36.594 [http-nio-8888-exec-3] DEBUG c.e.server.dao.AdminDao.getBasic - ==>  Preparing: SELECT r.name AS r_name, a.name AS a_name, a.avatar AS avatar FROM admin a JOIN role r ON a.rid = r.id WHERE a.id = ?
+2023-07-31 22:18:36.595 [http-nio-8888-exec-3] DEBUG c.e.server.dao.AdminDao.getBasic - ==> Parameters: 0(Integer)
+2023-07-31 22:18:36.595 [http-nio-8888-exec-3] DEBUG c.e.server.dao.AdminDao.getBasic - <==      Total: 1
+2023-07-31 22:18:36.595 [http-nio-8888-exec-3] DEBUG c.e.s.dao.AdminDao.getMenuParent - ==>  Preparing: SELECT p.id, p.name, p.path, p.icon FROM permission p JOIN role_permission rp ON p.id = rp.pid WHERE rp.rid = ? AND p.pid = -1
+2023-07-31 22:18:36.595 [http-nio-8888-exec-3] DEBUG c.e.s.dao.AdminDao.getMenuParent - ==> Parameters: 0(Integer)
+2023-07-31 22:18:36.596 [http-nio-8888-exec-3] DEBUG c.e.s.dao.AdminDao.getMenuParent - <==      Total: 6
+2023-07-31 22:18:36.596 [http-nio-8888-exec-3] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==>  Preparing: SELECT p.id, p.name, p.path FROM permission p JOIN role_permission rp ON p.id = rp.pid WHERE rp.rid = ? AND p.pid = ?
+2023-07-31 22:18:36.596 [http-nio-8888-exec-3] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==> Parameters: 0(Integer), 1(Integer)
+2023-07-31 22:18:36.596 [http-nio-8888-exec-3] DEBUG c.e.server.dao.AdminDao.getMenuChild - <==      Total: 3
+2023-07-31 22:18:36.597 [http-nio-8888-exec-3] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==>  Preparing: SELECT p.id, p.name, p.path FROM permission p JOIN role_permission rp ON p.id = rp.pid WHERE rp.rid = ? AND p.pid = ?
+2023-07-31 22:18:36.597 [http-nio-8888-exec-3] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==> Parameters: 0(Integer), 2(Integer)
+2023-07-31 22:18:36.597 [http-nio-8888-exec-3] DEBUG c.e.server.dao.AdminDao.getMenuChild - <==      Total: 2
+2023-07-31 22:18:36.597 [http-nio-8888-exec-3] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==>  Preparing: SELECT p.id, p.name, p.path FROM permission p JOIN role_permission rp ON p.id = rp.pid WHERE rp.rid = ? AND p.pid = ?
+2023-07-31 22:18:36.597 [http-nio-8888-exec-3] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==> Parameters: 0(Integer), 3(Integer)
+2023-07-31 22:18:36.598 [http-nio-8888-exec-3] DEBUG c.e.server.dao.AdminDao.getMenuChild - <==      Total: 2
+2023-07-31 22:18:36.598 [http-nio-8888-exec-3] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==>  Preparing: SELECT p.id, p.name, p.path FROM permission p JOIN role_permission rp ON p.id = rp.pid WHERE rp.rid = ? AND p.pid = ?
+2023-07-31 22:18:36.598 [http-nio-8888-exec-3] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==> Parameters: 0(Integer), 4(Integer)
+2023-07-31 22:18:36.598 [http-nio-8888-exec-3] DEBUG c.e.server.dao.AdminDao.getMenuChild - <==      Total: 5
+2023-07-31 22:18:36.598 [http-nio-8888-exec-3] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==>  Preparing: SELECT p.id, p.name, p.path FROM permission p JOIN role_permission rp ON p.id = rp.pid WHERE rp.rid = ? AND p.pid = ?
+2023-07-31 22:18:36.599 [http-nio-8888-exec-3] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==> Parameters: 0(Integer), 5(Integer)
+2023-07-31 22:18:36.599 [http-nio-8888-exec-3] DEBUG c.e.server.dao.AdminDao.getMenuChild - <==      Total: 4
+2023-07-31 22:18:36.599 [http-nio-8888-exec-3] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==>  Preparing: SELECT p.id, p.name, p.path FROM permission p JOIN role_permission rp ON p.id = rp.pid WHERE rp.rid = ? AND p.pid = ?
+2023-07-31 22:18:36.599 [http-nio-8888-exec-3] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==> Parameters: 0(Integer), 6(Integer)
+2023-07-31 22:18:36.600 [http-nio-8888-exec-3] DEBUG c.e.server.dao.AdminDao.getMenuChild - <==      Total: 2
+2023-07-31 22:18:36.600 [http-nio-8888-exec-3] DEBUG c.e.s.dao.AdminDao.getPermissions - ==>  Preparing: SELECT pid FROM role_permission WHERE rid = ?
+2023-07-31 22:18:36.600 [http-nio-8888-exec-3] DEBUG c.e.s.dao.AdminDao.getPermissions - ==> Parameters: 0(Integer)
+2023-07-31 22:18:36.600 [http-nio-8888-exec-3] DEBUG c.e.s.dao.AdminDao.getPermissions - <==      Total: 24
+2023-07-31 22:19:06.958 [http-nio-8888-exec-5] DEBUG c.e.server.dao.AdminDao.getBasic - ==>  Preparing: SELECT r.name AS r_name, a.name AS a_name, a.avatar AS avatar FROM admin a JOIN role r ON a.rid = r.id WHERE a.id = ?
+2023-07-31 22:19:06.958 [http-nio-8888-exec-5] DEBUG c.e.server.dao.AdminDao.getBasic - ==> Parameters: 0(Integer)
+2023-07-31 22:19:06.959 [http-nio-8888-exec-5] DEBUG c.e.server.dao.AdminDao.getBasic - <==      Total: 1
+2023-07-31 22:19:06.959 [http-nio-8888-exec-5] DEBUG c.e.s.dao.AdminDao.getMenuParent - ==>  Preparing: SELECT p.id, p.name, p.path, p.icon FROM permission p JOIN role_permission rp ON p.id = rp.pid WHERE rp.rid = ? AND p.pid = -1
+2023-07-31 22:19:06.959 [http-nio-8888-exec-5] DEBUG c.e.s.dao.AdminDao.getMenuParent - ==> Parameters: 0(Integer)
+2023-07-31 22:19:06.959 [http-nio-8888-exec-5] DEBUG c.e.s.dao.AdminDao.getMenuParent - <==      Total: 6
+2023-07-31 22:19:06.960 [http-nio-8888-exec-5] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==>  Preparing: SELECT p.id, p.name, p.path FROM permission p JOIN role_permission rp ON p.id = rp.pid WHERE rp.rid = ? AND p.pid = ?
+2023-07-31 22:19:06.960 [http-nio-8888-exec-5] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==> Parameters: 0(Integer), 1(Integer)
+2023-07-31 22:19:06.960 [http-nio-8888-exec-5] DEBUG c.e.server.dao.AdminDao.getMenuChild - <==      Total: 3
+2023-07-31 22:19:06.960 [http-nio-8888-exec-5] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==>  Preparing: SELECT p.id, p.name, p.path FROM permission p JOIN role_permission rp ON p.id = rp.pid WHERE rp.rid = ? AND p.pid = ?
+2023-07-31 22:19:06.960 [http-nio-8888-exec-5] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==> Parameters: 0(Integer), 2(Integer)
+2023-07-31 22:19:06.961 [http-nio-8888-exec-5] DEBUG c.e.server.dao.AdminDao.getMenuChild - <==      Total: 2
+2023-07-31 22:19:06.961 [http-nio-8888-exec-5] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==>  Preparing: SELECT p.id, p.name, p.path FROM permission p JOIN role_permission rp ON p.id = rp.pid WHERE rp.rid = ? AND p.pid = ?
+2023-07-31 22:19:06.961 [http-nio-8888-exec-5] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==> Parameters: 0(Integer), 3(Integer)
+2023-07-31 22:19:06.962 [http-nio-8888-exec-5] DEBUG c.e.server.dao.AdminDao.getMenuChild - <==      Total: 2
+2023-07-31 22:19:06.962 [http-nio-8888-exec-5] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==>  Preparing: SELECT p.id, p.name, p.path FROM permission p JOIN role_permission rp ON p.id = rp.pid WHERE rp.rid = ? AND p.pid = ?
+2023-07-31 22:19:06.962 [http-nio-8888-exec-5] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==> Parameters: 0(Integer), 4(Integer)
+2023-07-31 22:19:06.962 [http-nio-8888-exec-5] DEBUG c.e.server.dao.AdminDao.getMenuChild - <==      Total: 5
+2023-07-31 22:19:06.962 [http-nio-8888-exec-5] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==>  Preparing: SELECT p.id, p.name, p.path FROM permission p JOIN role_permission rp ON p.id = rp.pid WHERE rp.rid = ? AND p.pid = ?
+2023-07-31 22:19:06.962 [http-nio-8888-exec-5] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==> Parameters: 0(Integer), 5(Integer)
+2023-07-31 22:19:06.963 [http-nio-8888-exec-5] DEBUG c.e.server.dao.AdminDao.getMenuChild - <==      Total: 4
+2023-07-31 22:19:06.963 [http-nio-8888-exec-5] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==>  Preparing: SELECT p.id, p.name, p.path FROM permission p JOIN role_permission rp ON p.id = rp.pid WHERE rp.rid = ? AND p.pid = ?
+2023-07-31 22:19:06.963 [http-nio-8888-exec-5] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==> Parameters: 0(Integer), 6(Integer)
+2023-07-31 22:19:06.963 [http-nio-8888-exec-5] DEBUG c.e.server.dao.AdminDao.getMenuChild - <==      Total: 2
+2023-07-31 22:19:06.963 [http-nio-8888-exec-5] DEBUG c.e.s.dao.AdminDao.getPermissions - ==>  Preparing: SELECT pid FROM role_permission WHERE rid = ?
+2023-07-31 22:19:06.964 [http-nio-8888-exec-5] DEBUG c.e.s.dao.AdminDao.getPermissions - ==> Parameters: 0(Integer)
+2023-07-31 22:19:06.964 [http-nio-8888-exec-5] DEBUG c.e.s.dao.AdminDao.getPermissions - <==      Total: 24
+2023-07-31 22:19:52.264 [http-nio-8888-exec-7] DEBUG c.e.server.dao.AdminDao.getBasic - ==>  Preparing: SELECT r.name AS r_name, a.name AS a_name, a.avatar AS avatar FROM admin a JOIN role r ON a.rid = r.id WHERE a.id = ?
+2023-07-31 22:19:52.265 [http-nio-8888-exec-7] DEBUG c.e.server.dao.AdminDao.getBasic - ==> Parameters: 0(Integer)
+2023-07-31 22:19:52.265 [http-nio-8888-exec-7] DEBUG c.e.server.dao.AdminDao.getBasic - <==      Total: 1
+2023-07-31 22:19:52.266 [http-nio-8888-exec-7] DEBUG c.e.s.dao.AdminDao.getMenuParent - ==>  Preparing: SELECT p.id, p.name, p.path, p.icon FROM permission p JOIN role_permission rp ON p.id = rp.pid WHERE rp.rid = ? AND p.pid = -1
+2023-07-31 22:19:52.266 [http-nio-8888-exec-7] DEBUG c.e.s.dao.AdminDao.getMenuParent - ==> Parameters: 0(Integer)
+2023-07-31 22:19:52.267 [http-nio-8888-exec-7] DEBUG c.e.s.dao.AdminDao.getMenuParent - <==      Total: 6
+2023-07-31 22:19:52.267 [http-nio-8888-exec-7] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==>  Preparing: SELECT p.id, p.name, p.path FROM permission p JOIN role_permission rp ON p.id = rp.pid WHERE rp.rid = ? AND p.pid = ?
+2023-07-31 22:19:52.267 [http-nio-8888-exec-7] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==> Parameters: 0(Integer), 1(Integer)
+2023-07-31 22:19:52.268 [http-nio-8888-exec-7] DEBUG c.e.server.dao.AdminDao.getMenuChild - <==      Total: 3
+2023-07-31 22:19:52.268 [http-nio-8888-exec-7] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==>  Preparing: SELECT p.id, p.name, p.path FROM permission p JOIN role_permission rp ON p.id = rp.pid WHERE rp.rid = ? AND p.pid = ?
+2023-07-31 22:19:52.268 [http-nio-8888-exec-7] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==> Parameters: 0(Integer), 2(Integer)
+2023-07-31 22:19:52.269 [http-nio-8888-exec-7] DEBUG c.e.server.dao.AdminDao.getMenuChild - <==      Total: 2
+2023-07-31 22:19:52.269 [http-nio-8888-exec-7] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==>  Preparing: SELECT p.id, p.name, p.path FROM permission p JOIN role_permission rp ON p.id = rp.pid WHERE rp.rid = ? AND p.pid = ?
+2023-07-31 22:19:52.270 [http-nio-8888-exec-7] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==> Parameters: 0(Integer), 3(Integer)
+2023-07-31 22:19:52.270 [http-nio-8888-exec-7] DEBUG c.e.server.dao.AdminDao.getMenuChild - <==      Total: 2
+2023-07-31 22:19:52.271 [http-nio-8888-exec-7] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==>  Preparing: SELECT p.id, p.name, p.path FROM permission p JOIN role_permission rp ON p.id = rp.pid WHERE rp.rid = ? AND p.pid = ?
+2023-07-31 22:19:52.271 [http-nio-8888-exec-7] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==> Parameters: 0(Integer), 4(Integer)
+2023-07-31 22:19:52.271 [http-nio-8888-exec-7] DEBUG c.e.server.dao.AdminDao.getMenuChild - <==      Total: 5
+2023-07-31 22:19:52.272 [http-nio-8888-exec-7] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==>  Preparing: SELECT p.id, p.name, p.path FROM permission p JOIN role_permission rp ON p.id = rp.pid WHERE rp.rid = ? AND p.pid = ?
+2023-07-31 22:19:52.272 [http-nio-8888-exec-7] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==> Parameters: 0(Integer), 5(Integer)
+2023-07-31 22:19:52.272 [http-nio-8888-exec-7] DEBUG c.e.server.dao.AdminDao.getMenuChild - <==      Total: 4
+2023-07-31 22:19:52.273 [http-nio-8888-exec-7] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==>  Preparing: SELECT p.id, p.name, p.path FROM permission p JOIN role_permission rp ON p.id = rp.pid WHERE rp.rid = ? AND p.pid = ?
+2023-07-31 22:19:52.273 [http-nio-8888-exec-7] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==> Parameters: 0(Integer), 6(Integer)
+2023-07-31 22:19:52.273 [http-nio-8888-exec-7] DEBUG c.e.server.dao.AdminDao.getMenuChild - <==      Total: 2
+2023-07-31 22:19:52.274 [http-nio-8888-exec-7] DEBUG c.e.s.dao.AdminDao.getPermissions - ==>  Preparing: SELECT pid FROM role_permission WHERE rid = ?
+2023-07-31 22:19:52.274 [http-nio-8888-exec-7] DEBUG c.e.s.dao.AdminDao.getPermissions - ==> Parameters: 0(Integer)
+2023-07-31 22:19:52.274 [http-nio-8888-exec-7] DEBUG c.e.s.dao.AdminDao.getPermissions - <==      Total: 24
+2023-07-31 22:19:55.601 [http-nio-8888-exec-9] DEBUG c.e.server.dao.AdminDao.getBasic - ==>  Preparing: SELECT r.name AS r_name, a.name AS a_name, a.avatar AS avatar FROM admin a JOIN role r ON a.rid = r.id WHERE a.id = ?
+2023-07-31 22:19:55.602 [http-nio-8888-exec-9] DEBUG c.e.server.dao.AdminDao.getBasic - ==> Parameters: 0(Integer)
+2023-07-31 22:19:55.602 [http-nio-8888-exec-9] DEBUG c.e.server.dao.AdminDao.getBasic - <==      Total: 1
+2023-07-31 22:19:55.602 [http-nio-8888-exec-9] DEBUG c.e.s.dao.AdminDao.getMenuParent - ==>  Preparing: SELECT p.id, p.name, p.path, p.icon FROM permission p JOIN role_permission rp ON p.id = rp.pid WHERE rp.rid = ? AND p.pid = -1
+2023-07-31 22:19:55.603 [http-nio-8888-exec-9] DEBUG c.e.s.dao.AdminDao.getMenuParent - ==> Parameters: 0(Integer)
+2023-07-31 22:19:55.603 [http-nio-8888-exec-9] DEBUG c.e.s.dao.AdminDao.getMenuParent - <==      Total: 6
+2023-07-31 22:19:55.604 [http-nio-8888-exec-9] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==>  Preparing: SELECT p.id, p.name, p.path FROM permission p JOIN role_permission rp ON p.id = rp.pid WHERE rp.rid = ? AND p.pid = ?
+2023-07-31 22:19:55.604 [http-nio-8888-exec-9] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==> Parameters: 0(Integer), 1(Integer)
+2023-07-31 22:19:55.605 [http-nio-8888-exec-9] DEBUG c.e.server.dao.AdminDao.getMenuChild - <==      Total: 3
+2023-07-31 22:19:55.605 [http-nio-8888-exec-9] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==>  Preparing: SELECT p.id, p.name, p.path FROM permission p JOIN role_permission rp ON p.id = rp.pid WHERE rp.rid = ? AND p.pid = ?
+2023-07-31 22:19:55.605 [http-nio-8888-exec-9] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==> Parameters: 0(Integer), 2(Integer)
+2023-07-31 22:19:55.606 [http-nio-8888-exec-9] DEBUG c.e.server.dao.AdminDao.getMenuChild - <==      Total: 2
+2023-07-31 22:19:55.606 [http-nio-8888-exec-9] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==>  Preparing: SELECT p.id, p.name, p.path FROM permission p JOIN role_permission rp ON p.id = rp.pid WHERE rp.rid = ? AND p.pid = ?
+2023-07-31 22:19:55.606 [http-nio-8888-exec-9] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==> Parameters: 0(Integer), 3(Integer)
+2023-07-31 22:19:55.606 [http-nio-8888-exec-9] DEBUG c.e.server.dao.AdminDao.getMenuChild - <==      Total: 2
+2023-07-31 22:19:55.606 [http-nio-8888-exec-9] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==>  Preparing: SELECT p.id, p.name, p.path FROM permission p JOIN role_permission rp ON p.id = rp.pid WHERE rp.rid = ? AND p.pid = ?
+2023-07-31 22:19:55.607 [http-nio-8888-exec-9] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==> Parameters: 0(Integer), 4(Integer)
+2023-07-31 22:19:55.607 [http-nio-8888-exec-9] DEBUG c.e.server.dao.AdminDao.getMenuChild - <==      Total: 5
+2023-07-31 22:19:55.607 [http-nio-8888-exec-9] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==>  Preparing: SELECT p.id, p.name, p.path FROM permission p JOIN role_permission rp ON p.id = rp.pid WHERE rp.rid = ? AND p.pid = ?
+2023-07-31 22:19:55.607 [http-nio-8888-exec-9] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==> Parameters: 0(Integer), 5(Integer)
+2023-07-31 22:19:55.608 [http-nio-8888-exec-9] DEBUG c.e.server.dao.AdminDao.getMenuChild - <==      Total: 4
+2023-07-31 22:19:55.608 [http-nio-8888-exec-9] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==>  Preparing: SELECT p.id, p.name, p.path FROM permission p JOIN role_permission rp ON p.id = rp.pid WHERE rp.rid = ? AND p.pid = ?
+2023-07-31 22:19:55.608 [http-nio-8888-exec-9] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==> Parameters: 0(Integer), 6(Integer)
+2023-07-31 22:19:55.608 [http-nio-8888-exec-9] DEBUG c.e.server.dao.AdminDao.getMenuChild - <==      Total: 2
+2023-07-31 22:19:55.608 [http-nio-8888-exec-9] DEBUG c.e.s.dao.AdminDao.getPermissions - ==>  Preparing: SELECT pid FROM role_permission WHERE rid = ?
+2023-07-31 22:19:55.609 [http-nio-8888-exec-9] DEBUG c.e.s.dao.AdminDao.getPermissions - ==> Parameters: 0(Integer)
+2023-07-31 22:19:55.609 [http-nio-8888-exec-9] DEBUG c.e.s.dao.AdminDao.getPermissions - <==      Total: 24
+2023-07-31 22:20:28.711 [http-nio-8888-exec-1] DEBUG c.e.server.dao.AdminDao.getBasic - ==>  Preparing: SELECT r.name AS r_name, a.name AS a_name, a.avatar AS avatar FROM admin a JOIN role r ON a.rid = r.id WHERE a.id = ?
+2023-07-31 22:20:28.711 [http-nio-8888-exec-1] DEBUG c.e.server.dao.AdminDao.getBasic - ==> Parameters: 0(Integer)
+2023-07-31 22:20:28.712 [http-nio-8888-exec-1] DEBUG c.e.server.dao.AdminDao.getBasic - <==      Total: 1
+2023-07-31 22:20:28.712 [http-nio-8888-exec-1] DEBUG c.e.s.dao.AdminDao.getMenuParent - ==>  Preparing: SELECT p.id, p.name, p.path, p.icon FROM permission p JOIN role_permission rp ON p.id = rp.pid WHERE rp.rid = ? AND p.pid = -1
+2023-07-31 22:20:28.712 [http-nio-8888-exec-1] DEBUG c.e.s.dao.AdminDao.getMenuParent - ==> Parameters: 0(Integer)
+2023-07-31 22:20:28.712 [http-nio-8888-exec-1] DEBUG c.e.s.dao.AdminDao.getMenuParent - <==      Total: 6
+2023-07-31 22:20:28.713 [http-nio-8888-exec-1] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==>  Preparing: SELECT p.id, p.name, p.path FROM permission p JOIN role_permission rp ON p.id = rp.pid WHERE rp.rid = ? AND p.pid = ?
+2023-07-31 22:20:28.713 [http-nio-8888-exec-1] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==> Parameters: 0(Integer), 1(Integer)
+2023-07-31 22:20:28.714 [http-nio-8888-exec-1] DEBUG c.e.server.dao.AdminDao.getMenuChild - <==      Total: 3
+2023-07-31 22:20:28.714 [http-nio-8888-exec-1] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==>  Preparing: SELECT p.id, p.name, p.path FROM permission p JOIN role_permission rp ON p.id = rp.pid WHERE rp.rid = ? AND p.pid = ?
+2023-07-31 22:20:28.714 [http-nio-8888-exec-1] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==> Parameters: 0(Integer), 2(Integer)
+2023-07-31 22:20:28.715 [http-nio-8888-exec-1] DEBUG c.e.server.dao.AdminDao.getMenuChild - <==      Total: 2
+2023-07-31 22:20:28.715 [http-nio-8888-exec-1] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==>  Preparing: SELECT p.id, p.name, p.path FROM permission p JOIN role_permission rp ON p.id = rp.pid WHERE rp.rid = ? AND p.pid = ?
+2023-07-31 22:20:28.715 [http-nio-8888-exec-1] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==> Parameters: 0(Integer), 3(Integer)
+2023-07-31 22:20:28.716 [http-nio-8888-exec-1] DEBUG c.e.server.dao.AdminDao.getMenuChild - <==      Total: 2
+2023-07-31 22:20:28.716 [http-nio-8888-exec-1] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==>  Preparing: SELECT p.id, p.name, p.path FROM permission p JOIN role_permission rp ON p.id = rp.pid WHERE rp.rid = ? AND p.pid = ?
+2023-07-31 22:20:28.717 [http-nio-8888-exec-1] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==> Parameters: 0(Integer), 4(Integer)
+2023-07-31 22:20:28.717 [http-nio-8888-exec-1] DEBUG c.e.server.dao.AdminDao.getMenuChild - <==      Total: 5
+2023-07-31 22:20:28.717 [http-nio-8888-exec-1] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==>  Preparing: SELECT p.id, p.name, p.path FROM permission p JOIN role_permission rp ON p.id = rp.pid WHERE rp.rid = ? AND p.pid = ?
+2023-07-31 22:20:28.717 [http-nio-8888-exec-1] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==> Parameters: 0(Integer), 5(Integer)
+2023-07-31 22:20:28.718 [http-nio-8888-exec-1] DEBUG c.e.server.dao.AdminDao.getMenuChild - <==      Total: 4
+2023-07-31 22:20:28.718 [http-nio-8888-exec-1] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==>  Preparing: SELECT p.id, p.name, p.path FROM permission p JOIN role_permission rp ON p.id = rp.pid WHERE rp.rid = ? AND p.pid = ?
+2023-07-31 22:20:28.718 [http-nio-8888-exec-1] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==> Parameters: 0(Integer), 6(Integer)
+2023-07-31 22:20:28.719 [http-nio-8888-exec-1] DEBUG c.e.server.dao.AdminDao.getMenuChild - <==      Total: 2
+2023-07-31 22:20:28.719 [http-nio-8888-exec-1] DEBUG c.e.s.dao.AdminDao.getPermissions - ==>  Preparing: SELECT pid FROM role_permission WHERE rid = ?
+2023-07-31 22:20:28.719 [http-nio-8888-exec-1] DEBUG c.e.s.dao.AdminDao.getPermissions - ==> Parameters: 0(Integer)
+2023-07-31 22:20:28.720 [http-nio-8888-exec-1] DEBUG c.e.s.dao.AdminDao.getPermissions - <==      Total: 24
+2023-07-31 22:20:59.939 [http-nio-8888-exec-3] DEBUG c.e.server.dao.AdminDao.getBasic - ==>  Preparing: SELECT r.name AS r_name, a.name AS a_name, a.avatar AS avatar FROM admin a JOIN role r ON a.rid = r.id WHERE a.id = ?
+2023-07-31 22:20:59.940 [http-nio-8888-exec-3] DEBUG c.e.server.dao.AdminDao.getBasic - ==> Parameters: 0(Integer)
+2023-07-31 22:20:59.940 [http-nio-8888-exec-3] DEBUG c.e.server.dao.AdminDao.getBasic - <==      Total: 1
+2023-07-31 22:20:59.940 [http-nio-8888-exec-3] DEBUG c.e.s.dao.AdminDao.getMenuParent - ==>  Preparing: SELECT p.id, p.name, p.path, p.icon FROM permission p JOIN role_permission rp ON p.id = rp.pid WHERE rp.rid = ? AND p.pid = -1
+2023-07-31 22:20:59.941 [http-nio-8888-exec-3] DEBUG c.e.s.dao.AdminDao.getMenuParent - ==> Parameters: 0(Integer)
+2023-07-31 22:20:59.941 [http-nio-8888-exec-3] DEBUG c.e.s.dao.AdminDao.getMenuParent - <==      Total: 6
+2023-07-31 22:20:59.941 [http-nio-8888-exec-3] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==>  Preparing: SELECT p.id, p.name, p.path FROM permission p JOIN role_permission rp ON p.id = rp.pid WHERE rp.rid = ? AND p.pid = ?
+2023-07-31 22:20:59.941 [http-nio-8888-exec-3] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==> Parameters: 0(Integer), 1(Integer)
+2023-07-31 22:20:59.942 [http-nio-8888-exec-3] DEBUG c.e.server.dao.AdminDao.getMenuChild - <==      Total: 3
+2023-07-31 22:20:59.942 [http-nio-8888-exec-3] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==>  Preparing: SELECT p.id, p.name, p.path FROM permission p JOIN role_permission rp ON p.id = rp.pid WHERE rp.rid = ? AND p.pid = ?
+2023-07-31 22:20:59.942 [http-nio-8888-exec-3] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==> Parameters: 0(Integer), 2(Integer)
+2023-07-31 22:20:59.942 [http-nio-8888-exec-3] DEBUG c.e.server.dao.AdminDao.getMenuChild - <==      Total: 2
+2023-07-31 22:20:59.943 [http-nio-8888-exec-3] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==>  Preparing: SELECT p.id, p.name, p.path FROM permission p JOIN role_permission rp ON p.id = rp.pid WHERE rp.rid = ? AND p.pid = ?
+2023-07-31 22:20:59.943 [http-nio-8888-exec-3] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==> Parameters: 0(Integer), 3(Integer)
+2023-07-31 22:20:59.943 [http-nio-8888-exec-3] DEBUG c.e.server.dao.AdminDao.getMenuChild - <==      Total: 2
+2023-07-31 22:20:59.943 [http-nio-8888-exec-3] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==>  Preparing: SELECT p.id, p.name, p.path FROM permission p JOIN role_permission rp ON p.id = rp.pid WHERE rp.rid = ? AND p.pid = ?
+2023-07-31 22:20:59.943 [http-nio-8888-exec-3] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==> Parameters: 0(Integer), 4(Integer)
+2023-07-31 22:20:59.944 [http-nio-8888-exec-3] DEBUG c.e.server.dao.AdminDao.getMenuChild - <==      Total: 5
+2023-07-31 22:20:59.944 [http-nio-8888-exec-3] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==>  Preparing: SELECT p.id, p.name, p.path FROM permission p JOIN role_permission rp ON p.id = rp.pid WHERE rp.rid = ? AND p.pid = ?
+2023-07-31 22:20:59.944 [http-nio-8888-exec-3] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==> Parameters: 0(Integer), 5(Integer)
+2023-07-31 22:20:59.944 [http-nio-8888-exec-3] DEBUG c.e.server.dao.AdminDao.getMenuChild - <==      Total: 4
+2023-07-31 22:20:59.945 [http-nio-8888-exec-3] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==>  Preparing: SELECT p.id, p.name, p.path FROM permission p JOIN role_permission rp ON p.id = rp.pid WHERE rp.rid = ? AND p.pid = ?
+2023-07-31 22:20:59.945 [http-nio-8888-exec-3] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==> Parameters: 0(Integer), 6(Integer)
+2023-07-31 22:20:59.945 [http-nio-8888-exec-3] DEBUG c.e.server.dao.AdminDao.getMenuChild - <==      Total: 2
+2023-07-31 22:20:59.945 [http-nio-8888-exec-3] DEBUG c.e.s.dao.AdminDao.getPermissions - ==>  Preparing: SELECT pid FROM role_permission WHERE rid = ?
+2023-07-31 22:20:59.945 [http-nio-8888-exec-3] DEBUG c.e.s.dao.AdminDao.getPermissions - ==> Parameters: 0(Integer)
+2023-07-31 22:20:59.945 [http-nio-8888-exec-3] DEBUG c.e.s.dao.AdminDao.getPermissions - <==      Total: 24
+2023-07-31 22:21:13.918 [http-nio-8888-exec-5] DEBUG c.e.server.dao.AdminDao.getBasic - ==>  Preparing: SELECT r.name AS r_name, a.name AS a_name, a.avatar AS avatar FROM admin a JOIN role r ON a.rid = r.id WHERE a.id = ?
+2023-07-31 22:21:13.918 [http-nio-8888-exec-5] DEBUG c.e.server.dao.AdminDao.getBasic - ==> Parameters: 0(Integer)
+2023-07-31 22:21:13.919 [http-nio-8888-exec-5] DEBUG c.e.server.dao.AdminDao.getBasic - <==      Total: 1
+2023-07-31 22:21:13.919 [http-nio-8888-exec-5] DEBUG c.e.s.dao.AdminDao.getMenuParent - ==>  Preparing: SELECT p.id, p.name, p.path, p.icon FROM permission p JOIN role_permission rp ON p.id = rp.pid WHERE rp.rid = ? AND p.pid = -1
+2023-07-31 22:21:13.919 [http-nio-8888-exec-5] DEBUG c.e.s.dao.AdminDao.getMenuParent - ==> Parameters: 0(Integer)
+2023-07-31 22:21:13.919 [http-nio-8888-exec-5] DEBUG c.e.s.dao.AdminDao.getMenuParent - <==      Total: 6
+2023-07-31 22:21:13.920 [http-nio-8888-exec-5] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==>  Preparing: SELECT p.id, p.name, p.path FROM permission p JOIN role_permission rp ON p.id = rp.pid WHERE rp.rid = ? AND p.pid = ?
+2023-07-31 22:21:13.920 [http-nio-8888-exec-5] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==> Parameters: 0(Integer), 1(Integer)
+2023-07-31 22:21:13.920 [http-nio-8888-exec-5] DEBUG c.e.server.dao.AdminDao.getMenuChild - <==      Total: 3
+2023-07-31 22:21:13.921 [http-nio-8888-exec-5] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==>  Preparing: SELECT p.id, p.name, p.path FROM permission p JOIN role_permission rp ON p.id = rp.pid WHERE rp.rid = ? AND p.pid = ?
+2023-07-31 22:21:13.921 [http-nio-8888-exec-5] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==> Parameters: 0(Integer), 2(Integer)
+2023-07-31 22:21:13.921 [http-nio-8888-exec-5] DEBUG c.e.server.dao.AdminDao.getMenuChild - <==      Total: 2
+2023-07-31 22:21:13.921 [http-nio-8888-exec-5] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==>  Preparing: SELECT p.id, p.name, p.path FROM permission p JOIN role_permission rp ON p.id = rp.pid WHERE rp.rid = ? AND p.pid = ?
+2023-07-31 22:21:13.921 [http-nio-8888-exec-5] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==> Parameters: 0(Integer), 3(Integer)
+2023-07-31 22:21:13.922 [http-nio-8888-exec-5] DEBUG c.e.server.dao.AdminDao.getMenuChild - <==      Total: 2
+2023-07-31 22:21:13.922 [http-nio-8888-exec-5] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==>  Preparing: SELECT p.id, p.name, p.path FROM permission p JOIN role_permission rp ON p.id = rp.pid WHERE rp.rid = ? AND p.pid = ?
+2023-07-31 22:21:13.922 [http-nio-8888-exec-5] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==> Parameters: 0(Integer), 4(Integer)
+2023-07-31 22:21:13.922 [http-nio-8888-exec-5] DEBUG c.e.server.dao.AdminDao.getMenuChild - <==      Total: 5
+2023-07-31 22:21:13.923 [http-nio-8888-exec-5] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==>  Preparing: SELECT p.id, p.name, p.path FROM permission p JOIN role_permission rp ON p.id = rp.pid WHERE rp.rid = ? AND p.pid = ?
+2023-07-31 22:21:13.923 [http-nio-8888-exec-5] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==> Parameters: 0(Integer), 5(Integer)
+2023-07-31 22:21:13.923 [http-nio-8888-exec-5] DEBUG c.e.server.dao.AdminDao.getMenuChild - <==      Total: 4
+2023-07-31 22:21:13.923 [http-nio-8888-exec-5] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==>  Preparing: SELECT p.id, p.name, p.path FROM permission p JOIN role_permission rp ON p.id = rp.pid WHERE rp.rid = ? AND p.pid = ?
+2023-07-31 22:21:13.923 [http-nio-8888-exec-5] DEBUG c.e.server.dao.AdminDao.getMenuChild - ==> Parameters: 0(Integer), 6(Integer)
+2023-07-31 22:21:13.924 [http-nio-8888-exec-5] DEBUG c.e.server.dao.AdminDao.getMenuChild - <==      Total: 2
+2023-07-31 22:21:13.924 [http-nio-8888-exec-5] DEBUG c.e.s.dao.AdminDao.getPermissions - ==>  Preparing: SELECT pid FROM role_permission WHERE rid = ?
+2023-07-31 22:21:13.924 [http-nio-8888-exec-5] DEBUG c.e.s.dao.AdminDao.getPermissions - ==> Parameters: 0(Integer)
+2023-07-31 22:21:13.924 [http-nio-8888-exec-5] DEBUG c.e.s.dao.AdminDao.getPermissions - <==      Total: 24
