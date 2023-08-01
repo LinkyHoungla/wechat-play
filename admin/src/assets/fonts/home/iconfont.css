@@ -1,0 +1,173 @@
+@font-face {
+  font-family: "iconfont"; /* Project id  */
+  src: url('iconfont.ttf?t=1690878769479') format('truetype');
+}
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-Dollar:before {
+  content: "\e77d";
+}
+
+.icon-transaction:before {
+  content: "\e786";
+}
+
+.icon-piechart:before {
+  content: "\e78e";
+}
+
+.icon-setting:before {
+  content: "\e78f";
+}
+
+.icon-detail:before {
+  content: "\e793";
+}
+
+.icon-wallet:before {
+  content: "\e798";
+}
+
+.icon-user:before {
+  content: "\e7ae";
+}
+
+.icon-team:before {
+  content: "\e7af";
+}
+
+.icon-container:before {
+  content: "\e7b0";
+}
+
+.icon-redenvelope:before {
+  content: "\e7b2";
+}
+
+.icon-reconciliation:before {
+  content: "\e7b4";
+}
+
+.icon-file-exception:before {
+  content: "\e7b5";
+}
+
+.icon-solution:before {
+  content: "\e7b6";
+}
+
+.icon-Batchfolding:before {
+  content: "\e7bf";
+}
+
+.icon-securityscan:before {
+  content: "\e7c0";
+}
+
+.icon-home:before {
+  content: "\e7c6";
+}
+
+.icon-shop:before {
+  content: "\e7ce";
+}
+
+.icon-shopping:before {
+  content: "\e7cf";
+}
+
+.icon-accountbook:before {
+  content: "\e7d3";
+}
+
+.icon-select:before {
+  content: "\e7d4";
+}
+
+.icon-cloud:before {
+  content: "\e7d9";
+}
+
+.icon-notification:before {
+  content: "\e7da";
+}
+
+.icon-sound:before {
+  content: "\e7db";
+}
+
+.icon-table:before {
+  content: "\e7de";
+}
+
+.icon-idcard:before {
+  content: "\e7df";
+}
+
+.icon-upload:before {
+  content: "\e7ef";
+}
+
+.icon-download:before {
+  content: "\e7f0";
+}
+
+.icon-gift:before {
+  content: "\e842";
+}
+
+.icon-close-circle-fill:before {
+  content: "\e844";
+}
+
+.icon-warning-circle-fill:before {
+  content: "\e848";
+}
+
+.icon-appstore-fill:before {
+  content: "\e853";
+}
+
+.icon-database-fill:before {
+  content: "\e85f";
+}
+
+.icon-container-fill:before {
+  content: "\e860";
+}
+
+.icon-sever-fill:before {
+  content: "\e861";
+}
+
+.icon-fund-fill:before {
+  content: "\e862";
+}
+
+.icon-notification-fill:before {
+  content: "\e863";
+}
+
+.icon-shopping-fill:before {
+  content: "\e864";
+}
+
+.icon-home-fill:before {
+  content: "\e867";
+}
+
+.icon-comment:before {
+  content: "\e8e8";
+}
+
+.icon-login:before {
+  content: "\e8ef";
+}
+

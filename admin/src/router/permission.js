@@ -4,10 +4,18 @@
 
 import router from '@/router'
 import { getToken } from '@/utils/token'
+import { Loading } from 'element-ui'
+
 // import store from '@/store'
 
-// 路由守卫
+// 路由守卫 前置
 router.beforeEach((to, from, next) => {
+  // 加载进度
+  Loading.service()
+
+  // 标题设置
+  document.title = to.meta.title
+
   // 检查目标路由是否存在 或 是否在权限内
   // if (to.matched.length === 0 || !store.getters.permission.indexOf(to.meta.rid)) {
   //   // 跳转到 404 页面
@@ -32,4 +40,10 @@ router.beforeEach((to, from, next) => {
       next() // 继续导航到目标页面
     }
   }
+})
+
+// 后置
+router.afterEach(() => {
+  // finish progress bar
+  Loading.service().close()
 })

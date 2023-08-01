@@ -26,7 +26,7 @@ public class AdminServiceImpl implements AdminService {
     public String login(String username, String password, String ip) {
         Map<String, Object> map = adminDao.login(username, password);
 
-        if( map == null && map.get("id") == null)
+        if( map == null || map.get("id") == null)
             throw new ApiException(ApiError.E451);
 
         Integer id = (Integer) map.get("id");

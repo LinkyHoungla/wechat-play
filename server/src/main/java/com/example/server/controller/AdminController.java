@@ -31,9 +31,6 @@ public class AdminController {
         Integer id = Integer.parseInt((String) request.getAttribute("id"));
         Integer rid = (Integer) request.getAttribute("rid");
 
-        System.out.println("id:" + id);
-        System.out.println("rid:" + rid);
-
         return ApiResponse.success(adminService.getCurrentAdmin(id, rid));
     }
 }

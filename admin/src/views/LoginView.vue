@@ -115,8 +115,8 @@ export default {
         this.$message.error('输入非法')
         return
       }
-      this.$loading({ fullscreen: true })
       import('@/api/admin').then(({ login }) => {
+        this.$loading()
         login(this.loginForm).then(({ data }) => {
           setToken(data.data)
           this.$router.push('/')
@@ -144,9 +144,10 @@ export default {
     align-items: center;
 
     width: 400px;
+    border-radius: 5px;
     padding: 40px;
     background: rbga(0, 0, 0, 0.2);
-    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.4);
+    box-shadow: 0px 10px 30px 9px rgba(255, 255, 255, 0.4);
 
     h2 {
       color: #fff;

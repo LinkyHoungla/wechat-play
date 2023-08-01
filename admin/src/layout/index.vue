@@ -1,18 +1,23 @@
 <template>
   <div class="app-wrapper">
     <Sidebar class="side-container" />
-    <AppMain class="main-container" />
+    <div class="main-container" >
+      <Navbar class="nav-container" />
+      <AppMain class="app-container" />
+      <div class="footer">Powered by Linky Houngla</div>
+    </div>
   </div>
 </template>
 
 <script>
-import { Sidebar, AppMain } from '@/layout/components'
+import { Sidebar, AppMain, Navbar } from '@/layout/components'
 
 export default {
   name: 'LayoutView',
   components: {
     Sidebar,
-    AppMain
+    AppMain,
+    Navbar
   }
 }
 </script>
@@ -21,18 +26,17 @@ export default {
 .app-wrapper {
   position: relative;
   display: flex;
-  align-items: center;
-
-  padding: 5px;
+  justify-content: center;
 
   height: 100vh;
   width: 100%;
-  background-color: #bee;
+  background: url('@/assets/home-background.png');
 
   .side-container {
     position: absolute;
     top: 50%;
-    left: 64px;
+    left: 50px;
+    z-index: 999;
 
     display: flex;
     flex-direction: column;
@@ -57,6 +61,40 @@ export default {
 
   .side-container:hover {
     width: 260px;
+  }
+
+  .main-container {
+    width: 80%;
+    height: 100vh;
+
+    background-color: transparent;
+
+    .nav-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      height: 50px;
+      border-radius: 10px;
+      background-color: #1c3738;
+    }
+
+    .app-container {
+      display: flex;
+      flex-direction: column;
+      align-content: center;
+
+      width: 100%;
+      height: 85%;
+      margin-bottom: 20px;
+    }
+
+    .footer {
+      text-align: center;
+      font-size: .75rem;
+      line-height: 1rem;
+      color: #565869b0;
+    }
   }
 
 }

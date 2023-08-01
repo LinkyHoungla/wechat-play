@@ -29,7 +29,7 @@
           <!-- 1级菜单模板区域 -->
           <template slot="title">
             <!-- 图标 -->
-            <i :class="'iconfont ' + item.icon"></i>
+            <i :class="'iconfont ' + item.icon" />
             <!-- 文本 -->
             <span>{{ item.name }}</span>
           </template>
@@ -42,7 +42,7 @@
           >
             <template slot="title">
               <!-- 图标 -->
-              <i class="el-icon-menu"></i>
+              <i class="el-icon-menu" />
               <!-- 文本 -->
               <span>{{ subItem.name }}</span>
             </template>
@@ -69,7 +69,7 @@
 </template>
 
 <script>
-import '@/assets/fonts/iconfont.css'
+import '@/assets/fonts/sidebar/iconfont.css'
 import store from '@/store'
 
 export default {

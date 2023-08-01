@@ -4,24 +4,39 @@
 
 import Vue from 'vue'
 import Router from 'vue-router'
+import Layout from '@/layout'
 
 Vue.use(Router)
 
 const routes = [
   {
     path: '/',
-    name: 'home',
-    component: () => import('@/layout/index.vue')
+    component: Layout,
+    redirect: '/home',
+    children: [
+      {
+        path: 'home',
+        name: 'Home',
+        component: () => import('@/views/Home.vue'),
+        meta: { title: '首页', icon: 'home' }
+      }
+    ]
   },
   {
     path: '/404',
     name: '404',
-    component: () => import('@/views/error/404.vue')
+    component: () => import('@/views/error/404.vue'),
+    meta: {
+      title: '404'
+    }
   },
   {
     path: '/login',
     name: 'login',
-    component: () => import('@/views/LoginView.vue')
+    component: () => import('@/views/LoginView.vue'),
+    meta: {
+      title: '登录'
+    }
   },
   { path: '*', redirect: '/404' }
 ]
