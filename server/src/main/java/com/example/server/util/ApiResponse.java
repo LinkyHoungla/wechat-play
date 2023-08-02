@@ -1,4 +1,4 @@
-package com.example.server.model;
+package com.example.server.util;
 
 import com.example.server.constant.ApiError;
 import lombok.Data;

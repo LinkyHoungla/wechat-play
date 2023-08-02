@@ -65,7 +65,7 @@ public class JwtUtil {
     }
 
     // FUNCTION 检查令牌是否在撤销令牌列表中
-    public static boolean isTokenRevoked(String token) {
+    public static Boolean isTokenRevoked(String token) {
         return revokedTokens.contains(token);
     }
 }

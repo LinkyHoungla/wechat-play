@@ -25,4 +25,32 @@
         WHERE a.id = #{id}
     </select>
 
+    <!-- 分页查询 -->
+    <select id="getAdminList" resultType="com.example.server.dto.AdminInfo">
+        SELECT
+            a.*,
+            al.username,
+            al.ip,
+            al.update_time AS login_time,
+            r.name AS role
+        FROM admin a
+                 INNER JOIN admin_login al ON a.id = al.id
+                 INNER JOIN role r ON a.rid = r.id
+        WHERE 1 = 1
+        <if test="query != null and query.trim() != ''">
+            AND (a.name LIKE CONCAT('%', #{query}, '%') OR al.username LIKE CONCAT('%', #{query}, '%'))
+        </if>
+    </select>
+
+    <!-- 修改 -->
+    <update id="updateAdmin" parameterType="java.util.Map">
+        UPDATE admin
+        <set>
+            <if test="map.name != null">`name` = #{map.name},</if>
+            <if test="map.rid != null">rid = #{map.rid},</if>
+            <if test="map.status != null">`status` = #{map.status}</if>
+        </set>
+        WHERE id = #{id}
+    </update>
+
 </mapper>

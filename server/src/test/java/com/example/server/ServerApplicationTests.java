@@ -13,7 +13,7 @@ class ServerApplicationTests {
 
 	@Test
 	void contextLoads() {
-		System.out.println(adminService.getCurrentAdmin(0, 0));
+		System.out.println(adminService.getAdminList(null,0, 5));
 	}
 
 }
