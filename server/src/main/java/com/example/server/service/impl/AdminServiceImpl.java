@@ -75,6 +75,11 @@ public class AdminServiceImpl implements AdminService {
     }
 
     @Override
+    public Integer addAdmin(String name, Integer rid) {
+        return adminDao.addAdmin(name, rid);
+    }
+
+    @Override
     public Integer updateAdmin(Integer id, Map<String, Object> map) {
         System.out.println(map);
 

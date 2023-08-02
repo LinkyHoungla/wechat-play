@@ -19,8 +19,10 @@ public interface AdminService {
     // SECTION 管理员管理
     // FUNCTION 分页查询
     PageQuery<AdminInfo> getAdminList(String query, Integer pageNum, Integer pageSize);
+    // FUNCTION 添加
+    Integer addAdmin(String name, Integer rid);
     // FUNCTION 信息修改
     Integer updateAdmin(Integer id, Map<String, Object> map);
-    // FUNCTION 管理员删除
+    // FUNCTION 删除
     Integer deleteAdmin(Integer id);
 }

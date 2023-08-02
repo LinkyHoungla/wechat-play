@@ -2,9 +2,7 @@ package com.example.server.dao;
 
 import com.example.server.dto.AdminInfo;
 import com.example.server.entity.vo.Menu;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.Update;
+import org.apache.ibatis.annotations.*;
 
 import java.util.List;
 import java.util.Map;
@@ -36,6 +34,9 @@ public interface AdminDao {
     // SECTION 管理员管理
     // FUNCTION 分页查询
     List<AdminInfo> getAdminList(String query);
+    // FUNCTION 添加
+    @Insert("INSERT admin(`name`, rid) VALUES (#{name}, #{rid})")
+    Integer addAdmin(String name, Integer rid);
     // FUNCTION 修改
     Integer updateAdmin(Integer id, Map<String, Object> map);
     // FUNCTION 删除

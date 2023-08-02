@@ -27,14 +27,14 @@ public class ValidateUtil {
 
     // FUNCTION 长度校验
     public static Boolean length(int min, int max, String str) {
-        return str.length() > min && str.length() < max;
+        return str.length() >= min && str.length() <= max;
     }
     // FUNCTION 范围校验
     public static Boolean rangeInt(int min, int max, int num) {
-        return num > min && num < max;
+        return num >= min && num <= max;
     }
     public static Boolean rangeFloat(float min, float max, float num) {
-        return num > min && num < max;
+        return num >= min && num <= max;
     }
     // FUNCTION 手机号校验
     public static Boolean phone(String phone) {
