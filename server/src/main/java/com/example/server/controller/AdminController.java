@@ -7,6 +7,7 @@ import com.example.server.dto.LoginParam;
 import com.example.server.exception.ApiException;
 import com.example.server.service.impl.AdminServiceImpl;
 import com.example.server.util.ApiResponse;
+import com.example.server.util.IpUtil;
 import com.example.server.util.JwtUtil;
 import com.example.server.util.PageQuery;
 import lombok.RequiredArgsConstructor;
@@ -23,7 +24,14 @@ public class AdminController {
 
     @PostMapping("/login")
     public ApiResponse<String> login(@RequestBody LoginParam loginParam, HttpServletRequest request) {
-        return ApiResponse.success(adminService.login(loginParam.getUsername(), loginParam.getPassword(), request.getRemoteAddr()));
+        String username = loginParam.getUsername();
+        String password = loginParam.getPassword();
+        String ip = IpUtil.getClientIpAddress(request);
+
+        if (username == null || password == null)
+            throw new ApiException(ApiError.E440);
+
+        return ApiResponse.success(adminService.login(username, password, ip));
     }
 
     @GetMapping("/logout")
