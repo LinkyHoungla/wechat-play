@@ -4,8 +4,8 @@
     <div class="main-container" >
       <Navbar class="nav-container" />
       <AppMain class="app-container" />
-      <div class="footer">Powered by Linky Houngla</div>
     </div>
+    <div class="footer">Powered by Linky Houngla</div>
   </div>
 </template>
 
@@ -26,9 +26,10 @@ export default {
 .app-wrapper {
   position: relative;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 
-  height: 100vh;
+  min-height: 100vh;
   width: 100%;
   background: url('@/assets/home-background.png');
 
@@ -64,8 +65,8 @@ export default {
   }
 
   .main-container {
-    width: 80%;
-    height: 100vh;
+    width: 75%;
+    min-height: 96vh;
 
     background-color: transparent;
 
@@ -73,6 +74,8 @@ export default {
       display: flex;
       justify-content: center;
       align-items: center;
+
+      margin: 15px 0 25px;
 
       height: 50px;
       border-radius: 10px;
@@ -86,7 +89,7 @@ export default {
 
       width: 100%;
       height: 85%;
-      margin-bottom: 20px;
+      // margin-bottom: 20px;
     }
 
     .footer {

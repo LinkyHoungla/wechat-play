@@ -20,6 +20,8 @@
         text-color="#fff"
         active-text-color="#cae36db3"
         unique-opened
+        :router="true"
+        :default-active="$route.path"
       >
         <el-submenu
           :index="item.id + ''"

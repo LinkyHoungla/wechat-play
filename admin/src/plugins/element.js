@@ -1,6 +1,6 @@
 import Vue from 'vue'
 
-import { Form, FormItem, Input, Submenu, MenuItem, Button, MessageBox, Message, Menu, Loading, Breadcrumb, BreadcrumbItem, Card, Tag, Dialog, Col, Row, Tree, Pagination } from 'element-ui'
+import { Form, FormItem, Input, Submenu, MenuItem, Button, MessageBox, Message, Menu, Loading, Breadcrumb, BreadcrumbItem, Card, Tag, Dialog, Col, Row, Tree, Pagination, Table, TableColumn } from 'element-ui'
 
 // 容器布局
 // Vue.use(Container)
@@ -39,6 +39,10 @@ Vue.use(Card)
 
 // 树形结构
 Vue.use(Tree)
+
+// 表格
+Vue.use(Table)
+Vue.use(TableColumn)
 
 // 页码栏
 Vue.use(Pagination)

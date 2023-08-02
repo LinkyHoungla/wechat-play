@@ -9,6 +9,7 @@ import Layout from '@/layout'
 Vue.use(Router)
 
 const routes = [
+  // 首页
   {
     path: '/',
     component: Layout,
@@ -19,9 +20,17 @@ const routes = [
         name: 'Home',
         component: () => import('@/views/Home.vue'),
         meta: { title: '首页', icon: 'home' }
+      },
+      {
+        path: 'admins',
+        name: 'Admin',
+        component: () => import('@/views/user/Admin.vue'),
+        meta: { title: '管理员列表', icon: 'table' }
       }
     ]
   },
+
+  // 404
   {
     path: '/404',
     name: '404',
@@ -30,6 +39,8 @@ const routes = [
       title: '404'
     }
   },
+
+  // 登录
   {
     path: '/login',
     name: 'login',
@@ -38,6 +49,22 @@ const routes = [
       title: '登录'
     }
   },
+
+  // 用户管理
+  // {
+  //   path: '/user',
+  //   component: Layout,
+  //   redirect: '/user/admins',
+  //   name: 'User',
+  //   children: [
+  //     {
+  //       path: 'admins',
+  //       name: 'Admin',
+  //       component: () => import('@/views/user/Admin.vue'),
+  //       meta: { title: '管理员列表', icon: 'table' }
+  //     }
+  //   ]
+  // },
   { path: '*', redirect: '/404' }
 ]
 
