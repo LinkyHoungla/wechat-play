@@ -19,7 +19,7 @@ const routes = [
         path: 'home',
         name: 'Home',
         component: () => import('@/views/Home.vue'),
-        meta: { title: '首页', icon: 'home' }
+        meta: { title: '首页', icon: 'home', pid: 0 }
       }
       // {
       //   path: 'admins',
@@ -35,9 +35,7 @@ const routes = [
     path: '/404',
     name: '404',
     component: () => import('@/views/error/404.vue'),
-    meta: {
-      title: '404'
-    }
+    meta: { title: '404', pid: 0 }
   },
 
   // 登录
@@ -45,9 +43,7 @@ const routes = [
     path: '/login',
     name: 'login',
     component: () => import('@/views/LoginView.vue'),
-    meta: {
-      title: '登录'
-    }
+    meta: { title: '登录', pid: 0 }
   },
 
   // 用户管理
@@ -61,7 +57,7 @@ const routes = [
         path: 'admins',
         name: 'Admin',
         component: () => import('@/views/user/Admin.vue'),
-        meta: { title: '管理员列表', icon: 'table' }
+        meta: { title: '管理员列表', icon: 'table', pid: 10 }
       }
     ]
   },

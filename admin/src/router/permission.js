@@ -6,7 +6,7 @@ import router from '@/router'
 import { getToken } from '@/utils/token'
 import { Loading } from 'element-ui'
 
-// import store from '@/store'
+import store from '@/store'
 
 // 路由守卫 前置
 router.beforeEach((to, from, next) => {
@@ -18,11 +18,16 @@ router.beforeEach((to, from, next) => {
   // 标题设置
   document.title = to.meta.title
 
-  // 检查目标路由是否存在 或 是否在权限内
-  // if (to.matched.length === 0 || !store.getters.permission.indexOf(to.meta.rid)) {
-  //   // 跳转到 404 页面
-  //   next('/404')
-  // }
+  // 检查目标路由是否存在
+  if (to.matched.length === 0) {
+    // 跳转到 404 页面
+    next('/404')
+  }
+
+  // 是否在权限内
+  if (to.meta.pid !== 0 && !store.getters.permission.includes(to.meta.pid)) {
+    next('/404')
+  }
 
   // 获取登录状态的标识（token）
   const token = getToken()
