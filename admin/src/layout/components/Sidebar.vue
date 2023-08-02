@@ -38,7 +38,7 @@
 
           <!-- 2级菜单 -->
           <el-menu-item
-            :index="subItem.path"
+            :index="item.path + subItem.path"
             v-for="subItem in item.children"
             :key="subItem.id"
           >

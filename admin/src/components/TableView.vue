@@ -109,5 +109,17 @@ export default {
 }
 </script>
 
-<style>
+<style lang="less" scoped>
+.el-table {
+  height: 680px;
+
+  overflow-y: auto;
+
+  margin-top: 7px;
+  font-size: 12px;
+}
+
+.el-pagination {
+  margin-top: 10px;
+}
 </style>
