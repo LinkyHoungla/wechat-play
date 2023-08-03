@@ -30,12 +30,25 @@ const routes = [
     ]
   },
 
-  // 404
+  // error
   {
-    path: '/404',
-    name: '404',
-    component: () => import('@/views/error/404.vue'),
-    meta: { title: '404', pid: 0 }
+    path: '/error',
+    component: Layout,
+    redirect: '/error/404',
+    children: [
+      {
+        path: '404',
+        name: '404',
+        component: () => import('@/views/error/404.vue'),
+        meta: { title: '404', pid: 0 }
+      },
+      {
+        path: '403',
+        name: '403',
+        component: () => import('@/views/error/403.vue'),
+        meta: { title: '403', pid: 0 }
+      }
+    ]
   },
 
   // 登录
@@ -61,7 +74,7 @@ const routes = [
       }
     ]
   },
-  { path: '*', redirect: '/404' }
+  { path: '*', redirect: '/error' }
 ]
 
 const createRouter = () => new Router({

@@ -19,14 +19,14 @@ router.beforeEach((to, from, next) => {
   document.title = to.meta.title
 
   // 检查目标路由是否存在
-  if (to.matched.length === 0) {
+  if (!to.matched || to.matched.length === 0) {
     // 跳转到 404 页面
-    next('/404')
+    next('/error')
   }
 
   // 是否在权限内
   if (to.meta.pid !== 0 && !store.getters.permission.includes(to.meta.pid)) {
-    next('/404')
+    next('/error/403')
   }
 
   // 获取登录状态的标识（token）

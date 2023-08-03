@@ -1,12 +1,13 @@
 <template>
-  <div>页面不存在</div>
+  <div>权限不足</div>
 </template>
 
 <script>
 export default {
-  name: 'Eeror-404'
+  name: 'Error-403'
 }
 </script>
 
 <style>
+
 </style>
