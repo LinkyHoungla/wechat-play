@@ -14,12 +14,22 @@
         </el-input>
       </el-col>
       <el-col :span="4">
-        <el-button type="primary" @click="handleAdd">{{ tableTitle }}</el-button>
+        <el-button type="primary" @click="handleAdd">{{
+          tableTitle
+        }}</el-button>
       </el-col>
     </el-row>
 
     <!-- 列表区域 -->
-    <el-table :data="tableList">
+    <el-table
+      :data="tableList"
+      :row-key="(row) => row.id"
+      :expand-row-keys="expandRowKeys"
+      @expand-change="handleExpandChange"
+    >
+      <el-table-column v-if="hasExpand" type="expand" >
+        <slot name="expand" />
+      </el-table-column>
       <el-table-column type="index" />
       <el-table-column
         v-for="field in tableFields"
@@ -55,7 +65,8 @@ export default {
     tableFields: Array,
     list: Array,
     total: Number,
-    update: Boolean
+    update: Boolean,
+    hasExpand: Boolean
   },
   watch: {
     list (newVal) {
@@ -79,7 +90,10 @@ export default {
       totalNum: 0,
 
       // 表格 列表
-      tableList: []
+      tableList: [],
+
+      // 展开行
+      expandRowKeys: []
     }
   },
   created () {
@@ -95,6 +109,15 @@ export default {
     handleCurrentChange (newPage) {
       this.queryInfo.pageNum = newPage
       this.handleQuery()
+    },
+    // 监听 展开行
+    handleExpandChange (row) {
+      if (row && this.expandRowKeys.indexOf(row.id)) {
+        this.expandRowKeys = [row.id]
+        this.$emit('expand', row.id)
+      } else {
+        this.expandRowKeys = []
+      }
     },
 
     // 事件

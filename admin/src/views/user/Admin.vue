@@ -10,6 +10,11 @@
       @query="getAdminList"
       @add="addAdminDialog"
     >
+      <template v-slot:status="{ row }">
+        <el-tag :type="getFieldTagType(row.status)" size="mini">{{
+          tagFields.find((item) => item.value === row.status).label
+        }}</el-tag>
+      </template>
       <template v-slot:operate="{ row }">
         <!-- 修改按钮 -->
         <el-button
@@ -23,7 +28,7 @@
           type="danger"
           icon="el-icon-delete"
           size="mini"
-          @click="deleteAdmin(row.cid)"
+          @click="deleteAdmin(row.id)"
         />
       </template>
     </table-page>
@@ -55,12 +60,19 @@ export default {
         { label: '用户名', prop: 'username' },
         { label: '用户昵称', prop: 'name' },
         { label: '权限角色', prop: 'role' },
-        { label: '状态', prop: 'status' },
+        { label: '状态', prop: 'status', type: 'template' },
         { label: 'ip', prop: 'ip' },
         { label: '上次登录', prop: 'loginTime' },
         { label: '创建时间', prop: 'createTime' },
         { label: '更新时间', prop: 'updateTime' },
         { label: '操作', prop: 'operate', type: 'template' }
+      ],
+
+      // 标签
+      tagFields: [
+        { value: 'ACTIVE', label: '正常', tag: 'success' },
+        { value: 'BANED', label: '封禁', tag: 'info' },
+        { value: 'DELETED', label: '已删除', tag: 'danger' }
       ],
 
       // 表单窗口
@@ -97,13 +109,18 @@ export default {
           type: 'select',
           options: [
             { value: 'ACTIVE', label: '正常' },
-            { value: 'BANED', label: '封禁' },
-            { value: 'DELETE', label: '已删除' }
+            { value: 'BANED', label: '封禁' }
           ]
         }
       ]
       this.form = temp
       this.handleFormSubmit = this.updateAdmin
+    },
+
+    // 获取 Tag类型
+    getFieldTagType (value) {
+      const field = this.tagFields.find((item) => item.value === value)
+      return field ? field.tag : ''
     },
 
     // 请求
