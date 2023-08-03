@@ -15,7 +15,7 @@
         <template v-if="field.type === undefined">
           <el-input v-model="form[field.prop]" />
         </template>
-        <template v-if="field.type === 'el-select'">
+        <template v-if="field.type === 'select'">
           <el-select v-model="form[field.prop]">
             <el-option
               v-for="option in field.options"

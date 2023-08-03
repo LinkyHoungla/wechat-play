@@ -91,7 +91,16 @@ export default {
       this.formFields = [
         { label: '昵称', prop: 'name' },
         { label: '身份', prop: 'rid' },
-        { label: '状态', prop: 'status' }
+        {
+          label: '状态',
+          prop: 'status',
+          type: 'select',
+          options: [
+            { value: 'ACTIVE', label: '正常' },
+            { value: 'BANED', label: '封禁' },
+            { value: 'DELETE', label: '已删除' }
+          ]
+        }
       ]
       this.form = temp
       this.handleFormSubmit = this.updateAdmin

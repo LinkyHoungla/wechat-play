@@ -10,7 +10,7 @@ import store from '@/store'
 
 // 路由守卫 前置
 router.beforeEach((to, from, next) => {
-  console.log(to)
+  // console.log(to)
 
   // 加载进度
   Loading.service()
