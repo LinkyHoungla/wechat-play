@@ -26,7 +26,7 @@
     </select>
 
     <!-- 分页查询 -->
-    <select id="getAdminList" resultType="com.example.server.dto.AdminInfo">
+    <select id="getAdminList" resultType="com.example.server.dto.vo.AdminInfo">
         SELECT
             a.*,
             al.username,

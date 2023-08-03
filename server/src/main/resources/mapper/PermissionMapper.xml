@@ -4,10 +4,10 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.server.dao.PermissionDao">
 
+    <!-- 权限角色 -->
     <!-- 分页查询 -->
     <select id="getRoleList" >
-        SELECT
-            *
+        SELECT *
         FROM role
         WHERE 1 = 1
         <if test="query != null and query.trim() != ''">
@@ -15,5 +15,29 @@
         </if>
     </select>
 
+    <!-- 权限 -->
+    <!-- 分页查询 -->
+    <select id="getPermissionParent" >
+        SELECT *
+        FROM permission
+        WHERE pid = -1
+        <if test="query != null and query.trim() != ''">
+            AND `name` LIKE CONCAT('%', #{query}, '%')
+        </if>
+    </select>
+
+    <!-- 添加 -->
+    <insert id="addPermission">
+        INSERT INTO permission(pid, name, path, icon, level)
+        VALUES(#{pid}, #{name}, #{path}, #{icon}, (SELECT p.level + 1 FROM permission p WHERE p.id = #{pid}))
+    </insert>
+
+    <!-- 添加授权 -->
+    <insert id="addAuth">
+        INSERT INTO role_permission(rid, pid) VALUES
+        <foreach collection="auth" item="pid" separator=",">
+            (#{rid}, #{pid})
+        </foreach>
+    </insert>
 
 </mapper>

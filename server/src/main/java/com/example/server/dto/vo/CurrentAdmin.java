@@ -1,6 +1,6 @@
-package com.example.server.dto;
+package com.example.server.dto.vo;
 
-import com.example.server.entity.vo.Menu;
+import com.example.server.dto.vo.Menu;
 import lombok.Data;
 
 import java.util.List;

@@ -1,4 +1,4 @@
-package com.example.server.dto;
+package com.example.server.dto.vo;
 
 import com.example.server.entity.Admin;
 import lombok.Data;

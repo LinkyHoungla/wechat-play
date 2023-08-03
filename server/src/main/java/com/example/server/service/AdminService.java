@@ -1,11 +1,9 @@
 package com.example.server.service;
 
-import com.example.server.dto.AdminInfo;
-import com.example.server.dto.CurrentAdmin;
+import com.example.server.dto.vo.AdminInfo;
+import com.example.server.dto.vo.CurrentAdmin;
 import com.example.server.dto.param.AdminParam;
 import com.example.server.util.PageQuery;
-
-import java.util.Map;
 
 public interface AdminService {
     // SECTION 管理员登录

@@ -1,8 +1,8 @@
 package com.example.server.dao;
 
-import com.example.server.dto.AdminInfo;
+import com.example.server.dto.vo.AdminInfo;
 import com.example.server.dto.param.AdminParam;
-import com.example.server.entity.vo.Menu;
+import com.example.server.dto.vo.Menu;
 import org.apache.ibatis.annotations.*;
 
 import java.util.List;

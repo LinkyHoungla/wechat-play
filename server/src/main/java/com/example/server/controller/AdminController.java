@@ -1,8 +1,8 @@
 package com.example.server.controller;
 
 import com.example.server.constant.ApiError;
-import com.example.server.dto.AdminInfo;
-import com.example.server.dto.CurrentAdmin;
+import com.example.server.dto.vo.AdminInfo;
+import com.example.server.dto.vo.CurrentAdmin;
 import com.example.server.dto.param.AdminParam;
 import com.example.server.dto.param.LoginParam;
 import com.example.server.exception.ApiException;

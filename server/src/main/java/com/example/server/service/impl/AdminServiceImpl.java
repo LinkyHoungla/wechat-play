@@ -2,10 +2,10 @@ package com.example.server.service.impl;
 
 import com.example.server.constant.ApiError;
 import com.example.server.dao.AdminDao;
-import com.example.server.dto.AdminInfo;
-import com.example.server.dto.CurrentAdmin;
+import com.example.server.dto.vo.AdminInfo;
+import com.example.server.dto.vo.CurrentAdmin;
 import com.example.server.dto.param.AdminParam;
-import com.example.server.entity.vo.Menu;
+import com.example.server.dto.vo.Menu;
 import com.example.server.exception.ApiException;
 import com.example.server.service.AdminService;
 import com.example.server.util.JwtUtil;
