@@ -3,33 +3,35 @@ package com.example.server.controller;
 import com.example.server.constant.ApiError;
 import com.example.server.dto.AdminInfo;
 import com.example.server.dto.CurrentAdmin;
-import com.example.server.dto.LoginParam;
+import com.example.server.dto.param.AdminParam;
+import com.example.server.dto.param.LoginParam;
 import com.example.server.exception.ApiException;
 import com.example.server.service.impl.AdminServiceImpl;
 import com.example.server.util.ApiResponse;
-import com.example.server.util.ValidateUtil;
 import com.example.server.util.JwtUtil;
 import com.example.server.util.PageQuery;
+import com.example.server.util.ValidateUtil;
 import lombok.RequiredArgsConstructor;
+import org.hibernate.validator.constraints.Length;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.Map;
+import javax.validation.Valid;
+import javax.validation.constraints.Min;
 
 @RestController
 @RequestMapping("/admin")
 @RequiredArgsConstructor
+@Validated
 public class AdminController {
     private final AdminServiceImpl adminService;
 
     @PostMapping("/login")
-    public ApiResponse<String> login(@RequestBody LoginParam loginParam, HttpServletRequest request) {
+    public ApiResponse<String> login(@RequestBody @Valid LoginParam loginParam, HttpServletRequest request) {
         String username = loginParam.getUsername();
         String password = loginParam.getPassword();
         String ip = ValidateUtil.getClientIpAddress(request);
-
-        if (username == null || password == null)
-            throw new ApiException(ApiError.E440);
 
         return ApiResponse.success(adminService.login(username, password, ip));
     }
@@ -52,40 +54,20 @@ public class AdminController {
     }
 
     @GetMapping("/page")
-    public ApiResponse<PageQuery<AdminInfo>> getAdminByPage(String query,
-                                                            @RequestParam(defaultValue = "1")Integer pageNum,
-                                                            @RequestParam(defaultValue = "10")Integer pageSize){
+    public ApiResponse<PageQuery<AdminInfo>> getAdminByPage(@Length(max = 20, message = "长度超限") String query,
+                                                            @RequestParam(defaultValue = "1") @Min(1) Integer pageNum,
+                                                            @RequestParam(defaultValue = "10") @Min(1) Integer pageSize){
         return ApiResponse.success(adminService.getAdminList(query, pageNum, pageSize));
     }
 
     @PostMapping
-    public ApiResponse<Integer> addAdmin(@RequestBody Map<String, Object> map) {
-        if (map == null)
-            throw new ApiException(ApiError.E460);
-
-        String name;
-        int rid;
-
-        try {
-            name = (String) map.get("name");
-            rid = Integer.parseInt((String) map.get("rid"));
-        }catch (ClassCastException e) {
-            throw new ApiException(ApiError.E441);
-        }
-
-
-        if (name == null || name.isEmpty())
-            throw new ApiException(ApiError.E440);
-
-        if (!ValidateUtil.length(1,10, name) || !ValidateUtil.rangeInt(0,100, rid))
-            throw new ApiException(ApiError.E442);
-
-        return ApiResponse.success(adminService.addAdmin(name, rid));
+    public ApiResponse<Integer> addAdmin(@RequestBody @Valid AdminParam param) {
+        return ApiResponse.success(adminService.addAdmin(param));
     }
 
     @PutMapping("/{id}")
-    public ApiResponse<Integer> updateAdmin(@PathVariable("id")Integer id, @RequestBody Map<String, Object> map) {
-        return ApiResponse.success(adminService.updateAdmin(id, map));
+    public ApiResponse<Integer> updateAdmin(@PathVariable("id")Integer id, @RequestBody @Valid AdminParam param) {
+        return ApiResponse.success(adminService.updateAdmin(id, param));
     }
 
     @DeleteMapping("/{id}")

@@ -10,7 +10,7 @@ import java.lang.annotation.Target;
 @Constraint(validatedBy = EnumValueValidator.class)
 @Target({ElementType.FIELD, ElementType.PARAMETER})
 @Retention(RetentionPolicy.RUNTIME)
-public @interface StatusEnum {
+public @interface EnumValue {
     String message() default "Invalid enum value";
 
     Class<?>[] groups() default {};
@@ -18,6 +18,4 @@ public @interface StatusEnum {
     Class<? extends Payload>[] payload() default {};
 
     Class<? extends Enum<?>> enumClass();
-
-    boolean ignoreCase() default false;
 }

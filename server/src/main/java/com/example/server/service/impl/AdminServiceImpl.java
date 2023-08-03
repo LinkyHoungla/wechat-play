@@ -4,6 +4,7 @@ import com.example.server.constant.ApiError;
 import com.example.server.dao.AdminDao;
 import com.example.server.dto.AdminInfo;
 import com.example.server.dto.CurrentAdmin;
+import com.example.server.dto.param.AdminParam;
 import com.example.server.entity.vo.Menu;
 import com.example.server.exception.ApiException;
 import com.example.server.service.AdminService;
@@ -75,18 +76,13 @@ public class AdminServiceImpl implements AdminService {
     }
 
     @Override
-    public Integer addAdmin(String name, Integer rid) {
-        return adminDao.addAdmin(name, rid);
+    public Integer addAdmin(AdminParam param) {
+        return adminDao.addAdmin(param);
     }
 
     @Override
-    public Integer updateAdmin(Integer id, Map<String, Object> map) {
-        System.out.println(map);
-
-        if( map == null || map.get("id") == null || map.get("status") == null)
-            throw new ApiException(ApiError.E460);
-
-        return adminDao.updateAdmin(id, map);
+    public Integer updateAdmin(Integer id, AdminParam param) {
+        return adminDao.updateAdmin(id, param);
     }
 
     @Override

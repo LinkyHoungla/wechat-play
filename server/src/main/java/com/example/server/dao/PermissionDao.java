@@ -1,46 +1,28 @@
 package com.example.server.dao;
 
-import com.example.server.dto.AdminInfo;
-import com.example.server.entity.vo.Menu;
-import org.apache.ibatis.annotations.*;
+import com.example.server.dto.param.RoleParam;
+import com.example.server.entity.Role;
+import org.apache.ibatis.annotations.Delete;
+import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Update;
 
 import java.util.List;
 import java.util.Map;
 
 @Mapper
-public interface AdminDao {
-    // SECTION 管理员 登录
-    // FUNCTION 登录
-    Map<String, Object> login(String username, String password);
-    @Update("UPDATE admin_login SET ip = #{ip} WHERE id = #{id}")
-    Integer setIp(Integer id, String ip);
-
-    // SECTION 管理员信息
-    // FUNCTION 基本信息
-    Map<String, String> getBasic(Integer id);
-    @Select("SELECT p.id, p.name, p.path, p.icon " +
-            "FROM permission p " +
-            "JOIN role_permission rp ON p.id = rp.pid " +
-            "WHERE rp.rid = #{id} AND p.pid = -1")
-    List<Menu> getMenuParent(Integer rid);
-    @Select("SELECT p.id, p.name, p.path " +
-            "FROM permission p " +
-            "JOIN role_permission rp ON p.id = rp.pid " +
-            "WHERE rp.rid = #{rid} AND p.pid = #{pid}")
-    List<Menu> getMenuChild(Integer rid, Integer pid);
-    @Select("SELECT pid FROM role_permission WHERE rid = #{rid}")
-    List<Integer> getPermissions(Integer rid);
-
-    // SECTION 管理员管理
+public interface PermissionDao {
+    // SECTION 权限角色
     // FUNCTION 分页查询
-    List<AdminInfo> getAdminList(String query);
+    List<Role> getRoleList(String query);
     // FUNCTION 添加
-    @Insert("INSERT admin(`name`, rid) VALUES (#{name}, #{rid})")
-    Integer addAdmin(String name, Integer rid);
+    @Insert("INSERT role(`name`, `desc`) VALUES (#{name}, #{desc})")
+    Integer addRole(RoleParam param);
     // FUNCTION 修改
-    Integer updateAdmin(Integer id, Map<String, Object> map);
+    @Update("UPDATE role SET `name` = #{name}, `desc` = #{desc} WHERE id = #{id}")
+    Integer updateRole(Integer id, RoleParam param);
     // FUNCTION 删除
-    @Update("UPDATE admin SET status = 'DELETED' WHERE id = #{id}")
-    Integer deleteAdmin(Integer id);
+    @Delete("DELETE FROM role WHERE id = #{id}")
+    Integer deleteRole(Integer id);
 
 }

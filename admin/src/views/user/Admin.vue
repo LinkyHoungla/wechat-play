@@ -71,7 +71,7 @@ export default {
       // 标签
       tagFields: [
         { value: 'ACTIVE', label: '正常', tag: 'success' },
-        { value: 'BANED', label: '封禁', tag: 'info' },
+        { value: 'BANNED', label: '封禁', tag: 'info' },
         { value: 'DELETED', label: '已删除', tag: 'danger' }
       ],
 
@@ -109,7 +109,7 @@ export default {
           type: 'select',
           options: [
             { value: 'ACTIVE', label: '正常' },
-            { value: 'BANED', label: '封禁' }
+            { value: 'BANNED', label: '封禁' }
           ]
         }
       ]

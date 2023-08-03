@@ -2,6 +2,7 @@ package com.example.server.service;
 
 import com.example.server.dto.AdminInfo;
 import com.example.server.dto.CurrentAdmin;
+import com.example.server.dto.param.AdminParam;
 import com.example.server.util.PageQuery;
 
 import java.util.Map;
@@ -20,9 +21,9 @@ public interface AdminService {
     // FUNCTION 分页查询
     PageQuery<AdminInfo> getAdminList(String query, Integer pageNum, Integer pageSize);
     // FUNCTION 添加
-    Integer addAdmin(String name, Integer rid);
+    Integer addAdmin(AdminParam param);
     // FUNCTION 信息修改
-    Integer updateAdmin(Integer id, Map<String, Object> map);
+    Integer updateAdmin(Integer id, AdminParam param);
     // FUNCTION 删除
     Integer deleteAdmin(Integer id);
 }

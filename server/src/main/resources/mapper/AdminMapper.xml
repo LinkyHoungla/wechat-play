@@ -42,13 +42,25 @@
         </if>
     </select>
 
+    <!-- 添加 -->
+    <insert id="addAdmin">
+        INSERT INTO admin (`name`, rid
+        <if test="status != null">
+            , status
+        </if>)
+        VALUES (#{name}, #{rid}
+        <if test="status != null">
+            , #{status}
+        </if>)
+    </insert>
+
     <!-- 修改 -->
-    <update id="updateAdmin" parameterType="java.util.Map">
+    <update id="updateAdmin" >
         UPDATE admin
         <set>
-            <if test="map.name != null">`name` = #{map.name},</if>
-            <if test="map.rid != null">rid = #{map.rid},</if>
-            <if test="map.status != null">`status` = #{map.status}</if>
+            <if test="param.name != null">`name` = #{param.name},</if>
+            <if test="param.rid != null">rid = #{param.rid},</if>
+            <if test="param.status != null">`status` = #{param.status}</if>
         </set>
         WHERE id = #{id}
     </update>

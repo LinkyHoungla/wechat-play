@@ -46,5 +46,9 @@ public class ValidateUtil {
         String pattern = "^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$";
         return Pattern.matches(pattern, email);
     }
+    // FUNCTION 字符串非空
+    public static Boolean isEmpty(String str) {
+        return str == null || str.trim().isEmpty();
+    }
 
 }

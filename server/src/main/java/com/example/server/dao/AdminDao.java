@@ -1,6 +1,7 @@
 package com.example.server.dao;
 
 import com.example.server.dto.AdminInfo;
+import com.example.server.dto.param.AdminParam;
 import com.example.server.entity.vo.Menu;
 import org.apache.ibatis.annotations.*;
 
@@ -35,10 +36,9 @@ public interface AdminDao {
     // FUNCTION 分页查询
     List<AdminInfo> getAdminList(String query);
     // FUNCTION 添加
-    @Insert("INSERT admin(`name`, rid) VALUES (#{name}, #{rid})")
-    Integer addAdmin(String name, Integer rid);
+    Integer addAdmin(AdminParam param);
     // FUNCTION 修改
-    Integer updateAdmin(Integer id, Map<String, Object> map);
+    Integer updateAdmin(Integer id, AdminParam param);
     // FUNCTION 删除
     @Update("UPDATE admin SET status = 'DELETED' WHERE id = #{id}")
     Integer deleteAdmin(Integer id);

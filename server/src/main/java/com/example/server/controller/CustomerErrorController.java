@@ -9,7 +9,7 @@ public class CustomerErrorController implements ErrorController {
     private static final String ERROR_PATH = "/error";
     @RequestMapping(value=ERROR_PATH)
     public String handleError(){
-        return "error-page/error";
+        return "something error";
     }
     public String getErrorPath() {
         return ERROR_PATH;
