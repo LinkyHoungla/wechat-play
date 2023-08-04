@@ -27,8 +27,8 @@
       :expand-row-keys="expandRowKeys"
       @expand-change="handleExpandChange"
     >
-      <el-table-column v-if="hasExpand" type="expand" >
-        <slot name="expand" />
+      <el-table-column v-if="hasExpand" type="expand" v-slot="{ row }" >
+        <slot name="expand" :row="row" />
       </el-table-column>
       <el-table-column type="index" />
       <el-table-column
@@ -36,9 +36,10 @@
         :key="field.prop"
         :label="field.label"
         :prop="field.prop"
+        :width="field.width"
       >
         <!-- 判断是否使用具名插槽 -->
-        <template v-if="field.type === 'template'" v-slot="{ row }">
+        <template v-if="field.type === 'template'" v-slot="{ row }" >
           <slot :name="field.prop" :row="row" />
         </template>
       </el-table-column>
