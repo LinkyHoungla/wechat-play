@@ -9,9 +9,8 @@
     <select id="getRoleList" >
         SELECT *
         FROM role
-        WHERE 1 = 1
         <if test="query != null and query.trim() != ''">
-            AND role.name LIKE CONCAT('%', #{query}, '%')
+            WHERE role.name LIKE CONCAT('%', #{query}, '%')
         </if>
     </select>
 
@@ -26,6 +25,19 @@
         </if>
     </select>
 
+    <!-- 权限树 -->
+    <select id="getAuthTree">
+        SELECT p.id, p.pid, p.name
+        FROM permission p
+            <if test="rid != null">
+                INNER JOIN role_permission rp ON p.id = rp.pid
+            </if>
+        WHERE p.pid = #{pid}
+        <if test="rid != null">
+            AND rp.rid = #{rid}
+        </if>
+    </select>
+
     <!-- 添加 -->
     <insert id="addPermission">
         INSERT INTO permission(pid, name, path, icon, level)
@@ -36,8 +48,26 @@
     <insert id="addAuth">
         INSERT INTO role_permission(rid, pid) VALUES
         <foreach collection="auth" item="pid" separator=",">
-            (#{rid}, #{pid})
+            (#{id}, #{pid})
         </foreach>
     </insert>
+
+    <!-- 查找子权限 -->
+    <select id="getChildren" >
+        SELECT p.id
+        FROM permission p
+          INNER JOIN role_permission rp
+                ON rp.pid = p.id
+        WHERE p.pid = #{pid} AND rp.rid = #{rid}
+    </select>
+    <!-- 删除子权限 -->
+    <delete id="deleteAuth">
+        DELETE FROM role_permission
+        WHERE rid = #{rid}
+        AND pid IN
+        <foreach collection="auth" item="pid" open="(" separator="," close=")">
+            #{pid}
+        </foreach>
+    </delete>
 
 </mapper>

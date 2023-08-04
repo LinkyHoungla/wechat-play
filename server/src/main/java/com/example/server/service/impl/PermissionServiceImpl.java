@@ -14,6 +14,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -61,16 +62,16 @@ public class PermissionServiceImpl implements PermissionService {
     }
 
     @Override
-    public List<AuthTree> getAuthTree(Integer level) {
-        List<AuthTree> parents = permissionDao.getAuthParent();
+    public List<AuthTree> getAuthTree(Integer level, Integer id) {
+        List<AuthTree> parents = permissionDao.getAuthTree(-1, id);
 
         if (level > 1) {
             for (AuthTree parent : parents) {
-                List<AuthTree> sons = permissionDao.getAuthChildren(parent.getId());
+                List<AuthTree> sons = permissionDao.getAuthTree(parent.getId(), id);
 
                 if (level > 2) {
                     for (AuthTree son : sons) {
-                        son.setChildren(permissionDao.getAuthChildren(son.getId()));
+                        son.setChildren(permissionDao.getAuthTree(son.getId(), id));
                     }
                 }
 
@@ -79,6 +80,11 @@ public class PermissionServiceImpl implements PermissionService {
         }
 
         return parents;
+    }
+
+    @Override
+    public List<Integer> getAuthList(Integer id) {
+        return permissionDao.getPermissions(id);
     }
 
     @Override
@@ -94,6 +100,19 @@ public class PermissionServiceImpl implements PermissionService {
     @Override
     public Integer deletePermission(Integer id) {
         return permissionDao.deletePermission(id);
+    }
+
+    @Override
+    @Transactional
+    public Integer deleteAuth(Integer rid, Integer pid) {
+        List<Integer> list = new ArrayList<>();
+
+        list.add(pid);
+        for (int i = 0; i < list.size(); i ++) {
+            list.addAll(permissionDao.getChildren(rid, list.get(i)));
+        }
+
+        return permissionDao.deleteAuth(rid, list);
     }
 
     @Override

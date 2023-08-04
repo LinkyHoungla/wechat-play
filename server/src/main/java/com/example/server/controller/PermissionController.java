@@ -50,11 +50,7 @@ public class PermissionController {
     }
 
     @DeleteMapping("/role/{id}")
-    public ApiResponse<Integer> deleteAdmin(@PathVariable("id")Integer id) {
-        if (id == null) {
-            throw new ApiException(ApiError.E460);
-        }
-
+    public ApiResponse<Integer> deleteAdmin(@PathVariable("id") @Min(1) Integer id) {
         return ApiResponse.success(permissionService.deleteRole(id));
     }
 
@@ -81,14 +77,29 @@ public class PermissionController {
     }
 
     @PutMapping("/auth/{id}")
-    public ApiResponse<Integer> updateAuth(@PathVariable("id") @Min(0) Integer id,
+    public ApiResponse<Integer> updateAuth(@PathVariable("id") @Min(1) Integer id,
                                            @RequestBody @NotEmpty List<Integer> auth) {
         return ApiResponse.success(permissionService.auth(id, auth));
     }
 
+    @GetMapping("/rights/{id}")
+    public ApiResponse<List<Integer>> getAuthList(@PathVariable("id") @Min(0) Integer id){
+        return ApiResponse.success(permissionService.getAuthList(id));
+    }
+
     @GetMapping("/auth/{level}")
-    public ApiResponse<List<AuthTree>> getAuth(@PathVariable("level") @Min(0) Integer level) {
-        return ApiResponse.success(permissionService.getAuthTree(level));
+    public ApiResponse<List<AuthTree>> getAuth(@PathVariable("level") @Min(1) Integer level, @RequestParam(name = "id", required = false) Integer id) {
+
+        if (id != null && id < 0) {
+            throw new IllegalArgumentException("Id 值非法");
+        }
+
+        return ApiResponse.success(permissionService.getAuthTree(level, id));
+    }
+
+    @DeleteMapping("/auth/{rid}/{pid}")
+    public ApiResponse<Integer> deleteAuth(@PathVariable("rid") @Min(1) Integer rid,  @PathVariable("pid") @Min(1) Integer pid) {
+        return ApiResponse.success(permissionService.deleteAuth(rid, pid));
     }
 
 }

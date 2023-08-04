@@ -18,7 +18,7 @@ public interface PermissionDao {
     @Insert("INSERT role(`name`, `desc`) VALUES (#{name}, #{desc})")
     Integer addRole(RoleParam param);
     // FUNCTION 修改
-    @Update("UPDATE role SET `name` = #{name}, `desc` = #{desc} WHERE id = #{id}")
+    @Update("UPDATE role SET `name` = #{param.name}, `desc` = #{param.desc} WHERE id = #{id}")
     Integer updateRole(Integer id, RoleParam param);
     // FUNCTION 删除
     @Delete("DELETE FROM role WHERE id = #{id}")
@@ -30,10 +30,11 @@ public interface PermissionDao {
     @Select("SELECT * FROM permission WHERE pid = #{pid}")
     List<PermissionTree> getPermissionChildren(Integer pid);
     // FUNCTION 获取授权树
-    @Select("SELECT p.id, p.pid, p.name FROM permission p WHERE pid = -1")
-    List<AuthTree> getAuthParent();
-    @Select("SELECT p.id, p.pid, p.name FROM permission p WHERE pid = #{pid}")
-    List<AuthTree> getAuthChildren(Integer pid);
+    List<AuthTree> getAuthTree(Integer pid, Integer rid);
+    // FUNCTION 获取角色权限列表
+    @Select("SELECT pid FROM role_permission WHERE rid = #{rid}")
+    List<Integer> getPermissions(Integer rid);
+    List<Integer> getChildren(Integer rid, Integer pid);
     // FUNCTION 添加
     Integer addPermission(PermissionParam param);
     // FUNCTION 添加授权
@@ -44,6 +45,7 @@ public interface PermissionDao {
     // FUNCTION 删除
     @Delete("DELETE FROM permission WHERE id = #{id}")
     Integer deletePermission(Integer id);
+    Integer deleteAuth(Integer rid, List<Integer> auth);
     // FUNCTION 清空
     @Update("DELETE FROM role_permission WHERE rid = #{id}")
     Integer removeAuth(Integer id);

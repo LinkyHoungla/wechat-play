@@ -24,13 +24,17 @@ public interface PermissionService {
     // FUNCTION 获取权限树
     PageQuery<PermissionTree> getPermissionTree(String query, Integer pageNum, Integer pageSize);
     // FUNCTION 获取授权树
-    List<AuthTree> getAuthTree(Integer level);
+    List<AuthTree> getAuthTree(Integer level, Integer id);
+    // FUNCTION 获取权限列表
+    List<Integer> getAuthList(Integer id);
     // FUNCTION 添加
     Integer addPermission(PermissionParam param);
     // FUNCTION 修改
     Integer updatePermission(PermissionParam param);
     // FUNCTION 删除
     Integer deletePermission(Integer id);
+    // FUNCTION 删除授权
+    Integer deleteAuth(Integer rid, Integer pid);
     // FUNCTION 授权
     Integer auth(Integer id, List<Integer> auth);
 }
