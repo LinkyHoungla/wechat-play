@@ -9,7 +9,7 @@ import { Loading } from 'element-ui'
 import store from '@/store'
 
 // 路由守卫 前置
-router.beforeEach((to, from, next) => {
+router.beforeEach(async (to, from, next) => {
   // console.log(to)
 
   // 加载进度
@@ -20,8 +20,13 @@ router.beforeEach((to, from, next) => {
 
   // 检查目标路由是否存在
   if (!to.matched || to.matched.length === 0) {
-    // 跳转到 404 页面
+    // 如果当前已经是错误页面，则不再跳转
     next('/error')
+  }
+
+  const permission = store.getters.permission
+  if (permission.length === 0) {
+    await store.dispatch('login/getLoginfo')
   }
 
   // 是否在权限内

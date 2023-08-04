@@ -47,9 +47,10 @@ service.interceptors.request.use(
 // 响应拦截器
 service.interceptors.response.use(
   response => response,
-  error => {
-    // 451：未登录，452：令牌过期，453：令牌无效
-    if (!errorShown && (error.code === 451 || error.code === 452 || error.code === 453)) {
+  ({ response: res }) => {
+    console.log(res)
+    // 450：未登录，452：令牌过期，453：令牌无效
+    if (!errorShown && (res.status === 450 || res.status === 452 || res.status === 453)) {
       MessageBox.confirm('你已被登出，可以取消继续留在该页面，或者重新登录', '确定登出', {
         confirmButtonText: '重新登录',
         cancelButtonText: '取消',
@@ -63,9 +64,13 @@ service.interceptors.response.use(
 
       // 设置标志变量为true，表示已经弹出了错误提示
       errorShown = true
+    } else if (res.status === 451) {
+      Message.error('用户名不存在或密码错误')
+    } else if (res.status === 502) {
+      Message.error('服务器异常')
     } else {
-      console.log('[Response] ' + error)
-      Message.error('[Response] ' + error)
+      console.log(res)
+      Message.error(`[Response:${res.status}] ${res.message}`)
     }
   }
 )

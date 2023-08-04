@@ -65,6 +65,7 @@ const routes = [
     component: Layout,
     redirect: '/user/admins',
     name: 'User',
+    meta: { title: '用户管理' },
     children: [
       {
         path: 'admins',
@@ -74,6 +75,24 @@ const routes = [
       }
     ]
   },
+
+  // 权限管理
+  {
+    path: '/permission',
+    component: Layout,
+    redirect: '/permission/roles',
+    name: 'Permission',
+    meta: { title: '权限管理' },
+    children: [
+      {
+        path: 'roles',
+        name: 'Role',
+        component: () => import('@/views/permission/Role.vue'),
+        meta: { title: '权限角色', icon: 'table', pid: 12 }
+      }
+    ]
+  },
+
   { path: '*', redirect: '/error' }
 ]
 
