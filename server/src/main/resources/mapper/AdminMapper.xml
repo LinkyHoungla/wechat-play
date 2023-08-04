@@ -13,13 +13,10 @@
     </select>
 
     <!-- 基本信息 -->
-    <resultMap id="ResultMap" type="java.util.Map">
-        <result column="r_name" property="role" />
-        <result column="a_name" property="name" />
-        <result column="avatar" property="avatar" />
-    </resultMap>
-    <select id="getBasic" resultMap="ResultMap">
-        SELECT r.name AS r_name, a.name AS a_name, a.avatar AS avatar
+    <select id="getBasic" >
+        SELECT r.name AS name,
+               a.name AS role,
+               a.avatar AS avatar
         FROM admin a
             JOIN role r  ON a.rid = r.id
         WHERE a.id = #{id}

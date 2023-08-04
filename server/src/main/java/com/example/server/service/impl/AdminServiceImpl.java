@@ -49,13 +49,8 @@ public class AdminServiceImpl implements AdminService {
     @Override
     @Transactional
     public CurrentAdmin getCurrentAdmin(Integer id, Integer rid) {
-        Map<String, String> map =  adminDao.getBasic(id);
-
-        if(map == null)
-            throw new ApiException(ApiError.E460);
-
-        CurrentAdmin ca = new CurrentAdmin(map.get("name"), map.get("role"));
-        ca.setAvatar(map.get("avatar"));
+        CurrentAdmin ca =  adminDao.getBasic(id);
+        ca.setPermissions(adminDao.getPermissions(rid));
 
         List<Menu> p = adminDao.getMenuParent(rid);
         for (Menu c : p) {
@@ -63,8 +58,6 @@ public class AdminServiceImpl implements AdminService {
             c.setChildren(adminDao.getMenuChild(rid, c.getId()));
         }
         ca.setMenus(p);
-
-        ca.setPermissions(adminDao.getPermissions(rid));
 
         return ca;
     }

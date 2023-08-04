@@ -2,7 +2,7 @@
   <div>
     <!-- 表格区域 -->
     <table-page
-      tableTitle="添加订单"
+      tableTitle="添加管理员"
       :tableFields="tableFields"
       :total="totalNum"
       :list="tableList"

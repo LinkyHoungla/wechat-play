@@ -2,6 +2,7 @@ package com.example.server.dao;
 
 import com.example.server.dto.vo.AdminInfo;
 import com.example.server.dto.param.AdminParam;
+import com.example.server.dto.vo.CurrentAdmin;
 import com.example.server.dto.vo.Menu;
 import org.apache.ibatis.annotations.*;
 
@@ -18,7 +19,9 @@ public interface AdminDao {
 
     // SECTION 管理员信息
     // FUNCTION 基本信息
-    Map<String, String> getBasic(Integer id);
+    CurrentAdmin getBasic(Integer id);
+    @Select("SELECT pid FROM role_permission WHERE rid = #{rid}")
+    List<Integer> getPermissions(Integer rid);
     @Select("SELECT p.id, p.name, p.path, p.icon " +
             "FROM permission p " +
             "JOIN role_permission rp ON p.id = rp.pid " +
@@ -29,8 +32,6 @@ public interface AdminDao {
             "JOIN role_permission rp ON p.id = rp.pid " +
             "WHERE rp.rid = #{rid} AND p.pid = #{pid}")
     List<Menu> getMenuChild(Integer rid, Integer pid);
-    @Select("SELECT pid FROM role_permission WHERE rid = #{rid}")
-    List<Integer> getPermissions(Integer rid);
 
     // SECTION 管理员管理
     // FUNCTION 分页查询
