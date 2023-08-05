@@ -98,9 +98,32 @@ const routes = [
       },
       {
         path: 'list',
-        name: 'PList',
+        name: 'PermissionList',
         component: () => import('@/views/permission/Right.vue'),
         meta: { title: '权限角色', icon: 'table', pid: 13 }
+      }
+    ]
+  },
+
+  // 店铺管理
+  {
+    path: '/store',
+    component: Layout,
+    redirect: '/store/list',
+    name: 'Store',
+    meta: { title: '店铺管理' },
+    children: [
+      {
+        path: 'list',
+        name: 'StoreList',
+        component: () => import('@/views/store/Store.vue'),
+        meta: { title: '店铺列表', icon: 'table', pid: 14 }
+      },
+      {
+        path: 'prepaid',
+        name: 'Balance',
+        component: () => import('@/views/store/Balance.vue'),
+        meta: { title: '店铺列表', icon: 'table', pid: 15 }
       }
     ]
   },

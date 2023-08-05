@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.server.dao.StoreDao">
+
+    <!-- 分页查询 -->
+    <select id="getStoreList" >
+        SELECT  *
+        FROM store s
+        <if test="query != null and query.trim() != ''">
+            WHERE s.name LIKE CONCAT('%', #{query}, '%')
+        </if>
+    </select>
+
+    <!-- 分页查询 -->
+    <select id="getBalanceList" >
+        SELECT  *
+        FROM balance b
+        <if test="query != null and query.trim() != ''">
+            WHERE b.id LIKE CONCAT('%', #{query}, '%')
+        </if>
+    </select>
+
+</mapper>
