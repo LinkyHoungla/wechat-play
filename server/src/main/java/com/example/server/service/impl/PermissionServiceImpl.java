@@ -99,6 +99,7 @@ public class PermissionServiceImpl implements PermissionService {
 
     @Override
     public Integer deletePermission(Integer id) {
+        System.out.println(id);
         return permissionDao.deletePermission(id);
     }
 

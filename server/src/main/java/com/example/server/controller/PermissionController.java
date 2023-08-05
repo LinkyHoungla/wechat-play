@@ -21,10 +21,10 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
 import java.util.List;
 
+@Validated
 @RestController
 @RequestMapping("/permission")
 @RequiredArgsConstructor
-@Validated
 public class PermissionController {
     private final PermissionServiceImpl permissionService;
 
@@ -61,6 +61,11 @@ public class PermissionController {
         return ApiResponse.success(permissionService.getPermissionTree(query, pageNum, pageSize));
     }
 
+    @DeleteMapping("/{id}")
+    public ApiResponse<Integer> deletePermission(@PathVariable("id") @Min(1) Integer id) {
+        return ApiResponse.success(permissionService.deletePermission(id));
+    }
+
     @PostMapping
     public ApiResponse<Integer> addPermission(@RequestBody @Validated(value = ValidGroup.Crud.Create.class) PermissionParam param) {
         return ApiResponse.success(permissionService.addPermission(param));
@@ -69,11 +74,6 @@ public class PermissionController {
     @PutMapping
     public ApiResponse<Integer> updatePermission(@RequestBody @Validated(value = ValidGroup.Crud.Update.class) PermissionParam param) {
         return ApiResponse.success(permissionService.updatePermission(param));
-    }
-
-    @DeleteMapping("/{id}")
-    private ApiResponse<Integer> deletePermission(@PathVariable("id") @Min(0) Integer id) {
-        return ApiResponse.success(permissionService.deletePermission(id));
     }
 
     @PutMapping("/auth/{id}")

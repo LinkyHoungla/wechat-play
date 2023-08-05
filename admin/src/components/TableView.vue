@@ -32,7 +32,6 @@
       <el-table-column v-if="hasExpand" type="expand" v-slot="{ row }" >
         <slot name="expand" :row="row" />
       </el-table-column>
-      <el-table-column type="index" />
       <el-table-column
         v-for="field in tableFields"
         :key="field.prop"

@@ -95,6 +95,12 @@ const routes = [
         name: 'Role',
         component: () => import('@/views/permission/Role.vue'),
         meta: { title: '权限角色', icon: 'table', pid: 12 }
+      },
+      {
+        path: 'list',
+        name: 'PList',
+        component: () => import('@/views/permission/Right.vue'),
+        meta: { title: '权限角色', icon: 'table', pid: 13 }
       }
     ]
   },

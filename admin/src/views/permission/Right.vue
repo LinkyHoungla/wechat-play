@@ -2,33 +2,34 @@
   <div>
     <!-- 表格区域 -->
     <table-page
-      tableTitle="添加管理员"
+      tableTitle="添加权限"
       :tableFields="tableFields"
       :total="totalNum"
       :list="tableList"
       :update="formDialogVisible"
-      @query="getAdminList"
-      @add="addAdminDialog"
+      @query="getPermissionTree"
+      @add="addPermissionDialog(-1)"
     >
-      <template v-slot:status="{ row }">
-        <el-tag :type="getFieldTagType(row.status)" size="mini">{{
-          tagFields.find((item) => item.value === row.status).label
-        }}</el-tag>
-      </template>
       <template v-slot:operate="{ row }">
+        <!-- 添加按钮 -->
+        <el-button v-if="row.level !== 3"
+          icon="el-icon-circle-plus-outline"
+          size="mini"
+          @click="addPermissionDialog(row.id)"
+        >添加子权限</el-button>
         <!-- 修改按钮 -->
         <el-button
           type="primary"
           icon="el-icon-edit"
           size="mini"
-          @click="updateAdminDialog(row)"
+          @click="updatePermissionDialog(row)"
         >修改</el-button>
         <!-- 删除按钮 -->
         <el-button
           type="danger"
           icon="el-icon-delete"
           size="mini"
-          @click="deleteAdmin(row.id)"
+          @click="deletePermission(row.id)"
         >删除</el-button>
       </template>
     </table-page>
@@ -45,34 +46,24 @@
 </template>
 
 <script>
-import { getAdminList, addAdmin, deleteAdmin, updateAdmin } from '@/api/admin'
+import { getPermissionTree, addPermission, updatePermission, deletePermission } from '@/api/permission'
 
 export default {
-  name: 'AdminView',
+  name: 'PermissionList',
   data () {
     return {
       // 表格
       tableList: [],
       totalNum: 0,
       tableFields: [
-        { label: '用户ID', prop: 'id' },
-        { label: '头像', prop: 'avatar' },
-        { label: '用户名', prop: 'username' },
-        { label: '用户昵称', prop: 'name' },
-        { label: '权限角色', prop: 'role' },
-        { label: '状态', prop: 'status', type: 'template' },
-        { label: 'ip', prop: 'ip' },
-        { label: '上次登录', prop: 'loginTime' },
+        { label: '权限ID', prop: 'id' },
+        { label: '名称', prop: 'name' },
+        { label: '路径', prop: 'path' },
+        { label: '图标', prop: 'icon' },
+        { label: '等级', prop: 'level' },
         { label: '创建时间', prop: 'createTime' },
         { label: '更新时间', prop: 'updateTime' },
-        { label: '操作', prop: 'operate', type: 'template', width: '180px' }
-      ],
-
-      // 标签
-      tagFields: [
-        { value: 'ACTIVE', label: '正常', tag: 'success' },
-        { value: 'BANNED', label: '封禁', tag: 'info' },
-        { value: 'DELETED', label: '已删除', tag: 'danger' }
+        { label: '操作', prop: 'operate', type: 'template', width: '300px' }
       ],
 
       // 表单窗口
@@ -85,48 +76,35 @@ export default {
   },
   methods: {
     // 弹窗
-    // 添加 管理
-    addAdminDialog () {
+    // 添加
+    addPermissionDialog (id) {
       this.formDialogVisible = true
       this.formDialogTitle = '添加管理'
       this.formFields = [
-        { label: '昵称', prop: 'name' },
-        { label: '身份', prop: 'rid' }
+        { label: '名称', prop: 'name' },
+        { label: '路径', prop: 'path' },
+        { label: '图标', prop: 'icon' }
       ]
-      this.form = {}
-      this.handleFormSubmit = this.addAdmin
+      this.form = { pid: id }
+      this.handleFormSubmit = this.addPermission
     },
-    // 添加 管理
-    updateAdminDialog (temp) {
+    // 修改
+    updatePermissionDialog (temp) {
       this.formDialogVisible = true
       this.formDialogTitle = '修改管理'
       this.formFields = [
-        { label: '昵称', prop: 'name' },
-        { label: '身份', prop: 'rid' },
-        {
-          label: '状态',
-          prop: 'status',
-          type: 'select',
-          options: [
-            { value: 'ACTIVE', label: '正常' },
-            { value: 'BANNED', label: '封禁' }
-          ]
-        }
+        { label: '名称', prop: 'name' },
+        { label: '路径', prop: 'path' },
+        { label: '图标', prop: 'icon' }
       ]
       this.form = temp
-      this.handleFormSubmit = this.updateAdmin
-    },
-
-    // 获取 Tag类型
-    getFieldTagType (value) {
-      const field = this.tagFields.find((item) => item.value === value)
-      return field ? field.tag : ''
+      this.handleFormSubmit = this.updatePermission
     },
 
     // 请求
-    // 获取 管理员 列表
-    getAdminList (query) {
-      getAdminList(query)
+    // 获取
+    getPermissionTree (query) {
+      getPermissionTree(query)
         .then((response) => {
           const { data: res } = response.data
           this.tableList = res.list
@@ -137,9 +115,9 @@ export default {
           this.$message.error('获取失败')
         })
     },
-    // 添加 管理
-    addAdmin (form) {
-      addAdmin(form)
+    // 添加
+    addPermission (form) {
+      addPermission(form)
         .then(() => {
           this.formDialogVisible = false
           this.$message.success('添加成功')
@@ -148,9 +126,9 @@ export default {
           this.$message.error('添加失败')
         })
     },
-    // 修改 管理
-    updateAdmin (form) {
-      updateAdmin(form.id, form)
+    // 修改
+    updatePermission (form) {
+      updatePermission(form)
         .then(() => {
           this.formDialogVisible = false
           this.$message.success('修改成功')
@@ -159,10 +137,10 @@ export default {
           this.$message.error('修改失败')
         })
     },
-    // 删除 用户
-    async deleteAdmin (id) {
+    // 删除
+    async deletePermission (id) {
       const result = await this.$confirm(
-        '此操作将永久删除该用户，是否继续',
+        '此操作将永久删除该权限，是否继续',
         '提示',
         {
           confirmButtonText: '确定',
@@ -172,7 +150,7 @@ export default {
       ).catch((err) => err)
 
       if (result !== 'confirm') return this.$message.info('已取消删除')
-      deleteAdmin(id)
+      deletePermission(id)
         .then(() => {
           this.$message.success('删除成功')
         })

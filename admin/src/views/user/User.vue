@@ -16,7 +16,7 @@
         }}</el-tag>
       </template>
       <template v-slot:gender="{ row }">
-        <el-tag :type="getFieldTagType(row.status)" size="mini">{{
+        <el-tag :type="getFieldTagType(row.gender)" size="mini">{{
           tagFields.find((item) => item.value === row.gender).label
         }}</el-tag>
       </template>
@@ -81,6 +81,7 @@ export default {
 
       // 标签
       tagFields: [
+        { value: null, label: null, tag: '' },
         { value: 'ACTIVE', label: '正常', tag: 'success' },
         { value: 'BANNED', label: '封禁', tag: 'info' },
         { value: 'DELETED', label: '已删除', tag: 'danger' },

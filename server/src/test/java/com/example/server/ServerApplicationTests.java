@@ -17,7 +17,7 @@ class ServerApplicationTests {
 
 	@Test
 	void contextLoads() {
-		System.out.println(permissionService.getAuthTree(3, null));;
+		System.out.println(permissionService.deletePermission(28));;
 	}
 
 }
