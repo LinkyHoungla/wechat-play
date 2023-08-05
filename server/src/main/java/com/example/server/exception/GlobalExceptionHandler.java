@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 
 import javax.validation.ConstraintViolation;
 import javax.validation.ConstraintViolationException;
-import javax.validation.ValidationException;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
@@ -28,7 +27,8 @@ public class GlobalExceptionHandler {
 
     // FUNCTION 请求体参数缺失
     @ExceptionHandler(HttpMessageNotReadableException.class)
-    public ResponseEntity<ApiResponse<Void>> handleRequestBodyException() {
+    public ResponseEntity<ApiResponse<Void>> handleRequestBodyException(HttpMessageNotReadableException e) {
+        System.out.println(e);
         ApiResponse<Void> response = new ApiResponse<>(ApiError.E440);
         return ResponseEntity.status(response.getStatus()).body(response);
     }

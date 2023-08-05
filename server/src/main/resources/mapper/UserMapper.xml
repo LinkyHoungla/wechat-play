@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.server.dao.UserDao">
+    <!-- 登录 -->
+    <select id="login" resultType="java.util.Map" >
+        SELECT u.id, u.rid
+        FROM user u
+                 JOIN user_login ul ON u.id = ul.id
+        WHERE ul.username = #{username} AND ul.password = #{password}
+    </select>
+
+    <!-- 分页查询 -->
+    <select id="getUserList" >
+        SELECT  u.*,
+                ul.username,
+                ul.ip,
+                ul.update_time AS login_time,
+                r.name AS role
+        FROM user u
+            INNER JOIN user_login ul ON u.id = ul.id
+            INNER JOIN role r ON u.rid = r.id
+        <if test="query != null and query.trim() != ''">
+            WHERE u.nickname LIKE CONCAT('%', #{query}, '%')
+        </if>
+    </select>
+
+</mapper>
