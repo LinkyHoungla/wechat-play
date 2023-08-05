@@ -24,16 +24,6 @@ router.beforeEach(async (to, from, next) => {
     next('/error')
   }
 
-  const permission = store.getters.permission
-  if (permission.length === 0) {
-    await store.dispatch('login/getLoginfo')
-  }
-
-  // 是否在权限内
-  if (to.meta.pid !== 0 && !store.getters.permission.includes(to.meta.pid)) {
-    next('/error/403')
-  }
-
   // 获取登录状态的标识（token）
   const token = getToken()
 
@@ -49,6 +39,15 @@ router.beforeEach(async (to, from, next) => {
     if (to.path === '/login') {
       next('/')
     } else {
+      // 权限是否为空
+      const permission = store.getters.permission
+      if (permission.length === 0) {
+        await store.dispatch('login/getLoginfo')
+      }
+      // 是否在权限内
+      if (to.meta.pid !== 0 && !store.getters.permission.includes(to.meta.pid)) {
+        next('/error/403')
+      }
       next() // 继续导航到目标页面
     }
   }

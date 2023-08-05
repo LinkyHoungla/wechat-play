@@ -1,6 +1,6 @@
 import Vue from 'vue'
 
-import { Form, FormItem, Input, Submenu, MenuItem, Button, MessageBox, Message, Menu, Loading, Breadcrumb, BreadcrumbItem, Card, Tag, Dialog, Col, Row, Tree, Pagination, Table, TableColumn, Select, Option } from 'element-ui'
+import { Form, FormItem, Input, Submenu, MenuItem, Button, MessageBox, Message, Menu, Loading, Breadcrumb, BreadcrumbItem, Card, Tag, Dialog, Col, Row, Tree, Pagination, Table, TableColumn, Select, Option, DatePicker } from 'element-ui'
 
 // 容器布局
 // Vue.use(Container)
@@ -38,6 +38,9 @@ Vue.use(BreadcrumbItem)
 
 // 卡片
 Vue.use(Card)
+
+// 日期选择
+Vue.use(DatePicker)
 
 // 树形结构
 Vue.use(Tree)

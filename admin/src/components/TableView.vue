@@ -22,6 +22,8 @@
 
     <!-- 列表区域 -->
     <el-table
+      :cell-style="{'text-align':'center'}"
+      :header-cell-style="{'text-align':'center'}"
       :data="tableList"
       :row-key="(row) => row.id"
       :expand-row-keys="expandRowKeys"
@@ -127,7 +129,6 @@ export default {
     },
     handleAdd () {
       this.$emit('add')
-      this.handleQuery()
     }
   }
 }
@@ -146,4 +147,5 @@ export default {
 .el-pagination {
   margin-top: 10px;
 }
+
 </style>

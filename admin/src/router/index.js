@@ -64,7 +64,7 @@ const routes = [
     path: '/user',
     component: Layout,
     redirect: '/user/admins',
-    name: 'User',
+    name: 'UserView',
     meta: { title: '用户管理' },
     children: [
       {
@@ -72,6 +72,12 @@ const routes = [
         name: 'Admin',
         component: () => import('@/views/user/Admin.vue'),
         meta: { title: '管理员列表', icon: 'table', pid: 10 }
+      },
+      {
+        path: 'users',
+        name: 'User',
+        component: () => import('@/views/user/User.vue'),
+        meta: { title: '用户列表', icon: 'table', pid: 11 }
       }
     ]
   },

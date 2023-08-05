@@ -48,7 +48,6 @@ service.interceptors.request.use(
 service.interceptors.response.use(
   response => response,
   ({ response: res }) => {
-    console.log(res)
     // 450：未登录，452：令牌过期，453：令牌无效
     if (!errorShown && (res.status === 450 || res.status === 452 || res.status === 453)) {
       MessageBox.confirm('你已被登出，可以取消继续留在该页面，或者重新登录', '确定登出', {
@@ -70,8 +69,10 @@ service.interceptors.response.use(
       Message.error('服务器异常')
     } else {
       console.log(res)
-      Message.error(`[Response:${res.status}] ${res.message}`)
+      // Message.error(`[Response:${res.status}] ${res.message}`)
     }
+
+    return Promise.reject(res)
   }
 )
 
