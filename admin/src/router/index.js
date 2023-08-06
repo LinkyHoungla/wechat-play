@@ -134,6 +134,23 @@ const routes = [
     ]
   },
 
+  // 订单管理
+  {
+    path: '/order',
+    component: Layout,
+    redirect: '/order/list',
+    name: 'Order',
+    meta: { title: '店铺管理' },
+    children: [
+      {
+        path: 'list',
+        name: 'OrderList',
+        component: () => import('@/views/order/Order.vue'),
+        meta: { title: '订单列表', icon: 'table', pid: 20 }
+      }
+    ]
+  },
+
   { path: '*', redirect: '/error' }
 ]
 

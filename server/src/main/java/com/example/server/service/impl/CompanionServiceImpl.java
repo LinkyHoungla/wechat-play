@@ -1,7 +1,7 @@
 package com.example.server.service.impl;
 
 import com.example.server.dao.CompanionDao;
-import com.example.server.dto.param.CompanionParam;
+import com.example.server.dto.param.USidParam;
 import com.example.server.entity.Companion;
 import com.example.server.service.CompanionService;
 import com.example.server.util.PageQuery;
@@ -22,7 +22,7 @@ public class CompanionServiceImpl implements CompanionService {
     }
 
     @Override
-    public Integer addCompanion(CompanionParam param) {
+    public Integer addCompanion(USidParam param) {
         return companionDao.addCompanion(param);
     }
 

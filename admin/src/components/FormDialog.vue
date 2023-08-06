@@ -29,6 +29,16 @@
         <template v-if="field.type === 'date'">
           <el-date-picker v-model="form[field.prop]" type="date" placeholder="选择日期" />
         </template>
+        <template v-if="field.type === 'checkbox'">
+          <el-select v-model="form[field.prop]" multiple >
+            <el-option
+              v-for="option in field.options"
+              :key="option.value"
+              :label="option.label"
+              :value="option.value"
+            />
+          </el-select>
+        </template>
       </el-form-item>
     </el-form>
     <span slot="footer" class="dialog-footer">

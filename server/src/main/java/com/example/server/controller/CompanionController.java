@@ -1,6 +1,6 @@
 package com.example.server.controller;
 
-import com.example.server.dto.param.CompanionParam;
+import com.example.server.dto.param.USidParam;
 import com.example.server.dto.param.StatusParam;
 import com.example.server.entity.Companion;
 import com.example.server.service.impl.CompanionServiceImpl;
@@ -29,7 +29,7 @@ public class CompanionController {
     }
 
     @PostMapping
-    public ApiResponse<Integer> addCompanion(@RequestBody @Valid CompanionParam param) {
+    public ApiResponse<Integer> addCompanion(@RequestBody @Valid USidParam param) {
         return ApiResponse.success(companionService.addCompanion(param));
     }
 

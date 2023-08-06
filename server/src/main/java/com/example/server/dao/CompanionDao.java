@@ -1,6 +1,6 @@
 package com.example.server.dao;
 
-import com.example.server.dto.param.CompanionParam;
+import com.example.server.dto.param.USidParam;
 import com.example.server.entity.Companion;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
@@ -15,7 +15,7 @@ public interface CompanionDao {
     List<Companion> getCompanionList(String query);
     // FUNCTION 添加
     @Insert("INSERT INTO companion (uid,sid) VALUES (#{uid}, #{sid})")
-    Integer addCompanion(CompanionParam param);
+    Integer addCompanion(USidParam param);
     // FUNCTION 修改
     @Update("UPDATE companion SET status = #{status} WHERE id = #{id} ")
     Integer updateCompanion(Integer id, String status);
