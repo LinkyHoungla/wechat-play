@@ -13,4 +13,13 @@
         </if>
     </select>
 
+    <!-- 分页查询 -->
+    <select id="getWalletList" >
+        SELECT  *
+        FROM wallet
+        <if test="query != null and query.trim() != ''">
+            WHERE uid LIKE CONCAT('%', #{query}, '%')
+        </if>
+    </select>
+
 </mapper>

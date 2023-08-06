@@ -147,6 +147,12 @@ const routes = [
         name: 'OrderList',
         component: () => import('@/views/order/Order.vue'),
         meta: { title: '订单列表', icon: 'table', pid: 20 }
+      },
+      {
+        path: 'balance',
+        name: 'WalletList',
+        component: () => import('@/views/order/Wallet.vue'),
+        meta: { title: '钱包列表', icon: 'table', pid: 19 }
       }
     ]
   },

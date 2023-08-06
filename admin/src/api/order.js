@@ -35,3 +35,28 @@ export function updateOrder (data) {
     }
   })
 }
+
+// 钱包
+// 获取 列表
+export function getWalletList (pageParam) {
+  return service({
+    url: '/order/wallet/page',
+    method: 'get',
+    params: pageParam,
+    meta: {
+      rid: -1
+    }
+  })
+}
+
+// 修改
+export function updateWallet (data) {
+  return service({
+    url: '/order/wallet',
+    method: 'put',
+    data,
+    meta: {
+      rid: -1
+    }
+  })
+}

@@ -14,7 +14,7 @@
         </el-input>
       </el-col>
       <el-col :span="4">
-        <el-button type="primary" @click="handleAdd">{{
+        <el-button type="primary" @click="handleAdd" v-if="tableTitle !== undefined" >{{
           tableTitle
         }}</el-button>
       </el-col>

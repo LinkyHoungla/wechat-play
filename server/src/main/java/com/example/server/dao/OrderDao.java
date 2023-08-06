@@ -1,7 +1,9 @@
 package com.example.server.dao;
 
+import com.example.server.dto.param.BalanceParam;
 import com.example.server.dto.param.RequireParam;
 import com.example.server.entity.Order;
+import com.example.server.entity.Wallet;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Update;
@@ -10,7 +12,7 @@ import java.util.List;
 
 @Mapper
 public interface OrderDao {
-    // SECTION 陪娃管理
+    // SECTION 陪玩管理
     // FUNCTION 获取
     List<Order> getOrderList(String query);
     // FUNCTION 添加
@@ -23,5 +25,13 @@ public interface OrderDao {
     @Update("UPDATE `order` SET status = #{status} WHERE id = #{id} ")
     Integer updateOrder(String id, String status);
 
+    // SECTION 钱包管理
+    // FUNCTION 获取
+    List<Wallet> getWalletList(String query);
+    // FUNCTION 修改
+    @Update("UPDATE wallet " +
+            "SET balance = balance + #{balance}, content = #{content} " +
+            "WHERE uid = #{uid} ")
+    Integer updateBalance(BalanceParam param);
 
 }

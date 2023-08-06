@@ -2,8 +2,10 @@ package com.example.server.service.impl;
 
 import com.example.server.constant.ApiError;
 import com.example.server.dao.OrderDao;
+import com.example.server.dto.param.BalanceParam;
 import com.example.server.dto.param.RequireParam;
 import com.example.server.entity.Order;
+import com.example.server.entity.Wallet;
 import com.example.server.exception.ApiException;
 import com.example.server.service.OrderService;
 import com.example.server.util.PageQuery;
@@ -57,6 +59,17 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public Integer updateStatus(String id, String status) {
         return orderDao.updateOrder(id, status);
+    }
+
+    @Override
+    public PageQuery<Wallet> getWalletList(String query, Integer pageNum, Integer pageSize) {
+        PageHelper.startPage(pageNum, pageSize);
+        return new PageQuery<>(new PageInfo<>(orderDao.getWalletList(query)));
+    }
+
+    @Override
+    public Integer updateWallet(BalanceParam param) {
+        return orderDao.updateBalance(param);
     }
 
 }
