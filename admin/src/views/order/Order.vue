@@ -111,7 +111,7 @@ export default {
           options: [
             { value: 'MALE', label: '男' },
             { value: 'FEMALE', label: '女' },
-            { value: 'ALL', label: '都行' }
+            { value: 'ALL', label: '所有' }
           ]
         },
         {

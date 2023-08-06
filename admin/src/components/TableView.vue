@@ -14,6 +14,16 @@
         </el-input>
       </el-col>
       <el-col :span="4">
+        <el-select v-model="queryInfo.tag" clearable >
+            <el-option
+              v-for="option in tagOptions"
+              :key="option.value"
+              :label="option.label"
+              :value="option.value"
+            />
+          </el-select>
+      </el-col>
+      <el-col :span="4">
         <el-button type="primary" @click="handleAdd" v-if="tableTitle !== undefined" >{{
           tableTitle
         }}</el-button>
@@ -65,6 +75,7 @@ export default {
   props: {
     tableTitle: String,
     tableFields: Array,
+    tagOptions: Array,
     list: Array,
     total: Number,
     update: Boolean,
@@ -86,6 +97,7 @@ export default {
       // 搜索框 参数
       queryInfo: {
         query: '',
+        tag: '',
         pageNum: 1,
         pageSize: 5
       },

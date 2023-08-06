@@ -21,12 +21,6 @@ const routes = [
         component: () => import('@/views/Home.vue'),
         meta: { title: '首页', icon: 'home', pid: 0 }
       }
-      // {
-      //   path: 'admins',
-      //   name: 'Admin',
-      //   component: () => import('@/views/user/Admin.vue'),
-      //   meta: { title: '管理员列表', icon: 'table' }
-      // }
     ]
   },
 
@@ -130,6 +124,18 @@ const routes = [
         name: 'Companion',
         component: () => import('@/views/companion/Companion.vue'),
         meta: { title: '陪玩列表', icon: 'table', pid: 16 }
+      },
+      {
+        path: 'service',
+        name: 'Service',
+        component: () => import('@/views/companion/Service.vue'),
+        meta: { title: '服务列表', icon: 'table', pid: 17 }
+      },
+      {
+        path: 'games',
+        name: 'Game',
+        component: () => import('@/views/companion/Game.vue'),
+        meta: { title: '游戏列表', icon: 'table', pid: 18 }
       }
     ]
   },

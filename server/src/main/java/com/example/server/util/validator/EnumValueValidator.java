@@ -6,10 +6,12 @@ import javax.validation.ConstraintValidatorContext;
 public class EnumValueValidator implements ConstraintValidator<EnumValue, CharSequence> {
 
     private Class<? extends Enum<?>> enumClass;
+    private boolean ableNull;
 
     @Override
     public void initialize(EnumValue annotation) {
         enumClass = annotation.enumClass();
+        ableNull = annotation.ableNull();
     }
 
     @Override
@@ -20,6 +22,10 @@ public class EnumValueValidator implements ConstraintValidator<EnumValue, CharSe
 
         String stringValue = value.toString();
         Enum<?>[] enumValues = enumClass.getEnumConstants();
+
+        // 允许空
+        if (stringValue.trim().isEmpty() && ableNull)
+            return true;
 
         for (Enum<?> enumValue : enumValues) {
             if (enumValue.name().equals(stringValue)) {

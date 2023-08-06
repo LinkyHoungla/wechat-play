@@ -18,4 +18,6 @@ public @interface EnumValue {
     Class<? extends Payload>[] payload() default {};
 
     Class<? extends Enum<?>> enumClass();
+
+    boolean ableNull() default false;
 }

@@ -13,4 +13,28 @@
         </if>
     </select>
 
+    <!-- 分页查询 -->
+    <select id="getServiceList" >
+        SELECT  *
+        FROM service
+        <if test="query != null and query.trim() != ''">
+            WHERE service.name LIKE CONCAT('%', #{query}, '%')
+        </if>
+    </select>
+
+    <!-- 分页查询 -->
+    <select id="getGameList" >
+        SELECT  *
+        FROM game
+        <where>
+            id &lt;&gt; -1
+            <if test="tag != null and !tag.trim().isEmpty()">
+                AND type = #{tag}
+            </if>
+            <if test="query != null and !query.trim().isEmpty()">
+                AND `name` LIKE CONCAT('%', #{query}, '%')
+            </if>
+        </where>
+    </select>
+
 </mapper>
