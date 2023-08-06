@@ -13,7 +13,7 @@
         :prop="field.prop"
       >
         <template v-if="field.type === undefined">
-          <el-input v-model="form[field.prop]" />
+          <el-input v-model="form[field.prop]" :disabled="field.disabled" />
         </template>
         <template v-if="field.type === 'select'">
           <el-select v-model="form[field.prop]">
@@ -22,6 +22,7 @@
               :key="option.value"
               :label="option.label"
               :value="option.value"
+              :disabled="option.disabled"
             />
           </el-select>
         </template>

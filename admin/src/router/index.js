@@ -123,7 +123,13 @@ const routes = [
         path: 'prepaid',
         name: 'Balance',
         component: () => import('@/views/store/Balance.vue'),
-        meta: { title: '店铺列表', icon: 'table', pid: 15 }
+        meta: { title: '预存列表', icon: 'table', pid: 15 }
+      },
+      {
+        path: 'companions',
+        name: 'Companion',
+        component: () => import('@/views/companion/Companion.vue'),
+        meta: { title: '陪玩列表', icon: 'table', pid: 16 }
       }
     ]
   },

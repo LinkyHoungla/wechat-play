@@ -24,14 +24,6 @@
           @click="updateBalanceDialog(row)"
           >修改</el-button
         >
-        <!-- 删除按钮 -->
-        <el-button
-          type="danger"
-          icon="el-icon-delete"
-          size="mini"
-          @click="deleteBalance(row.id)"
-          >删除</el-button
-        >
       </template>
     </table-page>
 
@@ -47,7 +39,7 @@
 </template>
 
 <script>
-import { getBalanceList, addBalance, deleteBalance, updateBalance } from '@/api/store'
+import { getBalanceList, addBalance, updateBalance } from '@/api/store'
 
 export default {
   name: 'BalanceView',
@@ -77,7 +69,7 @@ export default {
   },
   methods: {
     // 弹窗
-    // 添加 管理
+    // 添加
     addBalanceDialog () {
       this.formDialogVisible = true
       this.formDialogTitle = '添加预存'
@@ -88,7 +80,7 @@ export default {
       this.form = {}
       this.handleFormSubmit = this.addBalance
     },
-    // 添加 管理
+    // 修改
     updateBalanceDialog (temp) {
       this.formDialogVisible = true
       this.formDialogTitle = '修改预存'
@@ -102,14 +94,8 @@ export default {
       this.handleFormSubmit = this.updateBalance
     },
 
-    // 获取 Tag类型
-    getFieldTagType (value) {
-      const field = this.tagFields.find((item) => item.value === value)
-      return field ? field.tag : ''
-    },
-
     // 请求
-    // 获取 管理员 列表
+    // 获取
     getBalanceList (query) {
       getBalanceList(query)
         .then((response) => {
@@ -122,7 +108,7 @@ export default {
           this.$message.error('获取失败')
         })
     },
-    // 添加 管理
+    // 添加
     addBalance (form) {
       addBalance(form)
         .then(() => {
@@ -133,7 +119,7 @@ export default {
           this.$message.error('添加失败')
         })
     },
-    // 修改 管理
+    // 修改
     updateBalance (form) {
       console.log(form)
       updateBalance(form)
@@ -143,27 +129,6 @@ export default {
         })
         .catch(() => {
           this.$message.error('修改失败')
-        })
-    },
-    // 删除 店铺
-    async deleteBalance (id) {
-      const result = await this.$confirm(
-        '此操作将永久删除该店铺，是否继续',
-        '提示',
-        {
-          confirmButtonText: '确定',
-          cancelButtonText: '取消',
-          type: 'warning'
-        }
-      ).catch((err) => err)
-
-      if (result !== 'confirm') return this.$message.info('已取消删除')
-      deleteBalance(id)
-        .then(() => {
-          this.$message.success('删除成功')
-        })
-        .catch(() => {
-          this.$message.error('删除失败')
         })
     }
   }
