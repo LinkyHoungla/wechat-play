@@ -51,6 +51,10 @@ import { getStoreList, addStore, deleteStore, updateStore } from '@/api/store'
 
 export default {
   name: 'StoreView',
+  components: {
+    'table-page': () => import('@/components/TableView.vue'),
+    'form-dialog': () => import('@/components/FormDialog.vue')
+  },
   data () {
     return {
       // 表格

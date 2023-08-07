@@ -41,6 +41,10 @@ import { getWalletList, updateWallet } from '@/api/order'
 
 export default {
   name: 'WalletView',
+  components: {
+    'table-page': () => import('@/components/TableView.vue'),
+    'form-dialog': () => import('@/components/FormDialog.vue')
+  },
   data () {
     return {
       // 表格

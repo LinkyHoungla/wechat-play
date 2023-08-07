@@ -63,8 +63,6 @@ public class CompanionServiceImpl implements CompanionService {
     @Override
     public PageQuery<Game> getGameList(String query, String tag, Integer pageNum, Integer pageSize) {
         PageHelper.startPage(pageNum, pageSize);
-        System.out.println(query);
-        System.out.println(tag);
         return new PageQuery<>(new PageInfo<>(companionDao.getGameList(query, tag)));
     }
 
@@ -82,6 +80,5 @@ public class CompanionServiceImpl implements CompanionService {
     public Integer deleteGame(Integer id) {
         return companionDao.deleteGame(id);
     }
-
 
 }

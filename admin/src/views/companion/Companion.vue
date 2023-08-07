@@ -27,6 +27,10 @@ import { getCompanionList, addCompanion, updateCompanion, deleteCompanion } from
 
 export default {
   name: 'CompanionView',
+  components: {
+    'table-page': () => import('@/components/TableView.vue'),
+    'form-dialog': () => import('@/components/FormDialog.vue')
+  },
   data () {
     return {
       // 表格

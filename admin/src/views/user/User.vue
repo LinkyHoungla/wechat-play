@@ -56,6 +56,10 @@ import { getUserList, addUser, deleteUser, updateUser } from '@/api/user'
 
 export default {
   name: 'UserView',
+  components: {
+    'table-page': () => import('@/components/TableView.vue'),
+    'form-dialog': () => import('@/components/FormDialog.vue')
+  },
   data () {
     return {
       // 表格

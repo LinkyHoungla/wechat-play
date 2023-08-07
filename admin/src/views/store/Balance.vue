@@ -43,6 +43,10 @@ import { getBalanceList, addBalance, updateBalance } from '@/api/store'
 
 export default {
   name: 'BalanceView',
+  components: {
+    'table-page': () => import('@/components/TableView.vue'),
+    'form-dialog': () => import('@/components/FormDialog.vue')
+  },
   data () {
     return {
       // 表格

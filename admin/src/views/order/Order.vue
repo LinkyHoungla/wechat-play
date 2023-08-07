@@ -25,6 +25,10 @@ import { getOrderList, addOrder, updateOrder } from '@/api/order'
 
 export default {
   name: 'OrderView',
+  components: {
+    'table-page': () => import('@/components/TableView.vue'),
+    'form-dialog': () => import('@/components/FormDialog.vue')
+  },
   data () {
     return {
       // 表格

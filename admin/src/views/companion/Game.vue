@@ -35,6 +35,10 @@ import { getGameList, addGame, updateGame, deleteGame } from '@/api/companion'
 
 export default {
   name: 'GameView',
+  components: {
+    'table-page': () => import('@/components/TableView.vue'),
+    'form-dialog': () => import('@/components/FormDialog.vue')
+  },
   data () {
     return {
       // 表格
