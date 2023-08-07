@@ -4,6 +4,7 @@ import com.example.server.dto.param.PermissionParam;
 import com.example.server.dto.param.RoleParam;
 import com.example.server.dto.vo.AuthTree;
 import com.example.server.dto.vo.PermissionTree;
+import com.example.server.dto.vo.RoleList;
 import com.example.server.entity.Role;
 import com.example.server.util.PageQuery;
 
@@ -13,6 +14,8 @@ public interface PermissionService {
     // SECTION 权限角色
     // FUNCTION 分页查询
     PageQuery<Role> getRoleList(String query, Integer pageNum, Integer pageSize);
+    // FUNCTION 列表
+    List<RoleList> getRoles();
     // FUNCTION 添加
     Integer addRole(RoleParam param);
     // FUNCTION 信息修改

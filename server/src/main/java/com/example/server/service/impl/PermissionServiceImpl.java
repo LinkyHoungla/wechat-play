@@ -5,6 +5,7 @@ import com.example.server.dto.param.PermissionParam;
 import com.example.server.dto.param.RoleParam;
 import com.example.server.dto.vo.AuthTree;
 import com.example.server.dto.vo.PermissionTree;
+import com.example.server.dto.vo.RoleList;
 import com.example.server.entity.Role;
 import com.example.server.service.PermissionService;
 import com.example.server.util.PageQuery;
@@ -26,6 +27,11 @@ public class PermissionServiceImpl implements PermissionService {
     public PageQuery<Role> getRoleList(String query, Integer pageNum, Integer pageSize) {
         PageHelper.startPage(pageNum, pageSize);
         return new PageQuery<>(new PageInfo<>(permissionDao.getRoleList(query)));
+    }
+
+    @Override
+    public List<RoleList> getRoles() {
+        return permissionDao.getRoles();
     }
 
     @Override

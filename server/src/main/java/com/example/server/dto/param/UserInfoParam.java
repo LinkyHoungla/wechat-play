@@ -19,7 +19,7 @@ public class UserInfoParam {
     private String id;
     @NotBlank(message = "昵称不能为空")
     @Length(min = 3, max = 10, message = "昵称长度3-10")
-    private String nickname;
+    private String name;
     @EnumValue(enumClass = GenderEnum.class, message = "性别非法")
     private String gender;
     @NotNull(message = "地址不能为NULL")

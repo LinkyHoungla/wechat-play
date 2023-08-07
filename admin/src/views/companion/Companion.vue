@@ -1,35 +1,71 @@
 <template>
   <div>
     <!-- 表格区域 -->
-    <table-page tableTitle="添加陪玩" :tableFields="tableFields" :total="totalNum" :list="tableList"
-      :update="formDialogVisible" @query="getCompanionList" @add="addCompanionDialog">
+    <table-page
+      tableTitle="添加陪玩"
+      :tableFields="tableFields"
+      :total="totalNum"
+      :list="tableList"
+      ref="tableRef"
+      :update="formDialogVisible"
+      @query="getCompanionList"
+      @add="addCompanionDialog"
+    >
       <template v-slot:status="{ row }">
-        <el-tag :type="getFieldTagType(row.status)" size="mini">{{
-          tagFields.find((item) => item.value === row.status).label
+        <el-tag :type="getFieldTagType(statusTag, row.status)" size="mini">{{
+          getFieldLabel(statusTag, row.status)
         }}</el-tag>
       </template>
       <template v-slot:operate="{ row }">
         <!-- 修改按钮 -->
-        <el-button type="primary" icon="el-icon-edit" size="mini" @click="updateCompanionDialog(row)">修改</el-button>
+        <el-button
+          v-if="row.status !== 'DELETED'"
+          type="primary"
+          icon="el-icon-edit"
+          size="mini"
+          @click="updateCompanionDialog(row)"
+          >修改</el-button
+        >
         <!-- 删除按钮 -->
-        <el-button type="danger" icon="el-icon-delete" size="mini" @click="deleteCompanion(row.id)">删除</el-button>
+        <el-button
+          v-if="row.status !== 'DELETED'"
+          type="danger"
+          icon="el-icon-delete"
+          size="mini"
+          @click="deleteCompanion(row.id)"
+          >删除</el-button
+        >
       </template>
     </table-page>
 
     <!-- 弹窗区域 -->
-    <form-dialog :visible.sync="formDialogVisible" :dialogTitle="formDialogTitle" :fields="formFields" :formData="form"
-      @submit="handleFormSubmit" />
+    <form-dialog
+      :visible.sync="formDialogVisible"
+      :dialogTitle="formDialogTitle"
+      :fields="formFields"
+      :formData="form"
+      @submit="handleFormSubmit"
+    />
   </div>
 </template>
 
 <script>
-import { getCompanionList, addCompanion, updateCompanion, deleteCompanion } from '@/api/companion'
+import {
+  getCompanionList,
+  addCompanion,
+  updateCompanion,
+  deleteCompanion
+} from '@/api/companion'
+import { getFieldTagType, getFieldLable, TAG_STATUS } from '@/utils/tag'
 
 export default {
   name: 'CompanionView',
   components: {
     'table-page': () => import('@/components/TableView.vue'),
     'form-dialog': () => import('@/components/FormDialog.vue')
+  },
+  created () {
+    this.statusTag = TAG_STATUS
   },
   data () {
     return {
@@ -46,21 +82,15 @@ export default {
         { label: '操作', prop: 'operate', type: 'template', width: '180px' }
       ],
 
-      // TODO 标签独立文件
       // 标签
-      tagFields: [
-        { value: null, label: null, tag: '' },
-        { value: 'ACTIVE', label: '正常', tag: 'success' },
-        { value: 'BANNED', label: '封禁', tag: 'info' },
-        { value: 'DELETED', label: '已删除', tag: 'danger' }
-      ],
+      statusTag: [],
 
       // 表单窗口
       formDialogTitle: '',
       formDialogVisible: false,
       formFields: [],
       form: {},
-      handleFormSubmit: function () { }
+      handleFormSubmit: function () {}
     }
   },
   methods: {
@@ -81,7 +111,6 @@ export default {
       this.formDialogVisible = true
       this.formDialogTitle = '修改陪玩'
       this.formFields = [
-        { label: 'ID', prop: 'id', disabled: true },
         {
           label: '状态',
           prop: 'status',
@@ -98,9 +127,11 @@ export default {
     },
 
     // 获取 Tag类型
-    getFieldTagType (value) {
-      const field = this.tagFields.find((item) => item.value === value)
-      return field ? field.tag : ''
+    getFieldTagType (list, value) {
+      return getFieldTagType(list, value)
+    },
+    getFieldLabel (list, value) {
+      return getFieldLable(list, value)
     },
 
     // 请求
@@ -111,7 +142,6 @@ export default {
           const { data: res } = response.data
           this.tableList = res.list
           this.totalNum = res.total
-          this.$message.success('获取成功')
         })
         .catch(() => {
           this.$message.error('获取失败')
@@ -122,6 +152,7 @@ export default {
       addCompanion(form)
         .then(() => {
           this.formDialogVisible = false
+          this.$refs.tableRef.handleQuery()
           this.$message.success('添加成功')
         })
         .catch(() => {
@@ -130,10 +161,10 @@ export default {
     },
     // 修改
     updateCompanion (form) {
-      console.log(form)
       updateCompanion(form)
         .then(() => {
           this.formDialogVisible = false
+          this.$refs.tableRef.handleQuery()
           this.$message.success('修改成功')
         })
         .catch(() => {
@@ -155,6 +186,7 @@ export default {
       if (result !== 'confirm') return this.$message.info('已取消删除')
       deleteCompanion(id)
         .then(() => {
+          this.$refs.tableRef.handleQuery()
           this.$message.success('删除成功')
         })
         .catch(() => {

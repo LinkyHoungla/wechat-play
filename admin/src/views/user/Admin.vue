@@ -6,30 +6,34 @@
       :tableFields="tableFields"
       :total="totalNum"
       :list="tableList"
-      :update="formDialogVisible"
+      ref="tableRef"
       @query="getAdminList"
       @add="addAdminDialog"
     >
       <template v-slot:status="{ row }">
-        <el-tag :type="getFieldTagType(row.status)" size="mini">{{
-          tagFields.find((item) => item.value === row.status).label
+        <el-tag :type="getFieldTagType(statusTag, row.status)" size="mini">{{
+          statusTag.find((item) => item.value === row.status).label
         }}</el-tag>
       </template>
       <template v-slot:operate="{ row }">
         <!-- 修改按钮 -->
         <el-button
+          v-if="row.rid !== 0 && row.status !== 'DELETED'"
           type="primary"
           icon="el-icon-edit"
           size="mini"
           @click="updateAdminDialog(row)"
-        >修改</el-button>
+          >修改</el-button
+        >
         <!-- 删除按钮 -->
         <el-button
+          v-if="row.rid !== 0 && row.status !== 'DELETED'"
           type="danger"
           icon="el-icon-delete"
           size="mini"
           @click="deleteAdmin(row.id)"
-        >删除</el-button>
+          >删除</el-button
+        >
       </template>
     </table-page>
 
@@ -46,12 +50,19 @@
 
 <script>
 import { getAdminList, addAdmin, deleteAdmin, updateAdmin } from '@/api/admin'
+import { getRoles } from '@/api/permission'
+
+import { getFieldTagType, TAG_STATUS } from '@/utils/tag'
 
 export default {
   name: 'AdminView',
   components: {
     'table-page': () => import('@/components/TableView.vue'),
     'form-dialog': () => import('@/components/FormDialog.vue')
+  },
+  created () {
+    this.statusTag = TAG_STATUS
+    this.getRoles()
   },
   data () {
     return {
@@ -73,11 +84,10 @@ export default {
       ],
 
       // 标签
-      tagFields: [
-        { value: 'ACTIVE', label: '正常', tag: 'success' },
-        { value: 'BANNED', label: '封禁', tag: 'info' },
-        { value: 'DELETED', label: '已删除', tag: 'danger' }
-      ],
+      statusTag: [],
+
+      // 下拉菜单
+      roles: [],
 
       // 表单窗口
       formDialogTitle: '',
@@ -95,7 +105,7 @@ export default {
       this.formDialogTitle = '添加管理'
       this.formFields = [
         { label: '昵称', prop: 'name' },
-        { label: '身份', prop: 'rid' }
+        { label: '身份', prop: 'rid', type: 'select', options: this.roles }
       ]
       this.form = {}
       this.handleFormSubmit = this.addAdmin
@@ -106,25 +116,16 @@ export default {
       this.formDialogTitle = '修改管理'
       this.formFields = [
         { label: '昵称', prop: 'name' },
-        { label: '身份', prop: 'rid' },
-        {
-          label: '状态',
-          prop: 'status',
-          type: 'select',
-          options: [
-            { value: 'ACTIVE', label: '正常' },
-            { value: 'BANNED', label: '封禁' }
-          ]
-        }
+        { label: '身份', prop: 'rid', type: 'select', options: this.roles },
+        { label: '状态', prop: 'status', type: 'select', options: TAG_STATUS }
       ]
       this.form = temp
       this.handleFormSubmit = this.updateAdmin
     },
 
     // 获取 Tag类型
-    getFieldTagType (value) {
-      const field = this.tagFields.find((item) => item.value === value)
-      return field ? field.tag : ''
+    getFieldTagType (list, value) {
+      return getFieldTagType(list, value)
     },
 
     // 请求
@@ -135,7 +136,22 @@ export default {
           const { data: res } = response.data
           this.tableList = res.list
           this.totalNum = res.total
-          this.$message.success('获取成功')
+        })
+        .catch(() => {
+          this.$message.error('获取失败')
+        })
+    },
+    // 获取 管理员 列表
+    getRoles () {
+      getRoles()
+        .then(({ data: res }) => {
+          this.roles = res.data.map((item) => {
+            if (item.id === 0) {
+              return { label: item.name, value: item.id, disabled: true }
+            } else {
+              return { label: item.name, value: item.id }
+            }
+          })
         })
         .catch(() => {
           this.$message.error('获取失败')
@@ -146,6 +162,7 @@ export default {
       addAdmin(form)
         .then(() => {
           this.formDialogVisible = false
+          this.$refs.tableRef.handleQuery()
           this.$message.success('添加成功')
         })
         .catch(() => {
@@ -157,6 +174,7 @@ export default {
       updateAdmin(form.id, form)
         .then(() => {
           this.formDialogVisible = false
+          this.$refs.tableRef.handleQuery()
           this.$message.success('修改成功')
         })
         .catch(() => {
@@ -178,6 +196,7 @@ export default {
       if (result !== 'confirm') return this.$message.info('已取消删除')
       deleteAdmin(id)
         .then(() => {
+          this.$refs.tableRef.handleQuery()
           this.$message.success('删除成功')
         })
         .catch(() => {

@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- 表格区域 -->
-    <table-page tableTitle="添加游戏" :tableFields="tableFields" :total="totalNum" :list="tableList" :tagOptions="tagOptions"
+    <table-page tableTitle="添加游戏" :tableFields="tableFields" :total="totalNum" :list="tableList" :tagOptions="tagOptions" ref="tableRef"
       :update="formDialogVisible" @query="getGameList" @add="addGameDialog(-1)">
       <template v-slot:type="{ row }">
         <el-tag :type="getFieldTagType(row.status)" size="mini">{{
@@ -131,7 +131,6 @@ export default {
           const { data: res } = response.data
           this.tableList = res.list
           this.totalNum = res.total
-          this.$message.success('获取成功')
         })
         .catch(() => {
           this.$message.error('获取失败')
@@ -142,6 +141,7 @@ export default {
       addGame(form)
         .then(() => {
           this.formDialogVisible = false
+          this.$refs.tableRef.handleQuery()
           this.$message.success('添加成功')
         })
         .catch(() => {
@@ -154,6 +154,7 @@ export default {
       updateGame(form)
         .then(() => {
           this.formDialogVisible = false
+          this.$refs.tableRef.handleQuery()
           this.$message.success('修改成功')
         })
         .catch(() => {
@@ -163,7 +164,7 @@ export default {
     // 删除
     async deleteGame (id) {
       const result = await this.$confirm(
-        '此操作将永久删除该用户，是否继续',
+        '此操作将永久删除该内容，是否继续',
         '提示',
         {
           confirmButtonText: '确定',
@@ -175,6 +176,7 @@ export default {
       if (result !== 'confirm') return this.$message.info('已取消删除')
       deleteGame(id)
         .then(() => {
+          this.$refs.tableRef.handleQuery()
           this.$message.success('删除成功')
         })
         .catch(() => {

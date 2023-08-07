@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- 表格区域 -->
-    <table-page tableTitle="添加订单" :tableFields="tableFields" :total="totalNum" :list="tableList"
+    <table-page tableTitle="添加订单" :tableFields="tableFields" :total="totalNum" :list="tableList" ref="tableRef"
       :update="formDialogVisible" @query="getOrderList" @add="addOrderDialog">
       <template v-slot:status="{ row }">
         <el-tag :type="getFieldTagType(row.status)" size="mini">{{
@@ -179,7 +179,6 @@ export default {
           const { data: res } = response.data
           this.tableList = res.list
           this.totalNum = res.total
-          this.$message.success('获取成功')
         })
         .catch(() => {
           this.$message.error('获取失败')
@@ -190,6 +189,7 @@ export default {
       addOrder(form)
         .then(() => {
           this.formDialogVisible = false
+          this.$refs.tableRef.handleQuery()
           this.$message.success('添加成功')
         })
         .catch(() => {
@@ -202,6 +202,7 @@ export default {
       updateOrder(form)
         .then(() => {
           this.formDialogVisible = false
+          this.$refs.tableRef.handleQuery()
           this.$message.success('修改成功')
         })
         .catch(() => {

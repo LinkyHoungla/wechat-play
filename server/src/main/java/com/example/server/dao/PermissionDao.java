@@ -4,6 +4,7 @@ import com.example.server.dto.param.PermissionParam;
 import com.example.server.dto.param.RoleParam;
 import com.example.server.dto.vo.AuthTree;
 import com.example.server.dto.vo.PermissionTree;
+import com.example.server.dto.vo.RoleList;
 import com.example.server.entity.Role;
 import org.apache.ibatis.annotations.*;
 
@@ -14,6 +15,8 @@ public interface PermissionDao {
     // SECTION 权限角色
     // FUNCTION 分页查询
     List<Role> getRoleList(String query);
+    @Select("SELECT r.id, r.name FROM role r")
+    List<RoleList> getRoles();
     // FUNCTION 添加
     @Insert("INSERT role(`name`, `desc`) VALUES (#{name}, #{desc})")
     Integer addRole(RoleParam param);

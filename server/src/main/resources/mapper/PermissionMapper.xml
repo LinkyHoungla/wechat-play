@@ -9,8 +9,9 @@
     <select id="getRoleList" >
         SELECT *
         FROM role
+        WHERE id != 0
         <if test="query != null and query.trim() != ''">
-            WHERE role.name LIKE CONCAT('%', #{query}, '%')
+            AND role.name LIKE CONCAT('%', #{query}, '%')
         </if>
     </select>
 

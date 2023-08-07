@@ -1,18 +1,23 @@
 package com.example.server.service;
 
+import com.example.server.dto.param.StatusParam;
 import com.example.server.dto.param.UserInfoParam;
 import com.example.server.dto.param.UserLogParam;
-import com.example.server.dto.vo.UserInfo;
+import com.example.server.dto.vo.UserInfoVo;
+import com.example.server.dto.vo.UserMana;
+import com.example.server.entity.UserInfo;
 import com.example.server.util.PageQuery;
 
 public interface UserService {
     // SECTION 用户管理
     // FUNCTION 分页查询
-    PageQuery<UserInfo> getUserList(String query, Integer pageNum, Integer pageSize);
+    PageQuery<UserMana> getUserList(String query, Integer pageNum, Integer pageSize);
+    // FUNCTION 信息获取
+    UserInfo getUserInfoMana(String id);
     // FUNCTION 添加
     Integer addUser(UserLogParam param);
     // FUNCTION 修改
-    Integer updateUser(UserInfoParam param);
+    Integer updateStatus(StatusParam param);
     // FUNCTION 删除
     Integer deleteUser(String id);
 
@@ -21,4 +26,8 @@ public interface UserService {
     String login(String username, String password, String ip);
     // FUNCTION 登出
     Boolean logout(String token);
+    // FUNCTION 查询
+    UserInfoVo getUserInfo(String id);
+    // FUNCTION 信息修改
+    Integer updateUserInfo(UserInfoParam param);
 }

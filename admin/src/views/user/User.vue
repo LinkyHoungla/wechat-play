@@ -6,23 +6,29 @@
       :tableFields="tableFields"
       :total="totalNum"
       :list="tableList"
-      :update="formDialogVisible"
+      ref="tableRef"
+      :hasExpand="true"
       @query="getUserList"
       @add="addUserDialog"
+      @expand="getUserInfo"
     >
+      <template v-slot:expand >
+          <info-view :content="userInfo" :field="infoField" @submit="updateUser" />
+      </template>
       <template v-slot:status="{ row }">
-        <el-tag :type="getFieldTagType(row.status)" size="mini">{{
-          tagFields.find((item) => item.value === row.status).label
+        <el-tag :type="getFieldTagType(statusTag, row.status)" size="mini">{{
+          statusTag.find((item) => item.value === row.status).label
         }}</el-tag>
       </template>
       <template v-slot:gender="{ row }">
-        <el-tag :type="getFieldTagType(row.gender)" size="mini">{{
-          tagFields.find((item) => item.value === row.gender).label
+        <el-tag :type="getFieldTagType(genderTag, row.gender)" size="mini">{{
+          genderTag.find((item) => item.value === row.gender).label
         }}</el-tag>
       </template>
       <template v-slot:operate="{ row }">
         <!-- 修改按钮 -->
         <el-button
+          v-if="row.status !== 'DELETED'"
           type="primary"
           icon="el-icon-edit"
           size="mini"
@@ -31,6 +37,7 @@
         >
         <!-- 删除按钮 -->
         <el-button
+          v-if="row.status !== 'DELETED'"
           type="danger"
           icon="el-icon-delete"
           size="mini"
@@ -52,13 +59,19 @@
 </template>
 
 <script>
-import { getUserList, addUser, deleteUser, updateUser } from '@/api/user'
+import { getUserList, addUser, deleteUser, updateUser, getUserInfo, updateStatus } from '@/api/user'
+import { TAG_GENDER, TAG_STATUS, getFieldTagType } from '@/utils/tag'
 
 export default {
   name: 'UserView',
   components: {
     'table-page': () => import('@/components/TableView.vue'),
-    'form-dialog': () => import('@/components/FormDialog.vue')
+    'form-dialog': () => import('@/components/FormDialog.vue'),
+    'info-view': () => import('@/components/InfoView.vue')
+  },
+  created () {
+    this.genderTag = TAG_GENDER
+    this.statusTag = TAG_STATUS
   },
   data () {
     return {
@@ -67,14 +80,8 @@ export default {
       totalNum: 0,
       tableFields: [
         { label: '用户ID', prop: 'id' },
-        { label: '头像', prop: 'avatar' },
-        { label: '昵称', prop: 'nickname' },
         { label: '微信ID', prop: 'wxid' },
         { label: '权限角色', prop: 'role' },
-        { label: '性别', prop: 'gender', type: 'template' },
-        { label: '年龄', prop: 'age' },
-        { label: '生日', prop: 'birth' },
-        { label: '地区', prop: 'location' },
         { label: '状态', prop: 'status', type: 'template' },
         { label: 'ip', prop: 'ip' },
         { label: '上次登录', prop: 'loginTime' },
@@ -83,15 +90,22 @@ export default {
         { label: '操作', prop: 'operate', type: 'template', width: '180px' }
       ],
 
-      // 标签
-      tagFields: [
-        { value: null, label: null, tag: '' },
-        { value: 'ACTIVE', label: '正常', tag: 'success' },
-        { value: 'BANNED', label: '封禁', tag: 'info' },
-        { value: 'DELETED', label: '已删除', tag: 'danger' },
-        { value: 'MALE', label: '男', tag: 'danger' },
-        { value: 'FEMALE', label: '女', tag: 'success' }
+      // 拓展信息
+      userInfo: {},
+      infoField: [
+        { label: '头像', prop: 'avatar' },
+        { label: '昵称', prop: 'name', edit: true },
+        { label: '性别', prop: 'gender', type: 'select', edit: true, options: TAG_GENDER },
+        { label: '年龄', prop: 'age', edit: true },
+        { label: '生日', prop: 'birth', edit: true, type: 'date' },
+        { label: '地区', prop: 'location', edit: true },
+        { label: '创建时间', prop: 'createTime' },
+        { label: '更新时间', prop: 'updateTime' }
       ],
+
+      // 标签
+      genderTag: [],
+      statusTag: [],
 
       // 表单窗口
       formDialogTitle: '',
@@ -103,78 +117,90 @@ export default {
   },
   methods: {
     // 弹窗
-    // 添加 管理
+    // 添加 用户
     addUserDialog () {
       this.formDialogVisible = true
       this.formDialogTitle = '添加用户'
       this.formFields = [
-        { label: '昵称', prop: 'nickname' },
         { label: '微信ID', prop: 'wxid' },
         { label: '手机', prop: 'phone' }
       ]
       this.form = {}
       this.handleFormSubmit = this.addUser
     },
-    // 添加 管理
+    // 修改 用户
     updateUserDialog (temp) {
       this.formDialogVisible = true
       this.formDialogTitle = '修改用户'
       this.formFields = [
-        { label: '昵称', prop: 'nickname' },
         {
-          label: '性别',
-          prop: 'gender',
+          label: '状态',
+          prop: 'status',
           type: 'select',
-          options: [
-            { value: 'MALE', label: '男' },
-            { value: 'FEMALE', label: '女' }
-          ]
-        },
-        { label: '年龄', prop: 'age' },
-        { label: '生日', prop: 'birth', type: 'date' },
-        { label: '地区', prop: 'location' }
+          options: TAG_STATUS
+        }
       ]
       this.form = temp
-      this.handleFormSubmit = this.updateUser
+      this.handleFormSubmit = this.updateStatus
     },
 
     // 获取 Tag类型
-    getFieldTagType (value) {
-      const field = this.tagFields.find((item) => item.value === value)
-      return field ? field.tag : ''
+    getFieldTagType (list, value) {
+      return getFieldTagType(list, value)
     },
 
     // 请求
-    // 获取 管理员 列表
+    // 获取 用户员 列表
     getUserList (query) {
       getUserList(query)
         .then((response) => {
           const { data: res } = response.data
           this.tableList = res.list
           this.totalNum = res.total
-          this.$message.success('获取成功')
         })
         .catch(() => {
           this.$message.error('获取失败')
         })
     },
-    // 添加 管理
+    // 获取 信息
+    getUserInfo (id) {
+      getUserInfo(id).then(({ data: res }) => {
+        this.userInfo = res.data
+        this.userInfo.id = id
+      })
+        .catch(() => {
+          this.$message.error('获取失败')
+        })
+    },
+    // 添加 用户
     addUser (form) {
       addUser(form)
         .then(() => {
           this.formDialogVisible = false
+          this.$refs.tableRef.handleQuery()
           this.$message.success('添加成功')
         })
         .catch(() => {
           this.$message.error('添加失败')
         })
     },
-    // 修改 管理
-    updateUser (form) {
-      console.log(form)
-      updateUser(form)
+    // 修改状态
+    updateStatus (form) {
+      updateStatus(form)
         .then(() => {
           this.formDialogVisible = false
+          this.$refs.tableRef.handleQuery()
+          this.$message.success('修改成功')
+        })
+        .catch(() => {
+          this.$message.error('修改失败')
+        })
+    },
+    // 修改 用户
+    updateUser (form) {
+      updateUser(form)
+        .then(() => {
+          this.getUserInfo(form.id)
           this.$message.success('修改成功')
         })
         .catch(() => {
@@ -196,6 +222,7 @@ export default {
       if (result !== 'confirm') return this.$message.info('已取消删除')
       deleteUser(id)
         .then(() => {
+          this.$refs.tableRef.handleQuery()
           this.$message.success('删除成功')
         })
         .catch(() => {

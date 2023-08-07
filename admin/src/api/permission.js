@@ -13,6 +13,17 @@ export function getRoleList (pageParam) {
   })
 }
 
+// 获取
+export function getRoles () {
+  return service({
+    url: '/permission/roles',
+    method: 'get',
+    meta: {
+      rid: -1
+    }
+  })
+}
+
 // 添加
 export function addRole (data) {
   return service({

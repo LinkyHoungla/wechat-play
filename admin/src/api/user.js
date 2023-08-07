@@ -32,11 +32,33 @@ export function getUserList (pageParam) {
   })
 }
 
+export function getUserInfo (id) {
+  return service({
+    url: `/user/mana/${id}`,
+    method: 'get',
+    meta: {
+      rid: -1
+    }
+  })
+}
+
 // 添加
 export function addUser (data) {
   return service({
     url: '/user',
     method: 'post',
+    data,
+    meta: {
+      rid: -1
+    }
+  })
+}
+
+// 修改
+export function updateStatus (data) {
+  return service({
+    url: '/user/status',
+    method: 'put',
     data,
     meta: {
       rid: -1

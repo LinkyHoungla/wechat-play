@@ -8,6 +8,7 @@
       :list="tableList"
       :update="formDialogVisible"
       :hasExpand="true"
+      ref="tableRef"
       @query="getRoleList"
       @add="addRoleDialog"
       @expand="getRightTree"
@@ -238,6 +239,7 @@ export default {
       addRole(form)
         .then(() => {
           this.formDialogVisible = false
+          this.$refs.tableRef.handleQuery()
           this.$message.success('添加成功')
         })
         .catch(() => {
@@ -249,6 +251,7 @@ export default {
       updateRole(form.id, form)
         .then(() => {
           this.formDialogVisible = false
+          this.$refs.tableRef.handleQuery()
           this.$message.success('修改成功')
         })
         .catch(() => {
@@ -270,6 +273,7 @@ export default {
       if (result !== 'confirm') return this.$message.info('已取消删除')
       deleteRole(id)
         .then(() => {
+          this.$refs.tableRef.handleQuery()
           this.$message.success('删除成功')
         })
         .catch(() => {
@@ -304,8 +308,9 @@ export default {
       ]
       updateAuth(this.selectedId, rights)
         .then(() => {
-          this.$message.success('修改成功')
+          this.getRightTree(this.selectedId)
           this.authDialogVisible = false
+          this.$message.success('修改成功')
         })
         .catch(() => {
           this.$message.error('修改失败')
@@ -327,6 +332,7 @@ export default {
       deleteAuth(rid, pid)
         .then(() => {
           this.getRightTree(rid)
+          this.$refs.tableRef.handleQuery()
           this.$message.success('删除成功')
         })
         .catch(() => {

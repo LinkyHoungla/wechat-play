@@ -7,6 +7,7 @@
       :total="totalNum"
       :list="tableList"
       :update="formDialogVisible"
+      ref="tableRef"
       @query="getPermissionTree"
       @add="addPermissionDialog(-1)"
     >
@@ -113,7 +114,6 @@ export default {
           const { data: res } = response.data
           this.tableList = res.list
           this.totalNum = res.total
-          this.$message.success('获取成功')
         })
         .catch(() => {
           this.$message.error('获取失败')
@@ -124,6 +124,7 @@ export default {
       addPermission(form)
         .then(() => {
           this.formDialogVisible = false
+          this.$refs.tableRef.handleQuery()
           this.$message.success('添加成功')
         })
         .catch(() => {
@@ -135,6 +136,7 @@ export default {
       updatePermission(form)
         .then(() => {
           this.formDialogVisible = false
+          this.$refs.tableRef.handleQuery()
           this.$message.success('修改成功')
         })
         .catch(() => {
@@ -156,6 +158,7 @@ export default {
       if (result !== 'confirm') return this.$message.info('已取消删除')
       deletePermission(id)
         .then(() => {
+          this.$refs.tableRef.handleQuery()
           this.$message.success('删除成功')
         })
         .catch(() => {

@@ -12,9 +12,6 @@ public class UserLogParam {
     @NotBlank
     @Length(min = 1, max = 50)
     private String wxid;
-    @NotBlank
-    @Length(min = 3, max = 10)
-    private String nickname;
     @Pattern(regexp = ValidateUtil.PHONE)
     private String phone;
 }

@@ -78,7 +78,6 @@ export default {
     tagOptions: Array,
     list: Array,
     total: Number,
-    update: Boolean,
     hasExpand: Boolean
   },
   watch: {
@@ -88,8 +87,8 @@ export default {
     total (newVal) {
       this.totalNum = newVal
     },
-    update (newVal) {
-      if (newVal === false) this.handleQuery()
+    'queryInfo.tag': function (newVal) {
+      this.handleQuery()
     }
   },
   data () {

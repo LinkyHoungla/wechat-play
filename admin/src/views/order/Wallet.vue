@@ -6,6 +6,7 @@
       :total="totalNum"
       :list="tableList"
       :update="formDialogVisible"
+      ref="tableRef"
       @query="getWalletList"
     >
       <template v-slot:status="{ row }">
@@ -75,7 +76,6 @@ export default {
       this.formDialogVisible = true
       this.formDialogTitle = '修改预存'
       this.formFields = [
-        { label: '用户ID', prop: 'uid' },
         { label: '余额', prop: 'balance' },
         { label: '信息', prop: 'content' }
       ]
@@ -91,7 +91,6 @@ export default {
           const { data: res } = response.data
           this.tableList = res.list
           this.totalNum = res.total
-          this.$message.success('获取成功')
         })
         .catch(() => {
           this.$message.error('获取失败')
@@ -103,6 +102,7 @@ export default {
       updateWallet(form)
         .then(() => {
           this.formDialogVisible = false
+          this.$refs.tableRef.handleQuery()
           this.$message.success('修改成功')
         })
         .catch(() => {

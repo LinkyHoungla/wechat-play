@@ -2,9 +2,12 @@ package com.example.server.service.impl;
 
 import com.example.server.constant.ApiError;
 import com.example.server.dao.UserDao;
+import com.example.server.dto.param.StatusParam;
 import com.example.server.dto.param.UserInfoParam;
 import com.example.server.dto.param.UserLogParam;
-import com.example.server.dto.vo.UserInfo;
+import com.example.server.dto.vo.UserInfoVo;
+import com.example.server.dto.vo.UserMana;
+import com.example.server.entity.UserInfo;
 import com.example.server.exception.ApiException;
 import com.example.server.service.UserService;
 import com.example.server.util.JwtUtil;
@@ -47,9 +50,24 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public PageQuery<UserInfo> getUserList(String query, Integer pageNum, Integer pageSize) {
+    public UserInfoVo getUserInfo(String id) {
+        return userDao.getUserInfo(id);
+    }
+
+    @Override
+    public Integer updateUserInfo(UserInfoParam param) {
+        return userDao.updateUser(param);
+    }
+
+    @Override
+    public PageQuery<UserMana> getUserList(String query, Integer pageNum, Integer pageSize) {
         PageHelper.startPage(pageNum, pageSize);
         return new PageQuery<>(new PageInfo<>(userDao.getUserList(query)));
+    }
+
+    @Override
+    public UserInfo getUserInfoMana(String id) {
+        return userDao.getUserInfoMana(id);
     }
 
     @Override
@@ -68,8 +86,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Integer updateUser(UserInfoParam param) {
-        return userDao.updateUser(param);
+    public Integer updateStatus(StatusParam param) {
+        return userDao.updateStatus(param.getId(), param.getStatus());
     }
 
     @Override
