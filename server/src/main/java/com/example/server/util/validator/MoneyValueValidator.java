@@ -7,10 +7,6 @@ import javax.validation.ConstraintValidatorContext;
 import java.math.BigDecimal;
 
 public class MoneyValueValidator implements ConstraintValidator<MoneyValue, BigDecimal> {
-
-    private Class<? extends Enum<?>> enumClass;
-
-    private int scale;
     private long max;
 
     @Override

@@ -2,6 +2,7 @@ package com.example.server.service.impl;
 
 import com.example.server.constant.ApiError;
 import com.example.server.dao.AdminDao;
+import com.example.server.dto.param.AdminInfoParam;
 import com.example.server.dto.vo.AdminInfo;
 import com.example.server.dto.vo.CurrentAdmin;
 import com.example.server.dto.param.AdminParam;
@@ -54,7 +55,6 @@ public class AdminServiceImpl implements AdminService {
 
         List<Menu> p = adminDao.getMenuParent(rid);
         for (Menu c : p) {
-            System.out.println(c);
             c.setChildren(adminDao.getMenuChild(rid, c.getId()));
         }
         ca.setMenus(p);
@@ -74,8 +74,21 @@ public class AdminServiceImpl implements AdminService {
     }
 
     @Override
-    public Integer updateAdmin(AdminParam param) {
-        return adminDao.updateAdmin(param);
+    public Integer updateStatus(AdminParam param) {
+        return adminDao.updateStatus(param);
+    }
+
+    @Override
+    @Transactional
+    public Integer updateAdmin(Integer id, AdminInfoParam param) {
+        String name = param.getName();
+        String username = param.getUsername();
+        String password = param.getPassword();
+
+        if (name == null && username == null && password == null)
+            throw new ApiException(ApiError.E440);
+
+        return adminDao.updateAdminName(name,id) + adminDao.updateAdminInfo(username,password,id);
     }
 
     @Override

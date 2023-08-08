@@ -2,46 +2,50 @@
  * 输入校验
  */
 
-// 是否 外部连接
-export function isExternal (path) {
-  return /^(https?:|mailto:|tel:)/.test(path)
-}
-
-// 是否 为空
-export function isNotEmpty (value) {
-  return value.trim() !== ''
-}
-
 // 邮箱 格式
-export function isValidEmail (value) {
-  const emailPattern = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/
-  return emailPattern.test(value)
+export const mailValid = (rule, value, callback) => {
+  const regex = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/
+  if (!regex.test(value)) {
+    callback(new Error('错误邮箱格式'))
+  }
+  callback()
 }
 
 // 手机 格式
-export function isValidPhoneNumber (value) {
-  const phoneRegex = /^[1][3-9]\d{9}$/
-  return phoneRegex.test(value)
-}
-
-// 长度校验
-export function validateLength (value, minLength, maxLength) {
-  const trimmedValue = value.trim() // 去除首尾空格后的值
-
-  if (minLength && trimmedValue.length < minLength) {
-    return false
+export const phoneValid = (rule, value, callback) => {
+  const regex = /^(13[0-9]|14[01456879]|15[0-35-9]|16[2567]|17[0-8]|18[0-9]|19[0-35-9])\d{8}$/
+  if (!regex.test(value)) {
+    callback(new Error('错误手机号码格式'))
   }
-
-  if (maxLength && trimmedValue.length > maxLength) {
-    return false
-  }
-
-  return true
+  callback()
 }
 
 // 特殊字符校验
-export function containsSpecialCharacters (value) {
+export const specialValid = (rule, value, callback) => {
   // 定义特殊字符的正则表达式，这里仅列举一些常见特殊字符，你可以根据需要添加或修改
-  const specialCharactersRegex = /[!@#$%^&*()+={}|[\]\\:;"'<>,.?/~`]/
-  return specialCharactersRegex.test(value)
+  const regex = /[!@#$%^&*()+={}|[\]\\:;"'<>,.?/~`]/
+  if (regex.test(value)) {
+    callback(new Error('非法特殊字符'))
+  }
+  callback()
+}
+
+// 昵称校验
+export const nicknameValid = (rule, value, callback) => {
+  // 定义特殊字符的正则表达式，这里仅列举一些常见特殊字符，你可以根据需要添加或修改
+  const regex = /^[A-Za-z0-9_\u4e00-\u9fa5]+$/
+  if (!regex.test(value)) {
+    callback(new Error('非法昵称'))
+  }
+  callback()
+}
+
+// 用户名校验
+export const usernameValid = (rule, value, callback) => {
+  // 定义特殊字符的正则表达式，这里仅列举一些常见特殊字符，你可以根据需要添加或修改
+  const regex = /^[a-zA-Z0-9_]*$/
+  if (!regex.test(value)) {
+    callback(new Error('字段非法'))
+  }
+  callback()
 }

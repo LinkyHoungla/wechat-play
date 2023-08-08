@@ -55,10 +55,22 @@ export function addAdmin (data) {
   })
 }
 
-// 修改 管理员信息
-export function updateAdmin (id, data) {
+// 修改 状态
+export function updateStatus (data) {
   return service({
-    url: `/admin/${id}`,
+    url: '/admin/status',
+    method: 'put',
+    data,
+    meta: {
+      rid: -1
+    }
+  })
+}
+
+// 修改信息
+export function updateAdmin (data) {
+  return service({
+    url: '/admin',
     method: 'put',
     data,
     meta: {

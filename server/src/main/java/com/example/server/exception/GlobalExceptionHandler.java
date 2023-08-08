@@ -28,7 +28,6 @@ public class GlobalExceptionHandler {
     // FUNCTION 请求体参数缺失
     @ExceptionHandler(HttpMessageNotReadableException.class)
     public ResponseEntity<ApiResponse<Void>> handleRequestBodyException(HttpMessageNotReadableException e) {
-        System.out.println(e);
         ApiResponse<Void> response = new ApiResponse<>(ApiError.E440);
         return ResponseEntity.status(response.getStatus()).body(response);
     }

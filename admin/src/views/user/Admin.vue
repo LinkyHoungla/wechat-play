@@ -50,7 +50,7 @@
 </template>
 
 <script>
-import { getAdminList, addAdmin, deleteAdmin, updateAdmin } from '@/api/admin'
+import { getAdminList, addAdmin, deleteAdmin, updateStatus } from '@/api/admin'
 import { getRoles } from '@/api/permission'
 
 import { getFieldTagType, TAG_STATUS, getFieldLable } from '@/utils/tag'
@@ -173,7 +173,7 @@ export default {
     },
     // 修改 管理
     updateAdmin (form) {
-      updateAdmin(form.id, form)
+      updateStatus(form.id, form)
         .then(() => {
           this.formDialogVisible = false
           this.$refs.tableRef.handleQuery()

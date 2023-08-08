@@ -1,5 +1,6 @@
 package com.example.server.service;
 
+import com.example.server.dto.param.AdminInfoParam;
 import com.example.server.dto.vo.AdminInfo;
 import com.example.server.dto.vo.CurrentAdmin;
 import com.example.server.dto.param.AdminParam;
@@ -20,8 +21,10 @@ public interface AdminService {
     PageQuery<AdminInfo> getAdminList(String query, String tag, Integer pageNum, Integer pageSize);
     // FUNCTION 添加
     Integer addAdmin(AdminParam param);
+    // FUNCTION 状态管理
+    Integer updateStatus(AdminParam param);
     // FUNCTION 信息修改
-    Integer updateAdmin(AdminParam param);
+    Integer updateAdmin(Integer id, AdminInfoParam param);
     // FUNCTION 删除
     Integer deleteAdmin(Integer id);
 }

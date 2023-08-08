@@ -20,6 +20,12 @@ const routes = [
         name: 'Home',
         component: () => import('@/views/Home.vue'),
         meta: { title: '首页', icon: 'home', pid: 0 }
+      },
+      {
+        path: 'my',
+        name: 'My',
+        component: () => import('@/views/My.vue'),
+        meta: { title: '个人设置', pid: 0 }
       }
     ]
   },

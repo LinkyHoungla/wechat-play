@@ -39,9 +39,13 @@ public interface AdminDao {
     // FUNCTION 添加
     @Insert("INSERT INTO admin(name, rid)  VALUES (#{name}, #{rid})")
     Integer addAdmin(AdminParam param);
-    // FUNCTION 修改
-    @Update("UPDATE admin SET name = #{name}, status = #{status}, rid = #{rid} WHERE id = #{id}")
-    Integer updateAdmin(AdminParam param);
+    // FUNCTION 状态管理
+    @Update("UPDATE admin SET status = #{status}, rid = #{rid} WHERE id = #{id}")
+    Integer updateStatus(AdminParam param);
+    // FUNCTION 信息修改
+    @Update("UPDATE admin SET name = #{name} WHERE id = #{id}")
+    Integer updateAdminName(String name, Integer id);
+    Integer updateAdminInfo(String username, String password, Integer id);
     // FUNCTION 删除
     @Update("UPDATE admin SET status = 'DELETED' WHERE id = #{id}")
     Integer deleteAdmin(Integer id);

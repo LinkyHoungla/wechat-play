@@ -3,6 +3,7 @@ package com.example.server.controller;
 import com.example.server.annotation.RequirePermission;
 import com.example.server.constant.ApiError;
 import com.example.server.constant.StatusEnum;
+import com.example.server.dto.param.AdminInfoParam;
 import com.example.server.dto.param.AdminParam;
 import com.example.server.dto.param.LoginParam;
 import com.example.server.dto.vo.AdminInfo;
@@ -71,9 +72,15 @@ public class AdminController {
         return ApiResponse.success(adminService.addAdmin(param));
     }
 
+    @PutMapping("/status")
+    public ApiResponse<Integer> updateStatus(@RequestBody @Validated(value = ValidGroup.Crud.Update.class)  AdminParam param) {
+        return ApiResponse.success(adminService.updateStatus(param));
+    }
+
     @PutMapping
-    public ApiResponse<Integer> updateAdmin(@RequestBody @Validated(value = ValidGroup.Crud.Update.class)  AdminParam param) {
-        return ApiResponse.success(adminService.updateAdmin(param));
+    public ApiResponse<Integer> updateAdmin(@RequestBody @Valid AdminInfoParam param, HttpServletRequest request) {
+        Integer id = Integer.parseInt((String) request.getAttribute("id"));
+        return ApiResponse.success(adminService.updateAdmin(id, param));
     }
 
     @DeleteMapping("/{id}")

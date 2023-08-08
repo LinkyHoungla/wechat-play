@@ -57,7 +57,7 @@
     <!-- 操作栏 -->
     <div class="operate">
       <div class="items">
-        <div class="item">
+        <div class="item" @click="gotoMy">
           <i class="iconfont icon-settings" />
           <span>个人设置</span>
         </div>
@@ -101,12 +101,15 @@ export default {
         this.avatar = store.getters.avatar
         this.menusList = store.getters.menu
       })
+    },
+    gotoMy () {
+      this.$router.push('/my')
     }
   }
 }
 </script>
 
-<style lang="less">
+<style lang="less" scoped>
 .side-container {
   .avatar {
     display: flex;

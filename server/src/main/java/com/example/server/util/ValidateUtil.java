@@ -13,9 +13,11 @@ public class ValidateUtil {
     // 订单ID正则
     public static final String OID = "\\d{20}";
     // 特殊字符校验
-    public static final String CHARS = "^[a-zA-Z0-9_]*$";
+    public static final String USERNAME = "^[a-zA-Z0-9_]*$";
     // 只能中文字符
     public static final String CHINESE = "^[\\u4e00-\\u9fa5]{0,}$";
+    // 用户昵称
+    public static final String NICKNAME = "^[A-Za-z0-9_\\u4e00-\\u9fa5]+$";
 
     // FUNCTION IP地址获取
     public static String getClientIpAddress(HttpServletRequest request) {

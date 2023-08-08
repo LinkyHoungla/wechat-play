@@ -43,4 +43,14 @@
         </where>
     </select>
 
+    <!-- 更新用户信息 -->
+    <update id="updateAdminInfo">
+        UPDATE admin_login
+        <set>
+            <if test="username != null and username.trim() != ''">`username` = #{username},</if>
+            <if test="password != null and password.trim() != ''">`password` = #{password},</if>
+        </set>
+        WHERE id = #{id}
+    </update>
+
 </mapper>
