@@ -41,18 +41,18 @@
 
     <!-- 设置根日志输出 -->
     <!-- 配置 ERROR 级别的 Logger -->
-    <logger name="com.example" level="ERROR">
+    <logger name="ERROR" level="ERROR">
         <appender-ref ref="ERROR_FILE" />
     </logger>
 
     <!-- 配置 INFO 级别的 Logger -->
-    <logger name="com.example" level="INFO">
+    <logger name="INFO" level="INFO">
         <appender-ref ref="INFO_FILE" />
         <appender-ref ref="CONSOLE" />
     </logger>
 
     <!-- 配置 DEBUG 级别的 Logger -->
-    <logger name="com.example" level="DEBUG">
+    <logger name="DEBUG" level="DEBUG">
         <appender-ref ref="DEBUG_FILE" />
     </logger>
 

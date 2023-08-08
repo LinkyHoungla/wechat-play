@@ -2,7 +2,7 @@ package com.example.server.dto.param;
 
 import com.example.server.constant.GenderEnum;
 import com.example.server.constant.ServiceEnum;
-import com.example.server.util.validator.EnumValue;
+import com.example.server.annotation.EnumValue;
 import com.example.server.util.validator.ValidGroup;
 import lombok.Data;
 

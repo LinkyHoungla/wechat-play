@@ -3,7 +3,7 @@ package com.example.server.dto.param;
 import com.example.server.constant.GenderEnum;
 import com.example.server.constant.ServiceEnum;
 import com.example.server.util.ValidateUtil;
-import com.example.server.util.validator.EnumValue;
+import com.example.server.annotation.EnumValue;
 import lombok.Data;
 
 import javax.validation.constraints.NotEmpty;
@@ -26,12 +26,12 @@ public class RequireParam {
     private List<String> voice;
     @NotEmpty
     private List<String> nature;
-    // TODO: 2023/8/7 拓展校验 
+    // TODO: 2023/8/7 拓展校验
     private String detail;
-    // TODO: 2023/8/7 时间校验 
+    // TODO: 2023/8/7 时间校验
     private Instant estimatedStart;
     private Integer estimatedDuration;
-    // TODO: 2023/8/7 价格校验 
+    // TODO: 2023/8/7 价格校验
     private BigDecimal priceLow;
     private BigDecimal priceHigh;
     private String note;

@@ -1,5 +1,6 @@
 package com.example.server.controller;
 
+import com.example.server.annotation.RequirePermission;
 import com.example.server.constant.ApiError;
 import com.example.server.constant.StatusEnum;
 import com.example.server.dto.param.LoginParam;
@@ -15,7 +16,7 @@ import com.example.server.util.ApiResponse;
 import com.example.server.util.JwtUtil;
 import com.example.server.util.PageQuery;
 import com.example.server.util.ValidateUtil;
-import com.example.server.util.validator.EnumValue;
+import com.example.server.annotation.EnumValue;
 import com.example.server.util.validator.ValidGroup;
 import lombok.RequiredArgsConstructor;
 import org.hibernate.validator.constraints.Length;
@@ -70,6 +71,7 @@ public class UserController {
         return ApiResponse.success(userService.getUserInfoMana(id));
     }
 
+    @RequirePermission(pid = 49)
     @PostMapping
     public ApiResponse<Integer> addUser(@RequestBody @Valid UserLogParam param) {
         return ApiResponse.success(userService.addUser(param));

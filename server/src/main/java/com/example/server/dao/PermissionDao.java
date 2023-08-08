@@ -12,6 +12,10 @@ import java.util.List;
 
 @Mapper
 public interface PermissionDao {
+    // FUNCTION 权限验证
+    @Select("SELECT rp.id FROM role_permission rp WHERE rid = #{rid} AND pid = #{pid}")
+    Integer hasPermissions(Integer rid, Integer pid);
+
     // SECTION 权限角色
     // FUNCTION 分页查询
     List<Role> getRoleList(String query);
@@ -52,5 +56,4 @@ public interface PermissionDao {
     // FUNCTION 清空
     @Update("DELETE FROM role_permission WHERE rid = #{id}")
     Integer removeAuth(Integer id);
-
 }

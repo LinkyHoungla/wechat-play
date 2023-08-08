@@ -1,5 +1,7 @@
 package com.example.server.util.validator;
 
+import com.example.server.annotation.MoneyValue;
+
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 import java.math.BigDecimal;

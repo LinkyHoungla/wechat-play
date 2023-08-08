@@ -9,7 +9,7 @@ import com.example.server.entity.Wallet;
 import com.example.server.service.impl.OrderServiceImpl;
 import com.example.server.util.ApiResponse;
 import com.example.server.util.PageQuery;
-import com.example.server.util.validator.EnumValue;
+import com.example.server.annotation.EnumValue;
 import lombok.RequiredArgsConstructor;
 import org.hibernate.validator.constraints.Length;
 import org.springframework.validation.annotation.Validated;

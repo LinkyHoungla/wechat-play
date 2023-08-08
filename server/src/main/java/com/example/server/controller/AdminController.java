@@ -1,5 +1,6 @@
 package com.example.server.controller;
 
+import com.example.server.annotation.RequirePermission;
 import com.example.server.constant.ApiError;
 import com.example.server.constant.StatusEnum;
 import com.example.server.dto.param.AdminParam;
@@ -12,7 +13,7 @@ import com.example.server.util.ApiResponse;
 import com.example.server.util.JwtUtil;
 import com.example.server.util.PageQuery;
 import com.example.server.util.ValidateUtil;
-import com.example.server.util.validator.EnumValue;
+import com.example.server.annotation.EnumValue;
 import com.example.server.util.validator.ValidGroup;
 import lombok.RequiredArgsConstructor;
 import org.hibernate.validator.constraints.Length;
@@ -64,6 +65,7 @@ public class AdminController {
         return ApiResponse.success(adminService.getAdminList(query, tag, pageNum, pageSize));
     }
 
+    @RequirePermission(pid = 44)
     @PostMapping
     public ApiResponse<Integer> addAdmin(@RequestBody @Validated(value = ValidGroup.Crud.Create.class) AdminParam param) {
         return ApiResponse.success(adminService.addAdmin(param));

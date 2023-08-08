@@ -1,7 +1,7 @@
 package com.example.server.dto.param;
 
 import com.example.server.util.ValidateUtil;
-import com.example.server.util.validator.MoneyValue;
+import com.example.server.annotation.MoneyValue;
 import lombok.Data;
 
 import javax.validation.constraints.NotBlank;

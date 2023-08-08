@@ -2,7 +2,7 @@ package com.example.server.dto.param;
 
 import com.example.server.constant.GenderEnum;
 import com.example.server.util.ValidateUtil;
-import com.example.server.util.validator.EnumValue;
+import com.example.server.annotation.EnumValue;
 import lombok.Data;
 import org.hibernate.validator.constraints.Length;
 
