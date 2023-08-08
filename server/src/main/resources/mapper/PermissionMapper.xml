@@ -39,6 +39,15 @@
         </if>
     </select>
 
+    <!-- 已有授权 -->
+    <select id="getPermissions">
+        SELECT p.id
+        FROM permission p
+            LEFT JOIN permission c ON p.id = c.pid
+            INNER JOIN role_permission rp ON rp.pid = p.id
+        WHERE c.pid IS NULL AND rp.rid = #{rid}
+    </select>
+
     <!-- 添加 -->
     <insert id="addPermission">
         INSERT INTO permission(pid, name, path, icon, level)

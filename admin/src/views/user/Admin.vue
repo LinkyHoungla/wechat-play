@@ -115,7 +115,6 @@ export default {
       this.formDialogVisible = true
       this.formDialogTitle = '修改管理'
       this.formFields = [
-        { label: '昵称', prop: 'name' },
         { label: '身份', prop: 'rid', type: 'select', options: this.roles },
         { label: '状态', prop: 'status', type: 'select', options: TAG_STATUS }
       ]

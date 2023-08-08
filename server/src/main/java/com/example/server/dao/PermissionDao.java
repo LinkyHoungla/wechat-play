@@ -35,7 +35,7 @@ public interface PermissionDao {
     // FUNCTION 获取授权树
     List<AuthTree> getAuthTree(Integer pid, Integer rid);
     // FUNCTION 获取角色权限列表
-    @Select("SELECT pid FROM role_permission WHERE rid = #{rid}")
+    // @Select("SELECT p.id FROM permission p INNER JOIN role_permission rp ON rp.pid = p.id WHERE rp.rid = #{rid} AND p.`level` = 3")
     List<Integer> getPermissions(Integer rid);
     List<Integer> getChildren(Integer rid, Integer pid);
     // FUNCTION 添加
