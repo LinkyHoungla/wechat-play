@@ -1,6 +1,7 @@
 package com.example.server.controller;
 
 import com.example.server.constant.ApiError;
+import com.example.server.constant.StatusEnum;
 import com.example.server.dto.param.LoginParam;
 import com.example.server.dto.param.StatusParam;
 import com.example.server.dto.param.UserInfoParam;
@@ -14,6 +15,8 @@ import com.example.server.util.ApiResponse;
 import com.example.server.util.JwtUtil;
 import com.example.server.util.PageQuery;
 import com.example.server.util.ValidateUtil;
+import com.example.server.util.validator.EnumValue;
+import com.example.server.util.validator.ValidGroup;
 import lombok.RequiredArgsConstructor;
 import org.hibernate.validator.constraints.Length;
 import org.springframework.validation.annotation.Validated;
@@ -51,9 +54,10 @@ public class UserController {
 
     @GetMapping("/page")
     public ApiResponse<PageQuery<UserMana>> getUserByPage(@Length(max = 20, message = "长度超限") String query,
+                                                          @EnumValue(enumClass = StatusEnum.class, ableNull = true) String tag,
                                                           @RequestParam(defaultValue = "1") @Min(1) Integer pageNum,
                                                           @RequestParam(defaultValue = "10") @Min(1) Integer pageSize){
-        return ApiResponse.success(userService.getUserList(query, pageNum, pageSize));
+        return ApiResponse.success(userService.getUserList(query, tag, pageNum, pageSize));
     }
 
     @GetMapping("/{id}")
@@ -72,7 +76,7 @@ public class UserController {
     }
 
     @PutMapping("/status")
-    public ApiResponse<Integer> updateStatus(@RequestBody @Valid StatusParam param) {
+    public ApiResponse<Integer> updateStatus(@RequestBody @Validated(value = ValidGroup.Type.Account.class) StatusParam param) {
         return ApiResponse.success(userService.updateStatus(param));
     }
 

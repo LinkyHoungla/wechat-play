@@ -17,7 +17,7 @@ import java.util.Map;
 public interface UserDao {
     // SECTION 用户管理
     // FUNCTION 获取
-    List<UserMana> getUserList(String query);
+    List<UserMana> getUserList(String query, String tag);
     // FUNCTION 信息获取
     @Select("SELECT * FROM user_info WHERE id = #{id}")
     UserInfo getUserInfoMana(String id);

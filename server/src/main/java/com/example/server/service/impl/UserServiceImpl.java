@@ -60,9 +60,9 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public PageQuery<UserMana> getUserList(String query, Integer pageNum, Integer pageSize) {
+    public PageQuery<UserMana> getUserList(String query, String tag, Integer pageNum, Integer pageSize) {
         PageHelper.startPage(pageNum, pageSize);
-        return new PageQuery<>(new PageInfo<>(userDao.getUserList(query)));
+        return new PageQuery<>(new PageInfo<>(userDao.getUserList(query, tag)));
     }
 
     @Override

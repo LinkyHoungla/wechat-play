@@ -29,7 +29,7 @@ public class AdminServiceImpl implements AdminService {
     public String login(String username, String password, String ip) {
         Map<String, Object> map = adminDao.login(username, password);
 
-        if( map == null || map.get("id") == null)
+        if( map == null || map.get("id") == null || map.get("rid") == null)
             throw new ApiException(ApiError.E451);
 
         Integer id = (Integer) map.get("id");
@@ -63,9 +63,9 @@ public class AdminServiceImpl implements AdminService {
     }
 
     @Override
-    public PageQuery<AdminInfo> getAdminList(String query, Integer pageNum, Integer pageSize) {
+    public PageQuery<AdminInfo> getAdminList(String query, String tag, Integer pageNum, Integer pageSize) {
         PageHelper.startPage(pageNum, pageSize);
-        return new PageQuery<>(new PageInfo<>(adminDao.getAdminList(query)));
+        return new PageQuery<>(new PageInfo<>(adminDao.getAdminList(query, tag)));
     }
 
     @Override
@@ -74,8 +74,8 @@ public class AdminServiceImpl implements AdminService {
     }
 
     @Override
-    public Integer updateAdmin(Integer id, AdminParam param) {
-        return adminDao.updateAdmin(id, param);
+    public Integer updateAdmin(AdminParam param) {
+        return adminDao.updateAdmin(param);
     }
 
     @Override

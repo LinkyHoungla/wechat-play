@@ -19,9 +19,9 @@ public class CompanionServiceImpl implements CompanionService {
     private final CompanionDao companionDao;
 
     @Override
-    public PageQuery<Companion> getCompanionList(String query, Integer pageNum, Integer pageSize) {
+    public PageQuery<Companion> getCompanionList(String query, String tag, Integer pageNum, Integer pageSize) {
         PageHelper.startPage(pageNum, pageSize);
-        return new PageQuery<>(new PageInfo<>(companionDao.getCompanionList(query)));
+        return new PageQuery<>(new PageInfo<>(companionDao.getCompanionList(query, tag)));
     }
 
     @Override
@@ -40,9 +40,9 @@ public class CompanionServiceImpl implements CompanionService {
     }
 
     @Override
-    public PageQuery<com.example.server.entity.Service> getServiceList(String query, Integer pageNum, Integer pageSize) {
+    public PageQuery<com.example.server.entity.Service> getServiceList(String query, String tag, Integer pageNum, Integer pageSize) {
         PageHelper.startPage(pageNum, pageSize);
-        return new PageQuery<>(new PageInfo<>(companionDao.getServiceList(query)));
+        return new PageQuery<>(new PageInfo<>(companionDao.getServiceList(query, tag)));
     }
 
     @Override

@@ -7,13 +7,14 @@
       :total="totalNum"
       :list="tableList"
       :update="formDialogVisible"
+      :tagOptions="statusTag"
       ref="tableRef"
       @query="getStoreList"
       @add="addStoreDialog"
     >
       <template v-slot:status="{ row }">
-        <el-tag :type="getFieldTagType(row.status)" size="mini">{{
-          tagFields.find((item) => item.value === row.status).label
+        <el-tag :type="getFieldTagType(statusTag, row.status)" size="mini">{{
+          getFieldLable(statusTag, row.status)
         }}</el-tag>
       </template>
       <template v-slot:operate="{ row }">
@@ -49,6 +50,7 @@
 
 <script>
 import { getStoreList, addStore, deleteStore, updateStore } from '@/api/store'
+import { TAG_STATUS, getFieldLable, getFieldTagType } from '@/utils/tag'
 
 export default {
   name: 'StoreView',
@@ -76,12 +78,7 @@ export default {
       ],
 
       // 标签
-      tagFields: [
-        { value: null, label: null, tag: '' },
-        { value: 'ACTIVE', label: '正常', tag: 'success' },
-        { value: 'BANNED', label: '封禁', tag: 'info' },
-        { value: 'DELETED', label: '已删除', tag: 'danger' }
-      ],
+      statusTag: TAG_STATUS,
 
       // 表单窗口
       formDialogTitle: '',
@@ -118,10 +115,7 @@ export default {
           label: '状态',
           prop: 'status',
           type: 'select',
-          options: [
-            { value: 'ACTIVE', label: '正常' },
-            { value: 'BANNED', label: '封禁' }
-          ]
+          options: TAG_STATUS
         }
       ]
       this.form = temp
@@ -129,9 +123,12 @@ export default {
     },
 
     // 获取 Tag类型
-    getFieldTagType (value) {
-      const field = this.tagFields.find((item) => item.value === value)
-      return field ? field.tag : ''
+    // 获取 Tag类型
+    getFieldTagType (list, value) {
+      return getFieldTagType(list, value)
+    },
+    getFieldLable (list, value) {
+      return getFieldLable(list, value)
     },
 
     // 请求

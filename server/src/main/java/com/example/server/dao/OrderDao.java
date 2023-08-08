@@ -14,7 +14,7 @@ import java.util.List;
 public interface OrderDao {
     // SECTION 陪玩管理
     // FUNCTION 获取
-    List<Order> getOrderList(String query);
+    List<Order> getOrderList(String query, String tag);
     // FUNCTION 添加
     @Insert("INSERT INTO " +
             "`order_requirement` (id, uid, sid, serve_type, gender, voice, nature, note) " +

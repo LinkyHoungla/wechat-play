@@ -11,7 +11,7 @@ import com.example.server.util.PageQuery;
 public interface CompanionService {
     // SECTION 陪玩管理
     // FUNCTION 分页查询
-    PageQuery<Companion> getCompanionList(String query, Integer pageNum, Integer pageSize);
+    PageQuery<Companion> getCompanionList(String query, String tag, Integer pageNum, Integer pageSize);
     // FUNCTION 添加
     Integer addCompanion(USidParam param);
     // FUNCTION 修改
@@ -21,7 +21,7 @@ public interface CompanionService {
 
     // SECTION 服务管理
     // FUNCTION 分页查询
-    PageQuery<Service> getServiceList(String query, Integer pageNum, Integer pageSize);
+    PageQuery<Service> getServiceList(String query, String tag, Integer pageNum, Integer pageSize);
     // FUNCTION 添加
     Integer addService(ServiceParam param);
     // FUNCTION 修改

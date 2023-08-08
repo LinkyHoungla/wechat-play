@@ -11,7 +11,7 @@ import com.example.server.util.PageQuery;
 public interface UserService {
     // SECTION 用户管理
     // FUNCTION 分页查询
-    PageQuery<UserMana> getUserList(String query, Integer pageNum, Integer pageSize);
+    PageQuery<UserMana> getUserList(String query, String tag,Integer pageNum, Integer pageSize);
     // FUNCTION 信息获取
     UserInfo getUserInfoMana(String id);
     // FUNCTION 添加

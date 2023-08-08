@@ -1,9 +1,7 @@
 package com.example.server;
 
 import com.example.server.dao.CompanionDao;
-import com.example.server.service.impl.AdminServiceImpl;
-import com.example.server.service.impl.CompanionServiceImpl;
-import com.example.server.service.impl.PermissionServiceImpl;
+import com.example.server.service.impl.*;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -12,21 +10,14 @@ import org.springframework.boot.test.context.SpringBootTest;
 class ServerApplicationTests {
 
 	@Autowired
-	private AdminServiceImpl adminService;
-
-	@Autowired
-	private PermissionServiceImpl permissionService;
-
-	@Autowired
-	private CompanionServiceImpl companionService;
-
-	@Autowired
-	private CompanionDao companionDao;
+	private UserServiceImpl service;
 
 	@Test
 	void contextLoads() {
-		// System.out.println(companionService.getGameListTest(null, "SERVER", 1, 10));;
-		// System.out.println(companionDao.getGameListTest("", "SERVER"));
+		System.out.println(service.getUserList("", "ACTIVE", 1, 10));
+		System.out.println(service.getUserList("", "", 1, 10));
+		System.out.println(service.getUserList("u", "", 1, 10));
+		System.out.println(service.getUserList("u", "ACTIVE", 1, 10));
 	}
 
 }

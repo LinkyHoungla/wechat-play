@@ -21,9 +21,14 @@
         FROM user u
             INNER JOIN user_login ul ON u.id = ul.id
             INNER JOIN role r ON u.rid = r.id
-        <if test="query != null and query.trim() != ''">
-            WHERE u.nickname LIKE CONCAT('%', #{query}, '%')
-        </if>
+        <where>
+            <if test="query != null and query.trim() != ''">
+                AND ul.username LIKE CONCAT('%', #{query}, '%')
+            </if>
+            <if test="tag != null and tag.trim() != ''">
+                AND u.status = #{tag}
+            </if>
+        </where>
     </select>
 
 </mapper>

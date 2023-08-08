@@ -21,4 +21,19 @@ public interface ValidGroup extends Default {
 
         }
     }
+
+    interface Type extends ValidGroup{
+        interface Account extends Crud{
+
+        }
+
+        interface Goods extends Crud{
+
+        }
+
+        interface Order extends Crud{
+
+        }
+
+    }
 }

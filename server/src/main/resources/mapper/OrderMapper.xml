@@ -8,9 +8,14 @@
     <select id="getOrderList" >
         SELECT  *
         FROM `order`
-        <if test="query != null and query.trim() != ''">
-            WHERE status LIKE CONCAT('%', #{query}, '%')
-        </if>
+        <where>
+            <if test="query != null and query.trim() != ''">
+                AND id LIKE CONCAT('%', #{query}, '%')
+            </if>
+            <if test="tag != null and tag.trim() != ''">
+                AND `status` = #{tag}
+            </if>
+        </where>
     </select>
 
     <!-- 分页查询 -->

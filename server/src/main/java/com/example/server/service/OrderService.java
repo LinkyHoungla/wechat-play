@@ -9,7 +9,7 @@ import com.example.server.util.PageQuery;
 public interface OrderService {
     // SECTION 订单管理
     // FUNCTION 分页查询
-    PageQuery<Order> getOrderList(String query, Integer pageNum, Integer pageSize);
+    PageQuery<Order> getOrderList(String query, String tag, Integer pageNum, Integer pageSize);
     // FUNCTION 添加
     Integer addOrder(RequireParam param);
     // FUNCTION 修改
@@ -18,7 +18,7 @@ public interface OrderService {
     // SECTION 钱包管理
     // FUNCTION 分页查询
     PageQuery<Wallet> getWalletList(String query, Integer pageNum, Integer pageSize);
-    // FUNCTION 添加
+    // FUNCTION 更新
     Integer updateWallet(BalanceParam param);
 
 }

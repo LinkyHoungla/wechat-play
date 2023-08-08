@@ -14,7 +14,7 @@ import java.util.List;
 public interface StoreDao {
     // SECTION 店铺管理
     // FUNCTION 获取
-    List<Store> getStoreList(String query);
+    List<Store> getStoreList(String query, String tag);
     // FUNCTION 添加
     @Insert("INSERT INTO store (id, oid, phone, name, `desc`, owner) VALUES (#{id}, #{param.oid}, #{param.phone}, #{param.name}, #{param.desc}, #{param.owner})")
     Integer addStore(String id, StoreParam param);

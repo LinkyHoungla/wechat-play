@@ -8,9 +8,14 @@
     <select id="getStoreList" >
         SELECT  *
         FROM store s
-        <if test="query != null and query.trim() != ''">
-            WHERE s.name LIKE CONCAT('%', #{query}, '%')
-        </if>
+        <where>
+            <if test="query != null and query.trim() != ''">
+                AND s.name LIKE CONCAT('%', #{query}, '%')
+            </if>
+            <if test="tag != null and tag.trim() != ''">
+                AND s.status = #{tag}
+            </if>
+        </where>
     </select>
 
     <!-- 分页查询 -->

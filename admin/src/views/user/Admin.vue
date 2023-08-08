@@ -6,13 +6,14 @@
       :tableFields="tableFields"
       :total="totalNum"
       :list="tableList"
+      :tagOptions="statusTag"
       ref="tableRef"
       @query="getAdminList"
       @add="addAdminDialog"
     >
       <template v-slot:status="{ row }">
         <el-tag :type="getFieldTagType(statusTag, row.status)" size="mini">{{
-          statusTag.find((item) => item.value === row.status).label
+         getFieldLable(statusTag, row.status)
         }}</el-tag>
       </template>
       <template v-slot:operate="{ row }">
@@ -52,7 +53,7 @@
 import { getAdminList, addAdmin, deleteAdmin, updateAdmin } from '@/api/admin'
 import { getRoles } from '@/api/permission'
 
-import { getFieldTagType, TAG_STATUS } from '@/utils/tag'
+import { getFieldTagType, TAG_STATUS, getFieldLable } from '@/utils/tag'
 
 export default {
   name: 'AdminView',
@@ -61,7 +62,6 @@ export default {
     'form-dialog': () => import('@/components/FormDialog.vue')
   },
   created () {
-    this.statusTag = TAG_STATUS
     this.getRoles()
   },
   data () {
@@ -84,7 +84,7 @@ export default {
       ],
 
       // 标签
-      statusTag: [],
+      statusTag: TAG_STATUS,
 
       // 下拉菜单
       roles: [],
@@ -126,6 +126,9 @@ export default {
     // 获取 Tag类型
     getFieldTagType (list, value) {
       return getFieldTagType(list, value)
+    },
+    getFieldLable (list, value) {
+      return getFieldLable(list, value)
     },
 
     // 请求

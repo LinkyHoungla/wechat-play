@@ -8,18 +8,28 @@
     <select id="getCompanionList" >
         SELECT  *
         FROM companion
-        <if test="query != null and query.trim() != ''">
-            WHERE status LIKE CONCAT('%', #{query}, '%')
-        </if>
+        <where>
+            <if test="query != null and query.trim() != ''">
+                AND (uid LIKE CONCAT('%', #{query}, '%') OR sid LIKE CONCAT('%', #{query}, '%'))
+            </if>
+            <if test="tag != null and tag.trim() != ''">
+                AND `status` = #{tag}
+            </if>
+        </where>
     </select>
 
     <!-- 分页查询 -->
     <select id="getServiceList" >
         SELECT  *
         FROM service
-        <if test="query != null and query.trim() != ''">
-            WHERE service.name LIKE CONCAT('%', #{query}, '%')
-        </if>
+        <where>
+            <if test="query != null and query.trim() != ''">
+                AND `name` LIKE CONCAT('%', #{query}, '%')
+            </if>
+            <if test="tag != null and tag.trim() != ''">
+                AND type = #{tag}
+            </if>
+        </where>
     </select>
 
     <!-- 分页查询 -->

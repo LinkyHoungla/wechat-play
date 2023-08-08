@@ -10,7 +10,7 @@ import com.example.server.util.PageQuery;
 public interface StoreService {
     // SECTION 店铺管理
     // FUNCTION 分页查询
-    PageQuery<Store> getStoreList(String query, Integer pageNum, Integer pageSize);
+    PageQuery<Store> getStoreList(String query, String tag, Integer pageNum, Integer pageSize);
     // FUNCTION 添加
     Integer addStore(StoreParam param);
     // FUNCTION 修改

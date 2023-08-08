@@ -1,16 +1,16 @@
 <template>
   <div>
     <!-- 表格区域 -->
-    <table-page tableTitle="添加服务" :tableFields="tableFields" :total="totalNum" :list="tableList" ref="tableRef"
+    <table-page tableTitle="添加服务" :tableFields="tableFields" :total="totalNum" :list="tableList" ref="tableRef" :tagOptions="serviceTag"
       :update="formDialogVisible" @query="getServiceList" @add="addServiceDialog">
       <template v-slot:type="{ row }">
-        <el-tag :type="getFieldTagType(row.status)" size="mini">{{
-          tagFields.find((item) => item.value === row.type).label
+        <el-tag :type="getFieldTagType(serviceTag, row.type)" size="mini">{{
+          getFieldLable(serviceTag, row.type)
         }}</el-tag>
       </template>
       <template v-slot:gender="{ row }">
-        <el-tag :type="getFieldTagType(row.status)" size="mini">{{
-          tagFields.find((item) => item.value === row.gender).label
+        <el-tag :type="getFieldTagType(genderTag, row.gender)" size="mini">{{
+          getFieldLable(genderTag, row.gender)
         }}</el-tag>
       </template>
       <template v-slot:operate="{ row }">
@@ -29,6 +29,7 @@
 
 <script>
 import { getServiceList, addService, updateService, deleteService } from '@/api/companion'
+import { getFieldTagType, getFieldLable, TAG_SERVICE, TAG_GENDER_EN } from '@/utils/tag'
 
 export default {
   name: 'ServiceView',
@@ -51,16 +52,8 @@ export default {
         { label: '操作', prop: 'operate', type: 'template', width: '180px' }
       ],
 
-      // TODO 标签独立文件
-      // 标签
-      tagFields: [
-        { value: 'SERVICE', label: '服务', tag: 'success' },
-        { value: 'VOICE', label: '音色', tag: 'info' },
-        { value: 'NATURE', label: '性格', tag: 'danger' },
-        { value: 'MALE', label: '男', tag: 'danger' },
-        { value: 'FEMALE', label: '女', tag: 'success' },
-        { value: 'ALL', label: '所有', tag: 'success' }
-      ],
+      genderTag: TAG_GENDER_EN,
+      serviceTag: TAG_SERVICE,
 
       // 表单窗口
       formDialogTitle: '',
@@ -81,21 +74,13 @@ export default {
           label: '服务类型',
           prop: 'type',
           type: 'select',
-          options: [
-            { value: 'SERVICE', label: '服务' },
-            { value: 'VOICE', label: '音色' },
-            { value: 'NATURE', label: '性格' }
-          ]
+          options: TAG_SERVICE
         },
         {
           label: '性别',
           prop: 'gender',
           type: 'select',
-          options: [
-            { value: 'MALE', label: '男' },
-            { value: 'FEMALE', label: '女' },
-            { value: 'ALL', label: '所有' }
-          ]
+          options: TAG_GENDER_EN
         },
         { label: '名称', prop: 'name' }
       ]
@@ -111,11 +96,7 @@ export default {
           label: '性别',
           prop: 'gender',
           type: 'select',
-          options: [
-            { value: 'MALE', label: '男' },
-            { value: 'FEMALE', label: '女' },
-            { value: 'ALL', label: '所有' }
-          ]
+          options: TAG_GENDER_EN
         },
         { label: '名称', prop: 'name' }
       ]
@@ -124,9 +105,11 @@ export default {
     },
 
     // 获取 Tag类型
-    getFieldTagType (value) {
-      const field = this.tagFields.find((item) => item.value === value)
-      return field ? field.tag : ''
+    getFieldTagType (list, value) {
+      return getFieldTagType(list, value)
+    },
+    getFieldLable (list, value) {
+      return getFieldLable(list, value)
     },
 
     // 请求
@@ -156,7 +139,6 @@ export default {
     },
     // 修改
     updateService (form) {
-      console.log(form)
       updateService(form)
         .then(() => {
           this.formDialogVisible = false

@@ -1,16 +1,11 @@
 <template>
   <div>
     <!-- 表格区域 -->
-    <table-page tableTitle="添加游戏" :tableFields="tableFields" :total="totalNum" :list="tableList" :tagOptions="tagOptions" ref="tableRef"
+    <table-page tableTitle="添加游戏" :tableFields="tableFields" :total="totalNum" :list="tableList" :tagOptions="gameTag" ref="tableRef"
       :update="formDialogVisible" @query="getGameList" @add="addGameDialog(-1)">
       <template v-slot:type="{ row }">
-        <el-tag :type="getFieldTagType(row.status)" size="mini">{{
-          tagFields.find((item) => item.value === row.type).label
-        }}</el-tag>
-      </template>
-      <template v-slot:gender="{ row }">
-        <el-tag :type="getFieldTagType(row.status)" size="mini">{{
-          tagFields.find((item) => item.value === row.gender).label
+        <el-tag :type="getFieldTagType(gameTag, row.type)" size="mini">{{
+          getFieldLable(gameTag, row.type)
         }}</el-tag>
       </template>
       <template v-slot:operate="{ row }">
@@ -32,6 +27,7 @@
 
 <script>
 import { getGameList, addGame, updateGame, deleteGame } from '@/api/companion'
+import { TAG_GAME, getFieldTagType, getFieldLable } from '@/utils/tag'
 
 export default {
   name: 'GameView',
@@ -44,12 +40,6 @@ export default {
       // 表格
       tableList: [],
       totalNum: 0,
-      tagOptions: [
-        { value: 'SERVER', label: '区服' },
-        { value: 'GAME', label: '游戏' },
-        { value: 'RANK', label: '等级' },
-        { value: 'MODE', label: '模式' }
-      ],
       tableFields: [
         { label: 'ID', prop: 'id' },
         { label: 'pid', prop: 'pid' },
@@ -60,14 +50,8 @@ export default {
         { label: '操作', prop: 'operate', type: 'template', width: '300px' }
       ],
 
-      // TODO 标签独立文件
       // 标签
-      tagFields: [
-        { value: 'GAME', label: '游戏', tag: 'success' },
-        { value: 'SERVER', label: '区服', tag: 'info' },
-        { value: 'RANK', label: '等级', tag: 'danger' },
-        { value: 'MODE', label: '模式', tag: 'danger' }
-      ],
+      gameTag: TAG_GAME,
 
       // 表单窗口
       formDialogTitle: '',
@@ -118,9 +102,11 @@ export default {
     },
 
     // 获取 Tag类型
-    getFieldTagType (value) {
-      const field = this.tagFields.find((item) => item.value === value)
-      return field ? field.tag : ''
+    getFieldTagType (list, value) {
+      return getFieldTagType(list, value)
+    },
+    getFieldLable (list, value) {
+      return getFieldLable(list, value)
     },
 
     // 请求
@@ -150,7 +136,6 @@ export default {
     },
     // 修改
     updateGame (form) {
-      console.log(form)
       updateGame(form)
         .then(() => {
           this.formDialogVisible = false

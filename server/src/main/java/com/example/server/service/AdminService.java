@@ -17,11 +17,11 @@ public interface AdminService {
 
     // SECTION 管理员管理
     // FUNCTION 分页查询
-    PageQuery<AdminInfo> getAdminList(String query, Integer pageNum, Integer pageSize);
+    PageQuery<AdminInfo> getAdminList(String query, String tag, Integer pageNum, Integer pageSize);
     // FUNCTION 添加
     Integer addAdmin(AdminParam param);
     // FUNCTION 信息修改
-    Integer updateAdmin(Integer id, AdminParam param);
+    Integer updateAdmin(AdminParam param);
     // FUNCTION 删除
     Integer deleteAdmin(Integer id);
 }

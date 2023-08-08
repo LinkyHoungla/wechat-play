@@ -17,7 +17,7 @@ import java.util.List;
 public interface CompanionDao {
     // SECTION 陪玩管理
     // FUNCTION 获取
-    List<Companion> getCompanionList(String query);
+    List<Companion> getCompanionList(String query, String tag);
     // FUNCTION 添加
     @Insert("INSERT INTO companion (uid,sid) VALUES (#{uid}, #{sid})")
     Integer addCompanion(USidParam param);
@@ -30,7 +30,7 @@ public interface CompanionDao {
 
     // SECTION 服务管理
     // FUNCTION 获取
-    List<Service> getServiceList(String query);
+    List<Service> getServiceList(String query, String tag);
     // FUNCTION 添加
     @Insert("INSERT INTO service (type, name, gender) VALUES (#{type}, #{name}, #{gender})")
     Integer addService(ServiceParam param);

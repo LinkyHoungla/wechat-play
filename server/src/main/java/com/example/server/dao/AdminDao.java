@@ -35,11 +35,13 @@ public interface AdminDao {
 
     // SECTION 管理员管理
     // FUNCTION 分页查询
-    List<AdminInfo> getAdminList(String query);
+    List<AdminInfo> getAdminList(String query, String tag);
     // FUNCTION 添加
+    @Insert("INSERT INTO admin(name, rid)  VALUES (#{name}, #{rid})")
     Integer addAdmin(AdminParam param);
     // FUNCTION 修改
-    Integer updateAdmin(Integer id, AdminParam param);
+    @Update("UPDATE admin SET name = #{name}, status = #{status}, rid = #{rid} WHERE id = #{id}")
+    Integer updateAdmin(AdminParam param);
     // FUNCTION 删除
     @Update("UPDATE admin SET status = 'DELETED' WHERE id = #{id}")
     Integer deleteAdmin(Integer id);

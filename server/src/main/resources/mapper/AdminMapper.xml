@@ -33,33 +33,14 @@
         FROM admin a
                  INNER JOIN admin_login al ON a.id = al.id
                  INNER JOIN role r ON a.rid = r.id
-        WHERE 1 = 1
-        <if test="query != null and query.trim() != ''">
-            AND (a.name LIKE CONCAT('%', #{query}, '%') OR al.username LIKE CONCAT('%', #{query}, '%'))
-        </if>
+        <where>
+            <if test="query != null and query.trim() != ''">
+                AND (a.name LIKE CONCAT('%', #{query}, '%') OR al.username LIKE CONCAT('%', #{query}, '%'))
+            </if>
+            <if test="tag != null and tag.trim() != ''">
+                AND status = #{tag}
+            </if>
+        </where>
     </select>
-
-    <!-- 添加 -->
-    <insert id="addAdmin">
-        INSERT INTO admin (`name`, rid
-        <if test="status != null">
-            , status
-        </if>)
-        VALUES (#{name}, #{rid}
-        <if test="status != null">
-            , #{status}
-        </if>)
-    </insert>
-
-    <!-- 修改 -->
-    <update id="updateAdmin" >
-        UPDATE admin
-        <set>
-            <if test="param.name != null">`name` = #{param.name},</if>
-            <if test="param.rid != null">rid = #{param.rid},</if>
-            <if test="param.status != null">`status` = #{param.status}</if>
-        </set>
-        WHERE id = #{id}
-    </update>
 
 </mapper>

@@ -16,6 +16,7 @@ public enum ApiError {
     E452(452, "Expired Token"),
     E453(453, "Illegal Token"),
     E460(460, "Invalid Database Condition"),
+    E461(461, "Duplicate Unique ID"),
     E404(404, "Other");
 
     private final Integer code;

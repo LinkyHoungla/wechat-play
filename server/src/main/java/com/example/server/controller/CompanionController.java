@@ -1,6 +1,8 @@
 package com.example.server.controller;
 
 import com.example.server.constant.GameEnum;
+import com.example.server.constant.ServiceEnum;
+import com.example.server.constant.StatusEnum;
 import com.example.server.dto.param.GameParam;
 import com.example.server.dto.param.ServiceParam;
 import com.example.server.dto.param.StatusParam;
@@ -12,6 +14,7 @@ import com.example.server.service.impl.CompanionServiceImpl;
 import com.example.server.util.ApiResponse;
 import com.example.server.util.PageQuery;
 import com.example.server.util.validator.EnumValue;
+import com.example.server.util.validator.ValidGroup;
 import lombok.RequiredArgsConstructor;
 import org.hibernate.validator.constraints.Length;
 import org.springframework.validation.annotation.Validated;
@@ -29,9 +32,10 @@ public class CompanionController {
 
     @GetMapping("/page")
     public ApiResponse<PageQuery<Companion>> getCompanionByPage(@Length(max = 20, message = "长度超限") String query,
+                                                                @EnumValue(enumClass = StatusEnum.class, ableNull = true) String tag,
                                                                 @RequestParam(defaultValue = "1") @Min(1) Integer pageNum,
                                                                 @RequestParam(defaultValue = "10") @Min(1) Integer pageSize){
-        return ApiResponse.success(companionService.getCompanionList(query, pageNum, pageSize));
+        return ApiResponse.success(companionService.getCompanionList(query, tag, pageNum, pageSize));
     }
 
     @PostMapping
@@ -40,7 +44,7 @@ public class CompanionController {
     }
 
     @PutMapping
-    public ApiResponse<Integer> updateCompanion(@RequestBody @Valid StatusParam param) {
+    public ApiResponse<Integer> updateCompanion(@RequestBody @Validated(value = ValidGroup.Type.Goods.class) StatusParam param) {
         return ApiResponse.success(companionService.updateStatus(Integer.parseInt(param.getId()), param.getStatus()));
     }
 
@@ -51,18 +55,19 @@ public class CompanionController {
 
     @GetMapping("/service/page")
     public ApiResponse<PageQuery<Service>> getServiceByPage(@Length(max = 20, message = "长度超限") String query,
+                                                              @EnumValue(enumClass = ServiceEnum.class, ableNull = true) String tag,
                                                               @RequestParam(defaultValue = "1") @Min(1) Integer pageNum,
                                                               @RequestParam(defaultValue = "10") @Min(1) Integer pageSize){
-        return ApiResponse.success(companionService.getServiceList(query, pageNum, pageSize));
+        return ApiResponse.success(companionService.getServiceList(query, tag, pageNum, pageSize));
     }
 
     @PostMapping("/service")
-    public ApiResponse<Integer> addService(@RequestBody @Valid ServiceParam param) {
+    public ApiResponse<Integer> addService(@RequestBody @Validated(value = ValidGroup.Crud.Create.class) ServiceParam param) {
         return ApiResponse.success(companionService.addService(param));
     }
 
     @PutMapping("/service")
-    public ApiResponse<Integer> updateService(@RequestBody @Valid ServiceParam param) {
+    public ApiResponse<Integer> updateService(@RequestBody @Validated(value = ValidGroup.Crud.Update.class) ServiceParam param) {
         return ApiResponse.success(companionService.updateService(param));
     }
 
@@ -73,19 +78,19 @@ public class CompanionController {
 
     @GetMapping("/game/page")
     public ApiResponse<PageQuery<Game>> getGameByPage(@Length(max = 20, message = "长度超限") String query,
-                                                      @EnumValue(enumClass = GameEnum.class, message = "类型非法", ableNull = true) String tag,
+                                                      @EnumValue(enumClass = GameEnum.class, ableNull = true) String tag,
                                                          @RequestParam(defaultValue = "1") @Min(1) Integer pageNum,
                                                          @RequestParam(defaultValue = "10") @Min(1) Integer pageSize){
         return ApiResponse.success(companionService.getGameList(query, tag, pageNum, pageSize));
     }
 
     @PostMapping("/game")
-    public ApiResponse<Integer> addGame(@RequestBody @Valid GameParam param) {
+    public ApiResponse<Integer> addGame(@RequestBody @Validated(value = ValidGroup.Crud.Create.class) GameParam param) {
         return ApiResponse.success(companionService.addGame(param));
     }
 
     @PutMapping("/game")
-    public ApiResponse<Integer> updateGame(@RequestBody @Valid GameParam param) {
+    public ApiResponse<Integer> updateGame(@RequestBody @Validated(value = ValidGroup.Crud.Update.class) GameParam param) {
         return ApiResponse.success(companionService.updateGame(param));
     }
 

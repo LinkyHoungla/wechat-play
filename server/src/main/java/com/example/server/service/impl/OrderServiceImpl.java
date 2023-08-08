@@ -24,9 +24,9 @@ public class OrderServiceImpl implements OrderService {
     private final OrderDao orderDao;
 
     @Override
-    public PageQuery<Order> getOrderList(String query, Integer pageNum, Integer pageSize) {
+    public PageQuery<Order> getOrderList(String query, String tag, Integer pageNum, Integer pageSize) {
         PageHelper.startPage(pageNum, pageSize);
-        return new PageQuery<>(new PageInfo<>(orderDao.getOrderList(query)));
+        return new PageQuery<>(new PageInfo<>(orderDao.getOrderList(query, tag)));
     }
 
     @Override
@@ -42,7 +42,7 @@ public class OrderServiceImpl implements OrderService {
             throw new ApiException(ApiError.E460);
         }
 
-        System.out.println(voice + '\n' + nature);
+        int time = 0;
         while (true) {
             String id =  UuidUtil.generateUniqueId();
             try {
@@ -52,6 +52,8 @@ public class OrderServiceImpl implements OrderService {
                 }
             } catch (DuplicateKeyException e) {
                 // 插入失败，继续循环生成新的 UID
+                if (time ++ > 20)
+                    throw new ApiException(ApiError.E461);
             }
         }
     }

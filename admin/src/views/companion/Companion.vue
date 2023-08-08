@@ -6,6 +6,7 @@
       :tableFields="tableFields"
       :total="totalNum"
       :list="tableList"
+      :tagOptions="statusTag"
       ref="tableRef"
       :update="formDialogVisible"
       @query="getCompanionList"
@@ -13,7 +14,7 @@
     >
       <template v-slot:status="{ row }">
         <el-tag :type="getFieldTagType(statusTag, row.status)" size="mini">{{
-          getFieldLabel(statusTag, row.status)
+          getFieldLable(statusTag, row.status)
         }}</el-tag>
       </template>
       <template v-slot:operate="{ row }">
@@ -64,9 +65,6 @@ export default {
     'table-page': () => import('@/components/TableView.vue'),
     'form-dialog': () => import('@/components/FormDialog.vue')
   },
-  created () {
-    this.statusTag = TAG_STATUS
-  },
   data () {
     return {
       // 表格
@@ -83,7 +81,7 @@ export default {
       ],
 
       // 标签
-      statusTag: [],
+      statusTag: TAG_STATUS,
 
       // 表单窗口
       formDialogTitle: '',
@@ -115,11 +113,7 @@ export default {
           label: '状态',
           prop: 'status',
           type: 'select',
-          options: [
-            { value: 'ACTIVE', label: '正常' },
-            { value: 'BANNED', label: '封禁' },
-            { value: 'DELETED', label: '已删除', disabled: true }
-          ]
+          options: TAG_STATUS
         }
       ]
       this.form = temp
@@ -130,7 +124,7 @@ export default {
     getFieldTagType (list, value) {
       return getFieldTagType(list, value)
     },
-    getFieldLabel (list, value) {
+    getFieldLable (list, value) {
       return getFieldLable(list, value)
     },
 

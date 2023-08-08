@@ -1,7 +1,6 @@
 package com.example.server.util;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.regex.Pattern;
 
 public class ValidateUtil {
 
@@ -9,10 +8,14 @@ public class ValidateUtil {
     public static final String PHONE = "^(13[0-9]|14[01456879]|15[0-35-9]|16[2567]|17[0-8]|18[0-9]|19[0-35-9])\\d{8}$";
     // 用户ID正则
     public static final String UID = "\\d{10}";
+    // ID正则
+    public static final String ID = "^[0-9]$";
     // 订单ID正则
     public static final String OID = "\\d{20}";
     // 特殊字符校验
-    public static final String Chars = "^[a-zA-Z0-9_]*$";
+    public static final String CHARS = "^[a-zA-Z0-9_]*$";
+    // 只能中文字符
+    public static final String CHINESE = "^[\\u4e00-\\u9fa5]{0,}$";
 
     // FUNCTION IP地址获取
     public static String getClientIpAddress(HttpServletRequest request) {

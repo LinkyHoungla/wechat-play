@@ -1,10 +1,12 @@
 package com.example.server.service.impl;
 
+import com.example.server.constant.ApiError;
 import com.example.server.dao.StoreDao;
 import com.example.server.dto.param.BalanceParam;
 import com.example.server.dto.param.StoreParam;
 import com.example.server.entity.Balance;
 import com.example.server.entity.Store;
+import com.example.server.exception.ApiException;
 import com.example.server.service.StoreService;
 import com.example.server.util.PageQuery;
 import com.example.server.util.UuidUtil;
@@ -20,13 +22,14 @@ public class StoreServiceImpl implements StoreService {
     private final StoreDao storeDao;
 
     @Override
-    public PageQuery<Store> getStoreList(String query, Integer pageNum, Integer pageSize) {
+    public PageQuery<Store> getStoreList(String query, String tag, Integer pageNum, Integer pageSize) {
         PageHelper.startPage(pageNum, pageSize);
-        return new PageQuery<>(new PageInfo<>(storeDao.getStoreList(query)));
+        return new PageQuery<>(new PageInfo<>(storeDao.getStoreList(query, tag)));
     }
 
     @Override
     public Integer addStore(StoreParam param) {
+        int times = 0;
         while (true) {
             String id =  UuidUtil.generateUniqueId();
             try {
@@ -36,6 +39,8 @@ public class StoreServiceImpl implements StoreService {
                 }
             } catch (DuplicateKeyException e) {
                 // 插入失败，继续循环生成新的 UID
+                if (times++ >= 10)
+                    throw new ApiException(ApiError.E461);
             }
         }
     }

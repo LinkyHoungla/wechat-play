@@ -9,7 +9,7 @@
             v-else
             :type="getFieldTagType(item.options, form[item.prop])"
             size="mini"
-            >{{ getFieldLabel(item.options, form[item.prop]) }}</el-tag
+            >{{ getFieldLable(item.options, form[item.prop]) }}</el-tag
           >
         </template>
 
@@ -73,7 +73,7 @@ export default {
       return getFieldTagType(list, value)
     },
 
-    getFieldLabel (list, value) {
+    getFieldLable (list, value) {
       return getFieldLable(list, value)
     },
 

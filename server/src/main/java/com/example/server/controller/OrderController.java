@@ -1,5 +1,6 @@
 package com.example.server.controller;
 
+import com.example.server.constant.OrderEnum;
 import com.example.server.dto.param.BalanceParam;
 import com.example.server.dto.param.RequireParam;
 import com.example.server.dto.param.StatusParam;
@@ -8,6 +9,7 @@ import com.example.server.entity.Wallet;
 import com.example.server.service.impl.OrderServiceImpl;
 import com.example.server.util.ApiResponse;
 import com.example.server.util.PageQuery;
+import com.example.server.util.validator.EnumValue;
 import lombok.RequiredArgsConstructor;
 import org.hibernate.validator.constraints.Length;
 import org.springframework.validation.annotation.Validated;
@@ -25,9 +27,10 @@ public class OrderController {
 
     @GetMapping("/page")
     public ApiResponse<PageQuery<Order>> getOrderByPage(@Length(max = 20, message = "长度超限") String query,
+                                                                @EnumValue(enumClass = OrderEnum.class, ableNull = true) String tag,
                                                                 @RequestParam(defaultValue = "1") @Min(1) Integer pageNum,
                                                                 @RequestParam(defaultValue = "10") @Min(1) Integer pageSize){
-        return ApiResponse.success(orderService.getOrderList(query, pageNum, pageSize));
+        return ApiResponse.success(orderService.getOrderList(query, tag, pageNum, pageSize));
     }
 
     @PostMapping
@@ -36,7 +39,7 @@ public class OrderController {
     }
 
     @PutMapping
-    public ApiResponse<Integer> updateOrder(@RequestBody @Valid StatusParam param) {
+    public ApiResponse<Integer> updateStatus(@RequestBody @Valid StatusParam param) {
         return ApiResponse.success(orderService.updateStatus(param.getId(), param.getStatus()));
     }
 

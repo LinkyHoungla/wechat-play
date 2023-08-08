@@ -3,19 +3,17 @@ package com.example.server.util.validator;
 import javax.validation.Constraint;
 import javax.validation.Payload;
 import java.lang.annotation.*;
+import java.math.BigDecimal;
 
 @Constraint(validatedBy = EnumValueValidator.class)
 @Target({ElementType.FIELD, ElementType.PARAMETER})
 @Retention(RetentionPolicy.RUNTIME)
-@Repeatable(EnumValues.class)
-public @interface EnumValue {
-    String message() default "参数非法";
+public @interface MoneyValue {
+    String message() default "金额非法";
 
     Class<?>[] groups() default {};
 
     Class<? extends Payload>[] payload() default {};
 
-    Class<? extends Enum<?>> enumClass();
-
-    boolean ableNull() default false;
+    long max() default 10000L;
 }

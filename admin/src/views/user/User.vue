@@ -8,6 +8,7 @@
       :list="tableList"
       ref="tableRef"
       :hasExpand="true"
+      :tagOptions="statusTag"
       @query="getUserList"
       @add="addUserDialog"
       @expand="getUserInfo"
@@ -17,12 +18,12 @@
       </template>
       <template v-slot:status="{ row }">
         <el-tag :type="getFieldTagType(statusTag, row.status)" size="mini">{{
-          statusTag.find((item) => item.value === row.status).label
+          getFieldLable(statusTag, row.status)
         }}</el-tag>
       </template>
       <template v-slot:gender="{ row }">
         <el-tag :type="getFieldTagType(genderTag, row.gender)" size="mini">{{
-          genderTag.find((item) => item.value === row.gender).label
+          getFieldLable(genderTag, row.gender)
         }}</el-tag>
       </template>
       <template v-slot:operate="{ row }">
@@ -60,7 +61,7 @@
 
 <script>
 import { getUserList, addUser, deleteUser, updateUser, getUserInfo, updateStatus } from '@/api/user'
-import { TAG_GENDER, TAG_STATUS, getFieldTagType } from '@/utils/tag'
+import { TAG_GENDER, TAG_STATUS, getFieldTagType, getFieldLable } from '@/utils/tag'
 
 export default {
   name: 'UserView',
@@ -104,8 +105,8 @@ export default {
       ],
 
       // 标签
-      genderTag: [],
-      statusTag: [],
+      genderTag: TAG_GENDER,
+      statusTag: TAG_STATUS,
 
       // 表单窗口
       formDialogTitle: '',
@@ -145,8 +146,12 @@ export default {
     },
 
     // 获取 Tag类型
+    // 获取 Tag类型
     getFieldTagType (list, value) {
       return getFieldTagType(list, value)
+    },
+    getFieldLable (list, value) {
+      return getFieldLable(list, value)
     },
 
     // 请求

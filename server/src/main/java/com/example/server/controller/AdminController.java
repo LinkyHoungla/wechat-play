@@ -1,16 +1,19 @@
 package com.example.server.controller;
 
 import com.example.server.constant.ApiError;
-import com.example.server.dto.vo.AdminInfo;
-import com.example.server.dto.vo.CurrentAdmin;
+import com.example.server.constant.StatusEnum;
 import com.example.server.dto.param.AdminParam;
 import com.example.server.dto.param.LoginParam;
+import com.example.server.dto.vo.AdminInfo;
+import com.example.server.dto.vo.CurrentAdmin;
 import com.example.server.exception.ApiException;
 import com.example.server.service.impl.AdminServiceImpl;
 import com.example.server.util.ApiResponse;
 import com.example.server.util.JwtUtil;
 import com.example.server.util.PageQuery;
 import com.example.server.util.ValidateUtil;
+import com.example.server.util.validator.EnumValue;
+import com.example.server.util.validator.ValidGroup;
 import lombok.RequiredArgsConstructor;
 import org.hibernate.validator.constraints.Length;
 import org.springframework.validation.annotation.Validated;
@@ -55,27 +58,24 @@ public class AdminController {
 
     @GetMapping("/page")
     public ApiResponse<PageQuery<AdminInfo>> getAdminByPage(@Length(max = 20, message = "长度超限") String query,
+                                                            @EnumValue(enumClass = StatusEnum.class, ableNull = true) String tag,
                                                             @RequestParam(defaultValue = "1") @Min(1) Integer pageNum,
                                                             @RequestParam(defaultValue = "10") @Min(1) Integer pageSize){
-        return ApiResponse.success(adminService.getAdminList(query, pageNum, pageSize));
+        return ApiResponse.success(adminService.getAdminList(query, tag, pageNum, pageSize));
     }
 
     @PostMapping
-    public ApiResponse<Integer> addAdmin(@RequestBody @Valid AdminParam param) {
+    public ApiResponse<Integer> addAdmin(@RequestBody @Validated(value = ValidGroup.Crud.Create.class) AdminParam param) {
         return ApiResponse.success(adminService.addAdmin(param));
     }
 
-    @PutMapping("/{id}")
-    public ApiResponse<Integer> updateAdmin(@PathVariable("id")Integer id, @RequestBody @Valid AdminParam param) {
-        return ApiResponse.success(adminService.updateAdmin(id, param));
+    @PutMapping
+    public ApiResponse<Integer> updateAdmin(@RequestBody @Validated(value = ValidGroup.Crud.Update.class)  AdminParam param) {
+        return ApiResponse.success(adminService.updateAdmin(param));
     }
 
     @DeleteMapping("/{id}")
-    public ApiResponse<Integer> deleteAdmin(@PathVariable("id")Integer id) {
-        if (id == null) {
-            throw new ApiException(ApiError.E460);
-        }
-
+    public ApiResponse<Integer> deleteAdmin(@PathVariable("id") @Min(1) Integer id) {
         return ApiResponse.success(adminService.deleteAdmin(id));
     }
 }

@@ -1,11 +1,11 @@
 <template>
   <div>
     <!-- 表格区域 -->
-    <table-page tableTitle="添加订单" :tableFields="tableFields" :total="totalNum" :list="tableList" ref="tableRef"
+    <table-page tableTitle="添加订单" :tableFields="tableFields" :total="totalNum" :list="tableList" ref="tableRef" :tagOptions="orderTag"
       :update="formDialogVisible" @query="getOrderList" @add="addOrderDialog">
       <template v-slot:status="{ row }">
-        <el-tag :type="getFieldTagType(row.status)" size="mini">{{
-          tagFields.find((item) => item.value === row.status).label
+        <el-tag :type="getFieldTagType(orderTag, row.status)" size="mini">{{
+          getFieldLable(orderTag, row.status)
         }}</el-tag>
       </template>
       <template v-slot:operate="{ row }">
@@ -22,6 +22,7 @@
 
 <script>
 import { getOrderList, addOrder, updateOrder } from '@/api/order'
+import { TAG_ORDER, getFieldLable, getFieldTagType, TAG_GENDER_EN } from '@/utils/tag'
 
 export default {
   name: 'OrderView',
@@ -48,24 +49,10 @@ export default {
         { label: '操作', prop: 'operate', type: 'template', width: '180px' }
       ],
 
-      // TODO 标签独立文件
       // 标签
-      tagFields: [
-        { value: null, label: null, tag: '' },
-        { value: 'CREATE', label: '创建', tag: 'info' },
-        { value: 'DISPATCHED', label: '派发中', tag: 'info' },
-        { value: 'PEND', label: '待确认', tag: 'info' },
-        { value: 'CONFIRMED', label: '等待开始', tag: 'info' },
-        { value: 'PROGRESS', label: '服务中', tag: 'sucess' },
-        { value: 'ARCHIVED', label: '待评价', tag: 'info' },
-        { value: 'COMPLETED', label: '完成', tag: 'sucess' },
-        { value: 'CANCELLED', label: '取消', tag: 'info' },
-        { value: 'REFUNDED', label: '退款', tag: 'danger' },
-        { value: 'FAILED', label: '失败', tag: 'danger' },
-        { value: 'HOLD', label: '暂停', tag: 'info' },
-        { value: 'REVIEW', label: '归档', tag: 'danger' }
-      ],
+      orderTag: TAG_ORDER,
 
+      // TODO 下订单
       // 需求列表
       serverList: [
         { value: 1, label: '英雄联盟' },
@@ -112,11 +99,7 @@ export default {
           label: '性别',
           prop: 'gender',
           type: 'select',
-          options: [
-            { value: 'MALE', label: '男' },
-            { value: 'FEMALE', label: '女' },
-            { value: 'ALL', label: '所有' }
-          ]
+          options: TAG_GENDER_EN
         },
         {
           label: '音色',
@@ -145,20 +128,7 @@ export default {
           label: '状态',
           prop: 'status',
           type: 'select',
-          options: [
-            { value: 'CREATE', label: '创建', disabled: true },
-            { value: 'DISPATCHED', label: '派发中' },
-            { value: 'PEND', label: '待确认' },
-            { value: 'CONFIRMED', label: '等待开始' },
-            { value: 'PROGRESS', label: '服务中' },
-            { value: 'ARCHIVED', label: '待评价' },
-            { value: 'COMPLETED', label: '完成' },
-            { value: 'CANCELLED', label: '取消' },
-            { value: 'REFUNDED', label: '退款' },
-            { value: 'FAILED', label: '失败' },
-            { value: 'HOLD', label: '暂停' },
-            { value: 'REVIEW', label: '归档', tag: 'danger' }
-          ]
+          options: TAG_ORDER
         }
       ]
       this.form = temp
@@ -166,9 +136,11 @@ export default {
     },
 
     // 获取 Tag类型
-    getFieldTagType (value) {
-      const field = this.tagFields.find((item) => item.value === value)
-      return field ? field.tag : ''
+    getFieldTagType (list, value) {
+      return getFieldTagType(list, value)
+    },
+    getFieldLable (list, value) {
+      return getFieldLable(list, value)
     },
 
     // 请求
