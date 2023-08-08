@@ -98,7 +98,7 @@ export default {
       this.$store.dispatch('login/getLoginfo').then(() => {
         this.name = store.getters.name
         this.role = store.getters.role
-        this.avatar = store.getters.avatar
+        this.avatar = process.env.VUE_APP_BASE_AVATAR + '/admin/' + store.getters.avatar
         this.menusList = store.getters.menu
       })
     },

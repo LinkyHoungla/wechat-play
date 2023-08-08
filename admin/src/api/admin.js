@@ -79,6 +79,19 @@ export function updateAdmin (data) {
   })
 }
 
+// 修改信息
+export function updateAvatar (data) {
+  return service({
+    headers: { 'Content-Type': 'multipart/form-data' },
+    url: '/admin/avatar',
+    method: 'post',
+    data,
+    meta: {
+      rid: -1
+    }
+  })
+}
+
 // 删除 管理员
 export function deleteAdmin (id) {
   return service({

@@ -17,6 +17,7 @@ public enum ApiError {
     E453(453, "Illegal Token"),
     E460(460, "Invalid Database Condition"),
     E461(461, "Duplicate Unique ID"),
+    E462(462, "File Save Error"),
     E404(404, "Other");
 
     private final Integer code;

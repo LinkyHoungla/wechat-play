@@ -5,6 +5,7 @@ import com.example.server.dto.vo.AdminInfo;
 import com.example.server.dto.vo.CurrentAdmin;
 import com.example.server.dto.param.AdminParam;
 import com.example.server.util.PageQuery;
+import org.springframework.web.multipart.MultipartFile;
 
 public interface AdminService {
     // SECTION 管理员登录
@@ -23,8 +24,12 @@ public interface AdminService {
     Integer addAdmin(AdminParam param);
     // FUNCTION 状态管理
     Integer updateStatus(AdminParam param);
-    // FUNCTION 信息修改
-    Integer updateAdmin(Integer id, AdminInfoParam param);
     // FUNCTION 删除
     Integer deleteAdmin(Integer id);
+
+    // SECTION 管理员操作
+    // FUNCTION 信息修改
+    Integer updateAdmin(Integer id, AdminInfoParam param);
+    // FUNCTION 头像设置
+    String uploadAvatar(Integer id, MultipartFile file);
 }

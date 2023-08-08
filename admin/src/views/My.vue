@@ -4,7 +4,8 @@
     <div class="form-box">
       <el-upload
         class="avatar-uploader"
-        action="https://jsonplaceholder.typicode.com/posts/"
+        action="upload"
+        :http-request="uploadAvatar"
         :show-file-list="false"
         :on-success="handleAvatarSuccess"
         :before-upload="beforeAvatarUpload"
@@ -41,7 +42,7 @@
 </template>
 
 <script>
-import { updateAdmin } from '@/api/admin'
+import { updateAdmin, updateAvatar } from '@/api/admin'
 import { nicknameValid, usernameValid } from '@/utils/validate'
 
 export default {
@@ -60,6 +61,7 @@ export default {
     return {
       form: {},
       imageUrl: '',
+      upload: process.env.VUE_APP_BASE_API + '/admin/avatar',
 
       // 验证规则
       rules: {
@@ -97,6 +99,7 @@ export default {
       if (!isLt2M) {
         this.$message.error('上传头像图片大小不能超过 2MB!')
       }
+
       return isJPG && isLt2M
     },
 
@@ -107,6 +110,16 @@ export default {
         })
         .catch(() => {
           this.$message.error('修改失败')
+        })
+    },
+    uploadAvatar (param) {
+      const formData = new FormData()
+      formData.append('file', param.file)
+      updateAvatar(param).then(() => {
+        this.$message.success('上传成功')
+      })
+        .catch(() => {
+          this.$message.error('上传失败')
         })
     }
   }

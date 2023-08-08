@@ -20,6 +20,7 @@ import lombok.RequiredArgsConstructor;
 import org.hibernate.validator.constraints.Length;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
@@ -86,5 +87,11 @@ public class AdminController {
     @DeleteMapping("/{id}")
     public ApiResponse<Integer> deleteAdmin(@PathVariable("id") @Min(1) Integer id) {
         return ApiResponse.success(adminService.deleteAdmin(id));
+    }
+
+    @PostMapping("/avatar")
+    public ApiResponse<String> uploadAvatar(@RequestParam("file") MultipartFile file, HttpServletRequest request) {
+        Integer id = Integer.parseInt((String) request.getAttribute("id"));
+        return ApiResponse.success(adminService.uploadAvatar(id, file));
     }
 }

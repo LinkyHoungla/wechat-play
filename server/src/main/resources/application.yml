@@ -21,3 +21,5 @@ mybatis:
         map-underscore-to-camel-case: true
 server:
     port: 8888
+file:
+    save-path: "G:/Pictures/Temp"

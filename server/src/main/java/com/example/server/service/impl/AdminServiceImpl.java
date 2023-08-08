@@ -9,13 +9,17 @@ import com.example.server.dto.param.AdminParam;
 import com.example.server.dto.vo.Menu;
 import com.example.server.exception.ApiException;
 import com.example.server.service.AdminService;
+import com.example.server.util.FileUtil;
 import com.example.server.util.JwtUtil;
 import com.example.server.util.PageQuery;
+import com.example.server.util.UuidUtil;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 import java.util.Map;
@@ -24,6 +28,9 @@ import java.util.Map;
 @RequiredArgsConstructor
 public class AdminServiceImpl implements AdminService {
     private final AdminDao adminDao;
+    @Value("${file.save-path}")
+    private String FILEPATH;
+    private final static String SAVE = "/avatar/admin/";
 
     @Override
     @Transactional
@@ -89,6 +96,20 @@ public class AdminServiceImpl implements AdminService {
             throw new ApiException(ApiError.E440);
 
         return adminDao.updateAdminName(name,id) + adminDao.updateAdminInfo(username,password,id);
+    }
+
+    @Override
+    public String uploadAvatar(Integer id, MultipartFile file) {
+        String originalFilename = file.getOriginalFilename();
+
+        if (originalFilename == null)
+            throw new ApiException(ApiError.E462);
+
+        String filename = UuidUtil.generateUniqueId() + "." + originalFilename.substring(originalFilename.lastIndexOf(".") + 1);
+
+        String result = FileUtil.uploadFile(FILEPATH + SAVE, filename, file);
+        adminDao.uploadAvatar(id, filename);
+        return result;
     }
 
     @Override

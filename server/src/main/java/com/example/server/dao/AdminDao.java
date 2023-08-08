@@ -32,6 +32,13 @@ public interface AdminDao {
             "JOIN role_permission rp ON p.id = rp.pid " +
             "WHERE rp.rid = #{rid} AND p.pid = #{pid}")
     List<Menu> getMenuChild(Integer rid, Integer pid);
+    // FUNCTION 信息修改
+    @Update("UPDATE admin SET name = #{name} WHERE id = #{id}")
+    Integer updateAdminName(String name, Integer id);
+    Integer updateAdminInfo(String username, String password, Integer id);
+    // FUNCTION 头像上传
+    @Update("UPDATE admin SET avatar = #{url} WHERE id = #{id}")
+    Integer uploadAvatar(Integer id, String url);
 
     // SECTION 管理员管理
     // FUNCTION 分页查询
@@ -42,12 +49,7 @@ public interface AdminDao {
     // FUNCTION 状态管理
     @Update("UPDATE admin SET status = #{status}, rid = #{rid} WHERE id = #{id}")
     Integer updateStatus(AdminParam param);
-    // FUNCTION 信息修改
-    @Update("UPDATE admin SET name = #{name} WHERE id = #{id}")
-    Integer updateAdminName(String name, Integer id);
-    Integer updateAdminInfo(String username, String password, Integer id);
     // FUNCTION 删除
     @Update("UPDATE admin SET status = 'DELETED' WHERE id = #{id}")
     Integer deleteAdmin(Integer id);
-
 }
