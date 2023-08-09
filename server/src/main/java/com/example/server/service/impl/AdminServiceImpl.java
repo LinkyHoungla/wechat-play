@@ -99,16 +99,24 @@ public class AdminServiceImpl implements AdminService {
     }
 
     @Override
+    @Transactional
     public String uploadAvatar(Integer id, MultipartFile file) {
         String originalFilename = file.getOriginalFilename();
 
         if (originalFilename == null)
             throw new ApiException(ApiError.E462);
 
-        String filename = UuidUtil.generateUniqueId() + "." + originalFilename.substring(originalFilename.lastIndexOf(".") + 1);
+        // 旧文件删除
+        String old = adminDao.getOldAvatar(id);
+        FileUtil.deleteOldFile(FILEPATH + SAVE, old);
 
+        // 新文件写入
+        String filename = id + "-" + UuidUtil.generateUniqueId() + "." + originalFilename.substring(originalFilename.lastIndexOf(".") + 1);
         String result = FileUtil.uploadFile(FILEPATH + SAVE, filename, file);
+
+        // 文件名保存
         adminDao.uploadAvatar(id, filename);
+
         return result;
     }
 

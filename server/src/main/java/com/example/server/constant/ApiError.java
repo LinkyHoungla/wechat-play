@@ -17,7 +17,10 @@ public enum ApiError {
     E453(453, "Illegal Token"),
     E460(460, "Invalid Database Condition"),
     E461(461, "Duplicate Unique ID"),
-    E462(462, "File Save Error"),
+    E462(462, "File OriginalName Null"),
+    E463(463, "File Delete Error"),
+    E464(464, "File Save Error"),
+    E465(462, "File Save Error"),
     E404(404, "Other");
 
     private final Integer code;

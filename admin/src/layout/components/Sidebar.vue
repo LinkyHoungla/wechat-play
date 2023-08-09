@@ -109,7 +109,7 @@ export default {
 }
 </script>
 
-<style lang="less" scoped>
+<style lang="less">
 .side-container {
   .avatar {
     display: flex;
@@ -118,8 +118,8 @@ export default {
     align-items: center;
 
     .img {
-      width: 80px;
-      height: 80px;
+      width: 75px;
+      height: 75px;
       border-radius: 50%;
       border: 4px solid #fff5;
       overflow: hidden;
@@ -136,13 +136,15 @@ export default {
       margin: 10px 0;
 
       h3 {
-        font-weight: 550;
+        font-weight: 500;
+        font-size: 16px;
       }
 
       p {
         margin-top: 3px;
-        font-size: 15px;
+        font-size: 20px;
         font-weight: 200;
+        color: #adeb6b;
       }
     }
   }

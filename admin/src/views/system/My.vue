@@ -7,11 +7,10 @@
         action="upload"
         :http-request="uploadAvatar"
         :show-file-list="false"
-        :on-success="handleAvatarSuccess"
         :before-upload="beforeAvatarUpload"
       >
-        <img v-if="imageUrl" :src="imageUrl" class="avatar" />
-        <i v-else class="el-icon-plus avatar-uploader-icon"></i>
+        <i class="el-icon-plus avatar-uploader-icon" />
+        <span class="avatar-content">头像上传</span>
       </el-upload>
       <el-form
         :model="form"
@@ -60,22 +59,36 @@ export default {
 
     return {
       form: {},
-      imageUrl: '',
       upload: process.env.VUE_APP_BASE_API + '/admin/avatar',
 
       // 验证规则
       rules: {
         name: [
-          { min: 1, max: 20, message: '长度在 1 到 20 个字符', trigger: 'blur' },
+          {
+            min: 1,
+            max: 20,
+            message: '长度在 1 到 20 个字符',
+            trigger: 'blur'
+          },
           { validator: nicknameValid, trigger: 'blur' }
         ],
         username: [
-          { min: 3, max: 10, message: '长度在 3 到 10 个字符', trigger: 'blur' },
+          {
+            min: 3,
+            max: 10,
+            message: '长度在 3 到 10 个字符',
+            trigger: 'blur'
+          },
           { validator: usernameValid, trigger: 'blur' }
         ],
         password: [
           { required: true, message: '请输入密码', trigger: 'blur' },
-          { min: 6, max: 16, message: '长度在 6 到 16 个字符', trigger: 'blur' },
+          {
+            min: 6,
+            max: 16,
+            message: '长度在 6 到 16 个字符',
+            trigger: 'blur'
+          },
           { validator: usernameValid, trigger: 'blur' }
         ],
         confirm: [
@@ -86,9 +99,6 @@ export default {
     }
   },
   methods: {
-    handleAvatarSuccess (res, file) {
-      this.imageUrl = URL.createObjectURL(file.raw)
-    },
     beforeAvatarUpload (file) {
       const isJPG = file.type === 'image/jpeg'
       const isLt2M = file.size / 1024 / 1024 < 2
@@ -115,9 +125,10 @@ export default {
     uploadAvatar (param) {
       const formData = new FormData()
       formData.append('file', param.file)
-      updateAvatar(param).then(() => {
-        this.$message.success('上传成功')
-      })
+      updateAvatar(param)
+        .then(() => {
+          this.$message.success('上传成功')
+        })
         .catch(() => {
           this.$message.error('上传失败')
         })
@@ -154,24 +165,39 @@ export default {
     width: 95%;
     min-height: 400px;
 
-    .avatar-uploader .el-upload {
-      border: 1px dashed #d9d9d9;
-      border-radius: 6px;
-      cursor: pointer;
-      position: relative;
-      overflow: hidden;
+    .avatar-uploader {
+      .el-upload {
+        border: 1px dashed #d9d9d9;
+        border-radius: 6px;
+        cursor: pointer;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .el-upload:hover {
+        border-color: #409eff;
+      }
+
+      .avatar-uploader-icon {
+        font-size: 28px;
+        color: #8c939d;
+        width: 178px;
+        height: 178px;
+        line-height: 178px;
+        text-align: center;
+      }
+
+      .avatar-content {
+        position: absolute;
+        top: 50%;
+        right: 50%;
+
+        color: #8c939d;
+
+        transform: translate(50%, 25px);
+      }
     }
-    .avatar-uploader .el-upload:hover {
-      border-color: #409eff;
-    }
-    .avatar-uploader-icon {
-      font-size: 28px;
-      color: #8c939d;
-      width: 178px;
-      height: 178px;
-      line-height: 178px;
-      text-align: center;
-    }
+
     .avatar {
       width: 178px;
       height: 178px;

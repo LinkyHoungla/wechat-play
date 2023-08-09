@@ -38,7 +38,9 @@ public interface AdminDao {
     Integer updateAdminInfo(String username, String password, Integer id);
     // FUNCTION 头像上传
     @Update("UPDATE admin SET avatar = #{url} WHERE id = #{id}")
-    Integer uploadAvatar(Integer id, String url);
+    void uploadAvatar(Integer id, String url);
+    @Select("SELECT avatar FROM admin WHERE id = #{id}")
+    String getOldAvatar(Integer id);
 
     // SECTION 管理员管理
     // FUNCTION 分页查询

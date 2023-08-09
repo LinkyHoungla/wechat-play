@@ -24,7 +24,7 @@ const routes = [
       {
         path: 'my',
         name: 'My',
-        component: () => import('@/views/My.vue'),
+        component: () => import('@/views/system/My.vue'),
         meta: { title: '个人设置', pid: 0 }
       }
     ]

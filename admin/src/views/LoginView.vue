@@ -67,7 +67,7 @@ export default {
         return false
       }
 
-      if (!validateLength(this.loginForm.username, 3, 20)) {
+      if (validateLength(this.loginForm.username, 3, 20)) {
         this.error.username = '长度为3-20'
         return false
       }
@@ -87,7 +87,7 @@ export default {
         return false
       }
 
-      if (!validateLength(this.loginForm.password, 6, 16)) {
+      if (validateLength(this.loginForm.password, 6, 16)) {
         this.error.password = '长度为6-16'
         return false
       }
