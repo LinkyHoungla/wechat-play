@@ -1,7 +1,9 @@
 package com.example.server.controller;
 
+import com.example.server.annotation.RequirePermission;
 import com.example.server.constant.StatusEnum;
 import com.example.server.dto.param.BalanceParam;
+import com.example.server.dto.param.StatusParam;
 import com.example.server.dto.param.StoreParam;
 import com.example.server.entity.Balance;
 import com.example.server.entity.Store;
@@ -28,6 +30,7 @@ public class StoreController {
     private final StoreServiceImpl storeService;
 
     @GetMapping("/page")
+    @RequirePermission
     public ApiResponse<PageQuery<Store>> getStoreByPage(@Length(max = 20, message = "长度超限") String query,
                                                         @EnumValue(enumClass = StatusEnum.class, ableNull = true) String tag,
                                                         @RequestParam(defaultValue = "1") @Min(1) Integer pageNum,
@@ -36,21 +39,31 @@ public class StoreController {
     }
 
     @PostMapping
+    @RequirePermission
     public ApiResponse<Integer> addStore(@RequestBody @Validated(value = ValidGroup.Crud.Create.class) StoreParam param) {
         return ApiResponse.success(storeService.addStore(param));
     }
 
-    @PutMapping
+    @PutMapping("/status")
+    @RequirePermission
+    public ApiResponse<Integer> updateStoreStatus(@RequestBody @Validated(value = ValidGroup.Type.Account.class) StatusParam param) {
+        return ApiResponse.success(storeService.updateStoreStatus(param));
+    }
+
+    @PutMapping("/mana")
+    @RequirePermission
     public ApiResponse<Integer> updateStore(@RequestBody @Validated(value = ValidGroup.Crud.Update.class) StoreParam param) {
         return ApiResponse.success(storeService.updateStore(param));
     }
 
     @DeleteMapping("/{id}")
+    @RequirePermission
     public ApiResponse<Integer> deleteStore(@PathVariable("id") @Pattern(regexp = ValidateUtil.UID) String id) {
         return ApiResponse.success(storeService.deleteStore(id));
     }
 
     @GetMapping("/balance/page")
+    @RequirePermission
     public ApiResponse<PageQuery<Balance>> getBalanceByPage(@Length(max = 20, message = "长度超限") String query,
                                                             @RequestParam(defaultValue = "1") @Min(1) Integer pageNum,
                                                             @RequestParam(defaultValue = "10") @Min(1) Integer pageSize){
@@ -58,11 +71,13 @@ public class StoreController {
     }
 
     @PostMapping("/balance")
+    @RequirePermission
     public ApiResponse<Integer> addBalance(@RequestBody @Valid BalanceParam param) {
         return ApiResponse.success(storeService.addBalance(param));
     }
 
     @PutMapping("/balance")
+    @RequirePermission
     public ApiResponse<Integer> updateBalance(@RequestBody @Valid BalanceParam param) {
         return ApiResponse.success(storeService.updateBalance(param));
     }

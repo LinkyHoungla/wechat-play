@@ -9,12 +9,29 @@
       ref="tableRef"
       :hasExpand="true"
       :tagOptions="statusTag"
+      :disabled="!auth(49)"
       @query="getUserList"
       @add="addUserDialog"
       @expand="getUserInfo"
     >
-      <template v-slot:expand >
-          <info-view :content="userInfo" :field="infoField" @submit="updateUser" />
+      <template v-slot:expand>
+        <info-view
+          :content="userInfo"
+          :field="infoField"
+          @submit="updateUser"
+          :infoDisabled="!auth(51)"
+        >
+          <template v-slot:img>
+            <el-upload
+              action="upload"
+              :http-request="uploadAvatar"
+              :show-file-list="false"
+              :before-upload="beforeAvatarUpload"
+            >
+              <el-button size="mini" type="primary">点击上传</el-button>
+            </el-upload>
+          </template>
+        </info-view>
       </template>
       <template v-slot:status="{ row }">
         <el-tag :type="getFieldTagType(statusTag, row.status)" size="mini">{{
@@ -34,6 +51,7 @@
           icon="el-icon-edit"
           size="mini"
           @click="updateUserDialog(row)"
+          :disabled="!auth(50)"
           >修改</el-button
         >
         <!-- 删除按钮 -->
@@ -43,6 +61,7 @@
           icon="el-icon-delete"
           size="mini"
           @click="deleteUser(row.id)"
+          :disabled="!auth(52)"
           >删除</el-button
         >
       </template>
@@ -60,8 +79,23 @@
 </template>
 
 <script>
-import { getUserList, addUser, deleteUser, updateUser, getUserInfo, updateStatus } from '@/api/user'
-import { TAG_GENDER, TAG_STATUS, getFieldTagType, getFieldLable } from '@/utils/tag'
+import {
+  getUserList,
+  addUser,
+  deleteUser,
+  updateUser,
+  getUserInfo,
+  updateStatus,
+  updateAvatar
+} from '@/api/user'
+import {
+  TAG_GENDER,
+  TAG_STATUS,
+  getFieldTagType,
+  getFieldLable
+} from '@/utils/tag'
+
+import store from '@/store'
 
 export default {
   name: 'UserView',
@@ -94,9 +128,15 @@ export default {
       // 拓展信息
       userInfo: {},
       infoField: [
-        { label: '头像', prop: 'avatar' },
+        { label: '头像', prop: 'avatar', type: 'img', edit: true },
         { label: '昵称', prop: 'name', edit: true },
-        { label: '性别', prop: 'gender', type: 'select', edit: true, options: TAG_GENDER },
+        {
+          label: '性别',
+          prop: 'gender',
+          type: 'select',
+          edit: true,
+          options: TAG_GENDER
+        },
         { label: '年龄', prop: 'age', edit: true },
         { label: '生日', prop: 'birth', edit: true, type: 'date' },
         { label: '地区', prop: 'location', edit: true },
@@ -117,6 +157,11 @@ export default {
     }
   },
   methods: {
+    // 权限校验
+    auth (pid) {
+      return store.getters.permission.includes(pid)
+    },
+
     // 弹窗
     // 添加 用户
     addUserDialog () {
@@ -146,7 +191,6 @@ export default {
     },
 
     // 获取 Tag类型
-    // 获取 Tag类型
     getFieldTagType (list, value) {
       return getFieldTagType(list, value)
     },
@@ -169,10 +213,13 @@ export default {
     },
     // 获取 信息
     getUserInfo (id) {
-      getUserInfo(id).then(({ data: res }) => {
-        this.userInfo = res.data
-        this.userInfo.id = id
-      })
+      getUserInfo(id)
+        .then(({ data: res }) => {
+          this.userInfo = res.data
+          this.userInfo.avatar =
+            process.env.VUE_APP_BASE_AVATAR + '/user/' + this.userInfo.avatar
+          this.userInfo.id = id
+        })
         .catch(() => {
           this.$message.error('获取失败')
         })
@@ -232,6 +279,31 @@ export default {
         })
         .catch(() => {
           this.$message.error('删除失败')
+        })
+    },
+    // 头像上传
+    beforeAvatarUpload (file) {
+      const isJPG = file.type === 'image/jpeg'
+      const isLt2M = file.size / 1024 / 1024 < 2
+
+      if (!isJPG) {
+        this.$message.error('上传头像图片只能是 JPG 格式!')
+      }
+      if (!isLt2M) {
+        this.$message.error('上传头像图片大小不能超过 2MB!')
+      }
+
+      return isJPG && isLt2M
+    },
+    uploadAvatar (param) {
+      const formData = new FormData()
+      formData.append('file', param.file)
+      updateAvatar(this.userInfo.id, param)
+        .then(() => {
+          this.$message.success('上传成功')
+        })
+        .catch(() => {
+          this.$message.error('上传失败')
         })
     }
   }

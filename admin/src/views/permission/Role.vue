@@ -8,6 +8,7 @@
       :list="tableList"
       :update="formDialogVisible"
       :hasExpand="true"
+      :disabled="!auth(55)"
       ref="tableRef"
       @query="getRoleList"
       @add="addRoleDialog"
@@ -20,6 +21,7 @@
           icon="el-icon-edit"
           size="mini"
           @click="updateRoleDialog(row)"
+          :disabled="!auth(56)"
           >信息修改</el-button
         >
         <!-- 删除按钮 -->
@@ -28,6 +30,7 @@
           icon="el-icon-delete"
           size="mini"
           @click="deleteRole(row.id)"
+          :disabled="!auth(58)"
           >删除</el-button
         >
         <!-- 权限分配 -->
@@ -36,10 +39,11 @@
           type="warning"
           icon="el-icon-setting"
           @click="authDialog(row.id)"
+          :disabled="!auth(57)"
           >分配权限</el-button
         >
       </template>
-      <template v-slot:expand="{row}">
+      <template v-slot:expand="{ row }">
         <!-- 展开行的内容 -->
         <el-row
           v-for="item in roleRightList"
@@ -49,7 +53,7 @@
           <!-- 一级权限 -->
           <el-col :span="5"
             ><el-tag
-              closable
+              :closable="!auth(59)"
               @close="deleteAuth(row.id, item.id)"
               >{{ item.name }}</el-tag
             >
@@ -65,7 +69,7 @@
               <el-col :span="6"
                 ><el-tag
                   type="success"
-                  closable
+                  :closable="!auth(59)"
                   @close="deleteAuth(row.id, item2.id)"
                   >{{ item2.name }}</el-tag
                 >
@@ -74,7 +78,7 @@
               <!-- 三级级权限 -->
               <el-col :span="18"
                 ><el-tag
-                  closable
+                  :closable="!auth(59)"
                   @close="deleteAuth(row.id, item3.id)"
                   type="warning"
                   v-for="item3 in item2.children"
@@ -137,6 +141,8 @@ import {
   deleteAuth
 } from '@/api/permission'
 
+import store from '@/store'
+
 export default {
   name: 'RoleView',
   components: {
@@ -179,6 +185,11 @@ export default {
     }
   },
   methods: {
+    // 权限校验
+    auth (pid) {
+      return store.getters.permission.includes(pid)
+    },
+
     // 弹窗
     // 添加 管理
     addRoleDialog () {

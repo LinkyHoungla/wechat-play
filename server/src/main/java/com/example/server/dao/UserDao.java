@@ -45,4 +45,9 @@ public interface UserDao {
             "SET name = #{name}, gender = #{gender}, age = #{age}, birth = #{birth}, location = #{location} " +
             "WHERE id = #{id}")
     Integer updateUser(UserInfoParam param);
+    // FUNCTION 头像上传
+    @Update("UPDATE user_info SET avatar = #{url} WHERE id = #{id}")
+    void uploadAvatar(String id, String url);
+    @Select("SELECT avatar FROM user_info WHERE id = #{id}")
+    String getOldAvatar(String id);
 }

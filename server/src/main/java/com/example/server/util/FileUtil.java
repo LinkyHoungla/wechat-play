@@ -10,10 +10,21 @@ import java.nio.file.AccessDeniedException;
 
 public class FileUtil {
 
-    public static String uploadFile(String savePath, String filename, MultipartFile avatar) {
+    public static String uploadFile(String old, String savePath, String update, MultipartFile file) {
+        // 删除旧文件
+        if (old != null)
+            deleteOldFile(savePath, old);
+
+        // 新文件名
+        String originalFilename = file.getOriginalFilename();
+        if (originalFilename == null)
+            throw new ApiException(ApiError.E462);
+
+        String filename = update + "-" + UuidUtil.generateUniqueId() + "." + originalFilename.substring(originalFilename.lastIndexOf(".") + 1);
+
         String result;
         try {
-            result = saveFile(avatar, savePath, filename);
+            result = saveFile(file, savePath, filename);
         } catch (IOException e) {
             throw new ApiException(ApiError.E464);
         }
@@ -39,6 +50,6 @@ public class FileUtil {
         File file = new File(path + filename);
         f.transferTo(file);
 
-        return path + filename;
+        return filename;
     }
 }

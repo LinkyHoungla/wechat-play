@@ -10,15 +10,18 @@ import com.example.server.dto.vo.UserMana;
 import com.example.server.entity.UserInfo;
 import com.example.server.exception.ApiException;
 import com.example.server.service.UserService;
+import com.example.server.util.FileUtil;
 import com.example.server.util.JwtUtil;
 import com.example.server.util.PageQuery;
 import com.example.server.util.UuidUtil;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.Map;
 
@@ -26,6 +29,10 @@ import java.util.Map;
 @RequiredArgsConstructor
 public class UserServiceImpl implements UserService {
     private final UserDao userDao;
+
+    @Value("${file.save-path}")
+    private String FILEPATH;
+    private final static String SAVE = "/avatar/user/";
 
     @Override
     @Transactional
@@ -57,6 +64,21 @@ public class UserServiceImpl implements UserService {
     @Override
     public Integer updateUserInfo(UserInfoParam param) {
         return userDao.updateUser(param);
+    }
+
+    @Override
+    @Transactional
+    public String updateAvatar(String id, MultipartFile file) {
+        // 旧文件删除
+        String old = userDao.getOldAvatar(id);
+
+        // 新文件写入
+        String result = FileUtil.uploadFile(old, FILEPATH + SAVE, id, file);
+
+        // 文件名保存
+        userDao.uploadAvatar(id, result);
+
+        return result;
     }
 
     @Override

@@ -8,6 +8,7 @@
       :list="tableList"
       :tagOptions="statusTag"
       ref="tableRef"
+      :disabled="!auth(73)"
       :update="formDialogVisible"
       @query="getCompanionList"
       @add="addCompanionDialog"
@@ -20,7 +21,7 @@
       <template v-slot:operate="{ row }">
         <!-- 修改按钮 -->
         <el-button
-          v-if="row.status !== 'DELETED'"
+          :disabled="!(row.status !== 'DELETED' && auth(74) )"
           type="primary"
           icon="el-icon-edit"
           size="mini"
@@ -29,7 +30,7 @@
         >
         <!-- 删除按钮 -->
         <el-button
-          v-if="row.status !== 'DELETED'"
+          :disabled="!(row.status !== 'DELETED' && auth(76))"
           type="danger"
           icon="el-icon-delete"
           size="mini"
@@ -58,6 +59,8 @@ import {
   deleteCompanion
 } from '@/api/companion'
 import { getFieldTagType, getFieldLable, TAG_STATUS } from '@/utils/tag'
+
+import store from '@/store'
 
 export default {
   name: 'CompanionView',
@@ -92,6 +95,11 @@ export default {
     }
   },
   methods: {
+    // 权限校验
+    auth (pid) {
+      return store.getters.permission.includes(pid)
+    },
+
     // 弹窗
     // 添加
     addCompanionDialog () {

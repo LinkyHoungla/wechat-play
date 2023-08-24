@@ -15,22 +15,23 @@
       <el-form
         :model="form"
         inline
+        ref="formRef"
         size="mini"
         class="content"
         label-width="90px"
         :rules="rules"
       >
         <el-form-item label="昵称" prop="name">
-          <el-input v-model="form.name" />
+          <el-input v-model="form.name" clearable />
         </el-form-item>
         <el-form-item label="用户名" prop="username">
-          <el-input v-model="form.username" />
+          <el-input v-model="form.username" clearable />
         </el-form-item>
         <el-form-item label="密码" prop="password">
-          <el-input type="password" v-model="form.password" />
+          <el-input type="password" v-model="form.password" clearable />
         </el-form-item>
         <el-form-item label="确认密码" prop="confirm">
-          <el-input type="password" v-model="form.confirm" />
+          <el-input type="password" v-model="form.confirm" clearable />
         </el-form-item>
       </el-form>
     </div>
@@ -114,13 +115,17 @@ export default {
     },
 
     updateAdmin () {
-      updateAdmin(this.form)
-        .then(() => {
-          this.$message.success('修改成功')
-        })
-        .catch(() => {
-          this.$message.error('修改失败')
-        })
+      this.$refs.formRef.validate((valid) => {
+        if (valid) {
+          updateAdmin(this.form)
+            .then(() => {
+              this.$message.success('修改成功')
+            })
+            .catch(() => {
+              this.$message.error('修改失败')
+            })
+        }
+      })
     },
     uploadAvatar (param) {
       const formData = new FormData()

@@ -1,5 +1,6 @@
 package com.example.server.controller;
 
+import com.example.server.annotation.RequirePermission;
 import com.example.server.constant.OrderEnum;
 import com.example.server.dto.param.BalanceParam;
 import com.example.server.dto.param.RequireParam;
@@ -26,6 +27,7 @@ public class OrderController {
     private final OrderServiceImpl orderService;
 
     @GetMapping("/page")
+    @RequirePermission
     public ApiResponse<PageQuery<Order>> getOrderByPage(@Length(max = 20, message = "长度超限") String query,
                                                                 @EnumValue(enumClass = OrderEnum.class, ableNull = true) String tag,
                                                                 @RequestParam(defaultValue = "1") @Min(1) Integer pageNum,
@@ -34,16 +36,19 @@ public class OrderController {
     }
 
     @PostMapping
+    @RequirePermission
     public ApiResponse<Integer> addOrder(@RequestBody @Valid RequireParam param) {
         return ApiResponse.success(orderService.addOrder(param));
     }
 
     @PutMapping
+    @RequirePermission
     public ApiResponse<Integer> updateStatus(@RequestBody @Valid StatusParam param) {
         return ApiResponse.success(orderService.updateStatus(param.getId(), param.getStatus()));
     }
 
     @GetMapping("/wallet/page")
+    @RequirePermission
     public ApiResponse<PageQuery<Wallet>> getBalanceByPage(@Length(max = 20, message = "长度超限") String query,
                                                            @RequestParam(defaultValue = "1") @Min(1) Integer pageNum,
                                                            @RequestParam(defaultValue = "10") @Min(1) Integer pageSize){
@@ -51,6 +56,7 @@ public class OrderController {
     }
 
     @PutMapping("/wallet")
+    @RequirePermission
     public ApiResponse<Integer> updateBalance(@RequestBody @Valid BalanceParam param) {
         return ApiResponse.success(orderService.updateWallet(param));
     }

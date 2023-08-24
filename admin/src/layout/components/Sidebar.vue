@@ -6,8 +6,8 @@
         <img :src="avatar" />
       </div>
       <div class="con">
-        <h3>{{ name }}</h3>
-        <p>{{ role }}</p>
+        <p>{{ name }}</p>
+        <h3>{{ role }}</h3>
       </div>
     </div>
 
@@ -136,8 +136,8 @@ export default {
       margin: 10px 0;
 
       h3 {
-        font-weight: 500;
-        font-size: 16px;
+        font-weight: 100;
+        font-size: 14px;
       }
 
       p {

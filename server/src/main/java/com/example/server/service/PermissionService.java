@@ -19,7 +19,7 @@ public interface PermissionService {
     // FUNCTION 添加
     Integer addRole(RoleParam param);
     // FUNCTION 信息修改
-    Integer updateRole(Integer id, RoleParam param);
+    Integer updateRole(RoleParam param);
     // FUNCTION 删除
     Integer deleteRole(Integer id);
 

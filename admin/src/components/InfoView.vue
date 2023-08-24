@@ -4,16 +4,19 @@
       <el-form-item v-for="item in field" :key="item.label" :label="item.label">
         <!-- 展示 -->
         <template v-if="!isEdit || item.edit === undefined">
-          <span v-if="item.type !== 'select'">{{ form[item.prop] }}</span>
+          <span v-if="item.type === undefined || item.type === 'date' ">{{ form[item.prop] }}</span>
           <el-tag
-            v-else
+            v-else-if="item.type === 'select'"
             :type="getFieldTagType(item.options, form[item.prop])"
             size="mini"
             >{{ getFieldLable(item.options, form[item.prop]) }}</el-tag
           >
+          <div v-else-if="item.type === 'img'" class="info-view-avatar">
+            <img :src="form[item.prop]" />
+          </div>
         </template>
 
-        <template v-else>
+        <template v-else >
           <el-input size="mini" v-if="item.type === undefined" v-model="form[item.prop]" />
           <el-select size="mini" v-if="item.type === 'select'" v-model="form[item.prop]" >
             <el-option
@@ -25,13 +28,16 @@
             />
           </el-select>
           <el-date-picker size="mini" v-if="item.type === 'date'" v-model="form[item.prop]" type="date" placeholder="选择日期" />
+          <template v-if="item.type === 'img'">
+            <slot name="img" />
+          </template>
         </template>
 
         <!-- 修改 -->
       </el-form-item>
     </el-form>
     <div class="update-box">
-      <el-button size="mini" v-show="!isEdit" @click="isEdit = true"
+      <el-button size="mini" v-show="!isEdit" @click="isEdit = true" :disabled="infoDisabled"
         >修改</el-button
       >
       <el-button
@@ -51,7 +57,8 @@ export default {
   name: 'InfoView',
   props: {
     field: Array,
-    content: Object
+    content: Object,
+    infoDisabled: Boolean
   },
   data () {
     return {
@@ -85,8 +92,10 @@ export default {
 }
 </script>
 
-<style lang="less" scoped>
+<style lang="less">
 .info-view-box {
+  padding: 0 15px;
+
   .info-table-expand {
     font-size: 0;
 
@@ -99,6 +108,17 @@ export default {
         width: 90px;
         color: #99a9bf;
       }
+    }
+  }
+
+  .info-view-avatar {
+    width: 36px;
+    height: 36px;
+
+    img {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
     }
   }
 

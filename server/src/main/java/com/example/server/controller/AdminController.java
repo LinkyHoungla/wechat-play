@@ -60,6 +60,7 @@ public class AdminController {
     }
 
     @GetMapping("/page")
+    @RequirePermission
     public ApiResponse<PageQuery<AdminInfo>> getAdminByPage(@Length(max = 20, message = "长度超限") String query,
                                                             @EnumValue(enumClass = StatusEnum.class, ableNull = true) String tag,
                                                             @RequestParam(defaultValue = "1") @Min(1) Integer pageNum,
@@ -67,13 +68,14 @@ public class AdminController {
         return ApiResponse.success(adminService.getAdminList(query, tag, pageNum, pageSize));
     }
 
-    @RequirePermission(pid = 44)
     @PostMapping
+    @RequirePermission
     public ApiResponse<Integer> addAdmin(@RequestBody @Validated(value = ValidGroup.Crud.Create.class) AdminParam param) {
         return ApiResponse.success(adminService.addAdmin(param));
     }
 
     @PutMapping("/status")
+    @RequirePermission
     public ApiResponse<Integer> updateStatus(@RequestBody @Validated(value = ValidGroup.Crud.Update.class)  AdminParam param) {
         return ApiResponse.success(adminService.updateStatus(param));
     }
@@ -85,6 +87,7 @@ public class AdminController {
     }
 
     @DeleteMapping("/{id}")
+    @RequirePermission
     public ApiResponse<Integer> deleteAdmin(@PathVariable("id") @Min(1) Integer id) {
         return ApiResponse.success(adminService.deleteAdmin(id));
     }

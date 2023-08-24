@@ -18,6 +18,9 @@ public interface StoreDao {
     // FUNCTION 添加
     @Insert("INSERT INTO store (id, oid, phone, name, `desc`, owner) VALUES (#{id}, #{param.oid}, #{param.phone}, #{param.name}, #{param.desc}, #{param.owner})")
     Integer addStore(String id, StoreParam param);
+    // FUNCTION 状态管理
+    @Update("UPDATE store SET status = #{status} WHERE id = #{id}")
+    Integer updateStoreStatus(String id, String status);
     // FUNCTION 修改
     @Update("UPDATE store " +
             "SET name = #{name}, `desc` = #{desc} " +

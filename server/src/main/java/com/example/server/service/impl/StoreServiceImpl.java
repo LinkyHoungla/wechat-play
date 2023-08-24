@@ -3,6 +3,7 @@ package com.example.server.service.impl;
 import com.example.server.constant.ApiError;
 import com.example.server.dao.StoreDao;
 import com.example.server.dto.param.BalanceParam;
+import com.example.server.dto.param.StatusParam;
 import com.example.server.dto.param.StoreParam;
 import com.example.server.entity.Balance;
 import com.example.server.entity.Store;
@@ -43,6 +44,11 @@ public class StoreServiceImpl implements StoreService {
                     throw new ApiException(ApiError.E461);
             }
         }
+    }
+
+    @Override
+    public Integer updateStoreStatus(StatusParam param) {
+        return storeDao.updateStoreStatus(param.getId(), param.getStatus());
     }
 
     @Override

@@ -1,8 +1,18 @@
 <template>
   <div>
     <!-- 表格区域 -->
-    <table-page tableTitle="添加服务" :tableFields="tableFields" :total="totalNum" :list="tableList" ref="tableRef" :tagOptions="serviceTag"
-      :update="formDialogVisible" @query="getServiceList" @add="addServiceDialog">
+    <table-page
+      tableTitle="添加服务"
+      :tableFields="tableFields"
+      :total="totalNum"
+      :list="tableList"
+      ref="tableRef"
+      :tagOptions="serviceTag"
+      :disabled="!auth(79)"
+      :update="formDialogVisible"
+      @query="getServiceList"
+      @add="addServiceDialog"
+    >
       <template v-slot:type="{ row }">
         <el-tag :type="getFieldTagType(serviceTag, row.type)" size="mini">{{
           getFieldLable(serviceTag, row.type)
@@ -15,21 +25,51 @@
       </template>
       <template v-slot:operate="{ row }">
         <!-- 修改按钮 -->
-        <el-button type="primary" icon="el-icon-edit" size="mini" @click="updateServiceDialog(row)">修改</el-button>
+        <el-button
+          type="primary"
+          icon="el-icon-edit"
+          size="mini"
+          @click="updateServiceDialog(row)"
+          :disabled="!auth(80)"
+          >修改</el-button
+        >
         <!-- 删除按钮 -->
-        <el-button type="danger" icon="el-icon-delete" size="mini" @click="deleteService(row.id)">删除</el-button>
+        <el-button
+          type="danger"
+          icon="el-icon-delete"
+          size="mini"
+          @click="deleteService(row.id)"
+          :disabled="!auth(81)"
+          >删除</el-button
+        >
       </template>
     </table-page>
 
     <!-- 弹窗区域 -->
-    <form-dialog :visible.sync="formDialogVisible" :dialogTitle="formDialogTitle" :fields="formFields" :formData="form"
-      @submit="handleFormSubmit" />
+    <form-dialog
+      :visible.sync="formDialogVisible"
+      :dialogTitle="formDialogTitle"
+      :fields="formFields"
+      :formData="form"
+      @submit="handleFormSubmit"
+    />
   </div>
 </template>
 
 <script>
-import { getServiceList, addService, updateService, deleteService } from '@/api/companion'
-import { getFieldTagType, getFieldLable, TAG_SERVICE, TAG_GENDER_EN } from '@/utils/tag'
+import {
+  getServiceList,
+  addService,
+  updateService,
+  deleteService
+} from '@/api/companion'
+import {
+  getFieldTagType,
+  getFieldLable,
+  TAG_SERVICE,
+  TAG_GENDER_EN
+} from '@/utils/tag'
+import store from '@/store'
 
 export default {
   name: 'ServiceView',
@@ -60,10 +100,15 @@ export default {
       formDialogVisible: false,
       formFields: [],
       form: {},
-      handleFormSubmit: function () { }
+      handleFormSubmit: function () {}
     }
   },
   methods: {
+    // 权限校验
+    auth (pid) {
+      return store.getters.permission.includes(pid)
+    },
+
     // 弹窗
     // 添加
     addServiceDialog () {

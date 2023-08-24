@@ -13,8 +13,8 @@ import java.util.List;
 @Mapper
 public interface PermissionDao {
     // FUNCTION 权限验证
-    @Select("SELECT rp.id FROM role_permission rp WHERE rid = #{rid} AND pid = #{pid}")
-    Integer hasPermissions(Integer rid, Integer pid);
+    @Select("SELECT rp.* FROM role_permission rp INNER JOIN permission p ON p.id = rp.pid WHERE p.path = #{path} AND rp.rid = #{rid}")
+    Integer hasPermissions(Integer rid, String path);
 
     // SECTION 权限角色
     // FUNCTION 分页查询
@@ -25,8 +25,8 @@ public interface PermissionDao {
     @Insert("INSERT role(`name`, `desc`) VALUES (#{name}, #{desc})")
     Integer addRole(RoleParam param);
     // FUNCTION 修改
-    @Update("UPDATE role SET `name` = #{param.name}, `desc` = #{param.desc} WHERE id = #{id}")
-    Integer updateRole(Integer id, RoleParam param);
+    @Update("UPDATE role SET `name` = #{name}, `desc` = #{desc} WHERE id = #{id}")
+    Integer updateRole(RoleParam param);
     // FUNCTION 删除
     @Delete("DELETE FROM role WHERE id = #{id}")
     Integer deleteRole(Integer id);

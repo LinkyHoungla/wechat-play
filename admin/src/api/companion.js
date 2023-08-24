@@ -7,7 +7,7 @@ export function getCompanionList (pageParam) {
     method: 'get',
     params: pageParam,
     meta: {
-      rid: -1
+      rid: 72
     }
   })
 }
@@ -19,7 +19,7 @@ export function addCompanion (data) {
     method: 'post',
     data,
     meta: {
-      rid: -1
+      rid: 73
     }
   })
 }
@@ -31,7 +31,7 @@ export function updateCompanion (data) {
     method: 'put',
     data,
     meta: {
-      rid: -1
+      rid: 74
     }
   })
 }
@@ -42,7 +42,7 @@ export function deleteCompanion (id) {
     url: `/companion/${id}`,
     method: 'delete',
     meta: {
-      rid: -1
+      rid: 76
     }
   })
 }
@@ -54,7 +54,7 @@ export function getServiceList (pageParam) {
     method: 'get',
     params: pageParam,
     meta: {
-      rid: -1
+      rid: 78
     }
   })
 }
@@ -66,7 +66,7 @@ export function addService (data) {
     method: 'post',
     data,
     meta: {
-      rid: -1
+      rid: 79
     }
   })
 }
@@ -78,7 +78,7 @@ export function updateService (data) {
     method: 'put',
     data,
     meta: {
-      rid: -1
+      rid: 80
     }
   })
 }
@@ -89,7 +89,7 @@ export function deleteService (id) {
     url: `/companion/service/${id}`,
     method: 'delete',
     meta: {
-      rid: -1
+      rid: 81
     }
   })
 }
@@ -101,7 +101,7 @@ export function getGameList (pageParam) {
     method: 'get',
     params: pageParam,
     meta: {
-      rid: -1
+      rid: 82
     }
   })
 }
@@ -113,7 +113,7 @@ export function addGame (data) {
     method: 'post',
     data,
     meta: {
-      rid: -1
+      rid: 83
     }
   })
 }
@@ -125,7 +125,7 @@ export function updateGame (data) {
     method: 'put',
     data,
     meta: {
-      rid: -1
+      rid: 84
     }
   })
 }
@@ -136,7 +136,7 @@ export function deleteGame (id) {
     url: `/companion/game/${id}`,
     method: 'delete',
     meta: {
-      rid: -1
+      rid: 85
     }
   })
 }

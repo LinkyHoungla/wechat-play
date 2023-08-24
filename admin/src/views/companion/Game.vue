@@ -1,8 +1,18 @@
 <template>
   <div>
     <!-- 表格区域 -->
-    <table-page tableTitle="添加游戏" :tableFields="tableFields" :total="totalNum" :list="tableList" :tagOptions="gameTag" ref="tableRef"
-      :update="formDialogVisible" @query="getGameList" @add="addGameDialog(-1)">
+    <table-page
+      tableTitle="添加游戏"
+      :tableFields="tableFields"
+      :total="totalNum"
+      :list="tableList"
+      :tagOptions="gameTag"
+      ref="tableRef"
+      :disabled="!auth(83)"
+      :update="formDialogVisible"
+      @query="getGameList"
+      @add="addGameDialog(-1)"
+    >
       <template v-slot:type="{ row }">
         <el-tag :type="getFieldTagType(gameTag, row.type)" size="mini">{{
           getFieldLable(gameTag, row.type)
@@ -10,24 +20,51 @@
       </template>
       <template v-slot:operate="{ row }">
         <!-- 添加子类别 -->
-        <el-button v-if="row.type === 'GAME'" icon="el-icon-circle-plus-outline" size="mini"
-          @click="addGameDialog(row.id)">添加子类别</el-button>
+        <el-button
+          v-if="row.type === 'GAME'"
+          icon="el-icon-circle-plus-outline"
+          size="mini"
+          :disabled="!auth(83)"
+          @click="addGameDialog(row.id)"
+          >添加子类别</el-button
+        >
         <!-- 修改按钮 -->
-        <el-button type="primary" icon="el-icon-edit" size="mini" @click="updateGameDialog(row)">修改</el-button>
+        <el-button
+          type="primary"
+          icon="el-icon-edit"
+          size="mini"
+          @click="updateGameDialog(row)"
+          :disabled="!auth(84)"
+          >修改</el-button
+        >
         <!-- 删除按钮 -->
-        <el-button type="danger" icon="el-icon-delete" size="mini" @click="deleteGame(row.id)">删除</el-button>
+        <el-button
+          type="danger"
+          icon="el-icon-delete"
+          size="mini"
+          @click="deleteGame(row.id)"
+          :disabled="!auth(85)"
+          >删除</el-button
+        >
       </template>
     </table-page>
 
     <!-- 弹窗区域 -->
-    <form-dialog :visible.sync="formDialogVisible" :dialogTitle="formDialogTitle" :fields="formFields" :formData="form"
-      @submit="handleFormSubmit" />
+    <form-dialog
+      :visible.sync="formDialogVisible"
+      :dialogTitle="formDialogTitle"
+      :fields="formFields"
+      :formData="form"
+      @submit="handleFormSubmit"
+    />
   </div>
 </template>
 
 <script>
 import { getGameList, addGame, updateGame, deleteGame } from '@/api/companion'
 import { TAG_GAME, getFieldTagType, getFieldLable } from '@/utils/tag'
+
+import store from '@/store'
 
 export default {
   name: 'GameView',
@@ -58,10 +95,15 @@ export default {
       formDialogVisible: false,
       formFields: [],
       form: {},
-      handleFormSubmit: function () { }
+      handleFormSubmit: function () {}
     }
   },
   methods: {
+    // 权限校验
+    auth (pid) {
+      return store.getters.permission.includes(pid)
+    },
+
     // 弹窗
     // 添加
     addGameDialog (id) {
@@ -70,9 +112,7 @@ export default {
       this.form = { pid: id }
       if (id === -1) {
         this.form.type = 'GAME'
-        this.formFields = [
-          { label: '名称', prop: 'name' }
-        ]
+        this.formFields = [{ label: '名称', prop: 'name' }]
       } else {
         this.formFields = [
           {
@@ -94,9 +134,7 @@ export default {
     updateGameDialog (temp) {
       this.formDialogVisible = true
       this.formDialogTitle = '修改游戏'
-      this.formFields = [
-        { label: '名称', prop: 'name' }
-      ]
+      this.formFields = [{ label: '名称', prop: 'name' }]
       this.form = temp
       this.handleFormSubmit = this.updateGame
     },

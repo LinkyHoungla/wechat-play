@@ -1,5 +1,6 @@
 package com.example.server.controller;
 
+import com.example.server.annotation.RequirePermission;
 import com.example.server.constant.GameEnum;
 import com.example.server.constant.ServiceEnum;
 import com.example.server.constant.StatusEnum;
@@ -31,6 +32,7 @@ public class CompanionController {
     private final CompanionServiceImpl companionService;
 
     @GetMapping("/page")
+    @RequirePermission
     public ApiResponse<PageQuery<Companion>> getCompanionByPage(@Length(max = 20, message = "长度超限") String query,
                                                                 @EnumValue(enumClass = StatusEnum.class, ableNull = true) String tag,
                                                                 @RequestParam(defaultValue = "1") @Min(1) Integer pageNum,
@@ -39,21 +41,25 @@ public class CompanionController {
     }
 
     @PostMapping
+    @RequirePermission
     public ApiResponse<Integer> addCompanion(@RequestBody @Valid USidParam param) {
         return ApiResponse.success(companionService.addCompanion(param));
     }
 
     @PutMapping
-    public ApiResponse<Integer> updateCompanion(@RequestBody @Validated(value = ValidGroup.Type.Goods.class) StatusParam param) {
+    @RequirePermission
+    public ApiResponse<Integer> updateStatus(@RequestBody @Validated(value = ValidGroup.Type.Goods.class) StatusParam param) {
         return ApiResponse.success(companionService.updateStatus(Integer.parseInt(param.getId()), param.getStatus()));
     }
 
     @DeleteMapping("/{id}")
+    @RequirePermission
     public ApiResponse<Integer> deleteCompanion(@PathVariable("id") @Min(0) Integer id) {
         return ApiResponse.success(companionService.deleteCompanion(id));
     }
 
     @GetMapping("/service/page")
+    @RequirePermission
     public ApiResponse<PageQuery<Service>> getServiceByPage(@Length(max = 20, message = "长度超限") String query,
                                                               @EnumValue(enumClass = ServiceEnum.class, ableNull = true) String tag,
                                                               @RequestParam(defaultValue = "1") @Min(1) Integer pageNum,
@@ -62,21 +68,25 @@ public class CompanionController {
     }
 
     @PostMapping("/service")
+    @RequirePermission
     public ApiResponse<Integer> addService(@RequestBody @Validated(value = ValidGroup.Crud.Create.class) ServiceParam param) {
         return ApiResponse.success(companionService.addService(param));
     }
 
     @PutMapping("/service")
+    @RequirePermission
     public ApiResponse<Integer> updateService(@RequestBody @Validated(value = ValidGroup.Crud.Update.class) ServiceParam param) {
         return ApiResponse.success(companionService.updateService(param));
     }
 
     @DeleteMapping("/service/{id}")
+    @RequirePermission
     public ApiResponse<Integer> deleteService(@PathVariable("id") @Min(0) Integer id) {
         return ApiResponse.success(companionService.deleteService(id));
     }
 
     @GetMapping("/game/page")
+    @RequirePermission
     public ApiResponse<PageQuery<Game>> getGameByPage(@Length(max = 20, message = "长度超限") String query,
                                                       @EnumValue(enumClass = GameEnum.class, ableNull = true) String tag,
                                                          @RequestParam(defaultValue = "1") @Min(1) Integer pageNum,
@@ -85,16 +95,19 @@ public class CompanionController {
     }
 
     @PostMapping("/game")
+    @RequirePermission
     public ApiResponse<Integer> addGame(@RequestBody @Validated(value = ValidGroup.Crud.Create.class) GameParam param) {
         return ApiResponse.success(companionService.addGame(param));
     }
 
     @PutMapping("/game")
+    @RequirePermission
     public ApiResponse<Integer> updateGame(@RequestBody @Validated(value = ValidGroup.Crud.Update.class) GameParam param) {
         return ApiResponse.success(companionService.updateGame(param));
     }
 
     @DeleteMapping("/game/{id}")
+    @RequirePermission
     public ApiResponse<Integer> deleteGame(@PathVariable("id") @Min(0) Integer id) {
         return ApiResponse.success(companionService.deleteGame(id));
     }

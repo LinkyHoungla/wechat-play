@@ -124,7 +124,6 @@ export default {
     },
     // 修改
     updateBalance (form) {
-      console.log(form)
       updateBalance(form)
         .then(() => {
           this.formDialogVisible = false

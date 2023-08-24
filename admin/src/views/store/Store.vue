@@ -158,7 +158,6 @@ export default {
     },
     // 修改 管理
     updateStore (form) {
-      console.log(form)
       updateStore(form)
         .then(() => {
           this.formDialogVisible = false

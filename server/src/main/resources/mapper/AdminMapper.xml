@@ -6,7 +6,7 @@
 
     <!-- 登录 -->
     <select id="login" resultType="java.util.Map" >
-        SELECT a.id, a.rid
+        SELECT a.id, a.rid, a.status
         FROM admin a
             JOIN admin_login al ON a.id = al.id
         WHERE al.username = #{username} AND al.password = #{password}
@@ -14,8 +14,8 @@
 
     <!-- 基本信息 -->
     <select id="getBasic" >
-        SELECT r.name AS name,
-               a.name AS role,
+        SELECT a.name AS name,
+               r.name AS role,
                a.avatar AS avatar
         FROM admin a
             JOIN role r  ON a.rid = r.id

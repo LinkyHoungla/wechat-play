@@ -69,8 +69,21 @@ export function updateStatus (data) {
 // 修改
 export function updateUser (data) {
   return service({
-    url: '/user',
+    url: '/user/mana',
     method: 'put',
+    data,
+    meta: {
+      rid: -1
+    }
+  })
+}
+
+// 修改头像
+export function updateAvatar (id, data) {
+  return service({
+    headers: { 'Content-Type': 'multipart/form-data' },
+    url: `/user/avatar/mana/${id}`,
+    method: 'post',
     data,
     meta: {
       rid: -1

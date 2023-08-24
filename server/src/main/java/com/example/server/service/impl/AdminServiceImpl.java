@@ -3,16 +3,15 @@ package com.example.server.service.impl;
 import com.example.server.constant.ApiError;
 import com.example.server.dao.AdminDao;
 import com.example.server.dto.param.AdminInfoParam;
+import com.example.server.dto.param.AdminParam;
 import com.example.server.dto.vo.AdminInfo;
 import com.example.server.dto.vo.CurrentAdmin;
-import com.example.server.dto.param.AdminParam;
 import com.example.server.dto.vo.Menu;
 import com.example.server.exception.ApiException;
 import com.example.server.service.AdminService;
 import com.example.server.util.FileUtil;
 import com.example.server.util.JwtUtil;
 import com.example.server.util.PageQuery;
-import com.example.server.util.UuidUtil;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import lombok.RequiredArgsConstructor;
@@ -37,8 +36,17 @@ public class AdminServiceImpl implements AdminService {
     public String login(String username, String password, String ip) {
         Map<String, Object> map = adminDao.login(username, password);
 
-        if( map == null || map.get("id") == null || map.get("rid") == null)
+        if( map == null || map.get("id") == null)
             throw new ApiException(ApiError.E451);
+
+        if (map.get("status") == null || map.get("rid") == null)
+            throw new ApiException(ApiError.E456);
+
+        String status = (String) map.get("status");
+        if (status.equals("BANNED"))
+            throw new ApiException(ApiError.E454);
+        if (status.equals("DELETED"))
+            throw new ApiException(ApiError.E455);
 
         Integer id = (Integer) map.get("id");
         Integer rid = (Integer) map.get("rid");
@@ -101,21 +109,14 @@ public class AdminServiceImpl implements AdminService {
     @Override
     @Transactional
     public String uploadAvatar(Integer id, MultipartFile file) {
-        String originalFilename = file.getOriginalFilename();
-
-        if (originalFilename == null)
-            throw new ApiException(ApiError.E462);
-
-        // 旧文件删除
+        // 旧文件
         String old = adminDao.getOldAvatar(id);
-        FileUtil.deleteOldFile(FILEPATH + SAVE, old);
 
         // 新文件写入
-        String filename = id + "-" + UuidUtil.generateUniqueId() + "." + originalFilename.substring(originalFilename.lastIndexOf(".") + 1);
-        String result = FileUtil.uploadFile(FILEPATH + SAVE, filename, file);
+        String result = FileUtil.uploadFile(old, FILEPATH + SAVE, String.valueOf(id), file);
 
         // 文件名保存
-        adminDao.uploadAvatar(id, filename);
+        adminDao.uploadAvatar(id, result);
 
         return result;
     }

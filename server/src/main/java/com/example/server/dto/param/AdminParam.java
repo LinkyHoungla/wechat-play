@@ -20,6 +20,6 @@ public class AdminParam {
     private String name;
     @EnumValue(groups = ValidGroup.Crud.Update.class, enumClass = StatusEnum.class, message = "非法参数")
     private String status;
-    @Min(0)
+    @Min(1)
     private Integer rid;
 }

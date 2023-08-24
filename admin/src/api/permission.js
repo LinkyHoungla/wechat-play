@@ -8,7 +8,7 @@ export function getRoleList (pageParam) {
     method: 'get',
     params: pageParam,
     meta: {
-      rid: -1
+      rid: 64
     }
   })
 }
@@ -19,7 +19,7 @@ export function getRoles () {
     url: '/permission/roles',
     method: 'get',
     meta: {
-      rid: -1
+      rid: 94
     }
   })
 }
@@ -31,7 +31,7 @@ export function addRole (data) {
     method: 'post',
     data,
     meta: {
-      rid: -1
+      rid: 55
     }
   })
 }
@@ -43,7 +43,7 @@ export function updateRole (id, data) {
     method: 'put',
     data,
     meta: {
-      rid: -1
+      rid: 56
     }
   })
 }
@@ -54,7 +54,7 @@ export function deleteRole (id) {
     url: `/permission/role/${id}`,
     method: 'delete',
     meta: {
-      rid: -1
+      rid: 58
     }
   })
 }
@@ -67,7 +67,7 @@ export function getPermissionTree (pageParam) {
     method: 'get',
     params: pageParam,
     meta: {
-      rid: -1
+      rid: 60
     }
   })
 }
@@ -79,7 +79,7 @@ export function addPermission (data) {
     method: 'post',
     data,
     meta: {
-      rid: -1
+      rid: 62
     }
   })
 }
@@ -91,7 +91,7 @@ export function updatePermission (data) {
     method: 'put',
     data,
     meta: {
-      rid: -1
+      rid: 63
     }
   })
 }
@@ -102,7 +102,7 @@ export function deletePermission (id) {
     url: `/permission/${id}`,
     method: 'delete',
     meta: {
-      rid: -1
+      rid: 61
     }
   })
 }
@@ -114,7 +114,7 @@ export function getAuthTree (level, params) {
     method: 'get',
     params: params,
     meta: {
-      rid: -1
+      rid: 95
     }
   })
 }
@@ -125,7 +125,7 @@ export function getAuthList (id) {
     url: `/permission/rights/${id}`,
     method: 'get',
     meta: {
-      rid: -1
+      rid: 93
     }
   })
 }
@@ -137,7 +137,7 @@ export function updateAuth (id, data) {
     method: 'put',
     data,
     meta: {
-      rid: -1
+      rid: 57
     }
   })
 }
@@ -148,7 +148,7 @@ export function deleteAuth (rid, pid) {
     url: `/permission/auth/${rid}/${pid}`,
     method: 'delete',
     meta: {
-      rid: -1
+      rid: 59
     }
   })
 }

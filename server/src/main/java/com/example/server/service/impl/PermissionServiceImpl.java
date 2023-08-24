@@ -40,8 +40,8 @@ public class PermissionServiceImpl implements PermissionService {
     }
 
     @Override
-    public Integer updateRole(Integer id, RoleParam param) {
-        return permissionDao.updateRole(id, param);
+    public Integer updateRole(RoleParam param) {
+        return permissionDao.updateRole(param);
     }
 
     @Override

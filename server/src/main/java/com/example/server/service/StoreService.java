@@ -2,6 +2,7 @@ package com.example.server.service;
 
 
 import com.example.server.dto.param.BalanceParam;
+import com.example.server.dto.param.StatusParam;
 import com.example.server.dto.param.StoreParam;
 import com.example.server.entity.Balance;
 import com.example.server.entity.Store;
@@ -13,6 +14,8 @@ public interface StoreService {
     PageQuery<Store> getStoreList(String query, String tag, Integer pageNum, Integer pageSize);
     // FUNCTION 添加
     Integer addStore(StoreParam param);
+    // FUNCTION 状态管理
+    Integer updateStoreStatus(StatusParam param);
     // FUNCTION 修改
     Integer updateStore(StoreParam param);
     // FUNCTION 删除

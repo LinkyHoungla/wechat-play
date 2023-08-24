@@ -22,6 +22,7 @@ import lombok.RequiredArgsConstructor;
 import org.hibernate.validator.constraints.Length;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
@@ -54,6 +55,7 @@ public class UserController {
     }
 
     @GetMapping("/page")
+    @RequirePermission
     public ApiResponse<PageQuery<UserMana>> getUserByPage(@Length(max = 20, message = "长度超限") String query,
                                                           @EnumValue(enumClass = StatusEnum.class, ableNull = true) String tag,
                                                           @RequestParam(defaultValue = "1") @Min(1) Integer pageNum,
@@ -67,28 +69,47 @@ public class UserController {
     }
 
     @GetMapping("/mana/{id}")
+    @RequirePermission
     public ApiResponse<UserInfo> getUserInfoMana(@PathVariable("id") @Pattern(regexp = ValidateUtil.UID) String id) {
         return ApiResponse.success(userService.getUserInfoMana(id));
     }
 
-    @RequirePermission(pid = 49)
     @PostMapping
+    @RequirePermission
     public ApiResponse<Integer> addUser(@RequestBody @Valid UserLogParam param) {
         return ApiResponse.success(userService.addUser(param));
     }
 
     @PutMapping("/status")
+    @RequirePermission
     public ApiResponse<Integer> updateStatus(@RequestBody @Validated(value = ValidGroup.Type.Account.class) StatusParam param) {
         return ApiResponse.success(userService.updateStatus(param));
     }
 
+    @PutMapping("/mana")
+    @RequirePermission
+    public ApiResponse<Integer> updateUserMana(@RequestBody @Valid UserInfoParam param) {
+        return ApiResponse.success(userService.updateUserInfo(param));
+    }
+
     @PutMapping
-    public ApiResponse<Integer> updateUser(@RequestBody @Valid UserInfoParam param) {
+    public ApiResponse<Integer> updateUser(@RequestBody @Valid UserInfoParam param, HttpServletRequest request) {
+        String uid = (String) request.getAttribute("id");
+
+        if (!uid.equals(param.getId()))
+            throw new ApiException(ApiError.E401);
+
         return ApiResponse.success(userService.updateUserInfo(param));
     }
 
     @DeleteMapping("/{id}")
+    @RequirePermission
     public ApiResponse<Integer> deleteUser(@PathVariable("id") @Pattern(regexp = ValidateUtil.UID) String id) {
         return ApiResponse.success(userService.deleteUser(id));
+    }
+
+    @PostMapping("/avatar/mana/{id}")
+    public ApiResponse<String> uploadAvatar(@RequestParam("file") MultipartFile file, @PathVariable("id") String id) {
+        return ApiResponse.success(userService.updateAvatar(id, file));
     }
 }

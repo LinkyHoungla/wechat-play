@@ -98,7 +98,6 @@ export default {
     },
     // 修改
     updateWallet (form) {
-      console.log(form)
       updateWallet(form)
         .then(() => {
           this.formDialogVisible = false

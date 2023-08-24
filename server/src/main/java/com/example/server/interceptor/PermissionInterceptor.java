@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 public class PermissionInterceptor implements HandlerInterceptor {
-    public PermissionDao dao;
+    private final PermissionDao dao;
 
     public PermissionInterceptor(PermissionDao dao) {
         this.dao = dao;
@@ -23,12 +23,13 @@ public class PermissionInterceptor implements HandlerInterceptor {
             HandlerMethod handlerMethod = (HandlerMethod) handler;
             RequirePermission annotation = handlerMethod.getMethodAnnotation(RequirePermission.class);
             if (annotation != null) {
-                // 获取注解中指定的权限ID
-                int pid = annotation.pid();
                 // 获取token中的角色ID
                 int rid = (Integer) request.getAttribute("rid");
 
-                if (dao.hasPermissions(rid, pid) == null)
+                // 拼接请求方式和路径
+                String path = request.getMethod() + ":" + request.getRequestURI().replaceFirst("/\\d+", "/*");
+
+                if (dao.hasPermissions(rid, path) == null)
                     throw new ApiException(ApiError.E403);
             }
         }

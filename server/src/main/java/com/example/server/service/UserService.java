@@ -7,6 +7,7 @@ import com.example.server.dto.vo.UserInfoVo;
 import com.example.server.dto.vo.UserMana;
 import com.example.server.entity.UserInfo;
 import com.example.server.util.PageQuery;
+import org.springframework.web.multipart.MultipartFile;
 
 public interface UserService {
     // SECTION 用户管理
@@ -30,4 +31,6 @@ public interface UserService {
     UserInfoVo getUserInfo(String id);
     // FUNCTION 信息修改
     Integer updateUserInfo(UserInfoParam param);
+    // FUNCTION 头像上传
+    String updateAvatar(String id, MultipartFile file);
 }

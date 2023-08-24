@@ -38,7 +38,7 @@ export function getAdminList (pageParam) {
     method: 'get',
     params: pageParam,
     meta: {
-      rid: -1
+      rid: 43
     }
   })
 }
@@ -50,7 +50,7 @@ export function addAdmin (data) {
     method: 'post',
     data,
     meta: {
-      rid: -1
+      rid: 44
     }
   })
 }
@@ -62,7 +62,7 @@ export function updateStatus (data) {
     method: 'put',
     data,
     meta: {
-      rid: -1
+      rid: 45
     }
   })
 }
@@ -79,7 +79,7 @@ export function updateAdmin (data) {
   })
 }
 
-// 修改信息
+// 修改头像
 export function updateAvatar (data) {
   return service({
     headers: { 'Content-Type': 'multipart/form-data' },
@@ -98,7 +98,7 @@ export function deleteAdmin (id) {
     url: `/admin/${id}`,
     method: 'delete',
     meta: {
-      rid: -1
+      rid: 47
     }
   })
 }

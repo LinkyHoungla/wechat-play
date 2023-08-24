@@ -24,7 +24,7 @@
           </el-select>
       </el-col>
       <el-col :span="4">
-        <el-button type="primary" @click="handleAdd" v-if="tableTitle !== undefined" >{{
+        <el-button type="primary" @click="handleAdd" v-if="tableTitle !== undefined" :disabled="disabled" >{{
           tableTitle
         }}</el-button>
       </el-col>
@@ -78,7 +78,8 @@ export default {
     tagOptions: Array,
     list: Array,
     total: Number,
-    hasExpand: Boolean
+    hasExpand: Boolean,
+    disabled: Boolean
   },
   watch: {
     list (newVal) {
