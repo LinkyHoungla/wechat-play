@@ -120,7 +120,7 @@ export default {
         login(this.loginForm).then(({ data }) => {
           setToken(data.data)
           this.$router.push('/')
-        }).catch(() => {}).finally(() => {
+        }).catch(() => {
           this.$loading().close()
         })
       })

@@ -65,7 +65,7 @@ export default {
   }
 
   .main-container {
-    width: 75%;
+    width: 1400px;
     min-height: 96vh;
 
     background-color: transparent;

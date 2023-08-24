@@ -63,11 +63,14 @@ const actions = {
     try {
       const { logout } = await import('@/api/admin')
       await logout()
+    } catch (error) {
+      console.error(error)
+      return Promise.reject(error)
+    } finally {
       removeToken()
       resetRouter()
       commit('RESET_STATE')
-    } catch (error) {
-      console.error(error)
+      console.log('信息已清除')
     }
   }
 }

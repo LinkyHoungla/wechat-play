@@ -29,9 +29,10 @@ service.interceptors.request.use(
     const requiredPermission = config.meta.rid
 
     // 判断用户是否有权限进行该请求
-    if (requiredPermission && !userPermissions.includes(requiredPermission)) {
+    if (requiredPermission !== -1 && !userPermissions.includes(requiredPermission)) {
       // 没有权限，拒绝请求或者返回错误信息
-      // return Promise.reject(new Error('权限不足'))
+      Message.error('权限不足')
+      return Promise.reject(new Error())
     }
     config.headers.Authorization = getToken()
     return config
@@ -55,8 +56,9 @@ service.interceptors.response.use(
         cancelButtonText: '取消',
         type: 'warning'
       }).then(() => {
-        store.dispatch('login/logout').then(() => {
+        store.dispatch('login/logout').catch(() => {}).finally(() => {
           // 为了重新实例化vue-router对象 避免bug
+          // 刷新当前页面，就像刷新按钮一样
           location.reload()
         })
       }).catch(() => {}).finally(() => { errorShown = false })
@@ -65,6 +67,8 @@ service.interceptors.response.use(
       errorShown = true
     } else if (res.status === 451) {
       Message.error('用户名不存在或密码错误')
+    } else if (res.status === 403) {
+      Message.error('权限不足')
     } else if (res.status === 502) {
       Message.error('服务器异常')
     } else {

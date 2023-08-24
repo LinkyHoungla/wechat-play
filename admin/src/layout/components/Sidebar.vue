@@ -92,7 +92,7 @@ export default {
     logout () {
       this.$store.dispatch('login/logout').then(() => {
         this.$router.push('/login')
-      })
+      }).catch(() => {})
     },
     getCurrent () {
       this.$store.dispatch('login/getLoginfo').then(() => {
